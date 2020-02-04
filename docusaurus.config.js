@@ -4,8 +4,8 @@ module.exports = {
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'nervoscommunity', // Usually your GitHub org/user name.
+  projectName: 'website', // Usually your repo name.
   themeConfig: {
     navbar: {
       title: 'My Site',
@@ -22,10 +22,9 @@ module.exports = {
           position: 'left',
         },
         {to: 'docs/rfcs/introduction',label:'RFCs',position:'left'},
-        {to: 'docs/doc1',label:'Q&A',position:'left'},
-        {to:'index_cn', label:'中文', position:'right'},
+        {to: 'docs/qa/welcome',label:'Q&A',position:'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/nervoscommunity/docs',
           label: 'GitHub',
           position: 'right',
         },
@@ -88,7 +87,7 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
+            'https://github.com/nervoscommunity/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

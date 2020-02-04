@@ -13,5 +13,25 @@ module.exports = {
   rfcsSidebar:{
     Introduction:['rfcs/introduction'],
     Information:['rfcs/0001-positioning/0001-positioning'],
+  },
+  qaSidebar:{
+    介绍:['qa/welcome','qa/contribute'],
+    常见问题:[
+      {
+        type: 'category',
+        label:'关于 Nervos',
+        items:['qa/nervos/doc1']
+      },
+      {
+        type: 'category',
+        label:'关于 CKB',
+        items:['qa/ckb/doc1']
+      },
+      {
+        type: 'category',
+        label:'关于 Nervos DAO',
+        items:['qa/nervosdao/doc1']
+      }
+    ],
   }
 };
