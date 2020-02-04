@@ -10,4 +10,8 @@ module.exports = {
     Docusaurus: ['doc1', 'doc2', 'doc3'],
     Features: ['mdx'],
   },
+  rfcsSidebar:{
+    Introduction:['rfcs/introduction'],
+    Information:['rfcs/0001-positioning/0001-positioning'],
+  }
 };

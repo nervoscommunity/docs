@@ -1,6 +1,6 @@
 module.exports = {
-  title: 'My Site',
-  tagline: 'The tagline of my site',
+  title: 'Welcome to CKB.DEV',
+  tagline: 'This it docs for CKB developers',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
@@ -16,6 +16,14 @@ module.exports = {
       links: [
         {to: 'docs/doc1', label: 'Docs', position: 'left'},
         {to: 'blog', label: 'Blog', position: 'left'},
+        {
+          href: 'https://ckb.dev',
+          label: 'Forum',
+          position: 'left',
+        },
+        {to: 'docs/rfcs/introduction',label:'RFCs',position:'left'},
+        {to: 'docs/doc1',label:'Q&A',position:'left'},
+        {to:'index_cn', label:'中文', position:'right'},
         {
           href: 'https://github.com/facebook/docusaurus',
           label: 'GitHub',
