@@ -33,5 +33,8 @@ module.exports = {
         items:['qa/nervosdao/doc1']
       }
     ],
+    导航:[
+      'qa/guide/grants',
+    ],
   }
 };
