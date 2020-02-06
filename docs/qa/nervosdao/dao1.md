@@ -1,7 +1,7 @@
 ---
-id: doc1
-title: Nervos 是什么
-sidebar_label: Nervos 是什么?
+id: dao1
+title: Nervos DAO 是什么
+sidebar_label: Nervos DAO 是什么
 ---
 
 You can write content using [GitHub-flavored Markdown syntax](https://github.github.com/gfm/).

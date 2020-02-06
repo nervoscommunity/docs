@@ -1,7 +1,7 @@
 ---
 id: grants
-title: Nervos Grants 汇总
-sidebar_label: Grants 汇总
+title: Nervos Grants 项目汇总
+sidebar_label: Grants 项目汇总
 ---
 
 ## 已经通过的 Grants：
@@ -27,3 +27,4 @@ sidebar_label: Grants 汇总
 |[Paytomat](https://paytomat.com/)|CKB wallet support| [Nervos support in Paytomat Wallet](https://talk.nervos.org/t/rfc-nervos-support-in-paytomat-wallet/4203) ||2020/1/29|Step2|
 |[GrowFi](https://medium.com/growfi)|Nervos DeFi Infrastructure| [Nervos DeFi Infrastructure](https://talk.nervos.org/t/grant-rfc-nervos-defi-infrastructure/4215) |[Github](https://github.com/bannplayer/Growdrop/tree/master)、[Growdrop](http://dev.growdrop.io/)|2020/1/31|Step2|
 |Harry Liu|Connect dapp with wallet| [OneConnect - Connect CKB dapp with any wallet](https://talk.nervos.org/t/rfc-oneconnect-connect-ckb-dapp-with-any-wallet/4219) |[Tools](https://tools.rebase.network/ckb)|2020/2/1|Step2|
+|Jason Teutsch|[Truebit](https://truebit.io/) on Nervos| [Truebit on Nervos](https://talk.nervos.org/t/truebit-on-nervos/4237) ||2020/2/5|Step2|

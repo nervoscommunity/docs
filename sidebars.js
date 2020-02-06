@@ -6,31 +6,33 @@
  */
 
 module.exports = {
-  someSidebar: {
-    Docusaurus: ['doc1', 'doc2', 'doc3'],
-    Features: ['mdx'],
+  docsSidebar: {
+    Docusaurus: ['docs/doc1', 'docs/doc2', 'docs/doc3'],
+    Features: ['docs/mdx'],
   },
+
   rfcsSidebar:{
     Introduction:['rfcs/introduction'],
     Information:['rfcs/0001-positioning/0001-positioning'],
   },
+
   qaSidebar:{
     介绍:['qa/welcome','qa/contribute'],
     常见问题:[
       {
         type: 'category',
         label:'关于 Nervos',
-        items:['qa/nervos/doc1']
+        items:['qa/nervos/nervos1'],
       },
       {
         type: 'category',
         label:'关于 CKB',
-        items:['qa/ckb/doc1']
+        items:['qa/ckb/ckb1'],
       },
       {
         type: 'category',
         label:'关于 Nervos DAO',
-        items:['qa/nervosdao/doc1']
+        items:['qa/nervosdao/dao1'],
       }
     ],
     导航:[

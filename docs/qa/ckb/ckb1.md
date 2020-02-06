@@ -1,7 +1,7 @@
 ---
-id: doc1
-title: Style Guide
-sidebar_label: Style Guide
+id: ckb1
+title: CKB 是什么
+sidebar_label: CKB 是什么
 ---
 
 You can write content using [GitHub-flavored Markdown syntax](https://github.github.com/gfm/).

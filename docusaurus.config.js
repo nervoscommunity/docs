@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'Welcome to CKB.DEV',
+  title: 'Welcome to CKB Docs',
   tagline: 'This it docs for CKB developers',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
@@ -8,21 +8,21 @@ module.exports = {
   projectName: 'website', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'My Site',
+      title: 'CKB Docs',
       logo: {
         alt: 'My Site Logo',
         src: 'img/logo.svg',
       },
       links: [
-        {to: 'docs/doc1', label: 'Docs', position: 'left'},
-        {to: 'blog', label: 'Blog', position: 'left'},
+        {to: 'docs/docs/doc1', label: '文档', position: 'left'},
+        {to: 'blog', label: '博客', position: 'left'},
+        {to: 'docs/rfcs/introduction',label:'RFCs',position:'left'},
+        {to: 'docs/qa/welcome',label:'常见问题',position:'left'},
         {
           href: 'https://ckb.dev',
-          label: 'Forum',
+          label: '论坛',
           position: 'left',
         },
-        {to: 'docs/rfcs/introduction',label:'RFCs',position:'left'},
-        {to: 'docs/qa/welcome',label:'Q&A',position:'left'},
         {
           href: 'https://github.com/nervoscommunity/docs',
           label: 'GitHub',
@@ -34,24 +34,24 @@ module.exports = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: '文档',
           items: [
             {
-              label: 'Style Guide',
-              to: 'docs/doc1',
+              label: '开发文档',
+              to: 'docs/docs/doc1',
             },
             {
-              label: 'Second Doc',
-              to: 'docs/doc2',
+              label: 'RFCs',
+              to: 'docs/rfcs/introduction',
             },
           ],
         },
         {
-          title: 'Community',
+          title: '社区',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: '论坛',
+              href: 'https://ckb.dev',
             },
             {
               label: 'Discord',
@@ -60,10 +60,10 @@ module.exports = {
           ],
         },
         {
-          title: 'Social',
+          title: '社交',
           items: [
             {
-              label: 'Blog',
+              label: '博客',
               to: 'blog',
             },
             {
@@ -74,10 +74,14 @@ module.exports = {
               label: 'Twitter',
               href: 'https://twitter.com/docusaurus',
             },
+            {
+              label: '微博',
+              href: 'https://twitter.com/docusaurus',
+            },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Nervos Community. Built with Docusaurus.`,
     },
   },
   presets: [
