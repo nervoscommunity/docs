@@ -1,11 +1,12 @@
 ---
-Number: "0011"
-Category: Standards Track
-Status: Proposal
-Author: Quake Wang
-Organization: Nervos Foundation
-Created: 2018-12-11
+id: 0011-transaction-filter-protocol
+title: Transaction Filter Protocol
+sidebar_label: 11：Transaction Filter Protocol
 ---
+
+|  Number   |  Category |   Status  |   Author  |Organization| Created  |
+| --------- | --------- | --------- | --------- | --------- | --------- |
+| 0011 | Standards Track | Proposal | Quake Wang |Nervos Foundation|2018-12-11|
 
 # Transaction Filter Protocol
 

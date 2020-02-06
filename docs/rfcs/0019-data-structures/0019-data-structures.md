@@ -1,11 +1,12 @@
 ---
-Number: "0019"
-Category: Informational
-Status: Draft
-Author: Xuejie Xiao
-Organization: Nervos Foundation
-Created: 2019-03-26
+id: 0019-data-structures
+title: Data Structures of Nervos CKB
+sidebar_label: 19：Data Structures of Nervos CKB
 ---
+
+|  Number   |  Category |   Status  |   Author  |Organization| Created  |
+| --------- | --------- | --------- | --------- | --------- | --------- |
+| 0019 | Informational | Draft | Xuejie Xiao |Nervos Foundation|2019-03-26|
 
 # Data Structures of Nervos CKB
 
@@ -15,8 +16,6 @@ This documents explains all the basic data structures used in CKB.
 * [Script](#Script)
 * [Transaction](#Transaction)
 * [Block](#Block)
-
-
 
 ## Cell
 

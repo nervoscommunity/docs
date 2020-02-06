@@ -4,13 +4,9 @@ title: The Nervos Network Positioning Paper
 sidebar_label: 01：Positioning Paper
 ---
 
-Number: "0001"
-Category: Informational
-Status: Draft
-Author: The Nervos Team
-Organization: Nervos Foundation
-Created: 2019-09-12
-
+|  Number   |  Category |   Status  |   Author  |Organization| Created  |
+| --------- | --------- | --------- | --------- | --------- | --------- |
+| 0001 | Informational | Draft | The Nervos Team |Nervos Foundation|2019-09-12|
 
 # The Nervos Network Positioning Paper
 

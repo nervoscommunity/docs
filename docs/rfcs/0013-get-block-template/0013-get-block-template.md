@@ -1,11 +1,12 @@
 ---
-Number: "0013"
-Category: Standards Track
-Status: Proposal
-Author: Dingwei Zhang
-Organization: Nervos Foundation
-Created: 2019-01-02
+id: 0013-get-block-template
+title: get_block_template
+sidebar_label: 13：get_block_template
 ---
+
+|  Number   |  Category |   Status  |   Author  |Organization| Created  |
+| --------- | --------- | --------- | --------- | --------- | --------- |
+| 0013 | Standards Track | Proposal | Dingwei Zhang  |Nervos Foundation|2019-01-02|
 
 # get_block_template
 

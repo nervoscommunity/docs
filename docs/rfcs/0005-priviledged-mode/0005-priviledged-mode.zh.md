@@ -1,11 +1,12 @@
 ---
-Number: "0005"
-Category: Informational
-Status: Draft
-Author: Xuejie Xiao
-Organization: Nervos Foundation
-Created: 2018-11-26
+id: 0005-priviledged-mode.zh
+title: CKB VM 中的特权架构支持
+sidebar_label: 05：CKB VM 中的特权架构支持
 ---
+
+|  Number   |  Category |   Status  |   Author  |Organization| Created  |
+| --------- | --------- | --------- | --------- | --------- | --------- |
+| 0005 | Informational | Draft | Xuejie Xiao |Nervos Foundation|2018-11-26|
 
 # CKB VM 中的特权架构支持
 

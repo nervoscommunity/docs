@@ -1,7 +1,7 @@
 ---
-id: introduction
+id: introduction.zh
 title: Nervos Network RFCs
-sidebar_label: Introduction
+sidebar_label: Nervos Network RFCs 简介
 ---
 
 # Nervos Network RFCs

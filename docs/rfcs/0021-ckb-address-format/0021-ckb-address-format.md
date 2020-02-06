@@ -1,11 +1,12 @@
 ---
-Number: "0021"
-Category: Standards Track
-Status: Proposal
-Author: Cipher Wang
-Organization: Nervos Foundation
-Created: 2019-01-20
+id: 0021-ckb-address-format
+title: CKB Address Format
+sidebar_label: 21：CKB Address Format
 ---
+
+|  Number   |  Category |   Status  |   Author  |Organization| Created  |
+| --------- | --------- | --------- | --------- | --------- | --------- |
+| 0021 | Standards Track | Proposal | Cipher Wang  |Nervos Foundation|2019-01-20|
 
 # CKB Address Format
 
@@ -66,7 +67,7 @@ Full payload format directly encodes all data field of lock script.
 payload = 0x02/0x04 | code_hash | args
 ```
 
-The first byte identifies the lock script's hash_type, 0x02 for "Data", 0x04 for "Type". 
+The first byte identifies the lock script's hash_type, 0x02 for "Data", 0x04 for "Type".
 
 ## Wrap to Address
 
@@ -105,7 +106,7 @@ with args to encode:     b39bbc0b3673c7d36450bc14cfcdad2d559c6c64
 full address generated:  ckb1qjda0cr08m85hc8jlnfp3zer7xulejywt49kt2rr0vthywaa50xw3vumhs9nvu786dj9p0q5elx66t24n3kxgj53qks
 ```
 
-Demo code: https://github.com/CipherWang/ckb-address-demo 
+Demo code: https://github.com/CipherWang/ckb-address-demo
 
 [bip173]: https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki
 

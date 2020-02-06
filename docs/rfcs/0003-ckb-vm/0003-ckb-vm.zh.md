@@ -1,11 +1,12 @@
 ---
-Number: "0003"
-Category: Informational
-Status: Draft
-Author: Xuejie Xiao
-Organization: Nervos Foundation
-Created: 2018-08-01
+id: 0003-ckb-vm.zh
+title: CKB 虚拟机
+sidebar_label: 03：CKB 虚拟机
 ---
+
+|  Number   |  Category |   Status  |   Author  |Organization| Created  |
+| --------- | --------- | --------- | --------- | --------- | --------- |
+| 0003 | Informational | Draft | Xuejie Xiao |Nervos Foundation|2018-08-01|
 
 # CKB-VM
 

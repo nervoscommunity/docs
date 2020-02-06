@@ -4,14 +4,9 @@ title: CKB-VM
 sidebar_label: 03：CKB-VM
 ---
 
----
-Number: "0003"
-Category: Informational
-Status: Draft
-Author: Xuejie Xiao
-Organization: Nervos Foundation
-Created: 2018-08-01
----
+|  Number   |  Category |   Status  |   Author  |Organization| Created  |
+| --------- | --------- | --------- | --------- | --------- | --------- |
+| 0003 | Informational | Draft | Xuejie Xiao |Nervos Foundation|2018-08-01|
 
 # CKB-VM
 

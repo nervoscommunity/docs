@@ -1,11 +1,12 @@
 ---
-Number: "0014"
-Category: Standards Track
-Status: Proposal
-Author: Xuejie Xiao
-Organization: Nervos Foundation
-Created: 2019-01-04
+id: 0014-vm-cycle-limits
+title: VM Cycle Limits
+sidebar_label: 14：VM Cycle Limits
 ---
+
+|  Number   |  Category |   Status  |   Author  |Organization| Created  |
+| --------- | --------- | --------- | --------- | --------- | --------- |
+| 0014 | Standards Track | Proposal | Xuejie Xiao  |Nervos Foundation|2019-01-04|
 
 # VM Cycle Limits
 

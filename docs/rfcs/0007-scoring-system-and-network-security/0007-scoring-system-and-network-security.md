@@ -1,11 +1,12 @@
 ---
-Number: "0007"
-Category: Standards Track
-Status: Proposal
-Author: Jinyang Jiang
-Organization: Nervos Foundation
-Created: 2018-10-02
+id: 0007-scoring-system-and-network-security
+title: P2P Scoring System And Network Security
+sidebar_label: 07：P2P Scoring System And Network Security
 ---
+
+|  Number   |  Category |   Status  |   Author  |Organization| Created  |
+| --------- | --------- | --------- | --------- | --------- | --------- |
+| 0007 | Standards Track | Proposal | Jinyang Jiang  |Nervos Foundation|2018-10-02|
 
 # P2P Scoring System And Network Security
 
@@ -23,7 +24,7 @@ The principle of Eclipse Attack is that the attacker would occupy all Peers conn
 
 Via "Eclipse Attack" the attacker can take down a victim node with low cost. After that, the attacker could control the victim's mining power for its nefarious purposes, or cheat this victim node to launch a double spent attack.
 
-Reference paper -- [Eclipse Attacks on Bitcoin’s Peer-to-Peer Network][2] 
+Reference paper -- [Eclipse Attacks on Bitcoin’s Peer-to-Peer Network][2]
 
 There are several strategies to prevent "Eclipse attack" introduced in this paper and parts of them have already been implemented in the Bitcoin network. That is to say, this document will describe how to deploy these strategies to CKB network.
 
@@ -59,11 +60,11 @@ PeerStore should be persistent storage and store PeerInfos as more as possible.
 PeerInfo should include fields below at least:
 
 ```
-PeerInfo { 
+PeerInfo {
   NodeId,
   ConnectedIP,
   Direction,  // Inbound or Outbound
-  LastConnectedAt, // The time of the last connection 
+  LastConnectedAt, // The time of the last connection
   Score
 }
 ```
@@ -159,7 +160,7 @@ end
 def find_random_peer
   connected_outbound_peers = connected_peers.select{|peer| peer.outbound? && !peer.feeler? }
   exists_network_groups = connected_outbound_peers.map(&:network_group)
-  candidate_peers = peer_store.select do |peer| 
+  candidate_peers = peer_store.select do |peer|
     peer.score >= TRY_SCORE && !exists_network_groups.include?(peer.network_group)
   end
   candidate_peers.sample
@@ -179,7 +180,7 @@ check_outbound_peers_interval = 15
 loop do
   sleep(check_outbound_peers_interval)
   connected_outbound_peers = connected_peers.select{|peer| peer.outbound? && !peer.feeler? }
-  if connected_outbound_peers.length >= max_outbound && !try_new_outbound_peer 
+  if connected_outbound_peers.length >= max_outbound && !try_new_outbound_peer
     next
   end
   new_outbound_peer = find_outbound_peer()
@@ -290,7 +291,7 @@ Feeler peers would be assumed to disconnect soon.
 Required parameters:
 
 * `PEER_STORE_LIMIT` - max number of PeerInfo in PeerStore
-* `PEER_NOT_SEEN_TIMEOUT` - used for protecting peers which recently connected. Only peer info over `last_connected_to` would be deleted. 
+* `PEER_NOT_SEEN_TIMEOUT` - used for protecting peers which recently connected. Only peer info over `last_connected_to` would be deleted.
 
 When the number of peer info reaches `PEER_STORE_LIMIT`:
 

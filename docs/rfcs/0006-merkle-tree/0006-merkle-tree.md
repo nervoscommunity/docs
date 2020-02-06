@@ -1,11 +1,12 @@
 ---
-Number: "0006"
-Category: Standards Track
-Status: Proposal
-Author: Ke Wang
-Organization: Nervos Foundation
-Created: 2018-12-01
+id: 0006-merkle-tree
+title: Merkle Tree for Static Data
+sidebar_label: 06：Merkle Tree for Static Data
 ---
+
+|  Number   |  Category |   Status  |   Author  |Organization| Created  |
+| --------- | --------- | --------- | --------- | --------- | --------- |
+| 0006 | Standards Track | Proposal | Ke Wang  |Nervos Foundation|2018-12-01|
 
 # Merkle Tree for Static Data
 

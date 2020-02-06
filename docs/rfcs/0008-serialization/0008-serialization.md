@@ -1,11 +1,12 @@
 ---
-Number: "0008"
-Category: Standards Track
-Status: Proposal
-Author: Boyu Yang
-Organization: Nervos Foundation
-Created: 2018-12-17
+id: 0008-serialization
+title: Serialization
+sidebar_label: 08：Serialization
 ---
+
+|  Number   |  Category |   Status  |   Author  |Organization| Created  |
+| --------- | --------- | --------- | --------- | --------- | --------- |
+| 0008 | Standards Track | Proposal | Boyu Yang |Nervos Foundation|2018-12-17|
 
 # Serialization
 

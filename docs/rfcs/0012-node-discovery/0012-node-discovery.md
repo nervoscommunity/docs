@@ -1,11 +1,12 @@
 ---
-Number: "0012"
-Category: Standards Track
-Status: Proposal
-Author: Linfeng Qian, JinYang Jiang
-Organization: Nervos Foundation
-Created: 2018-11-28
+id: 0012-node-discovery
+title: CKB Node Discovery Protocol
+sidebar_label: 12：CKB Node Discovery Protocol
 ---
+
+|  Number   |  Category |   Status  |   Author  |Organization| Created  |
+| --------- | --------- | --------- | --------- | --------- | --------- |
+| 0012 | Standards Track | Proposal | Linfeng Qian, JinYang Jiang |Nervos Foundation|2018-11-28|
 
 # CKB Node Discovery Protocol
 

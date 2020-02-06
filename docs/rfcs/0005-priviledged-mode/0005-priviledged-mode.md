@@ -1,11 +1,12 @@
 ---
-Number: "0005"
-Category: Informational
-Status: Draft
-Author: Xuejie Xiao
-Organization: Nervos Foundation
-Created: 2018-11-26
+id: 0005-priviledged-mode
+title: Privileged architecture support for CKB VM
+sidebar_label: 05：Privileged architecture support for CKB VM
 ---
+
+|  Number   |  Category |   Status  |   Author  |Organization| Created  |
+| --------- | --------- | --------- | --------- | --------- | --------- |
+| 0005 | Informational | Draft | Xuejie Xiao |Nervos Foundation|2018-11-26|
 
 # Privileged architecture support for CKB VM
 

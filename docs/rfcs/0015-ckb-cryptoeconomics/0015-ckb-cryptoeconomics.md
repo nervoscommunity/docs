@@ -1,11 +1,13 @@
 ---
-Number: "0015"
-Category: Informational
-Status: Draft
-Author: Kevin Wang, Jan Xie, Jiasun Li, David Zou
-Organization: Nervos Foundation
-Created: 2019-03-08
+id: 0015-ckb-cryptoeconomics
+title: Crypto-Economics of the Nervos Common Knowledge Base
+sidebar_label: 15：Crypto-Economics of the Nervos CKB
 ---
+
+|  Number   |  Category |   Status  |   Author  |Organization| Created  |
+| --------- | --------- | --------- | --------- | --------- | --------- |
+| 0015 | Informational | Draft | Kevin Wang, Jan Xie, Jiasun Li, David Zou|Nervos Foundation|2019-03-08|
+
 # Crypto-Economics of the Nervos Common Knowledge Base
 
 ## 1. The Objectives of a Token Economics Design

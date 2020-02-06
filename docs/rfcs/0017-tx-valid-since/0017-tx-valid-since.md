@@ -1,11 +1,12 @@
 ---
-Number: "0017"
-Category: Standards Track
-Status: Proposal
-Author: Jinyang Jiang
-Organization: Nervos Foundation
-Created: 2019-03-11
+id: 0017-tx-valid-since
+title: Transaction valid since
+sidebar_label: 17：Transaction valid since
 ---
+
+|  Number   |  Category |   Status  |   Author  |Organization| Created  |
+| --------- | --------- | --------- | --------- | --------- | --------- |
+| 0017 | Standards Track | Proposal | Jinyang Jiang |Nervos Foundation|2019-03-11|
 
 # Transaction valid since
 
@@ -13,7 +14,7 @@ Created: 2019-03-11
 
 This RFC suggests adding a new consensus rule to prevent a cell to be spent before a certain block timestamp or a block number.
 
-## Summary 
+## Summary
 
 Transaction input adds a new `u64` (unsigned 64-bit integer) type field `since`, which prevents the transaction to be mined before an absolute or relative time.
 

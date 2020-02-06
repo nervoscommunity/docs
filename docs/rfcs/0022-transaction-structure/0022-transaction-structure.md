@@ -1,11 +1,12 @@
 ---
-Number: "0022"
-Category: Informational
-Status: Draft
-Author: Ian Yang
-Organization: Nervos Foundation
-Created: 2019-08-26
+id: 0022-transaction-structure
+title: CKB Transaction Structure
+sidebar_label: 22：CKB Transaction Structure
 ---
+
+|  Number   |  Category |   Status  |   Author  |Organization| Created  |
+| --------- | --------- | --------- | --------- | --------- | --------- |
+| 0022 | Informational | Draft | Ian Yang |Nervos Foundation|2019-08-26|
 
 # CKB Transaction Structure
 
@@ -27,7 +28,7 @@ The following diagram shows the fields used in this layer.
 
 ![](value-storage.png)
 
-The transaction destroys the cells in `inputs` and creates the cells in `outputs`. 
+The transaction destroys the cells in `inputs` and creates the cells in `outputs`.
 
 The CKB chain packages transactions into blocks. We can use block number to refer to a block in the chain, which is an increasing non-negative integer starting from 0, the genesis block. The transactions in a block are also ordered. We say a block is older if it has a smaller block number, a transaction is older if either it is in an older block, or its position in a block is before another transaction. In the following example, Block i is older than Block i + 1. Transaction tx1 is older than tx2 and is older than tx3.
 
@@ -271,7 +272,7 @@ The Type ID code verifies that, in any type id group, there is at most one input
 
 ![](type-id-group.png)
 
-The transaction in the diagram above has all the three kinds of type id group. 
+The transaction in the diagram above has all the three kinds of type id group.
 
 - G1 is a Type ID Transfer Group which transfers the type id from cell1 to cell4.
 - G2 is a Type ID Deletion Group which deletes the type id along with cell2.

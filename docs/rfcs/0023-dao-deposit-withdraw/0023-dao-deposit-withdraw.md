@@ -1,11 +1,12 @@
 ---
-Number: "0023"
-Category: Standards Track
-Status: Proposal
-Author: Jan Xie, Xuejie Xiao, Ian Yang
-Organization: Nervos Foundation
-Created: 2019-10-30
+id: 0023-dao-deposit-withdraw
+title: Deposit and Withdraw in Nervos DAO
+sidebar_label: 23：Deposit and Withdraw in Nervos DAO
 ---
+
+|  Number   |  Category |   Status  |   Author  |Organization| Created  |
+| --------- | --------- | --------- | --------- | --------- | --------- |
+| 0023 | Standards Track | Proposal | Jan Xie, Xuejie Xiao, Ian Yang  |Nervos Foundation|2019-10-30|
 
 # Deposit and Withdraw in Nervos DAO
 
@@ -26,7 +27,7 @@ Holders can deposit their CKBytes into Nervos DAO at any time. Nervos DAO deposi
 CKB's token issuance curve consists of two components:
 
 - Primary issuance: Hardcapped issuance for miners, using the same issuance curve as Bitcoin, half at every 4 years.
-- Secondary issuance: Constant issuance, the same amount of CKBytes will be issued at every epoch, which means secondary issuance rate approaches zero gradually over time. [Because epoch length is dynamically adjusted](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0020-ckb-consensus-protocol/0020-ckb-consensus-protocol.md), secondary issuance at every block is a variable. 
+- Secondary issuance: Constant issuance, the same amount of CKBytes will be issued at every epoch, which means secondary issuance rate approaches zero gradually over time. [Because epoch length is dynamically adjusted](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0020-ckb-consensus-protocol/0020-ckb-consensus-protocol.md), secondary issuance at every block is a variable.
 
 If there's only primary issuance but no secondary issuance in CKB, the total supply of CKBytes would have a hardcap and the issuance curve would be the exact same as Bitcoin. To counter the dilution effect caused by secondary issuance, CKBytes locked in Nervos DAO will get the proportion of secondary issuance equals to the locked CKByte's percentage in circulation.
 

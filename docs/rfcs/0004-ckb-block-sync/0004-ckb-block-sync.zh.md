@@ -1,11 +1,12 @@
 ---
-Number: "0004"
-Category: Standards Track
-Status: Proposal
-Author: Ian Yang
-Organization: Nervos Foundation
-Created: 2018-07-25
+id: 0004-ckb-block-sync.zh
+title: CKB 链同步协议
+sidebar_label: 04：CKB 链同步协议
 ---
+
+|  Number   |  Category |   Status  |   Author  |Organization| Created  |
+| --------- | --------- | --------- | --------- | --------- | --------- |
+| 0004 | Standards Track | Proposal | Ian Yang  |Nervos Foundation|2018-07-25|
 
 # 链同步协议
 

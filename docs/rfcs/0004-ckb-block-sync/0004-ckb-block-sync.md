@@ -4,14 +4,9 @@ title: CKB Block Synchronization Protocol
 sidebar_label: 04：CKB Block Synchronization Protocol
 ---
 
----
-Number: "0004"
-Category: Standards Track
-Status: Proposal
-Author: Ian Yang
-Organization: Nervos Foundation
-Created: 2018-07-25
----
+|  Number   |  Category |   Status  |   Author  |Organization| Created  |
+| --------- | --------- | --------- | --------- | --------- | --------- |
+| 0004 | Standards Track | Proposal | Ian Yang  |Nervos Foundation|2018-07-25|
 
 # CKB Block Synchronization Protocol
 

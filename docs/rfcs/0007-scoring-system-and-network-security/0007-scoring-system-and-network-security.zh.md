@@ -1,11 +1,12 @@
 ---
-Number: "0007"
-Category: Standards Track
-Status: Proposal
-Author: Jinyang Jiang
-Organization: Nervos Foundation
-Created: 2018-10-02
+id: 0007-scoring-system-and-network-security.zh
+title: P2P 评分系统和网络安全
+sidebar_label: 07：P2P 评分系统和网络安全
 ---
+
+|  Number   |  Category |   Status  |   Author  |Organization| Created  |
+| --------- | --------- | --------- | --------- | --------- | --------- |
+| 0007 | Standards Track | Proposal | Jinyang Jiang  |Nervos Foundation|2018-10-02|
 
 # P2P 评分系统和网络安全
 
@@ -62,7 +63,7 @@ PeerStore 应该做到持久化存储, 并尽可能多的储存已知的 PeerInf
 PeerInfo 至少包含以下内容
 
 ```
-PeerInfo { 
+PeerInfo {
   NodeId, // Peer 的 NodeId
   ConnectedIP,  // 连接时的 IP
   Direction,  // Inbound or Outbound
@@ -125,7 +126,7 @@ CKB 在初始化网络时应该避免这些问题
 
 #### Outbound peers 连接流程
 
-参数说明: 
+参数说明:
 * `TRY_SCORE` - 设置一个分数，仅当 PeerInfo 分数高于 `TRY_SCORE` 时节点才会去尝试连接
 * `ANCHOR_PEERS` - 锚点 peer 的数量，值应该小于 `max_outbound` 如 `2`
 
@@ -163,7 +164,7 @@ end
 def find_random_peer
   connected_outbound_peers = connected_peers.select{|peer| peer.outbound? && !peer.feeler? }
   exists_network_groups = connected_outbound_peers.map(&:network_group)
-  candidate_peers = peer_store.select do |peer| 
+  candidate_peers = peer_store.select do |peer|
     peer.score >= TRY_SCORE && !exists_network_groups.include?(peer.network_group)
   end
   candidate_peers.sample
@@ -183,7 +184,7 @@ check_outbound_peers_interval = 15
 loop do
   sleep(check_outbound_peers_interval)
   connected_outbound_peers = connected_peers.select{|peer| peer.outbound? && !peer.feeler? }
-  if connected_outbound_peers.length >= max_outbound && !try_new_outbound_peer 
+  if connected_outbound_peers.length >= max_outbound && !try_new_outbound_peer
     next
   end
   new_outbound_peer = find_outbound_peer()
