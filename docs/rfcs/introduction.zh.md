@@ -8,22 +8,22 @@ sidebar_label: Nervos Network RFCs 简介
 
 [![Telegram Group](https://cdn.rawgit.com/Patrolavia/telegram-badge/8fe3382b/chat.svg)](https://t.me/nervos_rfcs)
 
-This repository contains proposals, standards and documentations related to Nervos Network.
+本资源库包含了与 Nervos Network 相关的提案、标准和文档。
 
-The RFC (Request for Comments) process is intended to provide an open and community driven path for new protocols, improvements and best practices, so that all stakeholders can be confident about the direction of Nervos network is evolving in.
+RFC（请求评论）的过程旨在为新协议、改进内容和最佳实践提供一个开放的、社区驱动的路径，以便所有相关人员都能对 Nervos network 的发展方向充满信心。
 
-RFCs publication here does not make it formally accepted standard until its status becomes Standard.
+发布在这里的 RFCs 暂时不会被成为正式的标准，直到它的状态切换成标准。
 
-## Categories
+## 类别
 
-Not all RFCs are standards, there are 2 categories:
+不是所有的 RFCs 都是标准，主要会分成两类：
 
-* Standards Track - RFC that is intended to be standard followed by protocols, clients and applications in Nervos network.
-* Informational - Anything related to Nervos network.
+* Standards Track（标准协议） - 这部分 RFC 是 Nervos network 中协议、客户端和应用程序需要遵循的标准。
+* Informational（信息） - 任何和 Nervos network 相关的内容。
 
 ## RFCs
 
-| Number | Title | Author | Category | Status |
+|  编号  |  题目  | 作者   | 类别   | 状态   |
 |--------|-------|--------|----------|--------|
 | [1](rfcs/0001-positioning) | [The Nervos Network Positioning Paper](rfcs/0001-positioning/0001-positioning.md) | The Nervos Team | Informational | Draft |
 | [2](rfcs/0002-ckb) | [Nervos CKB: A Common Knowledge Base for Crypto-Economy](rfcs/0002-ckb/0002-ckb.md) | Jan Xie | Informational | Draft |
@@ -47,15 +47,15 @@ Not all RFCs are standards, there are 2 categories:
 | [22](rfcs/0022-transaction-structure) | [CKB Transaction Structure](rfcs/0022-transaction-structure/0022-transaction-structure.md) | Ian Yang | Informational | Draft
 | [23](rfcs/0023-dao-deposit-withdraw) | [Deposit and Withdraw in Nervos DAO](rfcs/0023-dao-deposit-withdraw/0023-dao-deposit-withdraw.md) | Jan Xie, Xuejie Xiao, Ian Yang | Standards Track | Proposal
 
-## Process
+## 过程
 
 The RFC process attempts to be as simple as possible at beginning and evolves with the network.
 
-### 1. Discuss Your Idea with Community
+### 1. 和社区讨论你的想法
 
 Before submiting a RFC pull request, you should proposal the idea or document to [Nervos RFCs Chatroom](https://t.me/nervos_rfcs) or [Nervos RFCs Mailing List](https://groups.google.com/a/nervos.org/d/forum/rfcs).
 
-### 2. Propose Your RFC
+### 2. 提交你的 RFC
 
 After discussion, please create a pull request to propose your RFC:
 
@@ -65,13 +65,13 @@ Nervos RFCs should be written in English, but translated versions can be provide
 
 Nervos RFCs should follow the keyword conventions defined in [RFC 2119](https://tools.ietf.org/html/rfc2119), [RFC 6919](https://tools.ietf.org/html/rfc6919).
 
-### 3. Review / Accept
+### 3. 审查 / 接受
 
 The maintainers of RFCs and the community will review the PR, and you can update the RFC according to comments left in PR. When the RFC is ready and has enough supports, it will be accepted and merged into this repository.
 
 An Informational RFC will be in Draft status once merged and published. It can be made Final by author at any time, or by RFC maintainers if there's no updates to the draft in 12 months.
 
-### 4. (Standards Track) Propose Your Standard
+### 4. (Standards Track) 提交你的标准
 
 A Standards Track RFC can be in 1 of 3 statuses:
 
@@ -83,6 +83,6 @@ A Standards Track RFC will be in **Proposal** status intially, it can always be 
 
 The maintainers of RFCs will review the proposal, ask if there's any objections, and discuss about the PR. The PR will be accepted or closed based on **rough consensus** in this early stage.
 
-## License
+## 许可
 
-This repository is being licensed under terms of [MIT license](LICENSE).
+本资源库是符合 [MIT 许可条款](LICENSE)。
