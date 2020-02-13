@@ -17,7 +17,7 @@ sidebar_label: 22：CKB 交易结构
 
 在撰写本文时，对应的 CKB 版本是 v0.25.0，在未来的版本中转账结构可能有所变动，届时会及时更新本文。
 
-![transaction-overview.png](/assets/uploads/files/1575964875845-transaction-overview-resized.png) ![](transaction-overview.png)
+![](transaction-overview.png)
 
 上图是关于转账结构的概览。有别与逐字逐句地解释各个名词，我将会介绍 CKB 转账能够提供的各种特殊结构，以及这些名词在其中的具体意思。
 
@@ -31,13 +31,13 @@ CKB 采用 UTXO 模型。一笔交易会销毁一部分在之前转账中创建�
 
 下图显示了在此层中会出现的专有名词。
 
-![value-storage.png](/assets/uploads/files/1575968928171-value-storage.png)
+![](value-storage.png)
 
 此交易销毁了输入 `inputs` 中的 cells，同时在输出 `outputs` 中创建了新的 Cells。
 
 CKB 主链将交易打包成块。我们可以在区块中利用编号是从零（也就是创世区块）开始递增的非负整数，作为区块编号来链接区块链上的区块。在区块中的交易也是按照顺序排列的。我们会说一个有较小的区块编号的区块是较早的区块，一个交易如果在一个较早的区块上，或者它在这个区块的位置在其他交易之前，那么它也是较早的交易。下图中，区块 i 是比区块 i+1 早产生的，然后交易发生的顺序为：tx1，tx2，tx3。
 
-![older-block-and-transaction.png](/assets/uploads/files/1575969017234-older-block-and-transaction.png)
+![Block i is older than Block i + 1. Transaction tx1 is older than tx2 and is older than tx3.](older-block-and-transaction.png)
 
 在所有先前的交易中，一个可用（Live）的 Cell 会以输出而非输入的形式出现。而一个被销毁（Dead）的 Cell，则代表它是以输入的形式，在先前的某笔交易中被使用过。一笔交易只能使用可用（Live）的 Cell 作为输入。
 
@@ -45,7 +45,7 @@ CKB 主链将交易打包成块。我们可以在区块中利用编号是从零�
 
 交易哈希是独一无二的。既然 Cell 总是被交易创建出来，而每一个新的 Cell 在交易输出的数组中都有自己的位置，所以我们可以通过交易哈希以及输出索引去引用一个 Cell。`OutPoint` 结构是一种引用类型。交易在输入时会使用 `OutPoint` 来引用先前被创建的 cells，而非将它们嵌入交易。
 
-![out-point.png](/assets/uploads/files/1575969046215-out-point.png)
+![](out-point.png)
 
 Cell 将 CKB 代币存储在字段 `capacity` 中。一币交易不能够凭空铸造 capacity（也就是 CKB 代币），所以交易必需符合以下的规则：
 
@@ -68,11 +68,11 @@ Cell 将 CKB 代币存储在字段 `capacity` 中。一币交易不能够凭空�
 
 除了作为存储价值的 token，CKB Cell 还可以储存任意数据。
 
-![cell-data.png](/assets/uploads/files/1575986447157-cell-data.png)
+![](cell-data.png)
 
 字段 `outputs_data` 是输出的并行数组。在 `outputs` 中第 i 个 Cell 的数据对应的是 `outputs_data` 中的第 i 项。
 
-![outputs-data.png](/assets/uploads/files/1575969091053-outputs-data.png)
+![](outputs-data.png)
 
 Cell 中的 `capacity` 不只代表 token 的数额，也代表能够存储数据的容量。这也是为什么把它叫做（capacity 容量）的原因，因为它也代表了 Cell 的存储容量。
 
@@ -98,17 +98,17 @@ Cell 中有两个字段的类型是 `Script`。CKB VM 会运行所有输入 cell
 
 脚本并没有直接包含代码。看下面的脚本结构。现在我们先忽略哈希类型的 `Type` 以及 `args` 字段。
 
-![script.png](/assets/uploads/files/1575986311913-script.png)
+![](script.png)
 
 当 CKB-VM 需要运行一个脚本时，它必须要先找到它的代码。字段 `code_hash` 和 `hash_type` 就是用来定位代码的。
 
 在 CKB 中，脚本代码会被编译成 RISC-V 二进制文件。这个二进制文件是以数据的形式存储在 Cell 中的。当 `hash_type` 是数据时，脚本会被定位在一个数据哈希和脚本的 `code_hash` 相同的 Cell 中。Cell 的数据哈希，正如其名，是从 Cell 的数据中算出来的（详见附录 A）。在交易中，查找的范围是有限制的，脚本只能从 `cell_deps` 中找到一个匹配的 Cell。
 
-![cell-deps.png](/assets/uploads/files/1575969160778-cell-deps.png)
+![](cell-deps.png)
 
 下图将解释 CKB 如何找到对应的脚本代码。
 
-![code-locating.png](/assets/uploads/files/1575969210171-code-locating.png)
+![](code-locating.png)
 
 如果你想使用 CKB 中的脚本，那么应该遵循代码定位的规则：
 
@@ -126,7 +126,7 @@ Cell 中有两个字段的类型是 `Script`。CKB VM 会运行所有输入 cell
 
 每个 cell 都有一个锁脚本。当 cell 作为输入在一笔交易中被使用时，锁脚本必须执行。而当脚本只出现在输出中时，则不需要在 cell_deps 中显示相应的代码。一笔交易只有在所有输入的锁脚本都正常（执行并）退出的情况下才有效。因为输入的脚本需要运行，所有它可以作为锁来决定谁可以解开并销毁这个 cell，同时决定谁可以花费存储在这个 cell 中的 capacity（也就是 CKB 代币）。
 
-![lock-script.png](/assets/uploads/files/1575969226970-lock-script.png)
+![](lock-script.png)
 
 以下是一个总是可以正常（执行并）退出的锁脚本的代码范例。如果使用这段代码作为锁脚本，那么任何人都可以销毁这个 cell。
 
@@ -145,13 +145,13 @@ int main(int argc, char *argv[]) {
 
 在 CKB 中，公钥指纹可以存储在脚本结构的 `args` 字段中，同时签名可以存储在交易的 `witnesses` 字段中。我使用「可以」是因为这只是一个推荐的方式，并被用在（系统）默认的 [secp256k1 锁脚本](https://github.com/nervosnetwork/ckb-system-scripts/blob/master/c/secp256k1_blake160_sighash_all.c)中。脚本代码可以读取交易的任何一部分，所以锁脚本可以选择不同的协定，例如，可以将公钥信息存储在 cell 数据中。当然，如果所有的锁脚本都遵循推荐的协定，它可以简化创建交易的程序，比如钱包。
 
-![lock-script-cont.png](/assets/uploads/files/1575969258883-lock-script-cont.png)
+![](lock-script-cont.png)
 
 让我们看一下脚本代码是如何被定位和载入的，以及代码如何访问输入、脚本参数（script args）和 witnesses。
 
 首先，请注意 CKB 并不会逐个运行所有输入的锁脚本。首先它会根据锁脚本将输入进行分组，相同的脚本只会运行一次。CKB 运行一个脚本会分成三个步骤：脚本分组（script grouping），代码定位（code locating）以及运行（running）。
 
-![lock-script-grouping.png](/assets/uploads/files/1575969276586-lock-script-grouping.png)
+![](lock-script-grouping.png)
 
 上图展示了前两个步骤：
 
@@ -178,7 +178,7 @@ ckb_load_witness(addr, len, offset, 0, CKB_SOURCE_INPUT);
 
 记住当我们通过锁脚本将输入进行分组时，我们已经保存了输入的索引。这个信息用于为分组创建虚拟的 witness 和输入数组。这段代码可以通过一个特殊的数据源 `CKB_SOURCE_GROUP_INPUT`，利用虚拟数组中的索引去读取输入或 witness。读取 witness 时，通过 `CKB_SOURCE_GROUP_INPUT` 只读取拥有相同位置并具有特定输入的 witness。
 
-![group-input.png](/assets/uploads/files/1575969295436-group-input.png)
+![](group-input.png)
 
 所有读取与输入数据相关的 syscalls，都可以使用 `CKB_SOURCE_GROUP_INPUT` 以及虚拟输入数组中的索引，比如 `ckb_load_cell_*` 的 syscalls 系列。
 
@@ -203,15 +203,14 @@ ckb_load_witness(addr, len, offset, 0, CKB_SOURCE_INPUT);
 1. 没有类型脚本的 cells 会被忽略
 2. 脚本群组同时包含输入与输出
 
-![type-script-grouping.png](/assets/uploads/files/1575969325154-type-script-grouping.png)
+![](type-script-grouping.png)
 
 像 `CKB_SOURCE_GROUP_INPUT`，有一个特殊的数据来源 `CKB_SOURCE_GROUP_OUTPUT` 可以将索引用于脚本数组的虚拟输出数组。
 
 
 ### Part I 交易结构概述
 
-![transaction-p1.png](/assets/uploads/files/1575969343689-transaction-p1-resized.png)
-
+![](transaction-p1.png)
 
 
 ## Part II：扩展
@@ -220,7 +219,7 @@ ckb_load_witness(addr, len, offset, 0, CKB_SOURCE_INPUT);
 
 下图是在本部分中出现的新字段的总览（标注为黄色底）。
 
-![transaction-p2.png](/assets/uploads/files/1575969363651-transaction-p2-resized.png)
+![](transaction-p2.png)
 
 
 ### DepGroup
@@ -231,11 +230,11 @@ DepGroup 在 cell 数据中存储了一个 `OutPoint` 的序列化列表。每�
 
 `CellDep` 结构中有个叫 `dep_type` 的字段，可以用于区分直接提供代码的普通 cells，还在 `cell_deps` 中通过扩展其成员的 DepGroup。
 
-![cell-dep-structure.png](/assets/uploads/files/1575986290193-cell-dep-structure.png)
+![](cell-dep-structure.png)
 
 DepGroup 会在定位和运行节点之前被扩展，只有被扩展的 `cell_deps` 才是可见的。
 
-![dep-group-expansion.png](/assets/uploads/files/1575969412498-dep-group-expansion.png)
+![Example of Dep Group Expansion](dep-group-expansion.png)
 
 在 v0.19.0 版中，锁定脚本 secp256k1 被分成 code cell 和 data cell。code cell 通过 cell_deps 载入 data cell。所以如果一个交易要解锁一个被 secp256k1 锁定的 Cell，那么他一定要在 `cell_deps` 加上两个 Cell。在 DepGroup 中，交易就只需要 DepGroup 即可。
 
@@ -251,11 +250,11 @@ DepGroup 会在定位和运行节点之前被扩展，只有被扩展的 `cell_d
 
 脚本有另一个 `hash_type` 的选项，Type。
 
-![script-p2.png](/assets/uploads/files/1575986332353-script-p2.png)
+![](script-p2.png)
 
 当脚本使用了 `hash_type` 的 Type，它会匹配相等于 `code_hash` 的类型脚本哈希的 Cell。类型脚本的哈希是从 Cell 的 type 字段中计算出来的（详见附录 A）。
 
-![code-locating-via-type.png](/assets/uploads/files/1575969445912-code-locating-via-type.png)
+![](code-locating-via-type.png)
 
 现在，如果 Cell 用一个通过类型脚本哈希来定位代码的脚本，并通过创建一个具有相同类型脚本的新 Cell，那么我们就可以升级代码了。新的 Cell 已经有更新的脚本，在 `dep_cells` 中增加了新 Cell 的交易将会使用这个新的版本。
 
@@ -276,7 +275,7 @@ Type ID 就是这种类型的类型脚本。如其名所示，他确保了类型
 * Type ID 的代码一样有类型脚本。我们现在不会在意实际的内容，让我们假设类型脚本的哈希是 T1
 * Type ID 是一个 `hash_type` 是 Type，且 `code_hash` 是 T1 的类型脚本。
 
-![type-id.png](/assets/uploads/files/1575969466050-type-id.png)
+![](type-id.png)
 
 从 Part 1 的类型脚本中我们知道，类型脚本会先将输入与输出聚集。换句话说，如果一个类型脚本是 Type ID，那么在同个群组的输入与输出都有同样的 Type ID。
 
@@ -286,7 +285,7 @@ Type ID 的代码在验证的就是在任何代码中，至少都会有一组输
 * Type ID Deletion Group 只有一个输入
 * Type ID Transfer Group 有一个输入和一个输出
 
-![type-id-group.png](/assets/uploads/files/1575969477248-type-id-group.png)
+![](type-id-group.png)
 
 上图的交易中有三种交易 ID 群组
 
@@ -306,8 +305,8 @@ Type ID 的代码在验证的就是在任何代码中，至少都会有一组输
 
 Type ID 的代码只能通过 CKB-VM 的代码实行，但我们会选择在 CKB 的节点上以一个特殊的系统脚本来实行它，因为如果我们以后想升级 Type ID 的代码，就必须要通过一个递归依赖的类型脚本代码，来将自己作为类型脚本。
 
+![TI is a hash of the content which contains TI itself.](type-id-recursive-dependency.png)
 
-![type-id-recursive-dependency.png](/assets/uploads/files/1575969528003-type-id-recursive-dependency.png)
 TI 是一个包含 T1 本身内容的哈希
 
 Type ID 的代码 Cell 使用了一个特殊的类型脚本哈希，也就是十六进制 ascii 码。
@@ -333,7 +332,7 @@ Header Deps 允许脚本去读取其哈希已经列在 `header_deps` 中的区�
 
 第二种载入区块头的方法有另一个好处是，脚本会知道 Cell 位于被载入的区块中。DAO 取出交易借此来获取存储容量的区块号。
 
-![header-deps.png](/assets/uploads/files/1575969649091-header-deps.png)
+![](header-deps.png)
 
 loading header 的示例
 
