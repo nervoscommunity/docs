@@ -1,11 +1,12 @@
 ---
-Number: "0012"
-Category: Standards Track
-Status: Proposal
-Author: Linfeng Qian, JinYang Jiang
-Organization: Nervos Foundation
-Created: 2018-11-28
+id: 0012-node-discovery.zh
+title: CKB 节点发现协议
+sidebar_label: 12：CKB 节点发现协议
 ---
+
+|  Number   |  Category |   Status  |   Author  |Organization| Created  |
+| --------- | --------- | --------- | --------- | --------- | --------- |
+| 0012 | Standards Track | Proposal | Linfeng Qian, JinYang Jiang |Nervos Foundation|2018-11-28|
 
 # CKB 节点发现协议
 
