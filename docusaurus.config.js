@@ -41,6 +41,10 @@ module.exports = {
               to: 'docs/docs/doc1',
             },
             {
+              label: '博客',
+              to: 'blog',
+            },
+            {
               label: 'RFCs',
               to: 'docs/rfcs/introduction',
             },
@@ -63,16 +67,12 @@ module.exports = {
           title: '社交',
           items: [
             {
-              label: '博客',
-              to: 'blog',
-            },
-            {
               label: 'GitHub',
               href: 'https://github.com/facebook/docusaurus',
             },
             {
               label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              href: 'https://twitter.com/love_nervos',
             },
             {
               label: '微博',
