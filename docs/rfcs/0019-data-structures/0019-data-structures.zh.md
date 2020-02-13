@@ -286,7 +286,7 @@ sidebar_label: 19：Nervos CKB 的数据结构
 | `number`            | uint64     | **区块高度。**                                        |
 | `parent_hash`       | H256(hash) | **上一个区块的哈希。**                            |
 | `nonce`             | uint128    | **随机数。** 类似于[比特币中的随机数](https://en.bitcoin.it/wiki/Nonce)， 表示 PoW 谜题的解 |
-| `timestamp`         | uint64     | **一个 [Unix time](http://en.wikipedia.org/wiki/Unix_time) 时间戳。** |
+| `timestamp`         | uint64     | **一个 [Unix time](http://en.wikipedia.org/wiki/Unix_time) 时间戳按毫秒计。** |
 | `transactions_root` | H256(hash) | **串联的转账哈希的 CBMT 根和转账 witness 哈希的 CBMT 根的哈希。** |
 | `proposals_hash`    | H256(hash) | **串联的提案 ids 的哈希。** (当没有提案时所有数字为 0) |
 | `uncles_hash`       | H256(hash) | **所有叔块头的串联的哈希的哈希。** （当没有叔块时所有数字为 0) |

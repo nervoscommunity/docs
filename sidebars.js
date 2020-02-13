@@ -52,10 +52,10 @@ module.exports = {
       'rfcs/0014-vm-cycle-limits/0014-vm-cycle-limits.zh',
       'rfcs/0017-tx-valid-since/0017-tx-valid-since.zh',
       'rfcs/0021-ckb-address-format/0021-ckb-address-format.zh',
-      'rfcs/0023-dao-deposit-withdraw/0023-dao-deposit-withdraw',
+      'rfcs/0023-dao-deposit-withdraw/0023-dao-deposit-withdraw.zh',
     ],
     信息_Information:[
-      'rfcs/0001-positioning/0001-positioning',
+      'rfcs/0001-positioning/0001-positioning.zh',
       'rfcs/0002-ckb/0002-ckb.zh',
       'rfcs/0003-ckb-vm/0003-ckb-vm.zh',
       'rfcs/0005-priviledged-mode/0005-priviledged-mode.zh',
