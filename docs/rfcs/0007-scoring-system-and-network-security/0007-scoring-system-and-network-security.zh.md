@@ -139,7 +139,7 @@ CKB 在初始化网络时应该避免这些问题
 2. 选择一个锚点 peer:
     1. 从 PeerStore 挑选最后连接过的 `max_bound` 个 outbound peers 作为 `recent_peers`
     2. 如果 `recent_peers` 为空则执行 3，否则从 `recent_peers` 中选择分数最高的节点作为 outbound peer 返回
-3. 在 PeerStore 中随机选择一个分数大于 `TRY_SCORE` 且 `NetworkGroup` 和当前连接的 outbound peers 都不相同的 peer info，如果找不到这样的 peer info 则执行 5，否则将这个 peer info 返回
+3. 在 PeerStore 中随机选择一个分数大于 `TRY_SCORE` 且 `NetworkGroup` 和当前连接的 outbound peers 都不相同的 peer info，如果找不到这样的 peer info 则执行 4，否则将这个 peer info 返回
 4. 从 `boot_nodes` 中随机选择一个返回
 
 伪代码
