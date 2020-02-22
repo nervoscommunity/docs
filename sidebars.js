@@ -68,25 +68,8 @@ module.exports = {
 
   qaSidebar:{
     介绍:['qa/welcome','qa/contribute'],
-    常见问题:[
-      {
-        type: 'category',
-        label:'关于 Nervos',
-        items:['qa/nervos/nervos1'],
-      },
-      {
-        type: 'category',
-        label:'关于 CKB',
-        items:['qa/ckb/ckb1'],
-      },
-      {
-        type: 'category',
-        label:'关于 Nervos DAO',
-        items:['qa/nervosdao/dao1'],
-      }
-    ],
-    导航:[
-      'qa/guide/grants',
-    ],
+    "关于 Nervos":['qa/nervos/nervos1'],
+    "关于 CKB":['qa/ckb/ckb1'],
+    "关于 Nervos DAO":['qa/nervosdao/dao1'],
   }
 };

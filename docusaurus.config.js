@@ -19,11 +19,6 @@ module.exports = {
         {to: 'docs/rfcs/introduction',label:'RFCs',position:'left'},
         {to: 'docs/qa/welcome',label:'常见问题',position:'left'},
         {
-          href: 'https://ckb.dev',
-          label: '论坛',
-          position: 'left',
-        },
-        {
           href: 'https://github.com/nervoscommunity/docs',
           label: 'GitHub',
           position: 'right',
