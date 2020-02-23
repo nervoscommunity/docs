@@ -7,7 +7,7 @@ sidebar_label: 欢迎
 ## 基础名词
 
 #### Nervos Network
-    Nervos Network 是一个分层架构的公链。我们将其称为 Layer1 和 Layer2，Nervos 认为 Layer1 应该坚持安全和去中心化，用 Layer2 通过各种扩容方案去解决效率问题。
+    Nervos Network 是一个分层架构的公链。我们将其称为 Layer1 和 Layer2，Nervos 认为 Layer1 应该坚持安全和去中心化，在 Layer2 层通过各种扩容方案去解决效率问题。
 
     Nervos 的 Layer1（又叫做底层）是 CKB 网络，是一条采用 PoW 共识的链式结构的区块链。
 
