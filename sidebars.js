@@ -71,6 +71,6 @@ module.exports = {
     "关于 Nervos":['qa/nervos/nervos1'],
     "关于 CKB":['qa/ckb/ckb1'],
     "关于 Nervos DAO":['qa/nervosdao/dao1'],
-    "关于 Grants":['qa/guide/grants'],
+    "Grants 项目":['qa/grants/introduction','qa/grants/wishlist','qa/grants/projects'],
   }
 };

@@ -1,5 +1,5 @@
 ---
-id: grants
+id: projects
 title: Nervos Grants 项目汇总
 sidebar_label: Grants 项目汇总
 ---
