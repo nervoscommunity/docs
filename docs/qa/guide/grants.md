@@ -19,7 +19,7 @@ sidebar_label: Grants 项目汇总
 
 ###
 
-|   姓名  |  项目名  |Grants RFC|其他链接 |发布时间 | 当前状态 |
+|   队名  |  项目名  |Grants RFC|其他链接 |发布时间 | 当前状态 |
 |---------|---------|---------|---------|---------|---------|
 |Oscar Fonseca|web3.js on CKB| [web3.js Port](https://talk.nervos.org/t/rfc-web3-js-port/4171) ||2020/1/23|Step2|
 |[Fabrx Labs](https://www.fabrx.io/)|[Stratosphere Network](https://www.stratosphere.network/) on CKB| [Nervos Interoperability Bridge with the Decentralized Cloud](https://talk.nervos.org/t/rfc-nervos-interoperability-bridge-with-the-decentralized-cloud-stratosphere/4174) |[采访](https://mp.weixin.qq.com/s/KgEYtwui5jpTcfwa1NKpDg)|2020/1/23|Step2|
@@ -28,3 +28,6 @@ sidebar_label: Grants 项目汇总
 |[GrowFi](https://medium.com/growfi)|Nervos DeFi Infrastructure| [Nervos DeFi Infrastructure](https://talk.nervos.org/t/grant-rfc-nervos-defi-infrastructure/4215) |[Github](https://github.com/bannplayer/Growdrop/tree/master)、[Growdrop](http://dev.growdrop.io/)|2020/1/31|Step2|
 |Harry Liu|Connect dapp with wallet| [OneConnect - Connect CKB dapp with any wallet](https://talk.nervos.org/t/rfc-oneconnect-connect-ckb-dapp-with-any-wallet/4219) |[Tools](https://tools.rebase.network/ckb)|2020/2/1|Step2|
 |Jason Teutsch|[Truebit](https://truebit.io/) on Nervos| [Truebit on Nervos](https://talk.nervos.org/t/truebit-on-nervos/4237) ||2020/2/5|Step2|
+|[SECBIT Labs](https://github.com/sec-bit/)|zkp-toolkit-ckb| [zkp-toolkit-ckb - a Zero-Knowledge Proof toolkit for CKB ](https://talk.nervos.org/t/rfc-zkp-toolkit-ckb-a-zero-knowledge-proof-toolkit-for-ckb/4254) ||2020/2/7|Step2|
+|[ABC Wallet](http://www.abcwallet.com/)|decentralized CKB red packets| [decentralized CKB red packets on SNS](https://talk.nervos.org/t/grant-rfc-abc-wallet-decentralized-ckb-red-packets-on-sns/4285) |[Github](https://github.com/BlockABC/one_chain_ckb)|2020/2/14|Step2|
+|Lay2|pw-sdk, [ckb.pw](https://ckb.pw)| [Build DApps on CKB and Run Them Everywhere](https://talk.nervos.org/t/grant-rfc-pw-sdk-build-dapps-on-ckb-and-run-them-everywhere/4289/) |[Github](https://github.com/lay2dev/ckb.pw)、[中文](https://talk.nervos.org/t/grant-rfc-pw-sdk-ckb-dapps/4290/)|2020/2/14|Step2|
