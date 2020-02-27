@@ -4,9 +4,7 @@ title: Nervos Grants 介绍
 sidebar_label: Grants 介绍
 ---
 
-[本文链接](https://talk.nervos.org/t/rfc-nervos-grants/4039) / [原文链接](https://talk.nervos.org/t/rfc-nervos-ecosystem-grants-program/4038)
-
-Grants: [申请通道](https://www.nervos.org/grants/)
+[中文原帖链接](https://talk.nervos.org/t/rfc-nervos-grants/4039) / [英文原帖链接](https://talk.nervos.org/t/rfc-nervos-ecosystem-grants-program/4038)
 
 
 ## Grants 介绍
@@ -21,9 +19,9 @@ Nervos Network 是一个完全开源的项目。我们对 Nervos Network 的长�
 
 ## Grant 申请流程
 
-Grant 申请流程包括三轮评审，第一轮是对想法和团队的初步评审，第二轮是通过 RFC 的形式在社区中征求意见，第三轮是对具有完整细节的项目进行最终的提交，以及评审委员会基于此的一个 Q&A 环节。
+Grant 申请流程包括三轮，第一轮是先在 Nervos Talk 论坛上发布 **Grant 提案简介** 展示团队和想法；第二轮是在委员会和团队进行沟通后，再原帖下方再发布 **技术说明**；第三轮是评审委员会将和开发团队进行一个 **Q&A 环节**，得出最终的评审结论。
 
-该计划将首先为基础设施建设类项目提供 Grant。核心开发团队和评审委员会会编制一份「愿望清单」，列出我们希望看到的高价值项目 Grant 申请。2020 年全年及以后，Grant 计划将会扩大接受范围，包括：
+该计划将首先为基础设施建设类项目提供 Grant。核心开发团队和评审委员会将编制一份[愿望清单](/docs/qa/grants/wishlist.md)，列出我们希望看到的高价值项目 Grant 申请。2020 年全年及以后，Grant 计划将会扩大接受范围，包括：
 
 * 基础设施类 Grants
 * 社区类 Grants

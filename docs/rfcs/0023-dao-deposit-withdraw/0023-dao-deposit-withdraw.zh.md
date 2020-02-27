@@ -174,7 +174,7 @@ CKB 的区块头有一个名为 `dao` 的特殊字段，其中包含了使用 Ne
       "dep_type": "code"
     }
 
-以下交易为将 100 个 CKB 存入 Nervos DAO 中：
+以下交易为将 200 个 CKB 存入 Nervos DAO 中：
 
     {
       "version": "0x0",
