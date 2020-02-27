@@ -68,9 +68,9 @@ module.exports = {
 
   qaSidebar:{
     介绍:['qa/welcome','qa/contribute'],
-    "关于 Nervos":['qa/nervos/nervos1'],
-    "关于 CKB":['qa/ckb/ckb1'],
-    "关于 Nervos DAO":['qa/nervosdao/what-is-dao','qa/nervosdao/how-to-use-dao'],
+    "关于 Nervos":['qa/nervos/about-nervos'],
+    "关于 CKB":['qa/ckb/about-ckb'],
+    "关于 Nervos DAO":['qa/nervosdao/about-dao','qa/nervosdao/deposit-in-dao'],
     "Grants 项目":['qa/grants/introduction','qa/grants/wishlist','qa/grants/projects'],
   }
 };
