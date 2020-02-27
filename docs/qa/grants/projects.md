@@ -8,14 +8,14 @@ sidebar_label: Grants 项目汇总
 
 ###
 
-|姓名|项目名|Grants RFC|其他链接|发布时间|当前状态|
-|---|---|---|---|---|---|
-|[James Prestwich](https://summa.one/)|Bitcoin SPV on CKB| [Bitcoin SPV Utils](https://talk.nervos.org/t/grant-rfc-bitcoin-spv-utils/4162) |[Github](https://github.com/summa-tx/bitcoin-spv)、[采访](https://mp.weixin.qq.com/s/1hivIoTp7sLcmBIkLad30w)|2020/1/22|进行中|
-|[Obsidian Labs](https://www.obsidianlabs.io/)|Nervos IDE| [Nervos IDE](https://talk.nervos.org/t/grant-rfc-nervos-ide/4188) |[采访](https://mp.weixin.qq.com/s/u4Qie1_pQddqSpcqti0ZTg)|2020/1/27|进行中|
+|姓名|项目名|Grants RFC|其他链接|发布时间|Grants|当前状态|
+|---|---|---|---|---|---|---|
+|[James Prestwich](https://summa.one/)|Bitcoin SPV on CKB| [Bitcoin SPV Utils](https://talk.nervos.org/t/grant-rfc-bitcoin-spv-utils/4162) |[Github](https://github.com/summa-tx/bitcoin-spv)、[采访](https://mp.weixin.qq.com/s/1hivIoTp7sLcmBIkLad30w)|2020/1/22|7.5 w|进行中|
+|[Obsidian Labs](https://www.obsidianlabs.io/)|Nervos IDE| [Nervos IDE](https://talk.nervos.org/t/grant-rfc-nervos-ide/4188) |[采访](https://mp.weixin.qq.com/s/u4Qie1_pQddqSpcqti0ZTg)|2020/1/27|18 w|进行中|
 
 ---
 
-## 正在讨论中的 Grants：
+## 正在申请中的 Grants：
 
 ###
 
@@ -31,3 +31,4 @@ sidebar_label: Grants 项目汇总
 |[SECBIT Labs](https://github.com/sec-bit/)|zkp-toolkit-ckb| [zkp-toolkit-ckb - a Zero-Knowledge Proof toolkit for CKB ](https://talk.nervos.org/t/rfc-zkp-toolkit-ckb-a-zero-knowledge-proof-toolkit-for-ckb/4254) ||2020/2/7|Step2|
 |[ABC Wallet](http://www.abcwallet.com/)|decentralized CKB red packets| [decentralized CKB red packets on SNS](https://talk.nervos.org/t/grant-rfc-abc-wallet-decentralized-ckb-red-packets-on-sns/4285) |[Github](https://github.com/BlockABC/one_chain_ckb)|2020/2/14|Step2|
 |Lay2|pw-sdk, [ckb.pw](https://ckb.pw)| [Build DApps on CKB and Run Them Everywhere](https://talk.nervos.org/t/grant-rfc-pw-sdk-build-dapps-on-ckb-and-run-them-everywhere/4289/) |[Github](https://github.com/lay2dev/ckb.pw)、[中文](https://talk.nervos.org/t/grant-rfc-pw-sdk-ckb-dapps/4290/)|2020/2/14|Step2|
+|BluseStone|Lending Protocol| [Lending Protocol on Nervos](https://talk.nervos.org/t/grant-proposal-lending-protocol-on-nervos/4336) |[alpha version](https://alpha.bluestone.live/)、[lendhoo](https://www.lendhoo.com/)|2020/2/26|Step1|

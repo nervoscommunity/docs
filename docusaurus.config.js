@@ -63,7 +63,7 @@ module.exports = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/nervoscommunity/docs',
             },
             {
               label: 'Twitter',
@@ -71,7 +71,7 @@ module.exports = {
             },
             {
               label: '微博',
-              href: 'https://twitter.com/docusaurus',
+              href: 'https://weibo.com/7198050632/profile?topnav=1&wvr=6',
             },
           ],
         },

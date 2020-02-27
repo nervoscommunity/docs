@@ -70,7 +70,7 @@ module.exports = {
     介绍:['qa/welcome','qa/contribute'],
     "关于 Nervos":['qa/nervos/nervos1'],
     "关于 CKB":['qa/ckb/ckb1'],
-    "关于 Nervos DAO":['qa/nervosdao/dao1'],
+    "关于 Nervos DAO":['qa/nervosdao/what-is-dao','qa/nervosdao/how-to-use-dao'],
     "Grants 项目":['qa/grants/introduction','qa/grants/wishlist','qa/grants/projects'],
   }
 };
