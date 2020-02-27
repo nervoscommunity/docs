@@ -8,32 +8,29 @@ import styles from './styles.module.css';
 
 const features = [
   {
-    title: <>Easy to Use</>,
-    imageUrl: 'img/undraw_docusaurus_mountain.svg',
+    title: <>开发入门册</>,
+    imageUrl: 'img/ditto1.png',
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        专为 CKB 生态建设者打造的开发文档，涵盖 JS、Ruby 等语言的智能合约开发教程，以及 demo 演示，手把手教你入坑 CKB 开发。
       </>
     ),
   },
   {
-    title: <>Focus on What Matters</>,
-    imageUrl: 'img/undraw_docusaurus_tree.svg',
+    title: <>精选博客集</>,
+    imageUrl: 'img/ditto2.png',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        如果你要深入地认识 Nervos，理解 Nervos 为什么会走上现在这样的一条路，以及 Nervos 究竟独特在哪里，你应该来这里逛逛。
       </>
     ),
   },
   {
-    title: <>Powered by React</>,
-    imageUrl: 'img/undraw_docusaurus_react.svg',
+    title: <>小紧张百科</>,
+    imageUrl: 'img/ditto3.png',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        一个关于 Nervos 的问答板块，如果你对 Nervos 目前还不是很了解，欢迎你来这里寻找答案。有任何想问的问题，也欢迎在此提问。
       </>
     ),
   },
@@ -71,7 +68,7 @@ function Home() {
                 'button button--outline button--secondary button--lg',
                 styles.getStarted,
               )}
-              to={useBaseUrl('docs/doc1')}>
+              to={useBaseUrl('docs/docs/doc1')}>
               Get Started
             </Link>
           </div>

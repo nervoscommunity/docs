@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Welcome to CKB Docs',
-  tagline: 'This it docs for CKB developers',
+  tagline: 'This it docs for Nervos Community members',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
@@ -11,13 +11,13 @@ module.exports = {
       title: 'CKB Docs',
       logo: {
         alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        src: 'img/ditto.png',
       },
       links: [
         {to: 'docs/docs/doc1', label: '文档', position: 'left'},
         {to: 'blog', label: '博客', position: 'left'},
         {to: 'docs/rfcs/introduction',label:'RFCs',position:'left'},
-        {to: 'docs/qa/welcome',label:'常见问题',position:'left'},
+        {to: 'docs/qa/welcome',label:'百科',position:'left'},
         {
           href: 'https://github.com/nervoscommunity/docs',
           label: 'GitHub',
