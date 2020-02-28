@@ -83,6 +83,9 @@ module.exports = {
       'qa/nervosdao/rule-of-dao',
       'qa/nervosdao/deposit-in-dao'
     ],
+    "关于区块浏览器":[
+      'qa/explorer/about-explorer',
+    ],
     "Grants 项目":[
       'qa/grants/introduction',
       'qa/grants/wishlist',
