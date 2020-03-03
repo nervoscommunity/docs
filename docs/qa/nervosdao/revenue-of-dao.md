@@ -108,7 +108,7 @@ sidebar_label: Nervos DAO 的收益
 当我们了解 Nervos DAO 收益的来源之后，我们可以发现：
 
 ```
-Nervos DAO 的收益率 = 二级发行量 / 当前 CKB 总量 = 二级发行通胀率
+Nervos DAO 的收益率 = 二级发行量 / 当前 CKB 总量 = 二级发行的通胀率
 ```
 
 所以我们通常说，将 CKB 存入 Nervos DAO，这部分 CKB 即获得了「抗稀释」属性。我们还可以总结出以下几个特点：

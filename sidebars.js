@@ -77,13 +77,17 @@ module.exports = {
     "关于 CKB":[
       'qa/ckb/about-ckb'
     ],
-    "关于 Nervos DAO":[
+    "Nervos DAO":[
       'qa/nervosdao/about-dao',
       'qa/nervosdao/revenue-of-dao',
       'qa/nervosdao/rule-of-dao',
       'qa/nervosdao/deposit-in-dao'
     ],
-    "关于区块浏览器":[
+    "CKB 钱包":[
+      'qa/wallet/about-neuron',
+      'qa/wallet/support-wallet',
+    ],
+    "区块浏览器":[
       'qa/explorer/about-explorer',
     ],
     "Grants 项目":[

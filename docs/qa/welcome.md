@@ -4,6 +4,8 @@ title: 欢迎来到 Nervos 的世界
 sidebar_label: 欢迎
 ---
 
+## Nervos 圣经
+
 ## 基础名词
 
 ### Nervos Network

@@ -1,7 +1,7 @@
 ---
 id: deposit-in-dao
 title: 如何将 CKB 存入 Nervos DAO ？
-sidebar_label: 如何存入 Nervos DAO
+sidebar_label: 如何将 CKB 存入 Nervos DAO
 ---
 
 # 介绍

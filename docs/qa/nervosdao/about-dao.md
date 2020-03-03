@@ -6,7 +6,7 @@ sidebar_label: Nervos DAO 是什么
 
 ## Nervos DAO 介绍
 
-Nervos DAO 是 CKB 经济模型的重要亮点之一，它可以有效的消除二级发行所带来的增发影响，是对抗稀释的一剂良药。
+Nervos DAO 是 CKB 经济模型的重要亮点之一，被用于对抗二级发行造成的稀释。如果您将 CKB 存入 Nervos DAO，那么对您来说 CKB 将是存在硬顶，且持续通缩的。
 
 
 ### 动机
