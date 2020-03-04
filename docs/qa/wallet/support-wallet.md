@@ -1,7 +1,7 @@
 ---
 id: support-wallet
-title: 支持 CKB 的钱包
-sidebar_label: 支持 CKB 的钱包
+title: 其他支持 CKB 的钱包
+sidebar_label: 其他支持 CKB 的钱包
 ---
 
 截至目前：
@@ -18,3 +18,4 @@ sidebar_label: 支持 CKB 的钱包
 |Hoo       |https://hoo.com/       |iOS、Android       ||
 |Renrenbit |https://www.renrenbit.com/|iOS、Android    ||
 
+如果您发现还有其他钱包也支持了 CKB，但是此处并未提及，请提交 PR 或者直接私信史迪仔（微信：BitcoinDog）

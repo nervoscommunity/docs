@@ -5,7 +5,7 @@ sidebar_label: 参与贡献
 ---
 
 
-# 参与贡献
+## 参与贡献
 
 本百科旨在帮助大家认识 Nervos，了解 Nervos。
 

@@ -4,7 +4,7 @@ title: 如何将 CKB 存入 Nervos DAO ？
 sidebar_label: 如何将 CKB 存入 Nervos DAO
 ---
 
-# 介绍
+## 介绍
 
 截至目前，只能通过 Neuron 官方钱包，将 CKB 存入 Nervos DAO。在您将 CKB 存入 Nervos DAO 之前，建议您先了解 Nervos DAO 的[相关信息]()和[使用须知]()。
 
@@ -95,3 +95,8 @@ sidebar_label: 如何将 CKB 存入 Nervos DAO
 > 注意：从你发起提现这一笔交易开始，到你最终完成提现，中间的这一段时间内，你是无法获得利息的。
 
 2. 继续输入密码，即可进行提现，在锁定周期满足要求，达到 180 epoch 的整数倍后，再发起最后的提现交易，即可将 CKB 从 Nervos DAO 取出。
+
+
+## 通过其他钱包
+
+目前暂无，等待更新
