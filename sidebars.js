@@ -87,7 +87,7 @@ module.exports = {
       'qa/wallet/about-neuron',
       'qa/wallet/support-wallet',
     ],
-    "CKB 挖矿":[
+    "关于 CKB 挖矿":[
       'qa/mine/about-mine-ckb',
     ],
     "区块浏览器":[
