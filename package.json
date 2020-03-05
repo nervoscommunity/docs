@@ -1,6 +1,6 @@
 {
-  "name": "my-website",
-  "version": "0.0.0",
+  "name": "ckb-docs",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "docusaurus start",
@@ -13,6 +13,7 @@
     "@docusaurus/preset-classic": "^2.0.0-alpha.40",
     "@docusaurus/theme-classic": "https://github.com/liushooter/docusaurus-theme-classic-new",
     "classnames": "^2.2.6",
+    "prismjs": "^1.19.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4"
   },

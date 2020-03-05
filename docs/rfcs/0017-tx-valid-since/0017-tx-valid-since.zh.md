@@ -50,7 +50,7 @@ sidebar_label: 17：交易有效字段 —— since
 
 这实现构造一个对资金进行基于时间锁定的脚本的能力：
 
-``` ruby
+```ruby
 # absolute time lock
 # cell only can be spent when block number greater than 10000.
 def unlock?
@@ -63,7 +63,7 @@ def unlock?
 end
 ```
 
-``` ruby
+```ruby
 # relative time lock
 # cell only can be spent after 3 days after block that produced this cell get confirmed
 def unlock?
@@ -79,7 +79,7 @@ def unlock?
 end
 ```
 
-``` ruby
+```ruby
 # relative time lock with epoch number
 # cell only can be spent in next epoch
 def unlock?
