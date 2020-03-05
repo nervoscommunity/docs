@@ -89,6 +89,7 @@ module.exports = {
     ],
     "关于 CKB 挖矿":[
       'qa/mine/about-mine-ckb',
+      'qa/mine/pool-machine',
     ],
     "区块浏览器":[
       'qa/explorer/about-explorer',

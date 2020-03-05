@@ -6,7 +6,7 @@ sidebar_label: 官方区块浏览器
 
 Nervos 官方区块浏览器：https://explorer.nervos.org/
 
-##  基本信息
+## 基本信息
 
 目前官方区块浏览器主要包含以下内容：
 
@@ -19,6 +19,8 @@ Nervos 官方区块浏览器：https://explorer.nervos.org/
 * 语言
     * 简体中文
     * English
+
+## 区块浏览器的使用
 
 ### 链信息
 
@@ -85,7 +87,7 @@ Nervos 官方区块浏览器：https://explorer.nervos.org/
 
 主要包含了：挖矿难度，挖矿算力，叔块率，交易数量，地址数量，Cell 数量，Nervos DAO 锁定量，账户余额排名等图表
 
-### Nervos DAO
+### Nervos DAO 页
 
 ![dao-info](images/dao-info.png)
 
