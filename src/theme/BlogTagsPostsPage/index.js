@@ -25,7 +25,7 @@ function BlogTagsPostPage(props) {
       description={`Blog | Tagged "${tagName}"`}>
       <div className="container margin-vert--xl">
         <div className="row">
-          <div className="col col--8 col--offset-2">
+          <div className="col col--9 col--offset-1">
             <h1>
               {count} {pluralize(count, 'post')} tagged with &quot;{tagName}
               &quot;
