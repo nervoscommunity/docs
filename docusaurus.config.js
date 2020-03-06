@@ -7,9 +7,6 @@ module.exports = {
   organizationName: 'nervoscommunity', // Usually your GitHub org/user name.
   projectName: 'website', // Usually your repo name.
   themeConfig: {
-    prism: {
-      additionalLanguages: ['ruby', 'rust',],
-    },
     navbar: {
       title: 'CKB Docs',
       logo: {

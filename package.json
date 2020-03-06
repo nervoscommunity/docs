@@ -9,9 +9,9 @@
     "deploy": "docusaurus deploy"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.0.0-alpha.40",
-    "@docusaurus/preset-classic": "^2.0.0-alpha.40",
-    "@docusaurus/theme-classic": "https://github.com/liushooter/docusaurus-theme-classic-new",
+    "@docusaurus/core": "^2.0.0-alpha.43",
+    "@docusaurus/preset-classic": "^2.0.0-alpha.43",
+    "@docusaurus/theme-classic": "^2.0.0-alpha.43",
     "classnames": "^2.2.6",
     "prismjs": "^1.19.0",
     "react": "^16.8.4",
