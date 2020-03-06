@@ -16,6 +16,11 @@ import useThemeContext from '@theme/hooks/useThemeContext';
 
 import styles from './styles.module.css';
 
+import Prism from 'prism-react-renderer/prism';
+(typeof global !== 'undefined' ? global : window).Prism = Prism;
+require('prismjs/components/prism-ruby');
+require('prismjs/components/prism-rust');
+
 const highlightLinesRangeRegex = /{([\d,-]+)}/;
 
 export default ({children, className: languageClassName, metastring}) => {
