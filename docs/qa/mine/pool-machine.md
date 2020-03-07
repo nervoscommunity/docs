@@ -6,6 +6,8 @@ sidebar_label: 矿池与矿机
 
 ## 支持 CKB 的矿池
 
+各大矿池算力一览：https://miningpoolstats.stream/nervos
+
 |矿池   |挖矿教程 |手续费 | 起付额 |其他功能 |
 |-------|-------|--------|-------|-------|
 |[f2pool](https://www.f2pool.com/)|[挖矿教程](https://blog.f2pool.com/zh/mining-tutorial/ckb)|1% PPS|100 CKB | [收益计算器](https://www.f2pool.com/)|

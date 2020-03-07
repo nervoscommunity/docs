@@ -4,6 +4,8 @@ title: 开发文档1
 sidebar_label: doc1
 ---
 
+<iframe src="//player.bilibili.com/player.html?aid=93829123&cid=160195702&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height="400px" width="600px"> </iframe>
+
 You can write content using [GitHub-flavored Markdown syntax](https://github.github.com/gfm/).
 
 ## Markdown Syntax

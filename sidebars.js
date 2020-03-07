@@ -69,10 +69,11 @@ module.exports = {
   qaSidebar:{
     介绍:[
       'qa/welcome',
-      'qa/contribute'
+//      'qa/basic-nouns',
+      'qa/contribute',
     ],
     "关于 Nervos":[
-      'qa/nervos/about-nervos'
+      'qa/nervos/about-nervos',
     ],
     "关于 CKB":[
       'qa/ckb/about-ckb'
@@ -81,7 +82,7 @@ module.exports = {
       'qa/nervosdao/about-dao',
       'qa/nervosdao/revenue-of-dao',
       'qa/nervosdao/rule-of-dao',
-      'qa/nervosdao/deposit-in-dao'
+      'qa/nervosdao/deposit-in-dao',
     ],
     "CKB 钱包":[
       'qa/wallet/about-neuron',
@@ -97,7 +98,7 @@ module.exports = {
     "Grants 项目":[
       'qa/grants/introduction',
       'qa/grants/wishlist',
-      'qa/grants/projects'
+      'qa/grants/projects',
     ],
   }
 };
