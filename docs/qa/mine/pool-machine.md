@@ -27,7 +27,7 @@ sidebar_label: 矿池与矿机
 |[lolopool](https://ckb.lolopool.com/)|[挖矿教程](https://ckb.lolopool.com/help)|0.5% |100 CKB||
 
 
-## CKB 的 ASIC 矿机
+## 支持 CKB 的 ASIC 矿机
 
 |厂商|型号|算力|功耗|裸机重量|参考售价|
 |----------|-----|-------------|--------------------|--------|-------|

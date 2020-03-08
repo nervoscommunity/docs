@@ -7,8 +7,12 @@
 
 module.exports = {
   docsSidebar: {
-    Docusaurus: ['docs/doc1', 'docs/doc2', 'docs/doc3'],
-    Features: ['docs/mdx'],
+    开发文档: [
+      'docs/doc1',
+      'docs/doc2',
+      'docs/doc3',
+    ],
+    生态工具: ['docs/tools/ckb-studio'],
   },
 
   rfcsSidebar:{
@@ -69,14 +73,17 @@ module.exports = {
   qaSidebar:{
     介绍:[
       'qa/welcome',
-//      'qa/basic-nouns',
+//    'qa/basic-nouns',
       'qa/contribute',
     ],
     "关于 Nervos":[
       'qa/nervos/about-nervos',
+      'qa/nervos/solve-problems',
     ],
     "关于 CKB":[
-      'qa/ckb/about-ckb'
+      'qa/ckb/about-ckb',
+      'qa/ckb/about-cell',
+
     ],
     "Nervos DAO":[
       'qa/nervosdao/about-dao',
@@ -92,7 +99,7 @@ module.exports = {
       'qa/mine/about-mine-ckb',
       'qa/mine/pool-machine',
     ],
-    "区块浏览器":[
+    区块浏览器:[
       'qa/explorer/about-explorer',
     ],
     "Grants 项目":[
