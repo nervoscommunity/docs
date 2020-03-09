@@ -16,6 +16,11 @@ module.exports = {
       links: [
         {to: 'docs/docs/doc1', label: '文档', position: 'left'},
         {to: 'blog', label: '博客', position: 'left'},
+        {
+          href: 'https://ckb.dev',
+          label: '论坛',
+          position: 'left',
+        },
         {to: 'docs/rfcs/introduction',label:'RFCs',position:'left'},
         {to: 'docs/qa/welcome',label:'百科',position:'left'},
         {
@@ -54,7 +59,7 @@ module.exports = {
             },
             {
               label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              href: 'https://discord.gg/uWGUUpw',
             },
           ],
         },

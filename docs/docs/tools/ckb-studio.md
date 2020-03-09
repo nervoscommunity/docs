@@ -6,7 +6,9 @@ sidebar_label: IDE - CKB Studio 介绍及使用
 
 ## 关于 CKB Studio
 
-CKB Studio 是一个简单易用的图形化的 IDE（Integrated Development Environment，集成开发环境），是用于辅助开发者编写区块链应用的软件工具，集成了代码编辑器、编译器、调试器等常用开发者工具，可以在 CKB Studio 上一站式地进行：本地开发环境搭建，代码编辑管理、测试，启动本地节点，连接 CKB 测试网和主网等常用的 CKB 开发操作，可简化 DApp 开发流程，降低开发者在 CKB 上开发 DApp 的门槛。
+CKB Studio 是一个简单易用的图形化的 **IDE**（Integrated Development Environment，集成开发环境），是用于辅助开发者编写区块链应用的软件工具。
+
+CKB Studio 集成了代码编辑器、编译器、调试器等常用开发者工具，可以在 CKB Studio 上一站式地进行：本地开发环境搭建，代码编辑管理、测试，启动本地节点，连接 CKB 测试网和主网等常用的 CKB 开发操作，可简化 DApp 开发流程，降低开发者在 CKB 上开发 DApp 的门槛。
 
 Github 地址：https://github.com/ObsidianLabs/CKB-Studio-Releases
 
