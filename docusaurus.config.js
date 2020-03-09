@@ -61,6 +61,10 @@ module.exports = {
               label: 'Discord',
               href: 'https://discord.gg/uWGUUpw',
             },
+            {
+              label: '官方论坛',
+              href: 'https://talk.nervos.org',
+            },
           ],
         },
         {
