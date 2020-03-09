@@ -79,11 +79,13 @@ module.exports = {
     "关于 Nervos":[
       'qa/nervos/about-nervos',
       'qa/nervos/solve-problems',
+      'qa/nervos/compare-to-other',
+      'qa/nervos/about-muta',
     ],
     "关于 CKB":[
       'qa/ckb/about-ckb',
       'qa/ckb/about-cell',
-
+      'qa/ckb/cell-ckb-vm',
     ],
     "Nervos DAO":[
       'qa/nervosdao/about-dao',
@@ -98,6 +100,7 @@ module.exports = {
     "关于 CKB 挖矿":[
       'qa/mine/about-mine-ckb',
       'qa/mine/pool-machine',
+      'qa/mine/about-pow',
     ],
     区块浏览器:[
       'qa/explorer/about-explorer',
