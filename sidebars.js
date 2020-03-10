@@ -8,7 +8,11 @@
 module.exports = {
   docsSidebar: {
     开发文档: [
-      'docs/doc1',
+      {
+        type: 'category',
+        label: '预备知识',
+        items: ['docs/doc0','docs/doc1']
+      },
       'docs/doc2',
       'docs/doc3',
     ],

@@ -1,13 +1,13 @@
 ---
 id: doc0
-title: 预备知识：如何启动ckb的本地开发链
-sidebar_label: doc1
+title: 如何启动 CKB 的本地开发链
+sidebar_label: 如何启动 CKB 的本地开发链
 ---
 
 
 ## 介绍
 
-Ckb 有3种运行环境：
+CKB 有3种运行环境：
  - Mainnet 主网，就是 ckb 正在运行的主网络，https://explorer.nervos.org/。
 
  - testnet 测试网，用于公开测试，需要从水龙头获取测试币才能部署脚本，https://explorer.nervos.org/aggron/ 。
@@ -16,9 +16,9 @@ Ckb 有3种运行环境：
 
 ## 前期准备工作
 
-### 下载ckb
+### 下载 ckb
 
-下载目前ckb最新的版本 https://github.com/nervosnetwork/ckb/releases/tag/v0.29.0 ，包括了几个主要操作系统的二进制版本，选择适合自己系统的版本下载，这里以macOS版本为进行说明。
+下载目前 ckb 最新的版本 https://github.com/nervosnetwork/ckb/releases/tag/v0.29.0 ，包括了几个主要操作系统的二进制版本，选择适合自己系统的版本下载，这里以macOS版本为进行说明。
 
 下载完成后进行解压缩，目录结构如下所示：
 
@@ -47,17 +47,17 @@ Ckb 有3种运行环境：
 
 ① `ckb` 是主程序，通过命令行操作，我们可以生产配置，运行节点，同步区块信息，并开启挖矿等。
 
-② `ckb-cli` 是官方的附加命令行工具，rpc请求，生成ckb地址，管理钱包，模拟发送交易，并可以向NervosDao中存币。
+② `ckb-cli` 是官方的附加命令行工具，rpc 请求，生成 ckb 地址，管理钱包，模拟发送交易，并可以向 Nervos Dao 中存币。
 
 ### 安装 ckb ruby sdk
 
-Nervos为开发者提供了很多语言版本的SDK：
+Nervos 为开发者提供了很多语言版本的 SDK：
 
-[ruby-sdk](https://github.com/nervosnetwork/ckb-sdk-ruby)
-[js-sdk](https://github.com/nervosnetwork/ckb-sdk-js)
-[java-sdk](https://github.com/nervosnetwork/ckb-sdk-java)
+* [ruby-sdk](https://github.com/nervosnetwork/ckb-sdk-ruby)
+* [js-sdk](https://github.com/nervosnetwork/ckb-sdk-js)
+* [java-sdk](https://github.com/nervosnetwork/ckb-sdk-java)
 
-在官方教程中，ruby出现了很多次，而且功能最为完备，我们就已ruby sdk作为示范。
+在官方教程中，ruby 出现了很多次，而且功能最为完备，我们就已 ruby sdk 作为示范。
 请先下载 ruby，以下命令并不完整，具体如何下载，请看 https://ruby-china.org/wiki/rbenv-guide 。
 
 ```shell
@@ -128,7 +128,7 @@ fe59445edc3c30db6b0e1abcddc317137368f5604ce01cc1d279dfda001e8474
 
 ```
 
-### 生成dev链配置文件
+### 生成 dev 链配置文件
 
 `./ckb init --chain dev -C dev`
 
@@ -150,7 +150,7 @@ hash_type = "type"
 message = "0x"
 ```
 
-### 运行ckb
+### 运行 ckb
 
 ```
 ./ckb run -C dev
@@ -186,13 +186,13 @@ Total nonces found:  11
 
 ## 查看区块
 
-### 用ckb-cli监控区块信息
+### 用 ckb-cli 监控区块信息
 
 `./ckb-cli tui`
 
-![](/img/docs/tui.png)
+![tui](/img/docs/tui.png)
 
-### 使用ruby-sdk查询区块信息
+### 使用 ruby-sdk 查询区块信息
 
 先进入 `./bin/console`
 
