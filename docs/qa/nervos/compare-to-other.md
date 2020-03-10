@@ -1,7 +1,7 @@
 ---
 id: compare-to-other
 title: Nervos 如何在众多公链中脱颖而出
-sidebar_label: 如何脱颖而出
+sidebar_label: Nervos 如何脱颖而出
 ---
 
 关于 Nervos 如何在众多公链项目中脱颖而出，我觉得这是结果，但是 Nervos CKB 跟绝大部分公链项目完全不同，走的是一条不一样的路，所以 Nervos 实际上已经非常得不同了。
