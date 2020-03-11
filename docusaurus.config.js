@@ -14,7 +14,7 @@ module.exports = {
         src: 'img/ditto.png',
       },
       links: [
-        {to: 'docs/docs/doc1', label: '文档', position: 'left'},
+        {to: 'docs/docs/doc0', label: '文档', position: 'left'},
         {to: 'blog', label: '博客', position: 'left'},
         {
           href: 'https://ckb.dev',
