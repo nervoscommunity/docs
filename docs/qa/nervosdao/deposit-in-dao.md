@@ -1,6 +1,6 @@
 ---
 id: deposit-in-dao
-title: 如何将 CKB 存入 Nervos DAO ？
+title: 如何将 CKB 存入 Nervos DAO
 sidebar_label: 如何将 CKB 存入 Nervos DAO
 ---
 
@@ -18,12 +18,13 @@ sidebar_label: 如何将 CKB 存入 Nervos DAO
 
 1. 下载
 
-    Github 下载：https://github.com/nervosnetwork/neuron/releases/latest
+    国内下载地址：
 
-    国内镜像下载：
     * macOS：https://releases.nervos.org/Neuron-latest.dmg 
     * Windows：https://releases.nervos.org/Neuron-latest.exe 
     * Linxu：https://releases.nervos.org/Neuron-latest.AppImage 
+
+    Github 下载：https://github.com/nervosnetwork/neuron/releases/latest
 
 2. 安装：
 

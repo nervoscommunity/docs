@@ -1,6 +1,6 @@
 ---
 id: revenue-of-dao
-title: 将 CKB 存入 Nervos DAO 的收益如何？
+title: 存入 Nervos DAO 的收益如何
 sidebar_label: Nervos DAO 的收益
 ---
 

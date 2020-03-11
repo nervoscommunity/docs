@@ -82,12 +82,13 @@ module.exports = {
     ],
     "关于 Nervos":[
       'qa/nervos/about-nervos',
-      'qa/nervos/solve-problems',
+ //   'qa/nervos/nervos-solve-problems',
       'qa/nervos/compare-to-other',
       'qa/nervos/about-muta',
     ],
     "关于 CKB":[
       'qa/ckb/about-ckb',
+      'qa/ckb/ckb-solve-problems',
       'qa/ckb/about-cell',
       'qa/ckb/cell-ckb-vm',
     ],
