@@ -61,12 +61,14 @@ function Home() {
       <header className={classnames('hero hero--primary', styles.heroBanner)}>
         <div className="container">
           <h1 className="hero__title">{siteConfig.title}</h1>
+          <br></br>
           <p className="hero__subtitle">{siteConfig.tagline}</p>
+          <br></br>
           <div className={styles.buttons}>
             <Link
               className={classnames(
-                'button button--outline button--secondary button--lg',
-                styles.getStarted,
+              'button button--outline button--secondary button--lg',
+                styles.GetStartedButton,
               )}
               to={useBaseUrl('docs/docs/doc1')}>
               Get Started

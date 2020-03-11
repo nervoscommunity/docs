@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Welcome to CKB Docs',
-  tagline: 'This it docs for Nervos Community members',
+  tagline: 'This docs is for Nervos Community members',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
