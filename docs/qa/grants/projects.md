@@ -18,8 +18,6 @@ sidebar_label: Grants 项目汇总
 
 ## 正在申请中的 Grants：
 
-###
-
 |   队名  | 类别 | 项目名  | 申请链接 |其他链接 |发布时间 | 当前状态 |
 |---------|-------|---------|---------|---------|---------|---------|
 |Oscar Fonseca|开发工具|Web3.js on CKB| [RFC](https://talk.nervos.org/t/rfc-web3-js-port/4171) ||2020/1/23|Step2|
