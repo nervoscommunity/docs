@@ -249,11 +249,108 @@ wallet.get_balance # 余额
 ### 得到新地址
 
 ```ruby
-_priv = CKB::Key.random_private_key #生成私钥
+api = CKB::API.new
+
+new_key = CKB::Key.random_private_key #生成私钥
 => "0x7b60c0ca227427836588f31291c90979b4d31f0d73d28772f172dc3f1b47a672"
 
-new_wallet = CKB::Wallet.from_hex(api, _priv)
+wallet2 = CKB::Wallet.from_hex(api, new_key)
+=> #<CKB::Wallet:0x00007fedace7ef40
+ @addr=
+  #<CKB::Address:0x00007fedace7ec70
+   @mode="testnet",
+   @prefix="ckt",
+   @script=
+    #<CKB::Types::Script:0x00007fedace7ece8
+     @args="0x114acda8ba61ced5d0c9086fee91877c296b3259",
+     @code_hash="0x9bd7e06f3ecf4be0f2fcd2188b23f1b9fcc88e5d4b65a8637b17723bbda3cce8",
+     @hash_type="type">>,
+ @address="ckt1qyqpzjkd4zaxrnk46ryssmlwjxrhc2ttxfvswf5pjs",
+ @api=#<API@http://localhost:8114>,
+ @blake160="0x114acda8ba61ced5d0c9086fee91877c296b3259",
+ @hash_type="type",
+ @key=
+  #<CKB::Key:0x00007fedace7f378
+   @privkey="0xf99fcf8ca46f7fb9e305f9123fb1fee48faa78ddeccda0c268fb83c11006d617",
+   @pubkey="0x039c730f2a61cf1e1cd9f98c916e86a5176b973d531fddd0444c780bcebe5aee93">,
+ @pubkey="0x039c730f2a61cf1e1cd9f98c916e86a5176b973d531fddd0444c780bcebe5aee93",
+ @skip_data_and_type=true>
 ```
+
+### 发送交易
+
+```ruby
+api = CKB::API.new
+
+alice = CKB::Wallet.from_hex(api, CKB::Key.random_private_key)
+puts "alice balance: " + alice.get_balance.to_s
+
+bob = CKB::Wallet.from_hex(api, CKB::Key.random_private_key)
+
+tx_hash = alice.send_capacity(bob.address, 100*(10**8), fee: 3000) # alice 向bob发送100个ckb，手续是 1000 ckb byte
+```
+
+### 查询交易
+
+```ruby
+api.get_transaction(tx_hash) # 获得交易的详细信息
+
+=> #<CKB::Types::TransactionWithStatus:0x00007faceb8f8fc8
+ @transaction=
+  #<CKB::Types::Transaction:0x00007faceb8f9298
+   @cell_deps=
+    [#<CKB::Types::CellDep:0x00007faceb8faf80
+      @dep_type="dep_group",
+      @out_point=
+       #<CKB::Types::OutPoint:0x00007faceb8fb098
+        @index=0,
+        @tx_hash="0xace5ea83c478bb866edf122ff862085789158f5cbff155b7bb5f13058555b708">>],
+   @hash="0x277cfd0cde5b6afd13913fad03af6d184a60abb219778d1914b17dda5433efd8",
+   @header_deps=[],
+   @inputs=
+    [#<CKB::Types::Input:0x00007faceb8fab20
+      @previous_output=
+       #<CKB::Types::OutPoint:0x00007faceb8fae18
+        @index=0,
+        @tx_hash="0x62cc19fa97eb2bfed88801b4a7c13d7dbf0c4d712d3eb975d3b4102c56e7b874">,
+      @since=0>],
+   @outputs=
+    [#<CKB::Types::Output:0x00007faceb8fa198
+      @capacity=100000000000,
+      @lock=
+       #<CKB::Types::Script:0x00007faceb8fa2b0
+        @args="0x53e7ae882f39cae6df36ff9b7462d7c10465f26c",
+        @code_hash="0x9bd7e06f3ecf4be0f2fcd2188b23f1b9fcc88e5d4b65a8637b17723bbda3cce8",
+        @hash_type="type">,
+      @type=nil>,
+     #<CKB::Types::Output:0x00007faceb8f93d8
+      @capacity=100988421204,
+      @lock=
+       #<CKB::Types::Script:0x00007faceb8f9798
+        @args="0x831c7bc6e7f758c1c69a98bd1d999bd9b8510011",
+        @code_hash="0x9bd7e06f3ecf4be0f2fcd2188b23f1b9fcc88e5d4b65a8637b17723bbda3cce8",
+        @hash_type="type">,
+      @type=nil>],
+   @outputs_data=["0x", "0x"],
+   @version=0,
+   @witnesses=
+    ["0x5500000010000000550000005500000041000000fc98ac5594b0e7ee8fd5158ef3489db4afc4422c11e3022a8e6a1582582e71c049d2a756444d46f88c5389805e6e4be2671369d0e333855cf0cb656f60abf47101"]>,
+ @tx_status=
+  #<CKB::Types::TxStatus:0x00007faceb8f90e0
+   @block_hash="0x00f8f9fef1f041e63a61dd37a3432e8c4ea5a1a4ea4d1c78ed7ab9d56d3ed2aa",
+   @status="committed">>
+```
+
+## 设置
+
+### 在 ckb.toml 设置 ckb-script 的 log 级别
+
+```js
+[logger]
+filter = "info,ckb-script=debug"
+```
+
+https://docs.nervos.org/dev-guide/debugging-ckb-script.html#debug-syscall
 
 ---
 
