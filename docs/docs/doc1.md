@@ -1,15 +1,15 @@
 ---
 id: doc1
-title: 在ckb的dev链上部署代码脚本
-sidebar_label: 在ckb的dev链上部署代码脚本
+title: 在 CKB 的 dev 链上部署代码脚本
+sidebar_label: 在 CKB 的 dev 链上部署代码脚本
 ---
 
-在上一个教程中，介绍了如何启动CKB的dev链，这一篇我们要向大家展示如何将脚本代码真正部署到 CKB 网络上去。
+在上一个教程中，介绍了如何启动 CKB 的 dev 链，这一篇我们要向大家展示如何将脚本代码真正部署到 CKB 网络上去。
 
 
 ## 一个最小的 CKB 脚本代码
 
-CKB VM 是基于开源的 RISC-V 指令集编写的。 你在vm上可以用任何语言编写任何你想写的逻辑。在这里，我们展示的前面几个例子将会用 C语言编写，以保持简单性（我是说工具链中的简单性，而不是语言），之后我们还会切换到基于 JavaScript 的脚本代码。
+CKB VM 是基于开源的 RISC-V 指令集编写的。 你在vm上可以用任何语言编写任何你想写的逻辑。在这里，我们展示的前面几个例子将会用 C 语言编写，以保持简单性（我是说工具链中的简单性，而不是语言），之后我们还会切换到基于 JavaScript 的脚本代码。
 
 来个`carrot.c`的
 
@@ -117,7 +117,7 @@ carrot_tx_hash = wallet.send_capacity(wallet.address, CKB::Utils.byte_to_shannon
 
 ```
 
-由于该交易的 cell 中没有任何一个的 cell data 包含carrot，因此 type 脚本将验证成功。
+由于该交易的 cell 中没有任何一个的 cell data 包含 carrot，因此 type 脚本将验证成功。
 
 ```ruby
 carrot_data_hash = CKB::Blake2b.hexdigest(data)
@@ -135,7 +135,7 @@ api.send_transaction(tx)
 # => "0xd7b0fea7c1527cde27cc4e7a2e055e494690a384db14cc35cd2e51ec6f078163"
 ```
 
-现在让我们尝试一个不同的交易，它含有一个以carrot开头的 cell：
+现在让我们尝试一个不同的交易，它含有一个以 carrot 开头的 cell：
 
 ```ruby
 tx2 = wallet.generate_tx(wallet2.address, CKB::Utils.byte_to_shannon(100), fee: 5000)
@@ -156,7 +156,7 @@ api.send_transaction(tx2)
 这是如何做到的呢？由于我们有 C 编译器，我们只需为嵌入式系统使用一个 JavaScript 实现。
 
 duktape 将它从 C 编译成 RISC-V 二进制文件，把它放在链上，我们就可以在 CKB 上运行 JavaScript 了！
-我们可以通过 duktape 在 CKB 上使用 JavaScript，我们也可以通过 mruby在 ckb 上使用 Ruby， 我们甚至可以将比特币脚本或EVM放到链上，我们只需要编译他们的虚拟机，并把它放在链上。
+我们可以通过 duktape 在 CKB 上使用 JavaScript，我们也可以通过 mruby 在 ckb 上使用 Ruby， 我们甚至可以将比特币脚本或 EVM 放到链上，我们只需要编译他们的虚拟机，并把它放在链上。
 
 要在 CKB 上使用 duktape，首先需要将 duktape 本身编译成 RISC-V 可执行二进制文件:
 
@@ -209,5 +209,5 @@ api.send_transaction(tx)
 # => "0x2e4d3aab4284bc52fc6f07df66e7c8fc0e236916b8a8b8417abb2a2c60824028"
 ```
 
-我们可以看到脚本执行成功，如果在`ckb.toml` 文件中将 ckb-script日志模块的级别设置为debug，你可以看到以下日志：
+我们可以看到脚本执行成功，如果在`ckb.toml` 文件中将 ckb-script 日志模块的级别设置为 debug，你可以看到以下日志：
 `http.worker8 DEBUG ckb-script script group: c35b9fed5fc0dd6eaef5a918cd7a4e4b77ea93398bece4d4572b67a474874641 DEBUG OUTPUT: I'm running in JS!`
