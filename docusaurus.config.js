@@ -14,7 +14,7 @@ module.exports = {
         src: 'img/ditto.png',
       },
       links: [
-        {to: 'docs/docs/doc0', label: '文档', position: 'left'},
+        {to: 'docs/docs/start-build-dev', label: '文档', position: 'left'},
         {to: 'blog', label: '博客', position: 'left'},
         {
           href: 'https://community.ckb.dev',
@@ -55,7 +55,7 @@ module.exports = {
           items: [
             {
               label: '论坛',
-              href: 'https://ckb.dev',
+              href: 'https://community.ckb.dev',
             },
             {
               label: 'Discord',
