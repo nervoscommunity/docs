@@ -17,7 +17,7 @@ module.exports = {
         {to: 'docs/docs/doc0', label: '文档', position: 'left'},
         {to: 'blog', label: '博客', position: 'left'},
         {
-          href: 'https://ckb.dev',
+          href: 'https://community.ckb.dev',
           label: '论坛',
           position: 'left',
         },
