@@ -38,7 +38,7 @@ module.exports = {
           items: [
             {
               label: '开发文档',
-              to: 'docs/docs/doc1',
+              to: 'docs/docs/start-build-dev',
             },
             {
               label: '博客',
