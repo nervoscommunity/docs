@@ -1,10 +1,10 @@
 ---
-id: doc1
+id: start-deploy-script
 title: 在 CKB 的 dev 链上部署代码脚本
 sidebar_label: 在 CKB 的 dev 链上部署代码脚本
 ---
 
-在上一个教程中，介绍了如何启动 CKB 的 dev 链，这一篇我们要向大家展示如何将脚本代码真正部署到 CKB 网络上去。
+在上一章，介绍了如何启动 CKB 的 dev 链，这一篇我们要向大家展示如何将脚本代码真正部署到 CKB 网络上去。
 
 
 ## 一个最小的 CKB 脚本代码

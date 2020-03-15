@@ -1,5 +1,5 @@
 ---
-id: doc0
+id: start-build-dev
 title: 如何启动 CKB 的本地开发链
 sidebar_label: 如何启动 CKB 的本地开发链
 ---

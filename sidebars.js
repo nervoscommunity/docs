@@ -10,11 +10,11 @@ module.exports = {
     开发文档: [
       {
         type: 'category',
-        label: '预备知识',
-        items: ['docs/doc0','docs/doc1']
+        label: '开发入门',
+        items: [
+          'docs/start-build-dev',
+          'docs/start-deploy-script']
       },
-      'docs/doc2',
-      'docs/doc3',
     ],
     生态工具: ['docs/tools/ckb-studio'],
   },
