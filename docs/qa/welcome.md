@@ -4,6 +4,35 @@ title: 欢迎来到 Nervos 的世界
 sidebar_label: 欢迎
 ---
 
+## 常用链接
+
+### 官方区
+
+|主要网址|[官网](https://www.nervos.org/)|[官方论坛](https://talk.nervos.org/)|[区块浏览器](https://explorer.nervos.org/)|[官方文档](https://docs.nervos.org/)|[2020 路线图](https://www.nervos.org/roadmap-2020/)|[Grants](https://www.nervos.org/grants/)|[水龙头](https://faucet.nervos.org/)|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|**主要文档**|[**定位白皮书**](../docs/rfcs/0001-positioning/0001-positioning.zh.md)|[**白皮书**](../docs/rfcs/0002-ckb/0002-ckb.zh.md)|[**经济模型**](../docs/rfcs/0015-ckb-cryptoeconomics/0015-ckb-cryptoeconomics.zh.md)|[**共识协议**](../docs/rfcs/0020-ckb-consensus-protocol/0020-ckb-consensus-protocol.zh.md)|[**Nervos DAO**](../docs/rfcs/0023-dao-deposit-withdraw/0023-dao-deposit-withdraw.zh.md)|[**代币发行**](https://medium.com/nervosnetwork/nervos-ckb-official-public-sale-announcement-431438f4cc39)|
+|**社交媒体**|[**Medium**](https://medium.com/nervosnetwork)|[**Twitter**](https://twitter.com/NervosNetwork)|[**Discord**](https://discord.gg/uWGUUpw )|[**Telegram**](https://t.me/NervosNetwork)|[**facebook**](https://www.facebook.com/theNervosNetwork)|[**Reddit**](https://www.reddit.com/r/NervosNetwork/)|[**YouTube**](https://www.youtube.com/channel/UCONuJGdMzUY0Y6jrPBOzH7A)|
+|**中文频道**|[**微信公众号**](https://mp.weixin.qq.com/s/-eG55_dKUNOE7EPQVEWbfQ)|[**中文电报群**](https://t.me/NervosNetworkcn)|[**微博**](https://weibo.com/u/6567942334?from=feed&loc=at&nick=NervosNetwork)|[**币乎**](https://bihu.com/people/1092603)|[**哔哩哔哩**](https://space.bilibili.com/383134877)|
+
+### 生态区
+
+|社区力量|[微信公众号](https://mp.weixin.qq.com/s/UE1Ott9wBtiCu7mgVgV-hw)|[CKB 中文导航](https://www.ckb123.com/)|[社区开发者论坛](https://community.ckb.dev/)|[粉丝俱乐部](https://nervosfans.club/)|
+|:---:|:---:|:---:|:---:|:---:|
+|**信息网站**|[**TokenView**](https://ckb.tokenview.com/cn/)|[**MiningPoolStats**](https://miningpoolstats.stream/nervos)|[**收益计算器**](https://ckb.gold/)|
+|**代币一览**|[**CoinMarketCap**](https://coinmarketcap.com/currencies/nervos-network/)|[**CoinGecko**](https://www.coingecko.com/zh-tw/%E6%95%B8%E5%AD%97%E8%B2%A8%E5%B9%A3/nervos-network)|
+|**CKB 钱包**|[**Neuron**](https://github.com/nervosnetwork/neuron/releases)|[**imToken**](https://token.im/)|[**ABC Wallet**](https://abcwallet.com/)|[**比特派**](https://bitpie.com/)|
+|**CKB 矿池**|[**星火矿池**](https://www.sparkpool.com/token/CKB)|[**f2pool**](https://www.f2pool.com/)|[**btc.com**](https://pool.btc.com/)|[**2miners**](https://ckb.2miners.com/)|
+
+\* *关于矿池和钱包的更多内容，请前往对应分页*
+
+### 开发区
+
+|核心组件|[ckb](https://github.com/nervosnetwork/ckb)|[rfcs](https://github.com/nervosnetwork/rfcs)|[ckb-vm](https://github.com/nervosnetwork/ckb-vm)|[p2p](https://github.com/nervosnetwork/p2p)|[eaglesong](https://github.com/nervosnetwork/eaglesong)|[ckb-cli](https://github.com/nervosnetwork/ckb-cli)|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|**必备组件**|[**neuron**](https://github.com/nervosnetwork/neuron)|[**explorer**](https://github.com/nervosnetwork/ckb-explorer)|[**muta**](https://github.com/nervosnetwork/muta)|[**docs**](https://github.com/nervosnetwork/docs)|[**system-scripts**](https://github.com/nervosnetwork/ckb-system-scripts)|[**overlord**](https://github.com/nervosnetwork/overlord)|
+|**SDK**|[**JS-SDK**](https://github.com/nervosnetwork/ckb-sdk-js)|[**Ruby-SDK**](https://github.com/nervosnetwork/ckb-sdk-ruby)|[**Go-SDK**](https://github.com/ququzone/ckb-sdk-go)|[**Java-SDK**](https://github.com/nervosnetwork/ckb-sdk-java)
+|**武器装备**|[**animagus**](https://github.com/xxuejie/animagus)|[**keyper**](https://github.com/ququzone/keyper)|[**godwoken**](https://github.com/jjyr/godwoken)|[**polyjuice**](https://github.com/nervosnetwork/polyjuice)|[**boxer**](https://github.com/xxuejie/ckb-boxer)|
+|**生态力量**|[**ckb.pw**](https://github.com/lay2dev/ckb.pw)|[**CKB Studio**](https://github.com/ObsidianLabs/CKB-Studio-Releases)|
 
 ## 基础名词
 
