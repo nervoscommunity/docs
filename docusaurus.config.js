@@ -54,16 +54,16 @@ module.exports = {
           title: '社区',
           items: [
             {
-              label: '论坛',
+              label: '社区开发者论坛',
               href: 'https://community.ckb.dev',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discord.gg/uWGUUpw',
             },
             {
               label: '官方论坛',
               href: 'https://talk.nervos.org',
+            },
+            {
+              label: 'Discord',
+              href: 'https://discord.gg/uWGUUpw',
             },
           ],
         },

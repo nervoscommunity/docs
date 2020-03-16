@@ -8,7 +8,7 @@ import styles from './styles.module.css';
 
 const features = [
   {
-    title: <>开发入门册</>,
+    title: <><a href="/docs/docs/start-build-dev">开发入门册</a></>,
     imageUrl: 'img/ditto1.png',
     description: (
       <>
@@ -17,7 +17,7 @@ const features = [
     ),
   },
   {
-    title: <>精选博客集</>,
+    title: <><a href="/blog">精选博客集</a></>,
     imageUrl: 'img/ditto2.png',
     description: (
       <>
@@ -26,7 +26,7 @@ const features = [
     ),
   },
   {
-    title: <>小紧张百科</>,
+    title: <><a href="/docs/qa/welcome">小紧张百科</a></>,
     imageUrl: 'img/ditto3.png',
     description: (
       <>
