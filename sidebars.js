@@ -77,20 +77,21 @@ module.exports = {
   qaSidebar:{
     介绍:[
       'qa/welcome',
-//    'qa/basic-nouns',
       'qa/contribute',
     ],
     "关于 Nervos":[
       'qa/nervos/about-nervos',
- //   'qa/nervos/nervos-solve-problems',
+//      'qa/nervos/nervos-innovations',
       'qa/nervos/compare-to-other',
-      'qa/nervos/about-muta',
     ],
     "关于 CKB":[
       'qa/ckb/about-ckb',
       'qa/ckb/ckb-solve-problems',
       'qa/ckb/about-cell',
       'qa/ckb/cell-ckb-vm',
+    ],
+    "关于 Layer2":[
+      'qa/layer2/about-muta',
     ],
     "Nervos DAO":[
       'qa/nervosdao/about-dao',

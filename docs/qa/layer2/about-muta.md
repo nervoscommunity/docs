@@ -1,7 +1,7 @@
 ---
 id: about-muta
 title: Muta 是什么
-sidebar_label: Muta 是什么
+sidebar_label: 链协议：Muta 是什么
 ---
 
 Github：https://github.com/nervosnetwork/muta
@@ -9,7 +9,11 @@ Muta 文档：https://nervosnetwork.github.io/muta-docs/#/
 
 ## 什么是 Muta？
 
-Muta 是一个高度可定制的高性能区块链框架。它内置了具有高吞吐量和低延迟特性的类 BFT 共识算法「Overlord」，并且可以支持不同的虚拟机，包括 CKB-VM、EVM 和 WASM。Muta 具有跨 VM 的互操作性，不同的虚拟机可以同时在一条基于 Muta 搭建的区块链中使用。Muta 由 Nervos 团队开发，旨在让世界上任何一个人都可以搭建属于他们自己的区块链，同时享受 Nervos CKB 所带来的安全性和最终性。
+Nervos Layer2 的分为**基于链的协议**和**基于 Channel （通道）的协议**，两个方向。
+
+Muta 是基于链的协议，是一个高度可定制的高性能的区块链框架。
+
+它内置了具有高吞吐量和低延迟特性的类 BFT 共识算法「Overlord」，并且可以支持不同的虚拟机，包括 CKB-VM、EVM 和 WASM。Muta 具有跨 VM 的互操作性，不同的虚拟机可以同时在一条基于 Muta 搭建的区块链中使用。Muta 由 Nervos 团队开发，旨在让世界上任何一个人都可以搭建属于他们自己的区块链，同时享受 Nervos CKB 所带来的安全性和最终性。
 
 开发者可以基于 Muta 定制开发 PoA、PoS 或者 DPoS 链，并且可以使用不同的经济模型和治理模型进行部署。开发者也可以基于 Muta 来开发不同的应用链（例如 DEX 链），以实现某种特定的业务逻辑。
 
