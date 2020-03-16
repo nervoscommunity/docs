@@ -17,6 +17,7 @@ Github 地址：https://github.com/ObsidianLabs/CKB-Studio-Releases
 
 <iframe src="//player.bilibili.com/player.html?aid=93829123&cid=160195702&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height="400px" width="600px"> </iframe>
 
+\* *建议您前往 bibibili 观看相关视频*
 
 ## 开发团队和联系方式
 
