@@ -75,7 +75,7 @@ Bitcoin 的状态，指的是 Bitcoin 账本当前的样子。Bitcoin 的状态�
 
 Bitcoin 的历史由一连串的交易构成，交易内部的主要结构是输入和输出。交易更改状态的方法是，把当前状态中包含的一些UTXO（交易输入引用的那些）标记为已花费，从 UTXO 集合中移出，然后把一些新的 UTXO（这个交易的输出）添加到 UTXO 集合里面去。
 
-![bitcoin-state](images/bitcoin-state.png)
+![bitcoin-state](/img/ckb/bitcoin-state.png)
 
 可以看出，Bitcoin 交易的输出（TXO，Transaction Output）正是上面说的 UTXO，UTXO 只不过是一种处于特殊阶段（尚未花费）的 TXO。因为构成 Bitcoin 状态的组件(UTXO)，同时也是构成交易的组件(TXO)。由此 Bitcoin 有一个奇妙的性质：任意时刻的状态都是历史的一个子集，历史和状态包含的数据类型是同一维度的。交易的历史（所有被打包的交易的集合，即所有产生过的 TXO 的集合）即状态的历史（每个区块对应的 UTXO 集合的集合，也是所有产生过的 TXO 的集合）， Bitcoin 的历史只包含交易。
 
@@ -97,7 +97,7 @@ Ethereum 的历史同样由交易构成，交易内部的主要结构是
 2. 将交易携带的 data 作为参数传递给目标账户的智能合约，运行智能合约的逻辑，在运行中可能会修改任意账户的内部状态生成新的状态；
 3. 构造新的叶子存放新的状态，更新状态 Merkle 树
 
-![eth-state](images/eth-state.png)
+![eth-state](/img/ckb/eth-state.png)
 
 可以看出，Ethereum 的历史和交易结构与 Bitcoin 相比有非常大的不同。Ethereum 的状态是由账户构成的，而交易是由触发账户变动的信息构成，状态和交易中记录的是完全不同类型的数据，二者之间没有超集和子集的关系，**历史和状态所包含的数据类型是两个维度的**，交易历史大小与状态大小之间没有必然的联系。交易修改状态后，不仅会产生新的状态（图中实线框的叶子），而且会留下旧的状态（图中虚线框的叶子）成为历史状态，因此 Ethereum 的历史不仅仅包含交易，还包含历史状态。因为历史和状态属于不同的维度，Ethereum 区块头中不仅仅包含交易的 merkle root, 也需要显式包含状态的 merkle root。
 

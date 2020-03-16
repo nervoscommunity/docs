@@ -122,7 +122,7 @@ sidebar_label: 如何理解 Cell
 
 为什么要给“转让”打引号？因为在转让的时候，并不是简单的把硬币中的`scriptPubKey`修改或是替换掉，而是会销毁和创造新的硬币（毕竟在数字的世界中销毁和创造虚拟硬币的成本很低）。每一个Bitcoin交易，都会销毁一批硬币，同时又创造一批硬币，新创造的硬币会有新的面值和新的所有者，但是被销毁的总面值总是大于等于新创造的总面值，以保证没有人可以随意增发。交易表示的是账本状态的变化。
 
-![bitcoin-utxo](images/bitcoin-utxo.png)
+![bitcoin-utxo](/img/ckb/bitcoin-utxo.png)
 
 这样一个模型的特点是：
 
@@ -149,7 +149,7 @@ sidebar_label: 如何理解 Cell
 
 在Cell里面，`nValue`变成了`capacity`和`data`两个字段，这两个字段共同表示一块存储空间，`capacity`是一个整数，表示这块空间有多大（以字节数为单位），`data`则是保存状态的地方，可以写入任意的一段字节；`scriptPubKey`变成了`lock`，只是换了一个名字而已，表达的是这块共识空间的所有者是谁 - 只有能提供参数（例如签名）使得`lock`脚本成功执行的人，才能“更新”这个Cell中的状态。整个`CellOutput`占用的字节数必须小于等于`capacity`。CKB中存在着许许多多的Cells，所有这些Cell的集合形成了CKB完整的当前状态，在CKB的当前状态中存储的是任意的共同知识，不再仅仅是某一种数字货币。
 
-![ckb-state](images/ckb-state.png)
+![ckb-state](/img/ckb/ckb-state.png)
 
 交易依然表示状态的变化/迁移。状态的变化，或者说Cell内容的“更新”实际上也是通过销毁和创建来完成的（并不是真的去修改原有Cell中的内容）。每一笔交易实际上都会销毁一批Cells，同时创建一批新的Cells；新创造的Cells会有新的所有者，也会存放新的数据，但是被销毁的`capacity`总和总是大于等于新创建的`capacity`总和，由此保证没有人可以随便增发`capacity`。因为`capacity`可以转让，无法增发，拥有`capacity`等于拥有相应数量的共识状态空间，`capacity`是CKB网络中的原生资产。Cell的销毁只是把它标记为”已销毁“，类似Bitcoin的UTXO从未花费变为已花费，并不是从区块链上删掉。每一个Cell只能被销毁一次，就像每一个UTXO只能被花费一次。
 
@@ -187,7 +187,7 @@ sidebar_label: 如何理解 Cell
 
 Cell是抽象的状态验证模型，Cell提供的存储(`data`)没有任何内部结构，Cell支持任意的状态验证规则(`type`)和所有权验证规则（`lock`)，我们可以在Cell模型上模拟UTXO模型（就像上面的SatoshiCoin），也可以在Cell模型上构建Account模型。`lock`脚本在验证交易输入的时候执行，确保用户对输入有所有权，有权销毁输入的Cells；`type`脚本在验证交易输出的时候执行，确保用户生成的新状态符合类型约束，正确生成了新的Cells。由于状态模型迥异，以及计算和验证分离，CKB的编程模型与Ethereum的编程模型有非常大的不同，什么是CKB编程模型上的最佳实践还需要大量的探索。
 
-![cell-tx](images/cell-tx.png)
+![cell-tx](/img/ckb/cell-tx.png)
 
 ### 通用验证网络(General Verification Network)
 
@@ -195,7 +195,7 @@ Bitcoin是一个验证网络（Verification Network）。在转账时，用户�
 
 Ethereum是一个通用计算网络（General Computation Network）。在使用DApp的时候，用户告诉钱包/本地客户端想要进行的操作，钱包将用户的操作请求原样打包到交易里面，并将交易广播。网络节点收到交易之后，根据区块链的当前状态和交易包含的操作请求进行计算，生成新的状态。在这个过程中，计算在远端完成，交易结果（新状态）只有在交易被打包到区块之后才能确定，用户在交易发送的时候并不能完全确定计算结果。
 
-![state-generation](images/state-generation.png)
+![state-generation](/img/ckb/state-generation.png)
 （图中，上面是Ethereum的流程，交易中包含的是用户请求或者说事件/Event；下面是Bitcoin/CKB的流程，交易中包含的是链下生成的状态/State。）
 
 CKB是一个通用验证网络（General Verification Network）。在使用DApp的时候，用户告诉钱包/本地客户端想要进行的操作，钱包根据当前状态和用户的操作请求进行计算，生成新的状态。在这个过程中，计算在用户端完成，计算结果（新状态）在交易发出的时候就已经确定了。

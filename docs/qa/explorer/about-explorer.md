@@ -24,7 +24,7 @@ Nervos 官方区块浏览器：https://explorer.nervos.org/
 
 ### 链信息
 
-![explorer-info](images/explorer-info.png)
+![explorer-info](/img/ckb/explorer-info.png)
 
 链信息页面顶部表格包含有：
 * 最高块：当前最高区块高度
@@ -42,7 +42,7 @@ Nervos 官方区块浏览器：https://explorer.nervos.org/
 
 ### 区块信息
 
-![block-info](images/block-info.png)
+![block-info](/img/ckb/block-info.png)
 
 * 最上方为：区块哈希
 * 概况内包含：
@@ -61,7 +61,7 @@ Nervos 官方区块浏览器：https://explorer.nervos.org/
 
 ### 交易信息
 
-![tx-info](images/tx-info.png)
+![tx-info](/img/ckb/tx-info.png)
 
 * 最上方为：交易哈希
 * 参数内包含：
@@ -89,7 +89,7 @@ Nervos 官方区块浏览器：https://explorer.nervos.org/
 
 ### Nervos DAO 页
 
-![dao-info](images/dao-info.png)
+![dao-info](/img/ckb/dao-info.png)
 
 * 信息栏左侧：
     * 当前 Nervos DAO 锁定总额（今日增加量，北京时间零点重新计算）
@@ -106,7 +106,7 @@ Nervos 官方区块浏览器：https://explorer.nervos.org/
 
 * 下方为 Nervos DAO 相关的存取交易列表和 Nervos DAO 锁定地址金额排序
 
-![dao-info2](images/dao-info2.png)
+![dao-info2](/img/ckb/dao-info2.png)
 
 
 

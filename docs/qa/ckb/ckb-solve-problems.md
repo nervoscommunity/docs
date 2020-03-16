@@ -100,7 +100,7 @@ Ethereum 上由于各种 DApp 的存在，The Tragedy of (Storage) Commons 相�
 
 你也许会说，有没有可能硬件平均水平的提高会超过历史和状态的积累速度？我的回答是可能性很低：
 
-![storage_growth](images/eth-storage-growth.png)
+![storage_growth](/img/ckb/eth-storage-growth.png)
 
 从这张图中我们可以看到，随着 Ethereum 网络的发展，状态数据累积的数量呈指数式的增长。Bitcoin 的状态数据从 0 积累到 3 G，用了 10 年；Ethereum 的状态数据从 0 积累到 10 G，用了 4 年；而这是在我们还没有解决 Scalability 问题，区块链仍然是小众技术的情况下的增长速度。当我们解决了 scalability 问题，区块链真正获得 mass adoption，DApp 和用户数量都爆炸式增长的时候，区块链历史和状态数据会以什么速度累积呢？
 
