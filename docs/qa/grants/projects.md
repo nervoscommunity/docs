@@ -13,6 +13,7 @@ sidebar_label: Grants 项目汇总
 |3|[SECBIT Labs](https://github.com/sec-bit/)|Layer2|ZKP Toolkit for CKB| [RFC](https://talk.nervos.org/t/rfc-zkp-toolkit-ckb-a-zero-knowledge-proof-toolkit-for-ckb/4254) ||2020/2/7|未知|阶段1|
 |4|Synapse|开发工具|Browser Wallet and Keyper Agency| [RFC](https://talk.nervos.org/t/synapse-browser-wallet-and-keyper-agency/4339) ||2020/2/27|未知|阶段1|
 |5|Obsidian Systems|硬件钱包|Ledger Nano S/X Support| [RFC](https://talk.nervos.org/t/grant-rfc-ledger-nano-s-x-application-for-nervos/4349) |[Github](https://github.com/obsidiansystems)|2020/2/28|未知|阶段1|
+|6|Lay2|密码学原语 + SDK|PW-SDK，[ckb.pw](https://ckb.pw)| [RFC](https://talk.nervos.org/t/grant-rfc-pw-sdk-build-dapps-on-ckb-and-run-them-everywhere/4289/) |[Github](https://github.com/lay2dev/ckb.pw)、[中文](https://talk.nervos.org/t/grant-rfc-pw-sdk-ckb-dapps/4290/)|2020/2/14|未知|阶段1|
 
 ---
 
