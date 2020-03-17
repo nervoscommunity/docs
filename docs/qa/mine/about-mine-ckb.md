@@ -36,4 +36,4 @@ CKB 挖矿始于 2019 年 5 月 18 日，CKB 测试网 Rylai 上线之后，在 
 
 如果您是专业的矿机，那么非常欢迎您参与 CKB 挖矿：
 * 如果您选择 Solo 挖矿：https://docs.nervos.org/getting-started/mine
-* 如果您选择加入矿池：建议您参考上文 [支持 CKB 的矿池]
+* 如果您选择加入矿池：建议您参考下文 [矿池与矿机]
