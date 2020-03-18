@@ -19,8 +19,7 @@ sidebar_label: 欢迎
 |社区力量|[微信公众号](https://mp.weixin.qq.com/s/UE1Ott9wBtiCu7mgVgV-hw)|[CKB 中文导航](https://www.ckb123.com/)|[社区开发者论坛](https://community.ckb.dev/)|[粉丝俱乐部](https://nervosfans.club/)|
 |:---:|:---:|:---:|:---:|:---:|
 |**信息网站**|[**TokenView**](https://ckb.tokenview.com/cn/)|[**MiningPoolStats**](https://miningpoolstats.stream/nervos)|[**收益计算器**](https://ckb.gold/)|
-|**代币一览**|[**CoinMarketCap**](https://coinmarketcap.com/currencies/nervos-network/)|[**CoinGecko**](https://www.coingecko.com/zh-tw/%E6%95%B8%E5%AD%97%E8%B2%A8%E5%B9%A3/nervos-network)|
-[**MyToken**](https://www.mytokencap.com/currency/ckb/821726406)|
+|**代币一览**|[**CoinMarketCap**](https://coinmarketcap.com/currencies/nervos-network/)|[**CoinGecko**](https://www.coingecko.com/zh-tw/%E6%95%B8%E5%AD%97%E8%B2%A8%E5%B9%A3/nervos-network)|[**MyToken**](https://www.mytokencap.com/currency/ckb/821726406)|
 |**CKB 钱包**|[**Neuron**](https://github.com/nervosnetwork/neuron/releases)|[**imToken**](https://token.im/)|[**ABC Wallet**](https://abcwallet.com/)|[**比特派**](https://bitpie.com/)|
 |**CKB 矿池**|[**星火矿池**](https://www.sparkpool.com/token/CKB)|[**f2pool**](https://www.f2pool.com/)|[**btc.com**](https://pool.btc.com/)|[**2miners**](https://ckb.2miners.com/)|
 
