@@ -29,7 +29,6 @@ sidebar_label: Grants 项目汇总
 |Harry Liu|生态产品|Connect dApp with Wallet|[RFC](https://talk.nervos.org/t/rfc-oneconnect-connect-ckb-dapp-with-any-wallet/4219) |[Tools](https://tools.rebase.network/ckb)|2020/2/1|Step2|
 |Jason Teutsch|互操作性|[Truebit](https://truebit.io/) on Nervos| [RFC](https://talk.nervos.org/t/truebit-on-nervos/4237) ||2020/2/5|Step2|
 |[ABC Wallet](http://www.abcwallet.com/)|钱包 + SDK|Decentralized CKB Red Packets| [RFC](https://talk.nervos.org/t/grant-rfc-abc-wallet-decentralized-ckb-red-packets-on-sns/4285) |[Github](https://github.com/BlockABC/one_chain_ckb)|2020/2/14|Step2|
-|Lay2|密码学原语 + SDK|PW-SDK，[ckb.pw](https://ckb.pw)| [RFC](https://talk.nervos.org/t/grant-rfc-pw-sdk-build-dapps-on-ckb-and-run-them-everywhere/4289/) |[Github](https://github.com/lay2dev/ckb.pw)、[中文](https://talk.nervos.org/t/grant-rfc-pw-sdk-ckb-dapps/4290/)|2020/2/14|Step2|
 |[imKey](https://imkey.im/)|硬件钱包|imKey Support|[RFC](https://talk.nervos.org/t/imkey-hardware-digital-wallet-grant-proposal/4327)||2020/2/24|Step1|
 |BluseStone|生态产品|Lending Protocol| [RFC](https://talk.nervos.org/t/grant-proposal-lending-protocol-on-nervos/4336) |[alpha](https://alpha.bluestone.live/)、[lendhoo](https://www.lendhoo.com/)|2020/2/26|Step1|
 |AIKON|生态产品|Create User Identities| [RFC](https://talk.nervos.org/t/aikon-creating-identities-on-nervos/4384) ||2020/3/5|Closed|
