@@ -4,19 +4,20 @@ title: 矿池与矿机
 sidebar_label: 矿池与矿机
 ---
 
-## 支持 CKB 的矿池
+## CKB 挖矿信息网站
 
-各大矿池算力一览：
-* [MiningPoolStats]https://miningpoolstats.stream/nervos
+各大矿池 CKB 算力一览：
+* [MiningPoolStats](https://miningpoolstats.stream/nervos)
 * [minerstat](https://minerstat.com/coin/ckb)
 
-算力租赁：
+CKB Eaglesong 算力租赁：
 * [niceHASH](https://www.nicehash.com/algorithm/eaglesong)
 * [比特小鹿](https://www.bitdeer.com/zh/pricing?id=8)
 
-51% 攻击可能性：
+PoW 链 51% 攻击可能性：
 * [Crypto51](https://www.crypto51.app/)
 
+## 支持 CKB 的矿池
 
 |矿池   |挖矿教程 |手续费 | 起付额 |其他功能 |
 |-------|-------|--------|-------|-------|
