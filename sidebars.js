@@ -13,7 +13,9 @@ module.exports = {
         label: '开发入门',
         items: [
           'docs/start-build-dev',
-          'docs/start-deploy-script']
+          'docs/start-deploy-script',
+          'docs/ckb-cli',
+        ]
       },
     ],
     生态工具: ['docs/tools/ckb-studio'],
