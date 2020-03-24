@@ -1,13 +1,13 @@
 ---
 id: ckb-cli
-title: 使用ckb-cli
-sidebar_label: 使用ckb-cli
+title: 使用 ckb-cli
+sidebar_label: 使用 ckb-cli
 ---
 
-ckb-cli 是一个命令行工具，用于调试开发中的CKB，以方便用户与CKB进行交互。ckb-cli包括以下功能:
+ckb-cli 是一个命令行工具，用于调试开发中的 CKB，以方便用户与 CKB 进行交互。ckb-cli 包括以下功能:
 - 搜索区块链信息
 - 配置环境变量
-- 调用RPC与CKB节点交互
+- 调用 RPC 与 CKB 节点交互
 - 处理模拟交易
 - 创建钱包和查询余额等。
 
@@ -17,7 +17,7 @@ https://github.com/nervosnetwork/ckb-cli
 
 ## 下载
 
-下载最新版本的ckb-cli https://github.com/nervosnetwork/ckb-cli/releases
+下载最新版本的 ckb-cli：https://github.com/nervosnetwork/ckb-cli/releases
 
 ## 常用命令
 
@@ -36,13 +36,10 @@ https://github.com/nervosnetwork/ckb-cli
 ./ckb-cli tui
 ```
 
-`Chain`： 运行的 mainnet、testnet、dev
-
-`Epoch`：调整周期
-
-`Difficulty`：难度
-
-`Tip Block`：最高块的高度
+* `Chain`： 运行的 mainnet、testnet、dev
+* `Epoch`：调整周期
+* `Difficulty`：难度
+* `Tip Block`：最高块的高度
 
 ![tui](/img/docs/tui.png)
 
@@ -94,9 +91,8 @@ fe59445edc3c30db6b0e1abcddc317137368f5604ce01cc1d279dfda001e8474
 
 ```
 
-`--extended-privkey-path` 后跟导出的文件位置
-
-`--lock-arg 0x3c55d6...` 导出lock-arg对应值的私钥
+* `--extended-privkey-path` 后跟导出的文件位置
+* `--lock-arg 0x3c55d6...` 导出lock-arg对应值的私钥
 
 ### 显示account 列表
 
@@ -168,6 +164,4 @@ broadcast_transaction                   广播未签名的交易
 
 ---
 
-参考：
-
-https://docs.nervos.org/dev-guide/ckb-cli.html
+参考：https://docs.nervos.org/dev-guide/ckb-cli.html
