@@ -6,7 +6,7 @@ author: Xuejie Xiao
 author_title: Nervos Core Team
 author_url: https://github.com/xxuejie
 author_image_url: https://avatars3.githubusercontent.com/u/340446?s=400&v=4
-tags: [Script_Programming, xuejie,]
+tags: [Script_Programming, xuejie, UTXO, account]
 ---
 
 在区块链世界中，人们普遍认为，在可用性方面，帐户模型比 UTXO 模型更有优势，我一直在努力弥合[区块链](https://github.com/nervosnetwork/ckb)中的 UTXO 模型和帐户模型之间的差异。
@@ -22,50 +22,55 @@ tags: [Script_Programming, xuejie,]
 ## 什么是账户模型？
 
 在基于账户模型的区块链中，交易只说明操作或带有参数的函数调用。实际的状态，是从区块链中计算和推导出来的，如下图所示:
-![account_model_1](/img/blog/account_model_1.svg)
+
+![account_model_1](/img/blog/utxo-vs-account-1.svg)
 
 而在基于 UTXO 的区块链中，状态都包含在交易中。你直接在交易中放入你想要的数据。通常，多个 UTXO 可以一起工作来提供整个状态的一部分。当你希望更改一部分数据时，你可以将该部分的 UTXO 作为交易中的输入包括进来，并提供一个包含更新数据的新 UTXO。
 
 如下图所示：
-![utxo_model_1](/img/blog/utxo_model_1.svg)
+
+![utxo_model_1](/img/blog/utxo-vs-account-2.svg)
 
 关于这两种模型的争论已经有一段时间了。
+
 一个明显的考虑是，账户模型的交易体积更小，但作为交换，必须在基于账户的区块链中计算状态，更糟糕的是，同一账户的交易需要顺序执行。另一方面，基于 UTXO 的区块链只需要进行验证工作，以确保提交的数据格式正确，访问同一账户不同部分的交易也可以并行验证，以获得更好的性能。但是，我们要付出交易体积比较大的代价，因为交易需要包含实际的数据。
 
 但这不是本文的重点，每种解决方案都有避免各自缺点的方法。
+
 人们普遍认为，在构建 dapp 时，账户模型比 UTXO 模型更具有优越性。另一种说法是，基于 UTXO 的区块链不能使用帐户模型拥有 dapps。
-这是真的吗?让我们在这里找到答案。
+
+这是真的吗？让我们在这里找到答案。
 
 ## 一个小转换
 
 我们将在这看到一个类似于 ERC20 的 token 的转账操作。在帐户模型中，通常有一个 token 帐户存储所有用户的 token 余额。当有人想要转账时，只需要提交说明`from`, `to` 和`balance`的交易以进行转帐：
-![account_model_2](/img/blog/account_model_2.svg)
+
+![account_model_2](/img/blog/utxo-vs-account-3.svg)
 
 然后，区块链 **执行**链上的交易，并更新包含更改的内部状态。
 
 我们如何在 UTXO 模型中表示它？一种观察是，典型的基于帐户模型的通过键-值存储表示整个帐户状态。
+
 我们可以接受同样的抽象概念：
 
 - 为每个帐户创建预定好的一定数量的 cell(注：可理解为格子)。 实际上，你只需要定义这里的数字，缺少的 cell 可以解释为虚拟的 cell。
-
 - 每个单元格都将整个空间的一部分存储在键-值中；
-
 - 如果交易需要更新某个值，它首先查找包含该值的键的 cell，并将相应的 cell 作为交易输入，然后提供一个包含更新数据的新的 cell;
 
 下图显示了这种交易示例：
-![utxo_model_2](/img/blog/utxo_model_2.svg)
+
+![utxo_model_2](/img/blog/utxo-vs-account-4.svg)
 
 这里整个帐户状态包含 4 个 cell，但是由于只需要更新 2 个 cell，所以交易只包含这 2 个 cell。
 
 你可能会注意到，这看起来很像数据库和文件系统中使用的[B-tree](https://en.wikipedia.org/wiki/B-tree)数据结构。
+
 在 B-tree 结构中，你希望最小化实际修改的 page，这与我们基于 UTXO 的设计完全相同：你希望在交易中包含和修改尽可能少的 cell。这意味着虽然我们拥有一个简单的设计，但是你可以利用在 B-tree 领域积累的丰富的研究来构建更好的设计，从而提供更好的结果。
 
 如果我们考虑这里的方案，它实际上并没有利用任何特定于应用程序的知识，唯一的假设是帐户模型使用键-值存储，现在已经是这种情况了。这意味着我们可以在 UTXO 模型的基础上构建一个账户模型 generator：
 
 - generator 响应来自 dapp 开发者的读取请求，查询该账户当前活动的 cell，提取所提供的键的值；
-
 - generator 还接受帐户模型风格的函数调用，它使用当前的活动的 cell 运行该函数，并生成包含更新 cell 的交易，将交易传递给区块链以供接受。 为了提高灵活性，我们可以在这里引入 账户模型风格的虚拟机，如 EVM、Move 等;
-
 - 然后，链上智能合约 可以运行由 generator 运行的相同代码，以验证生成的数据是否正确。如果使用了 EVM 或 Move 这样的 VM，我们可以将相同的 VM 移植到链上智能合约，并在这里执行相同的操作。
 
 当然，需要构建这个新的 generator，使基于 UTXO 的区块链的行为类似于基于帐户的区块链。我在这里的观点是，这是一条完全可行的路线，这意味着基于 UTXO 的设计，永远不会妨碍基于帐户模型构建的 dapp。
@@ -73,11 +78,15 @@ tags: [Script_Programming, xuejie,]
 ## 在 Generator 中复制逻辑不是一个坏主意
 
 对这条路线的不断批评，也是我之前所担心的，是我们在链外 generator 部分和链上智能合约中都复制了逻辑。但最近，我一直在质疑这一点：这真的是一个问题吗？在区块链的世界里，一个被广泛遵循的原则是 “不要相信它，去验证它”（don't trust, verify）。
+
 一项交易中包含的智能合约不仅会在单个节点上运行，还将在每个区块链节点上运行。
+
 我们已经执行了`N`次相同的智能合约，如果 generator 再执行一次，并使其成为`N + 1`，这真的很重要吗？我们都知道`N + 1`和`N`没有区别。
+
 我个人认为 generator 部分只是另外一个轻量级客户端节点，可以再次验证智能合约。这不会给我们现有的区块链设计带来任何问题。
 
 如果你仍然对此感到疑惑，那么实际上还有另外一个观点：除基于键值存储的帐户模型外，以上设计均基于其他假设。当我们谈论特定的 dapp 时，很有可能会利用某些属性，因此链上智能合约不必运行与链下 generator 完全相同的代码。
+
 例如，在一个 ERC20 token 例子中，实际上只有 2 条规则需要在链上验证：
 
 - 交易具有有效的签名；
@@ -90,18 +99,17 @@ tags: [Script_Programming, xuejie,]
 当然以上描述的 generator 部件需要进一步开发。但是，如果我们将目光投向区块链世界之外，再看看一般的软件行业，我们会注意到一种不可阻挡的趋势：
 
 - CPU 从[CISC](https://en.wikipedia.org/wiki/Complex_instruction_set_computer)设计转移到[RISC](https://en.wikipedia.org/wiki/Reduced_instruction_set_computer)设计，使用基于软件的编译器来填补 RISC 中缺失的部分。
-
 - 高度专业化的基于硬件的交换机正在被利用[复杂软件](https://github.com/snabbco/snabb)的普通计算机吃掉
-
 - 附加存储或存储区域网络的传统网络已被采用[软件定义的存储](https://www.redhat.com/en/topics/data-storage/software-defined-storage)的商品云所取代
-
 - 即使在通讯塔中，也已经部署了[更多软件](https://venturebeat.com/2019/06/17/ericsson-updates-5g-cell-tower-software-to-improve-speed-and-coverage/)提供更好的性能
 
 你注意到一个模式了吗？我们看到的是一个复杂的硬件被简单的硬件迅速取代的世界。越来越多地使用高度专业化的软件来补充过去硬件中的功能。
+
 在 Nervos Network 中，我们认为区块链更像是硬件而不是软件，并且，如果我们看看 UTXO 模型与帐户模型的争论，我们会看到类似的冲突：
 
 - 基于帐户的区块链在区块链（硬件）部分增加了更多逻辑；
-
 - 基于 UTXO 的区块链在区块链（硬件）部分中加入了更少的逻辑，并利用软件来补充更多的特性。
 
 如果我们只看到一种或两种情况，这可能只是一个异常，但我们看到的是：从行业角度来看，看到了更多从硬件向更多软件的转变。我不确定你的看法，但我个人认为，我们这个行业的所有聪明人都做出了正确的选择 :P
+
+[原文链接](https://xuejie.space/2020_03_20_what_do_we_mean_when_we_say_account_model/)
