@@ -7,7 +7,7 @@
 
 module.exports = {
   docsSidebar: {
-    开发文档: [
+    认识CKB: [
       {
         type: 'category',
         label: '开发入门',
@@ -18,7 +18,19 @@ module.exports = {
         ]
       },
     ],
+    CKB客户端:[
+      
+    ],
+    HTTPRPC:[
+      'docs/HTTPRPC/interface-specification',
+      'docs/HTTPRPC/rpc-specification'
+    ],
+    智能合约指南:[],
+    Dapp开发指南:[],
+    SDKs:[],
+    智能合约IDE:[],
     生态工具: ['docs/tools/ckb-studio'],
+    常见问题:[]
   },
 
   rfcsSidebar:{
