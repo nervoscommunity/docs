@@ -20,7 +20,10 @@ module.exports = {
       },
     ],
     CKB客户端:[
-
+      'docs/Clients/client-overview',
+      'docs/Clients/client-ckb',
+      'docs/Clients/client-ckb-cli',
+      'docs/Clients/client-neuron',
     ],
     HTTPRPC:[
       'docs/HTTPRPC/interface-specification',
