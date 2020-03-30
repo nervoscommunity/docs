@@ -5,6 +5,7 @@ sidebar_label: 使用 ckb-cli
 ---
 
 ckb-cli 是一个命令行工具，用于调试开发中的 CKB，以方便用户与 CKB 进行交互。ckb-cli 包括以下功能:
+
 - 搜索区块链信息
 - 配置环境变量
 - 调用 RPC 与 CKB 节点交互
@@ -31,6 +32,7 @@ ckb-cli rpc --help
 ```
 
 可用命令：
+
 ```
 SUBCOMMANDS:
     config     Config environment
@@ -47,23 +49,23 @@ SUBCOMMANDS:
 
 ### 版本
 
-```
+```shell
 ./ckb-cli --version
 # => ckb-cli 0.27.1 (9d0bf90 2020-01-31)
 ```
 
 ### Tui
 
-运行 ckb节点后，查看同步状态
+运行 ckb 节点后，查看同步状态
 
 ```shell
 ./ckb-cli tui
 ```
 
-* `Chain`： 运行的 mainnet、testnet、dev
-* `Epoch`：调整周期
-* `Difficulty`：难度
-* `Tip Block`：最高块的高度
+- `Chain`： 运行的 mainnet、testnet、dev
+- `Epoch`：调整周期
+- `Difficulty`：难度
+- `Tip Block`：最高块的高度
 
 ![tui](/img/docs/tui.png)
 
@@ -115,8 +117,8 @@ fe59445edc3c30db6b0e1abcddc317137368f5604ce01cc1d279dfda001e8474
 
 ```
 
-* `--extended-privkey-path` 后跟导出的文件位置
-* `--lock-arg 0x3c55d6...` 导出 lock-arg 对应值的私钥
+- `--extended-privkey-path` 后跟导出的文件位置
+- `--lock-arg 0x3c55d6...` 导出 lock-arg 对应值的私钥
 
 #### 显示 account 列表
 
@@ -124,6 +126,10 @@ fe59445edc3c30db6b0e1abcddc317137368f5604ce01cc1d279dfda001e8474
 ./ckb-cli account list
 ./ckb-cli account list --output-format json
 ```
+
+<details>
+<summary>点击查看详细输出</summary>
+<br/>
 
 ```json
 [
@@ -146,6 +152,8 @@ fe59445edc3c30db6b0e1abcddc317137368f5604ce01cc1d279dfda001e8474
 ]
 ```
 
+</details>
+
 ### mock-tx 子命令：处理模拟交易（验证/发送）
 
 ```
@@ -156,6 +164,52 @@ send        完成并发送一笔交易
 ```
 
 ### rpc 子命令：对节点调用 RPC 命令
+
+```
+./ckb-cli rpc get_tip_block_number
+
+# => 32608
+```
+
+```
+./ckb-cli rpc get_tip_header
+
+version: 0
+compact_target: 0x1d354c1d
+timestamp: "1582435950 (2020-02-23 13:32:30)"
+number: 32631
+epoch: "0x1e6014e00002e number: 46, index: 334, length: 486"
+parent_hash: 0xd08c98912f7e0f9d548eafaa0c025523da1df34f7e3c051ecbddb4478b7dbc32
+transactions_root: 0x15114b7301fd78cb6dce654db88ec6c19a7d24804dd113f4e802033b339cde59
+proposals_hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+uncles_hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+dao: 0x2106b159e61bcb2e88551445b18e2300b45006cb63a7080000a6982c3c300307
+nonce: 0xa6d52aea64bef4f6d43c3df463f24fb9
+hash: 0xf6d1088e86c5df0c939a43d330092aea3e6cb46b20c021b0a63bf79b90148f05
+```
+
+### 输出的数据格式为 json
+
+```
+./ckb-cli rpc get_tip_block --output-format json
+
+{
+  "compact_target": "0x1d354c1d",
+  "dao": "0x2106b159e61bcb2e88551445b18e2300b45006cb63a7080000a6982c3c300307",
+  "epoch": "0x1e6014e00002e number: 46, index: 334, length: 486",
+  "hash": "0xf6d1088e86c5df0c939a43d330092aea3e6cb46b20c021b0a63bf79b90148f05",
+  "nonce": "0xa6d52aea64bef4f6d43c3df463f24fb9",
+  "number": 32631,
+  "parent_hash": "0xd08c98912f7e0f9d548eafaa0c025523da1df34f7e3c051ecbddb4478b7dbc32",
+  "proposals_hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "timestamp": "1582435950 (2020-02-23 13:32:30)",
+  "transactions_root": "0x15114b7301fd78cb6dce654db88ec6c19a7d24804dd113f4e802033b339cde59",
+  "uncles_hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "version": 0
+}
+```
+
+### ckb-cli 支持的 rpc 命令
 
 ```
 get_block                               通过 hash 获取 block 信息
@@ -189,4 +243,5 @@ broadcast_transaction                   广播未签名的交易
 ---
 
 参考：https://docs.nervos.org/dev-guide/ckb-cli.html
+
 更多命令使用：https://github.com/nervosnetwork/ckb-cli/wiki/Sub-Commands
