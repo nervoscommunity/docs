@@ -25,9 +25,16 @@ module.exports = {
       'docs/HTTPRPC/interface-specification',
       'docs/HTTPRPC/rpc-specification'
     ],
-    智能合约指南:[],
+    智能合约指南:[
+
+    ],
     Dapp开发指南:[],
-    SDKs:[],
+    SDKs:[
+      'docs/SDKs/sdk-overview',
+      'docs/SDKs/sdk-javascript',
+      'docs/SDKs/sdk-java',
+      'docs/SDKs/sdk-ruby'
+    ],
     智能合约IDE:[],
     生态工具: ['docs/tools/ckb-studio'],
     常见问题:[]
