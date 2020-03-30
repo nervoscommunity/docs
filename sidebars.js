@@ -15,11 +15,12 @@ module.exports = {
           'docs/start-build-dev',
           'docs/start-deploy-script',
           'docs/ckb-cli',
+          'docs/testnet',
         ]
       },
     ],
     CKB客户端:[
-      
+
     ],
     HTTPRPC:[
       'docs/HTTPRPC/interface-specification',
