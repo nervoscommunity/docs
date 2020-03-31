@@ -1,7 +1,7 @@
 ---
 id: rpc-specification
-title: RPC接口
-sidebar_label: RPC接口
+title: RPC 接口
+sidebar_label: RPC 接口
 ---
 
 > 本文档参数更新有延迟，如有出入请以最新代码为准[Github](https://github.com/nervosnetwork/ckb/releases)
@@ -58,7 +58,6 @@ sidebar_label: RPC接口
 
 Returns the number of blocks in the longest blockchain.
 
-
 #### 调用示例
 
 ```bash
@@ -84,7 +83,6 @@ http://localhost:8114
 ### `get_tip_header`
 
 Returns the information about the tip header of the longest.
-
 
 #### 调用示例
 
@@ -124,7 +122,6 @@ http://localhost:8114
 ### `get_current_epoch`
 
 Returns the information about the current epoch.
-
 
 #### 调用示例
 
