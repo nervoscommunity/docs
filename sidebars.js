@@ -36,8 +36,8 @@ module.exports = {
     SDKs:[
       'docs/SDKs/sdk-overview',
       'docs/SDKs/sdk-javascript',
+      'docs/SDKs/sdk-ruby',
       'docs/SDKs/sdk-java',
-      'docs/SDKs/sdk-ruby'
     ],
     智能合约IDE:[],
     生态工具: ['docs/tools/ckb-studio'],

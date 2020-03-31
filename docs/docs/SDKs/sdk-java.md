@@ -1,6 +1,6 @@
 ---
 id: sdk-java
-title: Java SDK 
+title: Java SDK
 sidebar_label: Java SDK
 ---
 
@@ -8,4 +8,4 @@ sidebar_label: Java SDK
 
 ckb-sdk-java 仍在开发中，尚未准备好。
 
-在使用前，您应该熟悉CKB交易结构和RPC。
+在使用前，您应该熟悉 CKB 交易结构和 RPC。
