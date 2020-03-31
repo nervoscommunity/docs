@@ -82,12 +82,13 @@ table Node {
 ```
 
 ## Flow Diagram
+
 ### Node Bootstrap
-![](images/bootstrap.png)
+![](/img/rfcs/0012/bootstrap.png)
 ### Send `GetNodes` Message
-![](images/get-nodes.png)
+![](/img/rfcs/0012/get-nodes.png)
 ### Announce Connected Nodes
-![](images/announce-nodes.png)
+![](/img/rfcs/0012/announce-nodes.png)
 
 [0]: https://en.bitcoin.it/wiki/Satoshi_Client_Node_Discovery
 [1]: https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml

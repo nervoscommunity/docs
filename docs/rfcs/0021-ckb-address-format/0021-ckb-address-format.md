@@ -86,7 +86,7 @@ A Bech32 string consists of the **human-readable part**, the **separator**, and 
 
 The human-readable part is "**ckb**" for CKB mainnet, and "**ckt**" for the testnet. The separator is always "1".
 
-![](images/ckb-address.png)
+![](/img/rfcs/0021/ckb-address.png)
 
 ## Examples and Demo Code
 

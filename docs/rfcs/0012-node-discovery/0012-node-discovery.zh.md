@@ -82,12 +82,13 @@ table Node {
 ```
 
 ## 流程图
+
 ### 节点 Bootstrap
-![](images/bootstrap.png)
+![](/img/rfcs/0012/bootstrap.png)
 ### 发送 `GetNodes` 消息
-![](images/get-nodes.png)
+![](/img/rfcs/0012/get-nodes.png)
 ### 广播当前连接的节点信息
-![](images/announce-nodes.png)
+![](/img/rfcs/0012/announce-nodes.png)
 
 [0]: https://en.bitcoin.it/wiki/Satoshi_Client_Node_Discovery
 [1]: https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml

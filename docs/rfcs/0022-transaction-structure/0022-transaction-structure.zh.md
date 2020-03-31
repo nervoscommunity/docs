@@ -17,7 +17,7 @@ sidebar_label: 22：CKB 交易结构
 
 在撰写本文时，对应的 CKB 版本是 v0.25.0，在未来的版本中转账结构可能有所变动，届时会及时更新本文。
 
-![](transaction-overview.png)
+![](/img/rfcs/0022/transaction-overview.png)
 
 上图是关于转账结构的概览。有别与逐字逐句地解释各个名词，我将会介绍 CKB 转账能够提供的各种特殊结构，以及这些名词在其中的具体意思。
 
@@ -31,7 +31,7 @@ CKB 采用 UTXO 模型。一笔交易会销毁一部分在之前转账中创建�
 
 下图显示了在此层中会出现的专有名词。
 
-![](value-storage.png)
+![](/img/rfcs/0022/value-storage.png)
 
 此交易销毁了输入 `inputs` 中的 cells，同时在输出 `outputs` 中创建了新的 Cells。
 
@@ -45,7 +45,7 @@ CKB 主链将交易打包成块。我们可以在区块中利用编号是从零�
 
 交易哈希是独一无二的。既然 Cell 总是被交易创建出来，而每一个新的 Cell 在交易输出的数组中都有自己的位置，所以我们可以通过交易哈希以及输出索引去引用一个 Cell。`OutPoint` 结构是一种引用类型。交易在输入时会使用 `OutPoint` 来引用先前被创建的 cells，而非将它们嵌入交易。
 
-![](out-point.png)
+![](/img/rfcs/0022/out-point.png)
 
 Cell 将 CKB 代币存储在字段 `capacity` 中。一币交易不能够凭空铸造 capacity（也就是 CKB 代币），所以交易必需符合以下的规则：
 
@@ -68,11 +68,11 @@ Cell 将 CKB 代币存储在字段 `capacity` 中。一币交易不能够凭空�
 
 除了作为存储价值的 token，CKB Cell 还可以储存任意数据。
 
-![](cell-data.png)
+![](/img/rfcs/0022/cell-data.png)
 
 字段 `outputs_data` 是输出的并行数组。在 `outputs` 中第 i 个 Cell 的数据对应的是 `outputs_data` 中的第 i 项。
 
-![](outputs-data.png)
+![](/img/rfcs/0022/outputs-data.png)
 
 Cell 中的 `capacity` 不只代表 token 的数额，也代表能够存储数据的容量。这也是为什么把它叫做（capacity 容量）的原因，因为它也代表了 Cell 的存储容量。
 
@@ -98,17 +98,17 @@ Cell 中有两个字段的类型是 `Script`。CKB VM 会运行所有输入 cell
 
 脚本并没有直接包含代码。看下面的脚本结构。现在我们先忽略哈希类型的 `Type` 以及 `args` 字段。
 
-![](script.png)
+![](/img/rfcs/0022/script.png)
 
 当 CKB-VM 需要运行一个脚本时，它必须要先找到它的代码。字段 `code_hash` 和 `hash_type` 就是用来定位代码的。
 
 在 CKB 中，脚本代码会被编译成 RISC-V 二进制文件。这个二进制文件是以数据的形式存储在 Cell 中的。当 `hash_type` 是数据时，脚本会被定位在一个数据哈希和脚本的 `code_hash` 相同的 Cell 中。Cell 的数据哈希，正如其名，是从 Cell 的数据中算出来的（详见附录 A）。在交易中，查找的范围是有限制的，脚本只能从 `cell_deps` 中找到一个匹配的 Cell。
 
-![](cell-deps.png)
+![](/img/rfcs/0022/cell-deps.png)
 
 下图将解释 CKB 如何找到对应的脚本代码。
 
-![](code-locating.png)
+![](/img/rfcs/0022/code-locating.png)
 
 如果你想使用 CKB 中的脚本，那么应该遵循代码定位的规则：
 
@@ -126,7 +126,7 @@ Cell 中有两个字段的类型是 `Script`。CKB VM 会运行所有输入 cell
 
 每个 cell 都有一个锁脚本。当 cell 作为输入在一笔交易中被使用时，锁脚本必须执行。而当脚本只出现在输出中时，则不需要在 cell_deps 中显示相应的代码。一笔交易只有在所有输入的锁脚本都正常（执行并）退出的情况下才有效。因为输入的脚本需要运行，所有它可以作为锁来决定谁可以解开并销毁这个 cell，同时决定谁可以花费存储在这个 cell 中的 capacity（也就是 CKB 代币）。
 
-![](lock-script.png)
+![](/img/rfcs/0022/lock-script.png)
 
 以下是一个总是可以正常（执行并）退出的锁脚本的代码范例。如果使用这段代码作为锁脚本，那么任何人都可以销毁这个 cell。
 
@@ -145,13 +145,13 @@ int main(int argc, char *argv[]) {
 
 在 CKB 中，公钥指纹可以存储在脚本结构的 `args` 字段中，同时签名可以存储在交易的 `witnesses` 字段中。我使用「可以」是因为这只是一个推荐的方式，并被用在（系统）默认的 [secp256k1 锁脚本](https://github.com/nervosnetwork/ckb-system-scripts/blob/master/c/secp256k1_blake160_sighash_all.c)中。脚本代码可以读取交易的任何一部分，所以锁脚本可以选择不同的协定，例如，可以将公钥信息存储在 cell 数据中。当然，如果所有的锁脚本都遵循推荐的协定，它可以简化创建交易的程序，比如钱包。
 
-![](lock-script-cont.png)
+![](/img/rfcs/0022/lock-script-cont.png)
 
 让我们看一下脚本代码是如何被定位和载入的，以及代码如何访问输入、脚本参数（script args）和 witnesses。
 
 首先，请注意 CKB 并不会逐个运行所有输入的锁脚本。首先它会根据锁脚本将输入进行分组，相同的脚本只会运行一次。CKB 运行一个脚本会分成三个步骤：脚本分组（script grouping），代码定位（code locating）以及运行（running）。
 
-![](lock-script-grouping.png)
+![](/img/rfcs/0022/lock-script-grouping.png)
 
 上图展示了前两个步骤：
 
@@ -178,7 +178,7 @@ ckb_load_witness(addr, len, offset, 0, CKB_SOURCE_INPUT);
 
 记住当我们通过锁脚本将输入进行分组时，我们已经保存了输入的索引。这个信息用于为分组创建虚拟的 witness 和输入数组。这段代码可以通过一个特殊的数据源 `CKB_SOURCE_GROUP_INPUT`，利用虚拟数组中的索引去读取输入或 witness。读取 witness 时，通过 `CKB_SOURCE_GROUP_INPUT` 只读取拥有相同位置并具有特定输入的 witness。
 
-![](group-input.png)
+![](/img/rfcs/0022/group-input.png)
 
 所有读取与输入数据相关的 syscalls，都可以使用 `CKB_SOURCE_GROUP_INPUT` 以及虚拟输入数组中的索引，比如 `ckb_load_cell_*` 的 syscalls 系列。
 
@@ -203,14 +203,14 @@ ckb_load_witness(addr, len, offset, 0, CKB_SOURCE_INPUT);
 1. 没有类型脚本的 cells 会被忽略
 2. 脚本群组同时包含输入与输出
 
-![](type-script-grouping.png)
+![](/img/rfcs/0022/type-script-grouping.png)
 
 像 `CKB_SOURCE_GROUP_INPUT`，有一个特殊的数据来源 `CKB_SOURCE_GROUP_OUTPUT` 可以将索引用于脚本数组的虚拟输出数组。
 
 
 ### Part I 交易结构概述
 
-![](transaction-p1.png)
+![](/img/rfcs/0022/transaction-p1.png)
 
 
 ## Part II：扩展
@@ -219,7 +219,7 @@ ckb_load_witness(addr, len, offset, 0, CKB_SOURCE_INPUT);
 
 下图是在本部分中出现的新字段的总览（标注为黄色底）。
 
-![](transaction-p2.png)
+![](/img/rfcs/0022/transaction-p2.png)
 
 
 ### DepGroup
@@ -230,7 +230,7 @@ DepGroup 在 cell 数据中存储了一个 `OutPoint` 的序列化列表。每�
 
 `CellDep` 结构中有个叫 `dep_type` 的字段，可以用于区分直接提供代码的普通 cells，还在 `cell_deps` 中通过扩展其成员的 DepGroup。
 
-![](cell-dep-structure.png)
+![](/img/rfcs/0022/cell-dep-structure.png)
 
 DepGroup 会在定位和运行节点之前被扩展，只有被扩展的 `cell_deps` 才是可见的。
 
@@ -243,25 +243,23 @@ DepGroup 会在定位和运行节点之前被扩展，只有被扩展的 `cell_d
 * code cell 很小，这让我们可以在区块大小限制很低的时候就更新它。
 * data cell 可以被共享。例如，我们已经安装了另一个使用 ripemd160 的锁定脚本来验证公钥的哈希值。这个脚本就重用了 data cell。
 
-
 ### 可升级脚本
 
 在第一部分的锁定脚本中，我描述了一个脚本如何通过 Cell 的数据哈希来定位它的代码。一旦一个 Cell 被创建，那么相关联的脚本代码就不会被改变，因为要找到一个有相同的哈希的另一段代码是不可能的。
 
 脚本有另一个 `hash_type` 的选项，Type。
 
-![](script-p2.png)
+![](/img/rfcs/0022/script-p2.png)
 
 当脚本使用了 `hash_type` 的 Type，它会匹配相等于 `code_hash` 的类型脚本哈希的 Cell。类型脚本的哈希是从 Cell 的 type 字段中计算出来的（详见附录 A）。
 
-![](code-locating-via-type.png)
+![](/img/rfcs/0022/code-locating-via-type.png)
 
 现在，如果 Cell 用一个通过类型脚本哈希来定位代码的脚本，并通过创建一个具有相同类型脚本的新 Cell，那么我们就可以升级代码了。新的 Cell 已经有更新的脚本，在 `dep_cells` 中增加了新 Cell 的交易将会使用这个新的版本。
 
 然而，这只解决了一个问题。如果一个作恶者创建一个拥有同种类型脚本的 Cell，但使用伪造的代码作为数据，那么这还是不安全的。作恶者可以通过使用假的 Cell 作为 dep 来绕开脚本验证。下一章将描述解决第二个问题的脚本。
 
 因为被类型脚本哈希引用的代码是可以被改变的，所以你必须信任脚本作者使用的这种类型脚本。虽然使用哪个版本取决于哪一个 Cell 在 `dep_cells` 的交易中被添加。用户总是可以在签署交易之前检查代码。但是，如果脚本用于解锁 Cell，那么签名检查甚至是可以被略过的。
-
 
 ### Type ID
 
@@ -275,7 +273,7 @@ Type ID 就是这种类型的类型脚本。如其名所示，他确保了类型
 * Type ID 的代码一样有类型脚本。我们现在不会在意实际的内容，让我们假设类型脚本的哈希是 T1
 * Type ID 是一个 `hash_type` 是 Type，且 `code_hash` 是 T1 的类型脚本。
 
-![](type-id.png)
+![](/img/rfcs/0022/type-id.png)
 
 从 Part 1 的类型脚本中我们知道，类型脚本会先将输入与输出聚集。换句话说，如果一个类型脚本是 Type ID，那么在同个群组的输入与输出都有同样的 Type ID。
 
@@ -285,7 +283,7 @@ Type ID 的代码在验证的就是在任何代码中，至少都会有一组输
 * Type ID Deletion Group 只有一个输入
 * Type ID Transfer Group 有一个输入和一个输出
 
-![](type-id-group.png)
+![](/img/rfcs/0022/type-id-group.png)
 
 上图的交易中有三种交易 ID 群组
 
@@ -315,7 +313,6 @@ Type ID 的代码 Cell 使用了一个特殊的类型脚本哈希，也就是十
 0x00000000000000000000000000000000000000000000000000545950455f4944
 ```
 
-
 ### Header Deps
 
 Header Deps 可以让脚本来读取区块头。这个功能有一定的限制以确保交易被确定。
@@ -332,7 +329,7 @@ Header Deps 允许脚本去读取其哈希已经列在 `header_deps` 中的区�
 
 第二种载入区块头的方法有另一个好处是，脚本会知道 Cell 位于被载入的区块中。DAO 取出交易借此来获取存储容量的区块号。
 
-![](header-deps.png)
+![](/img/rfcs/0022/header-deps.png)
 
 loading header 的示例
 
@@ -351,13 +348,11 @@ load_header(..., 0, CKB_SOURCE_INPUT);
 load_header(..., 1, CKB_SOURCE_INPUT);
 ```
 
-
 ### 其他字段
 
 字段 since 可以避免交易在特定时间前被挖出。详见 [since RFC](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0017-tx-valid-since/0017-tx-valid-since.md)。
 
 字段 version 是预留在未来使用的。在当前版本中，它必须等于0。
-
 
 ### 特例
 
@@ -371,24 +366,23 @@ Cellbase 是特殊的，因为他的输出容量并不来自于输出。
 
 另一个特殊的交易是 DAO 的取款交易。它也有部分的输出容量并非来自于输入。这部分是在 DAO 中锁定 Cell 所获得的收益。CKB 会通过检查是否有使用 DAO 作为类型脚本的输入来识别 DAO 的取款交易。
 
-
 ### 附录A：计算多种哈希
 
 加密原语 — blake256
 
 CKB 使用 blake2b 作为默认的哈希演算法。我们用 blake256 来表示一个函数，用个人的「ckb-default-hash」来获取 blake2b 哈希的前 256 位。
 
-
 ### 交易哈希
 
-交易哈希是 blake256(tx_hash_digest(tx))，其中 `tx_hash_digest` 是将交易中的所有字段（不包括 witnesses）序列化为二进制的方法。序列化规范还没有进行最终的确定，现在，您可以通过 RPC ` _compute_transaction_hash` 获取交易哈希。
+交易哈希 `ckbhash(molecule_encode(tx_excluding_witness))` 中：
 
+* `molecule_encode` 使用二进制将结构进行序列化 [molecule](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0008-serialization/0008-serialization.md)。
+* `tx_excluding_witness` 是不包括 witness 字段的交易结构。查看在 [schema file](https://github.com/nervosnetwork/ckb/blob/a6733e6af5bb0da7e34fb99ddf98b03054fa9d4a/util/types/schemas/blockchain.mol#L55-L62) 中 `RawTransaction` 的定义。
 
 ### Cell 数据哈希
 
 cell 的数据哈希只是 blake256(data).
 
-
 ### 脚本哈希
 
-脚本哈希是 blake256(serialize(script))，serialize 将脚本结构转换成二进制块。序列化规范还没有进行最终的确定，现在你可以通过 RPC ` _compute_script_hash` 来获取脚本哈希。
+脚本哈希是 `ckbhash(molecule_encode(script))`，其中 `molecule_encode` 通过 molecule 将脚本结构转换成二进制文件。查看 [schema file](https://github.com/nervosnetwork/ckb/blob/a6733e6af5bb0da7e34fb99ddf98b03054fa9d4a/util/types/schemas/blockchain.mol#L28-L32) 中定义的 `Script`。

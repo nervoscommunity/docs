@@ -97,7 +97,7 @@ Bech32 字符串由 **人类可读部分**，**分隔符** 和 **数据部分** 
 
 人类可读部分的 "**ckb**" 意味着这是 CKB 主网，"**ckt**" 意味着这是测试网。分隔符总是 "1"。
 
-![](images/ckb-address.png)
+![](/img/rfcs/0021/ckb-address.png)
 
 
 

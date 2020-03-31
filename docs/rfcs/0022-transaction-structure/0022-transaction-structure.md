@@ -14,7 +14,7 @@ This RFC is about an essential data structure in CKB, the transaction. CKB is un
 
 The document contains two parts. The first one covers the core transaction features, and the second one introduces some extensions.
 
-![](transaction-overview.png)
+![](/img/rfcs/0022/transaction-overview.png)
 
 The diagram above is an overview of the transaction structure. Instead of explaining field by field, the following paragraphs introduce various features which the CKB transaction provides and how the fields play their roles in these features.
 
@@ -26,7 +26,7 @@ CKB adopts UTXO model. A transaction destroys some outputs created in previous t
 
 The following diagram shows the fields used in this layer.
 
-![](value-storage.png)
+![](/img/rfcs/0022/value-storage.png)
 
 The transaction destroys the cells in `inputs` and creates the cells in `outputs`.
 
@@ -40,7 +40,7 @@ We can compute the transaction hash from all transaction fields except `witnesse
 
 The transaction hash is considered unique. Since cell is always created by a transaction, and every new cell has its position in the transaction outputs array, we can refer to a cell by transaction hash and outputs index. The structure `OutPoint` is just such reference type. The transaction uses `OutPoint` in inputs to reference the previously created cells instead of embedding them.
 
-![](out-point.png)
+![](/img/rfcs/0022/out-point.png)
 
 The cell stores the CKB Token in the field `capacity`. A transaction cannot mint capacities from the air, so a transaction must meet the following rule:
 
@@ -62,11 +62,11 @@ If you are familiar with Bitcoin, you'll find out that the Value Storage layer i
 
 Instead of holding only the token value, CKB cell can store arbitrary data as well.
 
-![](cell-data.png)
+![](/img/rfcs/0022/cell-data.png)
 
 The field `outputs_data` is a parallel array of outputs. The data of the i-th cell in `outputs` is the i-th item in `outputs_data`.
 
-![](outputs-data.png)
+![](/img/rfcs/0022/outputs-data.png)
 
 The `capacity` in the cell is not only just the amount of the stored tokens, but it is also a limit on how many data the cell can store. That's where the name comes from, It is the storage capacity of the cell.
 
@@ -91,17 +91,17 @@ We differentiate the terms script and code.
 
 The script does not include the code directly. See the script structure below. Let's ignore the hash type `Type` and the field `args` now.
 
-![](script.png)
+![](/img/rfcs/0022/script.png)
 
 When a CKB VM needs to run a script, it must find its code first. The fields `code_hash` and `hash_type` are used to locate the code.
 
 In CKB, the script code is compiled into RISC-V binary. The binary is stored as the data in a cell. When `hash_type` is "Data",  the script locates a cell which data hash equals the script's `code_hash`. The cell data hash, as the name suggests, is computed from the cell data (see Appendix A). The scope is limited in the transaction, script can only find a matched cell from `cell_deps`.
 
-![](cell-deps.png)
+![](/img/rfcs/0022/cell-deps.png)
 
 The following diagram shows how CKB finds a matched script code.
 
-![](code-locating.png)
+![](/img/rfcs/0022/code-locating.png)
 
 If you want to use a script in CKB, follow the code locating rules:
 
@@ -119,7 +119,7 @@ The following two chapters will talk about how the script is used in a transacti
 
 Every cell has a lock script. The lock script must run when the cell is used as an input in a transaction. When the script only appears in the outputs, it is not required to reveal the corresponding code in `cell_deps`. A transaction is valid only when all the lock scripts in the inputs exit normally. Since the script runs on inputs, it acts as the lock to control who can unlock and destroy the cell, as well as spend the capacity stored in the cell.
 
-![](lock-script.png)
+![](/img/rfcs/0022/lock-script.png)
 
 Following is an example lock script code which always exits normally. Anyone can destroy the cell if it uses the code as the lock script.
 
@@ -138,13 +138,13 @@ The signature algorithm has two requirements:
 
 In CKB, the public key fingerprint can be stored in the `args` field in the script structure, and the signature can be stored in the `witnesses` fields in transaction. I use "can" because it is just a convention and the recommended way, and is used in the default [secp256k1 lock script](https://github.com/nervosnetwork/ckb-system-scripts/blob/master/c/secp256k1_blake160_sighash_all.c). The script code is able to read any part of a transaction, so the lock script can choose a different convention, for example, storing the public key information in the cell data. However, if all the lock scripts  follow the recommended convention, it can simplify the apps which create transactions, such as a wallet.
 
-![](lock-script-cont.png)
+![](/img/rfcs/0022/lock-script-cont.png)
 
 Now let's see how the script code is located and loaded, and how the code accesses inputs, script args, and witnesses.
 
 First, pay attention that, CKB does not run the lock script input by input. It first groups the inputs by lock script and runs the same script only once. CKB runs a script in 3 steps: script grouping, code locating and running.
 
-![](lock-script-grouping.png)
+![](/img/rfcs/0022/lock-script-grouping.png)
 
 The diagram above shows the first two steps.
 
@@ -169,7 +169,7 @@ The fifth argument is the data source. `CKB_SOURCE_INPUT` means reading from tra
 
 Remember that we have saved the indices of the input when grouping inputs by the lock script. This info is used to create the virtual witnesses and inputs array for the group. The code can read input or witness using the index in the virtual array via a special source `CKB_SOURCE_GROUP_INPUT`. Reading a witness using `CKB_SOURCE_GROUP_INPUT` just reads the witnesses which has the same position with the specified input.
 
-![](group-input.png)
+![](/img/rfcs/0022/group-input.png)
 
 All the syscalls that read data related to the input, can use `CKB_SOURCE_GROUP_INPUT` and the index in the virtual inputs array, such as `ckb_load_cell_*` syscalls family.
 
@@ -193,13 +193,13 @@ The steps to run type script is also similar to lock script. Except that
 1. Cells without a type script are ignored.
 2. The script group contains both inputs and outputs.
 
-![](type-script-grouping.png)
+![](/img/rfcs/0022/type-script-grouping.png)
 
 Like `CKB_SOURCE_GROUP_INPUT`, there's a special data source `CKB_SOURCE_GROUP_OUTPUT` to use the index into the virtual outputs array in the script group.
 
 ### Recap of The Transaction Structure in Part I
 
-![](transaction-p1.png)
+![](/img/rfcs/0022/transaction-p1.png)
 
 ## Part II: Extensions
 
@@ -207,7 +207,7 @@ In part I, I have introduced the core features which the transaction provides. T
 
 The diagram below is the overview of the new fields covered in this part.
 
-![](transaction-p2.png)
+![](/img/rfcs/0022/transaction-p2.png)
 
 ### Dep Group
 
@@ -217,7 +217,7 @@ Dep Group stores the serialized list of `OutPoint` in cell data. Each `OutPoint`
 
 The structure `CellDep` has a field `dep_type` to differentiate the normal cells which provide the code directly, and the dep groups which is expanded to its members inside `cell_deps`.
 
-![](cell-dep-structure.png)
+![](/img/rfcs/0022/cell-dep-structure.png)
 
 The dep group is expanded before locating and running code, in which only the expanded `cell_deps` are visible.
 
@@ -236,11 +236,11 @@ In the chapter Lock Script in Part I, I have described how a script locates its 
 
 Script has another option for `hash_type`, *Type*.
 
-![](script-p2.png)
+![](/img/rfcs/0022/script-p2.png)
 
 When the script uses the hash type Type, it matches the cell which type script hash equals the `code_hash`. The type script hash is computed from the cell `type` field (see Appendix A).
 
-![](code-locating-via-type.png)
+![](/img/rfcs/0022/code-locating-via-type.png)
 
 Now it is possible to upgrade code if the cell uses a script which locates code via type script hash by creating a new cell with the same type script. The new cell has the updated code. The transaction which adds the new cell in `dep_cells` will use the new version.
 
@@ -260,7 +260,7 @@ This feature involves several type scripts, so I have to use different terms to 
 - The Type ID code cell has a type script as well. We don't care the actual content for now, let's assume the type script hash is TI.
 - A Type ID is a type script which `hash_type` is "Type", and `code_hash` is TI.
 
-![](type-id.png)
+![](/img/rfcs/0022/type-id.png)
 
 In the chapter Type Script in Part I, we know that type script groups inputs and outputs first. In other words, if the type script is a type ID, the inputs and outputs in the group all have the same type ID.
 
@@ -270,7 +270,7 @@ The Type ID code verifies that, in any type id group, there is at most one input
 - Type ID Deletion Group has only one input.
 - Type ID Transfer Group has one input and one output.
 
-![](type-id-group.png)
+![](/img/rfcs/0022/type-id-group.png)
 
 The transaction in the diagram above has all the three kinds of type id group.
 
@@ -313,7 +313,7 @@ There are two ways to load a header in a script using syscall `ckb_load_header`:
 
 The second way to load a header has another benefit that the script knows the cell is in the loaded block. DAO withdraw transaction uses it to get the block number where the capacity was deposited.
 
-![](header-deps.png)
+![](/img/rfcs/0022/header-deps.png)
 
 Here are some examples of loading header In the diagram above.
 
@@ -362,7 +362,10 @@ CKB uses blake2b as the default hash algorithm. We use **ckbhash** to denote the
 
 ### Transaction Hash
 
-Transaction hash is `ckbhash(tx_hash_digest(tx))` where `tx_hash_digest` is a method to serialize all fields in a transaction excluding `witnesses` into binary. The serialization specification is not finalized yet, by now you can get the transaction hash via the RPC `_compute_transaction_hash`.
+Transaction hash is `ckbhash(molecule_encode(tx_excluding_witness))` where
+
+* `molecule_encode` serializes a structure into binary using [molecule](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0008-serialization/0008-serialization.md).
+* `tx_excluding_witness` is the transaction structure excluding the witness field.  See the definition `RawTransaction` in the [schema file](https://github.com/nervosnetwork/ckb/blob/a6733e6af5bb0da7e34fb99ddf98b03054fa9d4a/util/types/schemas/blockchain.mol#L55-L62).
 
 ### Cell Data Hash
 
@@ -370,5 +373,5 @@ Cell data hash is just `ckbhash(data)`.
 
 ### Script Hash
 
-Script hash is `ckbhash(serialize(script))` where `serialize` turns the script structure into a block of binary. The serialization specification is not finalized yet, by now you can get the script hash via the RPC `_compute_script_hash`.
+Script hash is `ckbhash(molecule_encode(script))` where `molecule_encode` turns the script structure into a block of binary via molecule. See the definition `Script` in the [schema file](https://github.com/nervosnetwork/ckb/blob/a6733e6af5bb0da7e34fb99ddf98b03054fa9d4a/util/types/schemas/blockchain.mol#L28-L32).
 
