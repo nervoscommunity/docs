@@ -13,20 +13,17 @@ CKB 采用的是 PoW（工作量证明机制）方案，其中共识机制是 [*
 * [RFCs 文档](../../rfcs/0010-eaglesong/0010-eaglesong.zh.md)
 * [Github 代码](https://github.com/nervosnetwork/eaglesong)
 
-
 ## CKB 挖矿现状
 
 CKB 挖矿始于 2019 年 5 月 18 日，CKB 测试网 Rylai 上线之后，在 CKB 主网 Lina 上线前，CKB 挖矿已经经历了从 **CPU** 挖矿到 **GPU** 挖矿的变革。
 
 在 CKB 主网上线之后，**FPGA** 矿机逐渐开始崭露头角，目前 CKB 网络的算力组成处于 **FPGA** 矿机与 **GPU** 矿机并存的时期，在今年三四月之后，CKB 挖矿将逐步转向 **ASIC** 矿机的时期。
 
-
 ## 挖矿难度调节目标
 
-简单地来说挖矿难度每隔一个 Epoch 就调整一次， 调节目标为：
+简单地来说挖矿难度每隔一个 Epoch 调整一次，一个 Epoch 约为 4 小时， 调节目标为：
 * 当前出块时间调节范围：8s ~ 48s
 * 目标叔块率：2.5%
-
 
 ## 常见问题
 
@@ -36,4 +33,4 @@ CKB 挖矿始于 2019 年 5 月 18 日，CKB 测试网 Rylai 上线之后，在 
 
 如果您是专业的矿机，那么非常欢迎您参与 CKB 挖矿：
 * 如果您选择 Solo 挖矿：https://docs.nervos.org/getting-started/mine
-* 如果您选择加入矿池：建议您参考下文 [矿池与矿机]
+* 如果您选择加入矿池：建议您参考下文 [矿池与矿机](../mine/pool-machine)

@@ -121,8 +121,8 @@ module.exports = {
     "Nervos DAO":[
       'qa/nervosdao/about-dao',
       'qa/nervosdao/revenue-of-dao',
-      'qa/nervosdao/rule-of-dao',
       'qa/nervosdao/deposit-in-dao',
+      'qa/nervosdao/rule-of-dao',
     ],
     "CKB 钱包":[
       'qa/wallet/about-neuron',
