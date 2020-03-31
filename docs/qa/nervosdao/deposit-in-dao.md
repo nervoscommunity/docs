@@ -31,6 +31,17 @@ sidebar_label: 如何将 CKB 存入 Nervos DAO
 * 双击对应的安装包，依次点击 **安装**，进入安装进度读条，点击 **完成** 即可。
 * 双击桌面上的 Neuron 图标，即可进入 Neuron 钱包。
 
+3. 数据同步：
+
+如果您是首次下载使用 Neuron，可能会面临数据同步较慢的问题。我们为您准备好的一份 CKB 的链数据：https://releases.nervos.org/ckb-data.zip ，块高度是 #1,156,900 。
+
+（海外用户可以使用地址：https://www.dropbox.com/s/5jusv76olh7ozw1/data.zip?dl=0 ）
+
+只要解压出 data 目录，放置到指定位置，就能大幅加速初次下载区块数据的速度。
+
+* Win PC: C:\Users(YOUR USER NAME)\AppData\Roaming\Neuron\chains\mainnet\
+* Mac: ~/Library/Application/Support/Neuron/chains/mainnet
+
 ### 创建和导入钱包
 
 1. 创建钱包
@@ -69,7 +80,7 @@ sidebar_label: 如何将 CKB 存入 Nervos DAO
 
 > 目前 Neuron 只提供电脑端钱包，暂不提供手机端钱包。
 >
-> 关于 Neuron 钱包的更多问题欢迎查看：[关于 Neuron]()
+> 关于 Neuron 钱包的更多问题欢迎查看：[关于 Neuron](../wallet/about-neuron)
 
 ### 将 CKB 存入 Nervos DAO
 
@@ -86,7 +97,7 @@ sidebar_label: 如何将 CKB 存入 Nervos DAO
 
 4. 等待交易打包完成，稍后在存款记录处，会显示刚刚存入的交易记录，并开始计算利息！
 
-> 关于 Nervos DAO 的收益情况和具体收益计算规则，您可以查看 [Nervos DAO 收益计算规则]()
+> 关于 Nervos DAO 的收益情况和具体收益计算规则，您可以查看 [Nervos DAO 的收益](../nervosdao/revenue-of-dao)
 
 
 ### 从 Nervos DAO 将 CKB 取出

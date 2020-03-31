@@ -18,6 +18,11 @@ Neuron：https://github.com/nervosnetwork/neuron
 
 请下载最新版本的 Neuron 钱包，并根据您的电脑系统选择正确的安装包
 
+* 国内用户，建议使用国内镜像进行下载：
+    * Windows：https://releases.nervos.org/Neuron-latest.exe 
+    * macOS：https://releases.nervos.org/Neuron-latest.dmg 
+    * Linxu：https://releases.nervos.org/Neuron-latest.AppImage 
+
 * Github 下载：https://github.com/nervosnetwork/neuron/releases/latest
 
 |系统|Arch|对应安装包后缀|
@@ -26,11 +31,6 @@ Neuron：https://github.com/nervosnetwork/neuron
 |macOS  |x64|.zip|
 |macOS  |x64|.dmg|
 |Linux  |x64|.AppImage|
-
-* Github 下载缓慢的，建议使用国内镜像进行下载：
-    * Windows：https://releases.nervos.org/Neuron-latest.exe 
-    * macOS：https://releases.nervos.org/Neuron-latest.dmg 
-    * Linxu：https://releases.nervos.org/Neuron-latest.AppImage 
 
 ### 安装和进入
 
@@ -66,12 +66,21 @@ Neuron：https://github.com/nervosnetwork/neuron
 
 ### 使用准备
 
-**区块同步、数据加载**
+#### 区块同步、数据加载
 
 * Neuron 是全节点钱包，内置运行 CKB 节点，因此每次使用 Neuron 钱包，都需要等待内置全节点运行同步至当前最高区块高度，Neuron 读取并运行完对应的历史数据。
 * 不同电脑配置所需时间不同，目前从零开始同步区块和读取历史数据，大约耗时 1-2 个小时。
 
-**链状态**
+#### 数据加载过慢
+
+我们为您准备好的一份 CKB 的链数据：https://releases.nervos.org/ckb-data.zip ，块高度是 #1,156,900 。（海外用户可以使用这个地址 https://www.dropbox.com/s/5jusv76olh7ozw1/data.zip?dl=0 ）
+
+只要解压出 data 目录，放置到指定位置，就能大幅加速初次下载区块数据的速度。
+
+* Win PC: C:\Users(YOUR USER NAME)\AppData\Roaming\Neuron\chains\mainnet\
+* Mac:~/Library/Application/Support/Neuron/chains/mainnet
+
+#### 链状态
 
 在**总览**页面，您可以看到当前钱包的名称、余额、最近收支等信息，在余额右边还会有一个**链状态**的按钮
 
@@ -82,7 +91,7 @@ Neuron：https://github.com/nervosnetwork/neuron
 * **Epoch**：当前已经同步到的 Epoch 高度
 * **难度**：当前已同步到的 Epoch 高度的挖矿难度
 
-**同步提示**
+#### 同步提示
 
 在 Neuron 钱包的左下角会显示当前链上数据在 Neuron 内的同步状态：
 
@@ -100,19 +109,19 @@ Neuron：https://github.com/nervosnetwork/neuron
 
 Neuron 钱包目前支持一对多、自定义交易手续费等转账功能。
 
-**一对一转账**
+#### 一对一转账
 
 输入对应的收款地址，输入您要转账的金额，点击发送即可
 
-**一对多转账**
+#### 一对多转账
 
 您可以输入完一笔转账后，点击右方的加号，再添加多笔转账。一笔交易内可以有多个输出，这可能会造成您需要额外多支出一点点的手续费，但实际影响应该是非常非常小的。
 
-**自定义交易手续费**
+#### 自定义交易手续费
 
 您可以点击下方**交易费高级设置**，进行自定义手续费，手续费单位为 shannons/kB（1 CKB = 10^8 shannon）。
 
-**添加备注**
+#### 添加备注
 
 您可以为这笔交易添加备注。
 
@@ -121,18 +130,18 @@ Neuron 钱包目前支持一对多、自定义交易手续费等转账功能。
 
 在这里您可以查看历史交易。
 
-**搜索**
+#### 搜索
 * 页面顶部提供搜索框，您可以使用交易哈希、地址、日期等进行搜索
 
-**历史交易**
+#### 历史交易
 * 标注有：交易时间，交易内容，交易状态和确认次数
 
-**单击-交易信息**
+#### 单击-交易信息
 * 交易类型：转账、Nervos DAO 等
 * 交易哈希
 * 备注功能
 
-**右击-交易信息**
+#### 右击-交易信息
 * 详情：会弹出一个关于该笔交易的详细信息的弹框，记录有：交易哈希，区块高度，时间，输入，输出等信息
 * 复制交易哈希
 * 在浏览器中查看
@@ -158,10 +167,9 @@ Neuron 是 HD 钱包，在钱包创建的时候，会在地址管理页面默认
 
 ### 设置
 
-**通用**
+#### 通用
 
 您可以在此检查更新、清空缓存
-
 
 
 ## 关于 Neuron 的问题
@@ -169,6 +177,15 @@ Neuron 是 HD 钱包，在钱包创建的时候，会在地址管理页面默认
 ### 为什么我会有这么多的地址？
 
 Neuorn 是个 HD 钱包（Hierarchical Deterministic Wallets），是在 BIP32 中提出的为了避免管理一堆私钥的麻烦提出的分层推导方案。一个系统可以从单一个 seed 产生一树状结构储存多组 keypairs （私钥和公钥）。好处是可以方便的备份、转移到其他相容装置（因为都只需要 seed），以及分层的权限控制等。所以这么多的找零地址和收款地址，其实都是从你最原先的私钥衍生出来的，你根本不需要去记他，只要把私钥和助记词保存好即可，多个地址一把私钥的特性，也确保了在使用上的安全性与便利性。
+
+### 首次使用，同步太慢了怎么办？
+
+我们为您准备好的一份 CKB 的链数据：https://releases.nervos.org/ckb-data.zip ，块高度是 #1,156,900 。（海外用户可以使用这个地址 https://www.dropbox.com/s/5jusv76olh7ozw1/data.zip?dl=0 ）
+
+只要解压出 data 目录，放置到指定位置，就能大幅加速初次下载区块数据的速度。
+
+* Win PC: C:\Users(YOUR USER NAME)\AppData\Roaming\Neuron\chains\mainnet\
+* Mac:~/Library/Application/Support/Neuron/chains/mainnet
 
 ### 为什么最小转账金额为 61 CKB？
 
