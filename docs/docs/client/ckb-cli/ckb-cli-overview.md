@@ -86,6 +86,17 @@ SUBCOMMANDS:
     help        Prints this message or the help of the given subcommand(s)
 ```
 
+### 设定 RPC URL
+
+rpc url 默认为 `127.0.0.1:8114`，可以修改为：
+
+`export API_URL=http://<公共ip>:8114`
+
+或改为默认
+`export API_URL=http://127.0.0.1:8114`
+
+在执行一些命令时，会从设定的 rpc url 中获得数据。
+
 ### TUI
 
 在运行 ckb 节点后，查看同步状态
