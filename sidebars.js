@@ -41,8 +41,8 @@ module.exports = {
       },
     ],
     "HTTP RPC":[
-    'docs/httprpc/interface-specification',
-    'docs/httprpc/rpc-specification'
+    'docs/HTTPRPC/interface-specification',
+    'docs/HTTPRPC/rpc-specification'
     ],
     SDKs:[
     'docs/sdk/sdk-overview',
