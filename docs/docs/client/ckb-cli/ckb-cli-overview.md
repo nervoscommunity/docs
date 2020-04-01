@@ -1,7 +1,7 @@
 ---
-id: client-ckb-cli
-title: ckb-cli
-sidebar_label: ckb-cli
+id: ckb-cli-overview
+title: ckb-cli 命令行
+sidebar_label: ckb-cli 概述
 ---
 
 ckb-cli 是一个命令行工具，用于调试开发中的 CKB，以方便用户与 CKB 进行交互。ckb-cli 包括以下功能:
@@ -31,27 +31,41 @@ ckb-cli --help
 ckb-cli rpc --help
 ```
 
-可用命令：
-
 ```
+USAGE:
+    ckb-cli [FLAGS] [OPTIONS] [SUBCOMMAND]
+
+FLAGS:
+        --no-color         Do not highlight(color) output json
+        --debug            Display request parameters
+        --wait-for-sync    Ensure the index-store synchronizes completely before command being executed
+    -h, --help             Prints help information
+    -V, --version          Prints version information
+
+OPTIONS:
+        --url <url>                        RPC API server url
+        --output-format <output-format>    Select output format [default: yaml]  [possible values: yaml,
+                                           json]
+
 SUBCOMMANDS:
-    config     Config environment
-    info       Display global variables
-    exit       Exit the interactive interface [aliases: quit]
-    rpc        Invoke RPC call to node
-    account    Manage accounts
-    mock-tx    Handle mock transactions (verify/send)
-    util       Utilities
-    wallet     Transfer / query balance (with local index) / key utils
-    dao        Deposit / prepare / withdraw / query NervosDAO balance (with local index) / key utils
-    help       Prints this message or the help of the given subcommand(s)
+    rpc         Invoke RPC call to node
+    account     Manage accounts
+    mock-tx     Handle mock transactions (verify/send)
+    tx          Handle common sighash/multisig transaction
+    server      Start advanced API server
+    util        Utilities
+    molecule    Molecule encode/decode utilities
+    wallet      Transfer / query balance (with local index) / key utils
+    dao         Deposit / prepare / withdraw / query NervosDAO balance (with local index) / key utils
+    tui         Enter TUI mode
+    help        Prints this message or the help of the given subcommand(s)
 ```
 
 ### 版本
 
 ```shell
 ./ckb-cli --version
-# => ckb-cli 0.27.1 (9d0bf90 2020-01-31)
+=> ckb-cli 0.30.0 (2a7ed95 2020-03-20)
 ```
 
 ### Tui
@@ -59,11 +73,12 @@ SUBCOMMANDS:
 运行 ckb 节点后，查看同步状态
 
 ```shell
-./ckb-cli tui
+# 需在链启动后使用
+ckb-cli tui
 ```
 
 - `Chain`： 运行的 mainnet、testnet、dev
-- `Epoch`：调整周期
+- `Epoch`：周期
 - `Difficulty`：难度
 - `Tip Block`：最高块的高度
 

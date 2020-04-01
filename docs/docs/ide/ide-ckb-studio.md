@@ -1,7 +1,7 @@
 ---
-id: ckb-studio
+id: ide-ckb-studio
 title: CKB Studio 介绍及使用教程
-sidebar_label: IDE - CKB Studio 介绍及使用
+sidebar_label: CKB Studio 介绍及使用
 ---
 
 ## 关于 CKB Studio

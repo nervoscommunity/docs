@@ -7,41 +7,73 @@
 
 module.exports = {
   docsSidebar: {
-    认识CKB: [
+    "初识 Nervos": [
+      'docs/welcome/welcome-introduction',
+      'docs/welcome/welcome-structure',
+      'docs/welcome/welcome-materials',
+    ],
+    "CKB 客户端":[
+      'docs/client/client-overview',
+      'docs/client/client-install',
       {
         type: 'category',
-        label: '开发入门',
+        label: '快速开始',
         items: [
-          'docs/start-build-dev',
-          'docs/start-deploy-script',
-          'docs/ckb-cli',
-          'docs/testnet',
+          'docs/client/start/start-mainnet',
+          'docs/client/start/start-testnet',
+          'docs/client/start/start-dev',
+        ]
+      },
+      {
+        type: 'category',
+        label: 'ckb-cli 命令行',
+        items: [
+          'docs/client/ckb-cli/ckb-cli-overview',
+          'docs/client/ckb-cli/ckb-cli-account',
+          'docs/client/ckb-cli/ckb-cli-rpc',
+          'docs/client/ckb-cli/ckb-cli-wallet',
+          'docs/client/ckb-cli/ckb-cli-dao',
+          'docs/client/ckb-cli/ckb-cli-util',
+          'docs/client/ckb-cli/ckb-cli-molecule',
+          'docs/client/ckb-cli/ckb-cli-tx',
+          'docs/client/ckb-cli/ckb-cli-mock-tx',
         ]
       },
     ],
-    CKB客户端:[
-      'docs/Clients/client-overview',
-      'docs/Clients/client-ckb',
-      'docs/Clients/client-ckb-cli',
-      'docs/Clients/client-neuron',
+    "HTTP RPC":[
+    'docs/httprpc/interface-specification',
+    'docs/httprpc/rpc-specification'
     ],
-    HTTPRPC:[
-      'docs/HTTPRPC/interface-specification',
-      'docs/HTTPRPC/rpc-specification'
+    SDKs:[
+    'docs/sdk/sdk-overview',
+    'docs/sdk/sdk-javascript',
+    'docs/sdk/sdk-ruby',
+    'docs/sdk/sdk-java',
     ],
-    智能合约指南:[
+    智能合约开发指南:[
+    'docs/script/script-overview',
+    ],
+    "DApp 开发指南":[
+    'docs/dapp/dapp-overview',
+    ],
+    IDE:[
+    'docs/ide/ide-ckb-studio',
+    ],
+    交易所对接指南:[
+    'docs/exchange/exchange-overview',
+    'docs/exchange/exchange-ckb-address',
+    {
+      type: 'category',
+      label: '使用其他链的地址体系',
+      items: [
+        'docs/exchange/exchange-eth-address',
+        'docs/exchange/exchange-btc-address',
+      ]
+    },
+    ],
+    常见问题:[
 
     ],
-    Dapp开发指南:[],
-    SDKs:[
-      'docs/SDKs/sdk-overview',
-      'docs/SDKs/sdk-javascript',
-      'docs/SDKs/sdk-ruby',
-      'docs/SDKs/sdk-java',
-    ],
-    智能合约IDE:[],
-    生态工具: ['docs/tools/ckb-studio'],
-    常见问题:[]
   },
 
   rfcsSidebar:{

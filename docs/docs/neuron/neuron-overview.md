@@ -1,7 +1,7 @@
 ---
-id: client-neuron
-title: Neuron
-sidebar_label: Neuron
+id: neuron-overview
+title: Neuron 概述
+sidebar_label: Neuron 概述
 ---
 
 To manage your assets on Nervos CKB, you will need a Neuron Key Manager application. This tutorial covers how to install and use the basic features of Neuron Key Manager.
@@ -11,7 +11,7 @@ To manage your assets on Nervos CKB, you will need a Neuron Key Manager applicat
 1. Go to [Neuron Key Manager](https://github.com/nervosnetwork/neuron-key-manager/releases) download page
 
 2. Choose the correct file based on your device operating system
-   
+
 <img src="../assets/neuron-key-manager/download.png" width = "600"/>
 
 3. [Optional] Check the downloaded file's integrity according to the SHA256 checksum published on the download page.
@@ -69,7 +69,7 @@ chmod a+x Neuron-Key-Manager-linux-x86_64.AppImage
 
 There are 3 ways to generate a wallet:
 - Start from scratch
-- Recover wallet 
+- Recover wallet
 - Import from keystore file
 
 ### 1. Start from scratch
@@ -96,11 +96,11 @@ Input wallet seed (mnemonic) phrase from step 2.
 
 The password is used for security-related actions, eg:
 - backup wallet
-- delete wallet 
+- delete wallet
 
 <img src="../assets/neuron-key-manager/name-password.png" width = "800"/>
 
-#### Step 5: Address generated 
+#### Step 5: Address generated
 
 <img src="../assets/neuron-key-manager/address.png" width = "800"/>
 
@@ -118,7 +118,7 @@ The Key Manager application only supports one address at present. To generate mo
 
 > **Double confirm that you have backup your seed (mnemonic) phrase and keystore files before delete the wallet from Key Manager.**
 
-### 2. Recover wallet 
+### 2. Recover wallet
 
 #### Step 1: Click "Import Wallet Seed" tab
 
