@@ -56,6 +56,8 @@ sidebar_label: RPC 接口
 
 ## Chain
 
+---
+
 ### `get_tip_block_number`
 
 Returns the number of blocks in the longest blockchain.
@@ -81,6 +83,8 @@ http://localhost:8114
     "result": "0x400"
 }
 ```
+
+---
 
 ### `get_tip_header`
 
@@ -121,6 +125,8 @@ http://localhost:8114
 }
 ```
 
+---
+
 ### `get_current_epoch`
 
 Returns the information about the current epoch.
@@ -152,7 +158,7 @@ http://localhost:8114
 }
 ```
 
-### `get_epoch_by_number`
+---get_epoch_by_number`
 
 Return the information corresponding the given epoch number.
 
@@ -189,6 +195,8 @@ http://localhost:8114
 }
 ```
 
+---
+
 ### `get_block_hash`
 
 Returns the hash of a block in the best-block-chain by block number; block of No.0 is the genesis block.
@@ -220,6 +228,8 @@ http://localhost:8114
     "result": "0xa5f5c85987a15de25661e5a214f2c1449cd803f071acc7999820f25246471f40"
 }
 ```
+
+---
 
 ### `get_block`
 
@@ -304,6 +314,8 @@ http://localhost:8114
 }
 ```
 
+---
+
 ### `get_header`
 
 Returns the information about a block header by hash.
@@ -346,6 +358,8 @@ http://localhost:8114
 }
 ```
 
+---
+
 ### `get_header_by_number`
 
 Returns the information about a block header by block number.
@@ -387,6 +401,8 @@ http://localhost:8114
     }
 }
 ```
+
+---
 
 ### `get_cells_by_lock_hash`
 
@@ -482,6 +498,8 @@ http://localhost:8114
 }
 ```
 
+---
+
 ### `get_live_cell`
 
 Returns the information about a cell by out_point if it is live. If second with_data argument set to true, will return cell data and data_hash if it is live
@@ -535,6 +553,8 @@ http://localhost:8114
     }
 }
 ```
+
+---
 
 ### `get_transaction`
 
@@ -613,6 +633,8 @@ http://localhost:8114
 }
 ```
 
+---
+
 ### `get_cellbase_output_capacity_details`
 
 Returns each component of the created CKB in this block's cellbase, which is issued to a block N - 1 - ProposalWindow.farthest, where this block's height is N.
@@ -650,6 +672,8 @@ http://localhost:8114
     }
 }
 ```
+
+---
 
 ### `get_block_economic_state`
 
@@ -705,6 +729,8 @@ http://localhost:8114
     }
 }
 ```
+
+---
 
 ### `get_block_by_number`
 
@@ -864,6 +890,8 @@ http://localhost:8114
 }
 ```
 
+---
+
 ### `_compute_transaction_hash`
 
 Return the transaction hash
@@ -942,6 +970,8 @@ http://localhost:8114
 }
 ```
 
+---
+
 ### `calculate_dao_maximum_withdraw`
 
 Calculate the maximum withdraw one can get, given a referenced DAO cell, and a withdraw block hash
@@ -979,6 +1009,8 @@ http://localhost:8114
 }
 ```
 
+---
+
 ### `estimate_fee_rate`
 
 Estimate a fee rate (capacity/KB) for a transaction that to be committed in expect blocks.
@@ -1013,6 +1045,8 @@ http://localhost:8114
     }
 }
 ```
+
+---
 
 ### `_compute_script_hash`
 
@@ -1094,6 +1128,8 @@ http://localhost:8114
 }
 ```
 
+---
+
 ### `get_lock_hash_index_states`
 
 Get lock hash index states
@@ -1126,6 +1162,8 @@ http://localhost:8114
     ]
 }
 ```
+
+---
 
 ### `get_live_cells_by_lock_hash`
 
@@ -1423,6 +1461,8 @@ http://localhost:8114
 }
 ```
 
+---
+
 ### `get_transactions_by_lock_hash`
 
 Returns the transactions collection by the hash of lock script. Returns empty array when the `lock_hash` has not been indexed yet.
@@ -1573,6 +1613,8 @@ http://localhost:8114
 }
 ```
 
+---
+
 ### `get_capacity_by_lock_hash`
 
 Returns the total capacity by the hash of lock script.
@@ -1613,6 +1655,8 @@ http://localhost:8114
     }
 }
 ```
+
+---
 
 ### `deindex_lock_hash`
 
@@ -1741,6 +1785,8 @@ http://localhost:8114
 }
 ```
 
+---
+
 ### `submit_block`
 
 Submit new block to network
@@ -1867,6 +1913,8 @@ http://localhost:8114
 }
 ```
 
+---
+
 ### `get_peers`
 
 Returns the connected peers information.
@@ -1922,6 +1970,8 @@ http://localhost:8114
 }
 ```
 
+---
+
 ### `get_banned_addresses`
 
 Returns all banned IPs/Subnets.
@@ -1955,6 +2005,8 @@ http://localhost:8114
     ]
 }
 ```
+
+---
 
 ### `set_ban`
 
@@ -2070,6 +2122,8 @@ http://localhost:8114
 }
 ```
 
+---
+
 ### `tx_pool_info`
 
 Return the transaction pool information
@@ -2148,6 +2202,8 @@ http://localhost:8114
 }
 ```
 
+---
+
 ### `get_peers_state`
 
 Deprecating in 0.12.0: Return state info of peers
@@ -2217,6 +2273,8 @@ http://localhost:8114
     "result": "0x2a"
 }
 ```
+
+---
 
 ### `unsubscribe`
 
