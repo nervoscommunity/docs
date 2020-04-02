@@ -14,14 +14,16 @@ module.exports = {
     ],
     "CKB 客户端":[
       'docs/client/client-overview',
-      'docs/client/client-install',
+      // 'docs/client/client-install',
       {
         type: 'category',
         label: '快速开始',
         items: [
+          'docs/client/start/download-client',
           'docs/client/start/start-mainnet',
           'docs/client/start/start-testnet',
           'docs/client/start/start-dev',
+          'docs/client/start/connect-client',
         ]
       },
       {
@@ -43,6 +45,9 @@ module.exports = {
     "HTTP RPC":[
     'docs/HTTPRPC/interface-specification',
     'docs/HTTPRPC/rpc-specification'
+    ],
+    "CKB Explorer":[
+      'docs/explorer/explorer-overview',
     ],
     SDKs:[
     'docs/sdk/sdk-overview',
