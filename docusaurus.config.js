@@ -14,7 +14,6 @@ module.exports = {
         src: 'img/ditto.png',
       },
       links: [
-        {to: 'docs/docs/welcome/welcome-introduction', label: '文档', position: 'left'},
         {to: 'blog', label: '博客', position: 'left'},
         {
           href: 'https://community.ckb.dev',
@@ -38,7 +37,7 @@ module.exports = {
           items: [
             {
               label: '开发文档',
-              to: 'docs/docs/start-build-dev',
+              to: '',
             },
             {
               label: '博客',
