@@ -26,6 +26,7 @@ https://github.com/nervosnetwork/ckb-cli
 
 ```shell
 ./ckb-cli --version
+
 => ckb-cli 0.30.0 (2a7ed95 2020-03-20)
 ```
 
@@ -100,10 +101,8 @@ ckb-cli tui
 - `Difficulty`：难度
 - `Tip Block`：当前最高区块
 
-![tui](/img/docs/tui.png)
+![](/img/docs/tui.png)
 
 ---
-
-参考：https://docs.nervos.org/dev-guide/ckb-cli.html
 
 命令使用：https://github.com/nervosnetwork/ckb-cli/wiki/Sub-Commands

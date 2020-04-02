@@ -12,10 +12,10 @@ sidebar_label: 19：Nervos CKB 的数据结构
 
 本文档描述了 CKB 中使用的所有基本数据结构。
 
-* [Cell](#Cell)
-* [Script](#Script)
-* [Transaction](#Transaction)
-* [Block](#Block)
+* [Cell](#cell)
+* [Script](#script)
+* [Transaction](#transaction)
+* [Block](#block)
 
 ## Cell
 
@@ -39,8 +39,8 @@ sidebar_label: 19：Nervos CKB 的数据结构
 | 名称       | 类型        | 描述                                                  |
 | :--------- | :--------- | :----------------------------------------------------------- |
 | `capacity` | uint64     | **定义 cell 的容量大小 (用 shannons 表示)。** 当一个新的 Cell （通过转账） 生成时, 其中一条验证规则是 `capacity_in_bytes >= len(capacity) + len(data) + len(type) + len(lock)`. 这个值也代表了 CKB 作为 coin 的余额，就像比特币的 CTxOut 中的`nValue` 字段一样。(例如：Alice 拥有 100 个 CKB，这意味着她可以解锁一组共有数量为 100 个 `bytes` （即 10_000_000_000 个 `shannons`）的 Cells。) 实际返回值为十六进制字符串格式。|
-| `type`     | `Script`   | **定义 cell 类型的 Script。** 它限制了新 cells 的 `data` 字段是如何从旧 cells 转换过来的。`type` 需要具有 `Script` 的数据结构。**这个字段是可选的。** |
-| `lock`     | `Script`   | **定义 cell 所有权的 Script。** 就像是比特币 CTxOut 中的 `scriptPubKey` 字段一样。任何能够提供解锁参数使得脚本成功执行的人，都可以使用该 cell 作为转账的 input（即拥有该 cell 的所有权）。|
+| `type`     | `Script`   | **定义 cell 类型的脚本。** 它限制了新 cells 的 `data` 字段是如何从旧 cells 转换过来的。`type` 需要具有 `Script` 的数据结构。**这个字段是可选的。** |
+| `lock`     | `Script`   | **定义 cell 所有权的脚本。** 就像是比特币 CTxOut 中的 `scriptPubKey` 字段一样。任何能够提供解锁参数使得脚本成功执行的人，都可以使用该 cell 作为转账的 input（即拥有该 cell 的所有权）。|
 
 
 关于 Cell 的更多信息可以在 [白皮书](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0002-ckb/0002-ckb.md#42-cell) 中找到。
@@ -68,7 +68,6 @@ sidebar_label: 19：Nervos CKB 的数据结构
 | `code_hash`   | H256(hash)                           | **定义为包含 CKB 脚本的具有 ELF 格式的 RISC-V 二进制文件的哈希值。** 出于空间效率的考虑，实际脚本会作为 dep cell 附到当前转账中。根据 `hash_type` 的值，此处指定的哈希应该匹配 dep cell 中 cell data 部分的哈希或者是 dep cell 中 type script 的哈希。当它在转账验证中被指定时，实际的二进制文件会被加载到 CKB-VM 中。 |
 | `args`        | [Bytes]                              | **定义为作为脚本输入的参数数组。** 这里的参数将作为脚本的输入参数导入到 CKB-VM 中。注意，对于锁脚本，相应的 CellInput 将有另一个 agrs 字段附加到这个数组中，以形成完整的输入参数列表。 |
 | `hash_type`   | String, 可以是 `type` 或者 `data`    | **定义为查找 dep cells 时对代码哈希的说明。** 如果是 `data`，`code_hash` 需要匹配 dep cell 中 data 部分经过 blake2b 得到的哈希；如果是 `type`，`code_hash` 需要需要匹配 dep cell 中 type script 的哈希。 |
-
 
 当一个脚本被验证时，CKB 链会在 RISC-V 虚拟机内运行它，`args` 必须通过特殊的 CKB syscalls 进行调用加载。CKB 中不使用 UNIX 标准中的 `argc`/`argv` 方法。想要了解更多关于 CKB 虚拟机的信息，请参阅 [CKB VM RFC](../0003-ckb-vm/0003-ckb-vm.md)。
 

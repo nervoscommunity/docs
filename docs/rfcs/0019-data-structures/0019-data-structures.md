@@ -12,10 +12,10 @@ sidebar_label: 19：Data Structures of Nervos CKB
 
 This documents explains all the basic data structures used in CKB.
 
-* [Cell](#Cell)
-* [Script](#Script)
-* [Transaction](#Transaction)
-* [Block](#Block)
+* [Cell](#cell)
+* [Script](#script)
+* [Transaction](#transaction)
+* [Block](#block)
 
 ## Cell
 

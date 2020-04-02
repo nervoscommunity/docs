@@ -16,10 +16,10 @@ RPC 接口在升级的版本之间是完全可兼容的，例如，对于 0.25.0
 > `Aggron` 测试网第一个节点和主网第一个节点的 10334 端口支持  `HTTPS` 。
 
 - `Aggron` 测试网节点
-  - [http://baidu.com](http://polaris1.ont.io)
+  - [http://baidu.com]
 
 - 主网节点
-  - [http://baidu.com](http://polaris1.ont.io)
+  - [http://baidu.com]
 
 如果你希望基于 `Aggron` 测试网进行开发，你可以在 [这里](https://faucet.nervos.org/) 申请测试所需的 `CKB`。
 
@@ -27,4 +27,4 @@ RPC 接口在升级的版本之间是完全可兼容的，例如，对于 0.25.0
 
 根据开发者需要，我们也提供了搭建节点的方法。
 
-[节点部署](https://dev-docs.ont.io/#/docs-cn/ontology-cli/09-deploy-node)
+[节点部署]
