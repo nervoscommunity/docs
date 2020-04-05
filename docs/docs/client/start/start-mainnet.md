@@ -7,25 +7,20 @@ sidebar_label: 运行 CKB 主网
 
 运行节点需要使用命令行工具。如果您以前从未使用过命令行，则可以参考下一章节如何使用命令行工具。尽管乍一看似乎很复杂，但它非常简单，您应该能够按照以下特定说明轻松运行CKB节点。
 
-
-Step 2:  Unzip / extract the downloaded file to an easily accessible folder. 
-For Windows we recommend `C:\ckb` 
-On Mac we recommend `~/Documents`
-
-Step 3: Open up Terminal (Mac) or command line (Windows).
+**Open up Terminal (Mac) or command line (Windows).**
 
 * On Mac:
 
-    * Either 1) open your Applications folder, then open Utilities and double-click on Terminal, or 2) press `Command - Spacebar` or `Control -Spacebar` to launch Spotlight and type "Terminal," then double-click the search result and the following steps are performed on Terminal.
+    * 要么 1）打开你的 "应用程序 "文件夹，然后打开 "实用程序"，双击 "终端"；要么2）按 `Command - Spacebar` or `Control -Spacebar` 启动Spotlight，输入 `Terminal`，然后双击搜索结果，在终端上执行以下步骤。
 
 * On Windows:
 
-    * Please note: if you are familiar with command line operation on Windows, you can skip this step and open the `cmd` or `Power Shell` terminal instead.
-    * Download Git for windows from [Git-Downloads](https://git-scm.com/downloads), double-click to install it and open Git Bash in start menu. The following steps will be performed in Git Bash.
+    * 请注意：如果你熟悉Windows上的命令行操作，你可以跳过这一步，打开`cmd`或`Power Shell`终端。
+    * 下载Git for windows [Git-Downloads](https://git-scm.com/downloads), 双击安装，在开始菜单中打开Git Bash。下面的步骤将在Git Bash中进行。
 
-Step 4：Copy and paste the commands below into the Terminal (Mac) / Command Line (Windows):
+**复制并粘贴以下命令到终端(Mac)/命令行(Windows):**
 
-* Please note: the directory and folder name on your computer must match the commands below, if not, please modify the command script correspondingly. 
+* 请注意：电脑上的目录和文件夹名称必须与下面的命令相匹配，如果不匹配，请修改相应的命令脚本。
 
 * Mac
 
@@ -55,9 +50,9 @@ ckb-cli 0.25.2 (6ca7bbb 2019-11-17)
 ```
 </details>
 
-Step 5: To run the CKB node, copy and paste the commands below into the Terminal (Mac) / Command Line (Windows):
+要运行CKB节点，请复制并粘贴以下命令到终端(Mac)/命令行(Windows)中:
 
-* Initialize the node (run only once)
+* 初始化节点(只运行一次)
 
 ```
 ./ckb init --chain mainnet
