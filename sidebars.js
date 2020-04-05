@@ -11,6 +11,7 @@ module.exports = {
       'docs/welcome/welcome-introduction',
       'docs/welcome/welcome-structure',
       'docs/welcome/welcome-materials',
+      'docs/welcome/welcome-repositories',
     ],
     "CKB 客户端":[
       'docs/client/client-overview',

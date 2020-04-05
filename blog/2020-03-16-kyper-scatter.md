@@ -15,13 +15,13 @@ tags: [Keyper, Scatter, ququzone, DApp]
 
 ## Keyper
 
-[Keyper](https://github.com/ququzone/keyper) 是 Nervos 基金会提出的钱包管理 LockScript 的规范，由于 CKB 主链灵活的架构设计，等主链生态繁荣起来之后会有种类繁多额 LockScript 来为用户管理 CKB 的归属权，但是各种钱包要支持这些丰富多彩的 LockScript 将会是一项比较有挑战的工作，基于上述问题，基金会提出了 Keyper 规范，为钱包和 LockScript 之间提出了规范定义，统一钱包和 LockScript 的交互模式，便于钱包快速的支持各种有趣的 LockScript。
+[Keyper](https://github.com/ququzone/keyper) 是 Nervos 基金会提出的钱包管理 `lock script` 的规范，由于 CKB 主链灵活的架构设计，等主链生态繁荣起来之后会有种类繁多额 `lock script` 来为用户管理 CKB 的归属权，但是各种钱包要支持这些丰富多彩的 `lock script` 将会是一项比较有挑战的工作，基于上述问题，基金会提出了 Keyper 规范，为钱包和 `lock script` 之间提出了规范定义，统一钱包和 `lock script` 的交互模式，便于钱包快速的支持各种有趣的 `lock script`。
 
-目前 [Keyper](https://github.com/ququzone/keyper) 已经完成了第一版的设计，实现语言是 [TypeScript](https://www.typescriptlang.org/)，但是 Keyper 的设计初衷是一个规范定义，不同的钱包也可以基于 Keyper 的规范实现自定义的 Keyper 实现。目前已经实现的 Keyper 包含两个子项目：[**specs**](https://github.com/ququzone/keyper/tree/master/packages/specs) 和 [**contianer**](https://github.com/ququzone/keyper/tree/master/packages/container)。**specs** 是 LockScript 规范定义以及工具类支持，**container** 是钱包侧如何支持 LockScript 的流程。
+目前 [Keyper](https://github.com/ququzone/keyper) 已经完成了第一版的设计，实现语言是 [TypeScript](https://www.typescriptlang.org/)，但是 Keyper 的设计初衷是一个规范定义，不同的钱包也可以基于 Keyper 的规范实现自定义的 Keyper 实现。目前已经实现的 Keyper 包含两个子项目：[**specs**](https://github.com/ququzone/keyper/tree/master/packages/specs) 和 [**contianer**](https://github.com/ququzone/keyper/tree/master/packages/container)。**specs** 是 `lock script` 规范定义以及工具类支持，**container** 是钱包侧如何支持 `lock script` 的流程。
 
 ### Keyper specs
 
-[Keyper specs](https://github.com/ququzone/keyper/tree/master/packages/specs) 中最主要的接口定义是 LockScript，该接口定义了实现一个自定义的 LockScript 需要支持的方法。
+[Keyper specs](https://github.com/ququzone/keyper/tree/master/packages/specs) 中最主要的接口定义是 `lock script`，该接口定义了实现一个自定义的 `lock script` 需要支持的方法。
 
 ```js
 interface LockScript {
@@ -39,7 +39,7 @@ interface LockScript {
 
 ### Keyper container
 
-[Keyper contianer](https://github.com/ququzone/keyper/tree/master/packages/container) 是自定义 LockScript 的装载容器，主要是安装在钱包侧。并且内置了 [Secp256k1 LockScript](https://github.com/ququzone/keyper/blob/master/packages/container/src/locks/secp256k1/index.ts) 的实现。
+[Keyper contianer](https://github.com/ququzone/keyper/tree/master/packages/container) 是自定义 `lock script` 的装载容器，主要是安装在钱包侧。并且内置了 [Secp256k1 LockScript](https://github.com/ququzone/keyper/blob/master/packages/container/src/locks/secp256k1/index.ts) 的实现。
 
 上述两个子项目均已发不到 npm 中，可以通过下述命令安装：
 

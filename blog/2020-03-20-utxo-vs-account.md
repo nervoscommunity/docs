@@ -6,7 +6,7 @@ author: Xuejie Xiao
 author_title: Nervos Core Team
 author_url: https://github.com/xxuejie
 author_image_url: https://avatars3.githubusercontent.com/u/340446?s=400&v=4
-tags: [Script_Programming, xuejie, UTXO, account]
+tags: [xuejie, UTXO, account]
 ---
 
 在区块链世界中，人们普遍认为，在可用性方面，帐户模型比 UTXO 模型更有优势，我一直在努力弥合[区块链](https://github.com/nervosnetwork/ckb)中的 UTXO 模型和帐户模型之间的差异。
