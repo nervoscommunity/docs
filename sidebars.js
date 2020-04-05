@@ -54,6 +54,7 @@ module.exports = {
     'docs/sdk/sdk-javascript',
     'docs/sdk/sdk-ruby',
     'docs/sdk/sdk-java',
+    'docs/sdk/sdk-swift',
     ],
     智能合约开发指南:[
     'docs/script/script-overview',
