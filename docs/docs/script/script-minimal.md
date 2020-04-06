@@ -120,7 +120,7 @@ pry(main)> tx = wallet.generate_tx(wallet.address, CKB::Utils.byte_to_shannon(10
 pry(main)> tx.outputs[0].type = simple_type_script.dup
 ```
 
-还有一个步骤：为了让 CKB 定位 simple script，我们需要在 TX deps 中引用包含 simple script 的 cell。
+还有一个步骤：为了让 CKB 定位 simple script，我们需要在 TX deps 中引用包含 simple script 的 cell:
 
 ```js
 pry(main)> simple_cell_dep = CKB::Types::CellDep.new(out_point: CKB::Types::OutPoint.new(tx_hash: simple_tx_hash, index: 0))
@@ -131,7 +131,7 @@ pry(main)> tx.cell_deps << simple_cell_dep.dup
 现在我们已经准备好了，可以签名并发送交易了。
 
 ```js
-pry(main)> tx = tx.sign(wallet.key, api.compute_transaction_hash(tx))
+pry(main)> tx = tx.sign(wallet.key)
 pry(main)> api.send_transaction(tx)
 => "0xf7454ee2e0f78dc3d263d1e4998845f383247200d60acb36083793eee29584d7"
 ```
