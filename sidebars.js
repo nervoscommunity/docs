@@ -60,6 +60,7 @@ module.exports = {
     ],
     智能合约开发指南:[
     'docs/script/script-overview',
+    'docs/script/script-minimal',
     ],
     "DApp 开发指南":[
     'docs/dapp/dapp-overview',

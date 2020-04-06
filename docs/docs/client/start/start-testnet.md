@@ -4,9 +4,9 @@ title: 运行 CKB 测试链
 sidebar_label: 运行 CKB 测试链
 ---
 
-### 下载 `aggron.toml` 文件
+### 初始化测试网
 
-ckb 的 测试网 [Aggron](https://explorer.nervos.org/aggron/) 每个月重置一次，请使用最新配置文件
+ckb 的 测试网 [Aggron](https://explorer.nervos.org/aggron/) 每个月重置一次，请使用最新配置文件或者使用最新版客户端初始化。
 
 https://gist.githubusercontent.com/doitian/573513c345165c0fe4f3504ebc1c8f9f/raw/dc955b0696333cf725b070b18d6350d64ba55e01/aggron.toml
 
@@ -120,6 +120,7 @@ testnet/
 └── specs
     └── testnet.toml
 ```
+
 
 ### 运行
 
