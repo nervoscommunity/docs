@@ -63,7 +63,8 @@ module.exports = {
     'docs/script/script-overview',
     'docs/script/script-minimal',
     'docs/script/script-stdlib',
-    'docs/script/script-udt',
+    'docs/script/script-udt-instruction',
+    'docs/script/script-issue-udt',
     ],
     "DApp 开发指南":[
     'docs/dapp/dapp-overview',
