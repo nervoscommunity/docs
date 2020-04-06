@@ -9,6 +9,7 @@ module.exports = {
   docsSidebar: {
     "初识 Nervos": [
       'docs/welcome/welcome-introduction',
+      'docs/welcome/welcome-programming-model',
       'docs/welcome/welcome-structure',
       'docs/welcome/welcome-materials',
       'docs/welcome/welcome-repositories',
