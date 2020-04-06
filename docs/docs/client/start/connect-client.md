@@ -1,7 +1,7 @@
 ---
 id: connect-client
-title: Client 交互
-sidebar_label: Client 交互
+title: 与客户端交互
+sidebar_label: 与客户端交互
 ---
 
 ### 安装 ckb ruby sdk

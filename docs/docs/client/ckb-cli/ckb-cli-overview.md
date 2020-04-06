@@ -4,7 +4,7 @@ title: ckb-cli 命令行
 sidebar_label: ckb-cli 概述
 ---
 
-ckb-cli 是一个命令行工具，用于调试开发中的 CKB，以方便用户与 CKB 进行交互。ckb-cli 包括以下功能:
+[ckb-cli](https://github.com/nervosnetwork/ckb-cli) 是一个命令行工具，用于调试开发中的 CKB，以方便用户与 CKB 进行交互。ckb-cli 提供以下功能:
 
 - 搜索区块链信息
 - 配置环境变量
@@ -12,26 +12,23 @@ ckb-cli 是一个命令行工具，用于调试开发中的 CKB，以方便用�
 - 处理模拟交易
 - 创建钱包和查询余额等。
 
-## 源码
-
-https://github.com/nervosnetwork/ckb-cli
-
 ## 下载
 
-下载最新版本的 ckb-cli：https://github.com/nervosnetwork/ckb-cli/releases
+ckb 客户端内含有 ckb-cli，你可以直接通过下载 [ckb 客户端](https://github.com/nervosnetwork/ckb/releases)获取最新版的 ckb-cli，当然你也可以直接前往 [ckb-cli 代码库](https://github.com/nervosnetwork/ckb-cli/releases)获取最新版本的 ckb-cli。
 
 ## 常用命令
 
-### 版本
+### 检查版本
 
 ```shell
-./ckb-cli --version
+ckb-cli --version
 
 => ckb-cli 0.30.0 (2a7ed95 2020-03-20)
 ```
 
 ### 可用命令
 
+请求：
 ```shell
 # Top level help doc
 ckb-cli --help
