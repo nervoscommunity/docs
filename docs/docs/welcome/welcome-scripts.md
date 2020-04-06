@@ -143,7 +143,7 @@ Deps {
 }
 ```
 
-### `lock`：secp256k1_keccak256_sighash_all.c
+### `lock`：Secp256k1_keccak256_sighash_all
 
 此脚本来自于 [Lay2 团队](https://lay2.dev/)，源代码：[secp256k1_keccak256_sighash_all.c](https://github.com/lay2dev/pw-lock/blob/master/c/secp256k1_keccak256_sighash_all.c)
 
