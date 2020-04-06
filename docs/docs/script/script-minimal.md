@@ -62,7 +62,7 @@ total 8.0K
 
 > 如果您启用了本地`DevChain`的话，就可以跳过上述步骤。
 
-**注意，我将使用CKB的Ruby SDK，因为我以前是个Ruby程序员，感觉Ruby是最自然的（但不一定是最好的）。具体的设置方法请参考官方的 [README](https://github.com/nervosnetwork/ckb-sdk-ruby/blob/develop/README.md)。**
+**注意，我将使用CKB的Ruby SDK。具体的设置方法请参考[文档](/docs/docs/client/start/connect-client) 和 官方的 [README](https://github.com/nervosnetwork/ckb-sdk-ruby/blob/develop/README.md).**
 
 ```js
 pry(main)> wallet.get_balance
