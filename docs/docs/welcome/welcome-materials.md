@@ -1,7 +1,7 @@
 ---
 id: welcome-materials
-title: 常用资料
-sidebar_label: 常用资料
+title: 常用开发资料
+sidebar_label: 常用开发资料
 ---
 
 ## CKB 基础结构
