@@ -77,6 +77,12 @@ Outputs:
             <user defined>
 ```
 
+<<<<<<< HEAD
 ## 参考
+=======
+> 下一小节，我们将要带你来发行一个新的UDT！
+
+### 参考
+>>>>>>> ba340cbefa13a6c7c091566e5b8065cac91d1012
 
 [RFC：Simple UDT Draft Spec](https://talk.nervos.org/t/rfc-simple-udt-draft-spec/4333)

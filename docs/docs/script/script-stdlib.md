@@ -6,7 +6,16 @@ sidebar_label: CKB C 标准库
 
 [CKB C 标准库](https://github.com/nervosnetwork/ckb-c-stdlib)
 
+<<<<<<< HEAD
 在 CKB 脚本的开发过程中，我们发现了很多在编写 CKB 脚本时非常有用的用例和模式。
+=======
+这个标准库定义了一些通用的用例，这可能包括但不限于以下这些:
+
+* CKB的数据结构定义
+* 通过系统调用与CKB进行交互的实用工具
+* 一个shimmed的libc 
+> 注意: 这里的libc是为CKB的特殊需求而定制的
+>>>>>>> ba340cbefa13a6c7c091566e5b8065cac91d1012
 
 这个标准库定义了一些通用的用例，这可能包括但不限于以下这些:
 
