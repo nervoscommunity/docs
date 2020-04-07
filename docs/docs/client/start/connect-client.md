@@ -4,7 +4,7 @@ title: 与客户端交互
 sidebar_label: 与客户端交互
 ---
 
-### 安装 ckb ruby sdk
+## 安装 ckb ruby sdk
 
 Nervos 为开发者提供了很多语言版本的 SDK：
 
@@ -77,7 +77,6 @@ Success exported account as extended privkey to: "wallet", please use this file 
 cat wallet # 文本，第1行为私钥
 fe59445edc3c30db6b0e1abcddc317137368f5604ce01cc1d279dfda001e8474
 0c056c9cf7e08dd3af87860e62812861a85072c9ea53bc950f9804f4ca261d72
-
 ```
 
 ## 查看区块
@@ -112,13 +111,11 @@ rpc.get_tip_header #获取最高块的数据
  :transactions_root=>"0x0531880b6da6d8be724114815a04b955fc7a28b63400d9024cb1dc02b54410cc",
  :uncles_hash=>"0x0000000000000000000000000000000000000000000000000000000000000000",
  :version=>"0x0"}
-
 ```
 
 ### 查询地址与余额
 
 ```ruby
-
 _priv_key = "fe59445edc3c30db6b0e1abcddc317137368f5604ce01cc1d279dfda001e8474"
 
 api = CKB::API.new

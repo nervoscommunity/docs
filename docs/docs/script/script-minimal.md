@@ -6,7 +6,9 @@ sidebar_label: 最简合约
 
 首先，我们从最简化的 CKB script 开始，了解并尝试整个流程，让我们开始吧.
 
-## 编写合约
+## 最简合约
+
+### 编写合约
 
 CKB VM 是由 [RISC-V](https://riscv.org/) 指令集编写的，理论上任何可以编译成 RISC-V 的语言都可以作为 CKB 的智能合约语言，这里我们使用 C 来写一个简单的 Demo：
 
@@ -27,7 +29,7 @@ int main(int argc, char* argv[])
 
 保存合约，命名为 `simple.c`。
 
-## 编译合约
+### 编译合约
 
 首先，我们需要编译上面写的源码。因为 GCC 已经有了 RISC-V 的上游支持，当然你可以使用官方的 GCC 来构建你的脚本代码。或者你也可以使用我们准备的 [docker](https://hub.docker.com/r/nervos/ckb-riscv-gnu-toolchain) 镜像，省去了编译 GCC 的麻烦。
 
@@ -56,7 +58,7 @@ total 8.0K
 
 现在我们就可以在链上部署了。
 
-## 部署合约
+### 部署合约
 
 这里我使用的是 Aragon 测试网部署合约，首先，您需要去[水龙头](https://faucet.nervos.org/)领 10000 CKB。因为每隔 3 个小时才能领 5000 CKB，所以这里我用了 2 个账号进行领取，并将它们归集到了一起。
 

@@ -63,9 +63,15 @@ module.exports = {
     'docs/script/script-overview',
     'docs/script/script-minimal',
     'docs/script/script-stdlib',
-    'docs/script/script-udt-instruction',
-    'docs/script/script-issue-udt',
-    'docs/script/script-udt-transfer',
+    {
+      type: 'category',
+      label: 'UDT 发行',
+      items: [
+        'docs/script/script-udt-instruction',
+        'docs/script/script-issue-udt',
+        'docs/script/script-udt-transfer',
+      ]
+    },
     ],
     "DApp 开发指南":[
     'docs/dapp/dapp-overview',

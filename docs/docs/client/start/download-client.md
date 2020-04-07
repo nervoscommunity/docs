@@ -4,8 +4,7 @@ title: 下载全节点客户端
 sidebar_label: 下载全节点客户端
 ---
 
-
-### 下载 ckb
+## 下载 ckb
 
 下载 ckb 最新的版本 https://github.com/nervosnetwork/ckb/releases ，其中包括了几个主要操作系统的二进制版本，请选择适合自己系统的版本下载。
 
