@@ -6,9 +6,9 @@ sidebar_label: UDT 合约介绍
 
 ## 概述
 
-UDT 全称是 User Defined Token，用户定义代币，可以理解为 Ethereum 网络中的 ERC 20 代币。CKB 的典型用途之一是在其上发行用户定义代币（UDT）。这意味着任何人都可以设计和创建代表不同类型资产的代币，而不需要从头开始建立一个新的公共区块链。
+UDT 全称是 User Defined Token，用户定义代币，可以理解为 Ethereum 网络中的 [ERC 20](https://eips.ethereum.org/EIPS/eip-20) 代币。CKB 的典型用途之一是在其上发行用户定义代币（UDT）。这意味着任何人都可以设计和创建代表不同类型资产的代币，而不需要从头开始建立一个新的公共区块链。
 
-就像原生代币 CKB 一样，UDT 也存储在 cells 中。这意味着你可以像转移 CKB 代币一样转移 UDTs。这与 Ethereum 不同的是，Ethereum 上的 UDT（如 ERC 20 或 ERC 721）是由智能合约账户发行和存储的，因此用户只能通过合约来控制他们的 UDT 资产，而不是由用户自己直接控制。
+就像原生代币 CKB 一样，UDT 也存储在 cells 中。这意味着你可以像转移 CKB 代币一样转移 UDTs，UDTs 是 CKB 网络中的一等公民（First Class Assets）。这与 Ethereum 不同，Ethereum 上的 UDT（如 ERC 20 或 [ERC 721](https://eips.ethereum.org/EIPS/eip-721)）是由智能合约账户发行和存储的，因此用户只能通过合约来控制他们的 UDT 资产，而不是由用户自己直接控制。
 
 ### 数据结构
 
@@ -77,12 +77,8 @@ Outputs:
             <user defined>
 ```
 
-<<<<<<< HEAD
-## 参考
-=======
 > 下一小节，我们将要带你来发行一个新的UDT！
 
-### 参考
->>>>>>> ba340cbefa13a6c7c091566e5b8065cac91d1012
+### 参考资料
 
 [RFC：Simple UDT Draft Spec](https://talk.nervos.org/t/rfc-simple-udt-draft-spec/4333)

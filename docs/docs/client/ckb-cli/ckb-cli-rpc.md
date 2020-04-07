@@ -76,7 +76,6 @@ ckb-cli rpc get_tip_header --output-format json
 
 <details>
 <summary>点击查看详细输出</summary>
-<br/>
 
 ```json
 {

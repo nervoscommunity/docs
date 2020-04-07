@@ -4,21 +4,21 @@ title: 发行 UDT
 sidebar_label: 发行 UDT
 ---
 
-> 你已经读到这个文档最有意思的部分了(我认为). **让我们开始吧**
+> 你已经读到这个文档最有意思的部分了（我认为）。 **让我们开始吧**
 
-### 编译合约
+## 编译合约
 
-首先，我们先下载Simple UDT的源码:
+首先，我们先下载 simple UDT 的源码:
 
-```shell 
+```shell
 git clone https://github.com/nervosnetwork/ckb-miscellaneous-scripts.git
 cd ckb-miscellaneous-scripts/
 ```
-> 这里面包含了很多有趣的合约，但是这一次我们只用到了UDT :P .
+> 这里面包含了很多有趣的合约，但是这一次我们只用到了 UDT。
 
-和最简合约一样，我们也使用Docker来编译：
+和最简合约一样，我们也使用 Docker 来编译：
 
-> 注意，你需要先安装`Rust`.
+> 注意，你需要先安装 `Rust`。
 
 ```shell
 
@@ -31,11 +31,11 @@ $ cd build/ && ll -h | grep simple_udt
 -rwxr-xr-x 1 root   root   145K Apr  6 14:04 simple_udt.debug*
 ```
 
-### 部署合约
+## 部署合约
 
 这里我使用的是 Aragon 测试网部署合约，首先，您需要去[水龙头](https://faucet.nervos.org/)领 5000 CKB。
 
-> 如果您启用了本地 `DevChain`的话，就可以跳过上述步骤。
+> 如果您启用了本地 `DevChain` 的话，就可以跳过上述步骤。
 
 **注意，我将使用 CKB 的 Ruby SDK。具体的设置方法请参考[文档](/docs/docs/client/start/connect-client)和官方 Ruby SDK 的 [README](https://github.com/nervosnetwork/ckb-sdk-ruby/blob/develop/README.md).**
 
@@ -67,23 +67,23 @@ pry(main)> data.bytesize
 => 1688
 ```
 
-我们需要新建一个 cell ，将 script 代码作为 cell 的 `data` 部分：
+我们需要新建一个 cell，将 script 代码作为 cell 的 `data` 部分：
 
 ```js
 pry(main)> udt_tx_hash = wallet.send_capacity(wallet.address, CKB::Utils.byte_to_shannon(2000), CKB::Utils.bin_to_hex(data),fee:2153)
 => "0xafe5ddf2972bb25aabb8bb454a3e6cabe736fe8dddc56bb393d6393fea6b1161"
 ```
 
-现在我们可以发行一个 UDT了！(包含 simple_udt 代码作为 `type Script` )。
+现在我们可以发行一个 UDT 了！(包含 simple_udt 代码作为 `type Script` )。
 
 ```js
 pry(main)> udt_data_hash = CKB::Blake2b.hexdigest(data)
 => "0x5f50913c8afb6ddb5d5189207d6e4e4f5b213fc35cb3fdea57629cb3452d295b"
 
 pry(main)> udt_type_script = CKB::Types::Script.new(code_hash: udt_data_hash, args: wallet.lock_hash)
-=> #<CKB::Types::Script:0x00007fffe466a670 
+=> #<CKB::Types::Script:0x00007fffe466a670
 @args="0xfc3304c0c378d127c1b2454395928a6ae975cb395a67f3cb1c63e0bed6863198", //我们使用了创建者的Lock Hash作为解锁秘钥，请参考上一小节关于权限控制的叙述
-@code_hash="0x5f50913c8afb6ddb5d5189207d6e4e4f5b213fc35cb3fdea57629cb3452d295b", 
+@code_hash="0x5f50913c8afb6ddb5d5189207d6e4e4f5b213fc35cb3fdea57629cb3452d295b",
 @hash_type="data">
 
 //生成交易
@@ -105,14 +105,14 @@ pry(main)> tx = wallet.generate_tx(wallet.address, CKB::Utils.byte_to_shannon(10
  @outputs_data=["0x174876e800", "0x"],
  @version=0,
  @witnesses=
-  [#<CKB::Types::Witness:0x00007fffe3e54198 @input_type="", @lock="0xd248e6ef4f961948dc26b3dd25d90a40986cad09817293f9eb32ab64dedbf98914e62648b483f54a07c1db4df0fa93bd4fe6eee48caa848d6276b7939ec8593500", @output_type="">]>  
+  [#<CKB::Types::Witness:0x00007fffe3e54198 @input_type="", @lock="0xd248e6ef4f961948dc26b3dd25d90a40986cad09817293f9eb32ab64dedbf98914e62648b483f54a07c1db4df0fa93bd4fe6eee48caa848d6276b7939ec8593500", @output_type="">]>
 
 
 pry(main)> tx.outputs[0].type = udt_type_script.dup
 => #<CKB::Types::Script:0x00007fffe42bb060 @args="0xfc3304c0c378d127c1b2454395928a6ae975cb395a67f3cb1c63e0bed6863198", @code_hash="0x5f50913c8afb6ddb5d5189207d6e4e4f5b213fc35cb3fdea57629cb3452d295b", @hash_type="data">
 
 ```
-我们需要在 TX deps 中引用包含 UDT script 的 cell:
+我们需要在 TX deps 中引用包含 UDT script 的 cell：
 
 ```js
 
@@ -125,7 +125,7 @@ pry(main)> tx.cell_deps << udt_cell_dep.dup
 
 ```
 
-现在我们已经准备好了，可以签名并发送交易了:
+现在我们已经准备好了，可以签名并发送交易了：
 
 ```js
 pry(main)> tx = tx.sign(wallet.key)
@@ -148,10 +148,10 @@ pry(main)> tx = tx.sign(wallet.key)
  @outputs_data=["0x174876e800", "0x"],
  @version=0,
  @witnesses=
-  [#<CKB::Types::Witness:0x00007fffe4703d48 @input_type="", @lock="0xcee8b1114b717ce791318472964d3768fae95cfd7ebf8256843a7cde4451829d694e0f64391f150e2211fbef24d0705940d4615413ef8688b01c5cb9f183cece01", @output_type="">]> 
-  
+  [#<CKB::Types::Witness:0x00007fffe4703d48 @input_type="", @lock="0xcee8b1114b717ce791318472964d3768fae95cfd7ebf8256843a7cde4451829d694e0f64391f150e2211fbef24d0705940d4615413ef8688b01c5cb9f183cece01", @output_type="">]>
+
 pry(main)> api.send_transaction(tx)
 => "0x9344ceebef5c587a829059c7d4434e0984f1810d707248b22eef18cafbad0747"
 ```
-> 看到这里，你已经成功完成了UDT的发行！ Congratulations~!
+> 看到这里，你已经成功完成了 UDT 的发行！Congratulations~！
 
