@@ -70,7 +70,7 @@ function Home() {
               'button button--outline button--secondary button--lg',
                 styles.GetStartedButton,
               )}
-              to={useBaseUrl('')}>
+              to={useBaseUrl('/docs/qa/welcome')}>
               Get Started
             </Link>
           </div>
