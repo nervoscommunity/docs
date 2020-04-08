@@ -15,7 +15,7 @@ module.exports = {
       'docs/welcome/welcome-repositories',
       'docs/welcome/welcome-scripts',
     ],
-    "CKB 客户端":[
+    "CKB 客户端": [
       'docs/client/client-overview',
       // 'docs/client/client-install',
       {
@@ -45,40 +45,41 @@ module.exports = {
         ]
       },
     ],
-    "HTTP RPC":[
-    'docs/HTTPRPC/interface-specification',
-    'docs/HTTPRPC/rpc-specification'
+    "HTTP RPC": [
+      'docs/HTTPRPC/interface-specification',
+      'docs/HTTPRPC/rpc-specification'
     ],
-    "CKB Explorer":[
+    "CKB Explorer": [
       'docs/explorer/explorer-overview',
     ],
-    SDKs:[
-    'docs/sdk/sdk-overview',
-    'docs/sdk/sdk-javascript',
-    'docs/sdk/sdk-ruby',
-    'docs/sdk/sdk-java',
-    'docs/sdk/sdk-swift',
+    SDKs: [
+      'docs/sdk/sdk-overview',
+      'docs/sdk/sdk-javascript',
+      'docs/sdk/sdk-ruby',
+      'docs/sdk/sdk-java',
+      'docs/sdk/sdk-swift',
     ],
-    智能合约开发指南:[
-    'docs/script/script-overview',
-    'docs/script/script-minimal',
-    'docs/script/script-stdlib',
-    {
-      type: 'category',
-      label: 'UDT 发行',
-      items: [
-        'docs/script/script-udt-instruction',
-        'docs/script/script-issue-udt',
-        'docs/script/script-udt-transfer',
-      ]
-    },
+    智能合约开发指南: [
+      'docs/script/script-overview',
+      'docs/script/script-minimal',
+      'docs/script/script-stdlib',
+      {
+        type: 'category',
+        label: 'UDT 发行',
+        items: [
+          'docs/script/script-udt-instruction',
+          'docs/script/script-issue-udt',
+          'docs/script/script-udt-transfer',
+        ]
+      },
     ],
-    "DApp 开发指南":[
-    'docs/dapp/dapp-overview',
+    "DApp 开发指南": [
+      'docs/dapp/dapp-overview',
     ],
-    IDE:[
-    'docs/ide/ide-ckb-studio',
+    IDE: [
+      'docs/ide/ide-ckb-studio',
     ],
+    /*
     交易所对接指南:[
     'docs/exchange/exchange-overview',
     'docs/exchange/exchange-ckb-address',
@@ -91,14 +92,18 @@ module.exports = {
       ]
     },
     ],
-    常见问题:[
+    */
+    "Awesome Nervos": [
+    'docs/awesome/awesome-overview',
+    ],
+    常见问题: [
 
     ],
   },
 
-  rfcsSidebar:{
-    Introduction:['rfcs/introduction'],
-    Standards_Track:[
+  rfcsSidebar: {
+    Introduction: ['rfcs/introduction'],
+    Standards_Track: [
       'rfcs/0004-ckb-block-sync/0004-ckb-block-sync',
       'rfcs/0006-merkle-tree/0006-merkle-tree',
       'rfcs/0007-scoring-system-and-network-security/0007-scoring-system-and-network-security',
@@ -113,7 +118,7 @@ module.exports = {
       'rfcs/0021-ckb-address-format/0021-ckb-address-format',
       'rfcs/0023-dao-deposit-withdraw/0023-dao-deposit-withdraw',
     ],
-    Information:[
+    Information: [
       'rfcs/0001-positioning/0001-positioning',
       'rfcs/0002-ckb/0002-ckb',
       'rfcs/0003-ckb-vm/0003-ckb-vm',
@@ -123,8 +128,8 @@ module.exports = {
       'rfcs/0020-ckb-consensus-protocol/0020-ckb-consensus-protocol',
       'rfcs/0022-transaction-structure/0022-transaction-structure',
     ],
-    简介_Introduction:['rfcs/introduction.zh'],
-    标准_Standards_Track:[
+    简介_Introduction: ['rfcs/introduction.zh'],
+    标准_Standards_Track: [
       'rfcs/0004-ckb-block-sync/0004-ckb-block-sync.zh',
       'rfcs/0006-merkle-tree/0006-merkle-tree.zh',
       'rfcs/0007-scoring-system-and-network-security/0007-scoring-system-and-network-security.zh',
@@ -139,7 +144,7 @@ module.exports = {
       'rfcs/0021-ckb-address-format/0021-ckb-address-format.zh',
       'rfcs/0023-dao-deposit-withdraw/0023-dao-deposit-withdraw.zh',
     ],
-    信息_Information:[
+    信息_Information: [
       'rfcs/0001-positioning/0001-positioning.zh',
       'rfcs/0002-ckb/0002-ckb.zh',
       'rfcs/0003-ckb-vm/0003-ckb-vm.zh',
@@ -151,44 +156,44 @@ module.exports = {
     ],
   },
 
-  qaSidebar:{
-    介绍:[
+  qaSidebar: {
+    介绍: [
       'qa/welcome',
       'qa/contribute',
     ],
-    "关于 Nervos":[
+    "关于 Nervos": [
       'qa/nervos/about-nervos',
-//      'qa/nervos/nervos-innovations',
+      //      'qa/nervos/nervos-innovations',
       'qa/nervos/compare-to-other',
     ],
-    "关于 CKB":[
+    "关于 CKB": [
       'qa/ckb/about-ckb',
       'qa/ckb/ckb-solve-problems',
       'qa/ckb/about-cell',
       'qa/ckb/cell-ckb-vm',
     ],
-    "关于 Layer2":[
+    "关于 Layer2": [
       'qa/layer2/about-muta',
     ],
-    "Nervos DAO":[
+    "Nervos DAO": [
       'qa/nervosdao/about-dao',
       'qa/nervosdao/revenue-of-dao',
       'qa/nervosdao/deposit-in-dao',
       'qa/nervosdao/rule-of-dao',
     ],
-    "CKB 钱包":[
+    "CKB 钱包": [
       'qa/wallet/about-neuron',
       'qa/wallet/support-wallet',
     ],
-    "关于 CKB 挖矿":[
+    "关于 CKB 挖矿": [
       'qa/mine/about-mine-ckb',
       'qa/mine/pool-machine',
       'qa/mine/about-pow',
     ],
-    区块浏览器:[
+    区块浏览器: [
       'qa/explorer/about-explorer',
     ],
-    "Grants 项目":[
+    "Grants 项目": [
       'qa/grants/introduction',
       'qa/grants/wishlist',
       'qa/grants/projects',
