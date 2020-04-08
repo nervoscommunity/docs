@@ -56,4 +56,4 @@ sidebar_label: 生态项目
 
 #### 简介
 
-One Chain CKB 是一款由 BlockABC 开发的基于 ckb-sdk-js 的新 SDK，它将提供一系列对开发者友好的接口，包括灵活的交易编辑，HD 钱包体系结构的自动派生以及一系列对 CKB 至关重要的工具，使开发者可以更轻松地构建 CKB 交易。
+One Chain CKB 是一款由 [BlockABC](http://www.abcwallet.com/) 开发的基于 ckb-sdk-js 的新 SDK，它将提供一系列对开发者友好的接口，包括灵活的交易编辑，HD 钱包体系结构的自动派生以及一系列对 CKB 至关重要的工具，使开发者可以更轻松地构建 CKB 交易。
