@@ -8,7 +8,7 @@ import styles from './styles.module.css';
 
 const features = [
   {
-    title: <><a href="">开发入门册</a></>,
+    title: <><a href="/docs/docs/welcome/welcome-introduction">开发入门册</a></>,
     imageUrl: 'img/ditto1.png',
     description: (
       <>
@@ -70,7 +70,7 @@ function Home() {
               'button button--outline button--secondary button--lg',
                 styles.GetStartedButton,
               )}
-              to={useBaseUrl('/docs/qa/welcome')}>
+              to={useBaseUrl('/docs/docs/welcome/welcome-introduction')}>
               Get Started
             </Link>
           </div>
