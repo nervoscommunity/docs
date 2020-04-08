@@ -12,7 +12,7 @@ CKB 测试网 [Aggron](https://explorer.nervos.org/aggron/) 会不定期重置�
 
 ### 准备工作
 
-在初始化测试网前，请您将配置文件 [aggron.toml](https://gist.githubusercontent.com/doitian/573513c345165c0fe4f3504ebc1c8f9f/raw/dc955b0696333cf725b070b18d6350d64ba55e01/aggron.toml) 置于 CKB 客户端目录下。
+在初始化测试网前，请您将配置文件 [aggron.toml](https://gist.githubusercontent.com/doitian/573513c345165c0fe4f3504ebc1c8f9f/raw/dc955b0696333cf725b070b18d6350d64ba55e01/aggron.toml) 置于 CKB 客户端目录下(例如 ckb_v0.30.2_x86_64-apple-darwin 这个资料夹里面）。
 
 <details>
 <summary>点击查看配置文件</summary>
