@@ -1,14 +1,24 @@
 ---
 id: download-client
-title: 下载全节点客户端
-sidebar_label: 下载全节点客户端
+title: 下载客户端
+sidebar_label: 下载客户端
 ---
 
-## 下载 ckb
+## 下载 CKB 客户端
 
-下载 ckb 最新的版本 https://github.com/nervosnetwork/ckb/releases ，其中包括了几个主要操作系统的二进制版本，请选择适合自己系统的版本下载。
+你可以直接前往 [Github](https://github.com/nervosnetwork/ckb/releases/latest)，下载最新版的 CKB 全节点客户端，下载页面包括了几个主要操作系统的不同版本，请选择适合自己系统的版本下载，并请注意所需的依赖环境。
 
-下载完成后进行解压缩，目录结构如下所示：
+|OS	|Arch	|运行依赖|
+|---|---|---|
+|macOS	|x64	|macOS 10.12 or above|
+|Linux	|x64	|glibc, libstdc++|
+|CentOS	|x64	|glibc, libstdc++, openssl|
+|Windows*|x64	|VC++ Redistributable|
+|Docker|||
+
+## 目录结构
+
+下载完成后进行解压缩操作，目录结构如下所示：
 
 ```shell
 ├── CHANGELOG.md

@@ -7,92 +7,298 @@ sidebar_label: 运行 CKB 主网
 
 运行节点需要使用命令行工具。如果您以前从未使用过命令行，则可以参考下一章节如何使用命令行工具。尽管乍一看似乎很复杂，但它非常简单，您应该能够按照以下特定说明轻松运行CKB节点。
 
-**Open up Terminal (Mac) or command line (Windows).**
+## Mac 用户
 
-* On Mac:
+### 准备工作
 
-    * 要么 1）打开你的 "应用程序 "文件夹，然后打开 "实用程序"，双击 "终端"；要么2）按 `Command - Spacebar` or `Control -Spacebar` 启动Spotlight，输入 `Terminal`，然后双击搜索结果，在终端上执行以下步骤。
+#### 打开终端/命令行
 
-* On Windows:
+* 要么 1）打开你的 "应用程序" 文件夹，然后打开 "实用程序"，双击 "终端"
+* 要么 2）按 `Command - Spacebar` or `Control -Spacebar` 启动 Spotlight，输入 `Terminal`，然后双击搜索结果，在终端上执行以下步骤。
 
-    * 请注意：如果你熟悉Windows上的命令行操作，你可以跳过这一步，打开`cmd`或`Power Shell`终端。
-    * 下载Git for windows [Git-Downloads](https://git-scm.com/downloads), 双击安装，在开始菜单中打开Git Bash。下面的步骤将在Git Bash中进行。
+#### 下载客户端
 
-**复制并粘贴以下命令到终端(Mac)/命令行(Windows):**
+```bash
+# 下载 CKB 客户端
+curl -O https://github.com/nervosnetwork/ckb/releases/download/v0.30.2/ckb_v0.30.2_x86_64-apple-darwin.zip
 
-* 请注意：电脑上的目录和文件夹名称必须与下面的命令相匹配，如果不匹配，请修改相应的命令脚本。
-
-* Mac
+# 解压文件
+unzip ckb_v0.30.2_x86_64-apple-darwin.zip
 
 ```
-cd /Users/(NAME)/Documents/ckb_v0.25.2_x86_64-apple-darwin
+
+### 检查版本
+
+请注意：
+* 注意您的文件路径，前往到文件所在目录后，进行相关操作。
+* 本文中使用的是 ckb v0.30.2，若您下载到更新版本的 ckb 客户端，请更换对应的文件名，不影响其他操作。
+
+```bash
+# 进入文件
+cd ckb_v0.30.2_x86_64-apple-darwin
+
+# 检查 ckb 版本
 ./ckb --version
+
+# 检查 ckb-cli 版本
 ./ckb-cli --version
 ```
 
-* Windows
-
-```
-cd C:/ckb_v0.25.2_x86_64-pc-windows-msvc 
-ckb --version 
-ckb-cli --version
-```
-
 <details>
-<summary>(click here to view response)</summary>
+<summary>点击查看详细输出</summary>
 
 ```bash
-$ ./ckb --version
-$ ./ckb-cli --version
+cd ckb_v0.30.2_x86_64-apple-darwin
 
-ckb 0.25.2 (dda4ed9 2019-11-17)
-ckb-cli 0.25.2 (6ca7bbb 2019-11-17)
+$ ./ckb --version
+ckb 0.30.2 (4382236 2020-04-02)
+
+$ ./ckb-cli --version
+ckb-cli 0.30.0 (2a7ed95 2020-03-20)
 ```
 </details>
 
-要运行CKB节点，请复制并粘贴以下命令到终端(Mac)/命令行(Windows)中:
 
-* 初始化节点(只运行一次)
+### 初始化并运行
 
-```
+#### 初始化主网节点（只需在第一次使用时，运行一次）
+
+```bash
 ./ckb init --chain mainnet
 ```
 
 <details>
-<summary>(click here to view response)</summary>
+<summary>点击查看详细输出</summary>
 
 ```bash
 $ ./ckb init --chain mainnet
 
 WARN: mining feature is disabled because of lacking the block assembler config options
-Initialized CKB directory in /`PATH`/ckb_v0.25.2_x86_64-apple-darwin
+Initialized CKB directory in /Users/(NAME)/Documents/ckb_v0.30.2_x86_64-apple-darwin # 路径不同，此处略有差异
 create ckb.toml
 create ckb-miner.toml
 ```
 </details>
 
-* Start the node.
+#### 运行 CKB 主网节点
 
 ```
 ./ckb run
 ```
 
 <details>
-<summary>(click here to view response)</summary>
+<summary>点击查看详细输出</summary>
 
 ```bash
 $ ./ckb run
 
-**2019-11-28 14:22:25.464 +08:00** **main** INFO sentry sentry is disabled
-**2019-11-28 14:22:25.565 +08:00** **main** INFO main Miner is disabled, edit ckb.toml to enable it
-**2019-11-28 14:22:25.635 +08:00** **main** INFO ckb-chain Start: loading live cells ...
-**2019-11-28 14:22:25.636 +08:00** **main** INFO ckb-chain Done: total 2 transactions.
-**2019-11-28 14:22:25.654 +08:00** **main** INFO main chain genesis hash: 0x92b197aa1fba0f63633922c61c92375c9c074a93e85963554f5499fe1450d0e5
-**2019-11-28 14:22:25.670 +08:00** **main** INFO ckb-network Listen on address: /ip4/0.0.0.0/tcp/8115/p2p/QmbjjSgGQpvn3Fo28kvVWy9yZfgvtk9cNwRHEv646xxWYB
-**2019-11-28 14:22:25.674 +08:00** **NetworkRuntime-0** INFO ckb-network p2p service event: ListenStarted { address: "/ip4/0.0.0.0/tcp/8115" }
-**2019-11-28 14:22:25.845 +08:00** **NetworkRuntime-3** INFO ckb-sync SyncProtocol.connected peer=SessionId(1)
-**2019-11-28 14:22:25.846 +08:00** **NetworkRuntime-6** INFO ckb-relay RelayProtocol(1).connected peer=SessionId(1)
-**2019-11-28 14:22:26.063 +08:00** **NetworkRuntime-4** INFO ckb-sync Ignoring getheaders from peer=SessionId(1) because node is in initial block download
-**2019-11-28 14:22:26.197 +08:00** **ChainService** INFO ckb-chain block: 1, hash: 0x2567f226c73b04a6cb3ef04b3bb10ab99f37850794cd9569be7de00bac4db875, epoch: 0(1/1743), total_diff: 0x3b1bb3d4c1376a, txs: 1
+**2020-04-08 10:57:32.288 +08:00 main INFO sentry  sentry is disabled
+**2020-04-08 10:57:32.401 +08:00 main INFO main  Miner is disabled, edit ckb.toml to enable it
+**2020-04-08 10:57:32.418 +08:00 main INFO ckb-db  Initialize a new database
+**2020-04-08 10:57:32.661 +08:00 main INFO ckb-db  Init database version 20191127135521
+**2020-04-08 10:57:32.668 +08:00 main INFO ckb-chain  Start: loading live cells ...
+**2020-04-08 10:57:32.669 +08:00 main INFO ckb-chain  Done: total 2 transactions.
+**2020-04-08 10:57:32.675 +08:00 main INFO main  ckb version: 0.30.2 (4382236 2020-04-02)
+**2020-04-08 10:57:32.675 +08:00 main INFO main  chain genesis hash: 0x92b197aa1fba0f63633922c61c92375c9c074a93e85963554f5499fe1450d0e5
+...
+...
+**2020-04-08 10:57:33.963 +08:00 ChainService INFO ckb-chain  block: 1, hash: 0x2567f226c73b04a6cb3ef04b3bb10ab99f37850794cd9569be7de00bac4db875, epoch: 0(1/1743), total_diff: 0x3b1bb3d4c1376a, txs: 1
+**2020-04-08 10:57:33.965 +08:00 ChainService INFO ckb-chain  block: 2, hash: 0x2af0fc6ec802df6d1da3db2bfdd59159d210645092a3df82125d20b523e0ea83, epoch: 0(2/1743), total_diff: 0x58a98dbf21d31f, txs: 1
+```
+</details>
+
+---
+
+## Linux 用户
+
+### 准备工作
+
+#### 打开终端/命令行
+
+直接打开终端，这里使用的是 Ubuntu 18.04
+
+#### 下载客户端
+
+```shell
+# 下载 CKB 客户端
+wget https://github.com/nervosnetwork/ckb/releases/download/v0.30.2/ckb_v0.30.2_x86_64-unknown-linux-gnu.tar.gz
+
+# 解压文件
+tar -zxvf ckb_v0.30.2_x86_64-unknown-linux-gnu.tar.gz
+```
+
+### 检查版本
+
+请注意：
+* 注意您的文件路径，前往到文件所在目录后，进行相关操作。
+* 本文中使用的是 ckb v0.30.2，若您下载到更新版本的 ckb 客户端，请更换对应的文件名，不影响其他操作。
+
+```shell
+# 进入文件
+cd ckb_v0.30.2_x86_64-unknown-linux-gnu
+
+# 检查 ckb 版本
+ckb --version
+
+# 检查 ckb-cli 版本
+ckb-cli --version
+```
+
+<details>
+<summary>点击查看详细输出</summary>
+
+```shell
+cd ckb_v0.30.2_x86_64-unknown-linux-gnu
+
+ckb --version
+ckb 0.30.2 (4382236 2020-04-02)
+
+ckb-cli --version
+ckb-cli 0.30.0 (2a7ed95 2020-03-20)
+```
+
+</details>
+
+### 初始化并运行
+
+#### 初始化主网节点（只需在第一次使用时，运行一次）
+
+```shell
+ckb init --chain mainnet
+```
+
+<details>
+<summary>点击查看详细输出</summary>
+
+```shell
+ckb init --chain mainnet
+
+WARN: mining feature is disabled because of lacking the block assembler config options
+Initialized CKB directory in /home/username/ckb_v0.30.0_x86_64-unknown-linux-gnu # 路径不同，此处略有差异
+create ckb.toml
+create ckb-miner.toml
+```
+</details>
+
+#### 运行 CKB 主网节点
+
+```
+ckb run
+```
+
+<details>
+<summary>点击查看详细输出</summary>
+
+```shell
+ckb run
+
+2020-04-08 10:57:32.288 +08:00 main INFO sentry  sentry is disabled
+2020-04-08 10:57:32.401 +08:00 main INFO main  Miner is disabled, edit ckb.toml to enable it
+2020-04-08 10:57:32.418 +08:00 main INFO ckb-db  Initialize a new database
+2020-04-08 10:57:32.661 +08:00 main INFO ckb-db  Init database version 20191127135521
+2020-04-08 10:57:32.668 +08:00 main INFO ckb-chain  Start: loading live cells ...
+2020-04-08 10:57:32.669 +08:00 main INFO ckb-chain  Done: total 2 transactions.
+2020-04-08 10:57:32.675 +08:00 main INFO main  ckb version: 0.30.2 (4382236 2020-04-02)
+2020-04-08 10:57:32.675 +08:00 main INFO main  chain genesis hash: 0x92b197aa1fba0f63633922c61c92375c9c074a93e85963554f5499fe1450d0e5
+...
+...
+2020-04-08 10:57:33.963 +08:00 ChainService INFO ckb-chain  block: 1, hash: 0x2567f226c73b04a6cb3ef04b3bb10ab99f37850794cd9569be7de00bac4db875, epoch: 0(1/1743), total_diff: 0x3b1bb3d4c1376a, txs: 1
+2020-04-08 10:57:33.965 +08:00 ChainService INFO ckb-chain  block: 2, hash: 0x2af0fc6ec802df6d1da3db2bfdd59159d210645092a3df82125d20b523e0ea83, epoch: 0(2/1743), total_diff: 0x58a98dbf21d31f, txs: 1
+```
+</details>
+
+---
+
+## Windows 用户
+
+### 准备工作
+
+#### 下载客户端
+
+建议直接前往 Github 下载 [CKB 客户端](https://github.com/nervosnetwork/ckb/releases/latest)，并完成解压缩。
+
+#### 打开终端/命令行
+
+* 请注意：如果你熟悉 Windows 上的命令行操作，你可以跳过这一步，打开 `cmd` 或 `Power Shell` 终端。
+* 下载 [Git for windows](https://git-scm.com/downloads)，双击安装，在开始菜单中打开 Git Bash。下面的步骤将在 Git Bash 中进行。
+
+### 检查版本
+
+请注意：
+* 注意您的文件路径，前往到文件所在目录后，进行相关操作。
+* 本文中使用的是 ckb v0.30.2，若您下载到更新版本的 ckb 客户端，请更换对应的文件名，不影响其他操作。
+
+```shell
+# 进入文件
+cd ckb_v0.30.2_x86_64-pc-windows-msvc
+
+# 检查 ckb 版本
+ckb --version
+
+# 检查 ckb-cli 版本
+ckb-cli --version
+```
+
+<details>
+<summary>点击查看详细输出</summary>
+
+```shell
+cd ckb_v0.30.2_x86_64-pc-windows-msvc
+
+ckb --version
+ckb 0.30.2 (4382236 2020-04-02)
+
+ckb-cli --version
+ckb-cli 0.30.0 (2a7ed95 2020-03-20)
+```
+
+</details>
+
+
+### 初始化并运行
+
+#### 初始化主网节点（只需在第一次使用时，运行一次）
+
+```shell
+ckb init --chain mainnet
+```
+
+<details>
+<summary>点击查看详细输出</summary>
+
+```shell
+ckb init --chain mainnet
+
+WARN: mining feature is disabled because of lacking the block assembler config options
+Initialized CKB directory in D:\ckb\ckb_v0.30.2_x86_64-pc-windows-msvc # 路径不同，此处略有差异
+create ckb.toml
+create ckb-miner.toml
+```
+</details>
+
+#### 运行 CKB 主网节点
+
+```
+ckb run
+```
+
+<details>
+<summary>点击查看详细输出</summary>
+
+```shell
+ckb run
+
+2020-04-08 10:57:32.288 +08:00 main INFO sentry  sentry is disabled
+2020-04-08 10:57:32.401 +08:00 main INFO main  Miner is disabled, edit ckb.toml to enable it
+2020-04-08 10:57:32.418 +08:00 main INFO ckb-db  Initialize a new database
+2020-04-08 10:57:32.661 +08:00 main INFO ckb-db  Init database version 20191127135521
+2020-04-08 10:57:32.668 +08:00 main INFO ckb-chain  Start: loading live cells ...
+2020-04-08 10:57:32.669 +08:00 main INFO ckb-chain  Done: total 2 transactions.
+2020-04-08 10:57:32.675 +08:00 main INFO main  ckb version: 0.30.2 (4382236 2020-04-02)
+2020-04-08 10:57:32.675 +08:00 main INFO main  chain genesis hash: 0x92b197aa1fba0f63633922c61c92375c9c074a93e85963554f5499fe1450d0e5
+...
+...
+2020-04-08 10:57:33.963 +08:00 ChainService INFO ckb-chain  block: 1, hash: 0x2567f226c73b04a6cb3ef04b3bb10ab99f37850794cd9569be7de00bac4db875, epoch: 0(1/1743), total_diff: 0x3b1bb3d4c1376a, txs: 1
+2020-04-08 10:57:33.965 +08:00 ChainService INFO ckb-chain  block: 2, hash: 0x2af0fc6ec802df6d1da3db2bfdd59159d210645092a3df82125d20b523e0ea83, epoch: 0(2/1743), total_diff: 0x58a98dbf21d31f, txs: 1
 ```
 </details>

@@ -4,21 +4,36 @@ title: 运行本地开发链
 sidebar_label: 运行本地开发链
 ---
 
-### 生成 dev 链配置文件
+## 生成开发链配置文件
 
-`./ckb init --chain dev -C dev`
+命令：
+* Mac 用户
+
+```
+./ckb init --chain dev -C dev
+```
+
+* Linux/Windows 用户
+
+```
+ckb init --chain dev -C dev
+```
+
+响应：
 
 ```shell
 ├── ckb-miner.toml
 ├── ckb.toml
 └── specs
     └── dev.toml
-
 ```
 
-修改 `dev/ckb.toml`
+## 修改 `dev/ckb.toml`
 
-```toml
+因为运行本地开发链，您还需要进行本地挖矿，因此需要修改 `dev/ckb.toml` 将其中的挖矿地址设置为您钱包的地址。
+
+```shell
+# 将下方几行代码最前面的 '#' 删除，使得代码可以生效
 [block_assembler]
 code_hash = "0x9bd7e06f3ecf4be0f2fcd2188b23f1b9fcc88e5d4b65a8637b17723bbda3cce8"
 args = "0x3c55d6660b44a9c6470ddea5cb47581e0260b184" # 只需要此处修改 ckb-cli 生成的 lock_arg
@@ -26,11 +41,54 @@ hash_type = "type"
 message = "0x"
 ```
 
-### 运行 ckb
+### 生成钱包地址
+
+首次使用没有 CKB 钱包地址？通过 ckb-cli 生成一个。
+
+命令：
+* Mac 用户
+
+```shell
+./ckb-cli account new # 生成一个新的 CKB 地址
+```
+
+* Linux/Windows 用户
+
+```shell
+ckb-cli account new # 生成一个新的 CKB 地址
+```
+
+响应：
+
+```shell
+Your new account is locked with a password. Please give a password. Do not forget this password.
+Password: # 输入密码
+Repeat password: # 再次输入相同密码
+
+address:
+  mainnet: ckb1qyqrc4wkvc95f2wxguxaafwtgavpuqnqkxzqd20pcj
+  testnet: ckt1qyqrc4wkvc95f2wxguxaafwtgavpuqnqkxzqs0375w
+lock_arg:  0x3c55d6660b44a9c6470ddea5cb47581e0260b184
+lock_hash: 0xadba7f9d5dfb04b6424b0f599e6d0fe7ae865ec8b9a14e3b1ef85d0d93017d46
+```
+
+## 运行开发链
+
+命令：
+* Mac 用户
 
 ```
 ./ckb run -C dev
+```
 
+* Linux/Windows 用户
+
+```
+ckb run -C dev
+```
+
+响应：
+```shell
 2020-02-22 19:55:37.333 main INFO sentry  sentry is disabled
 2020-02-22 19:55:37.434 main INFO ckb-chain  Start: loading live cells ...
 2020-02-22 19:55:37.439 main INFO ckb-chain  Done: total 1346 transactions.
@@ -41,11 +99,23 @@ message = "0x"
 
 ```
 
-### 挖矿
+## 运行开发链挖矿
 
-```shell
+命令：
+* Mac 用户
+
+```
 ./ckb miner -C dev
+```
 
+* Linux/Windows 用户
+
+```
+ckb miner -C dev
+```
+
+响应：
+```shell
 2020-02-22 20:09:15.785 main INFO sentry  sentry is disabled
 
 Found! #1349 0x8e86c06146dc81d703ad97facf296d25ff135d75eacad860b964675fb68cf0ab
