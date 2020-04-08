@@ -1,10 +1,10 @@
 ---
 id: download-client
-title: 下载客户端
-sidebar_label: 下载客户端
+title: CKB 客户端
+sidebar_label: CKB 客户端
 ---
 
-## 下载 CKB 客户端
+## CKB 客户端
 
 你可以直接前往 [Github](https://github.com/nervosnetwork/ckb/releases/latest)，下载最新版的 CKB 全节点客户端，下载页面包括了几个主要操作系统的不同版本，请选择适合自己系统的版本下载，并请注意所需的依赖环境。
 
