@@ -16,7 +16,7 @@ sidebar_label: 运行 CKB 主网
 * 要么 1）打开你的 "应用程序" 文件夹，然后打开 "实用程序"，双击 "终端"
 * 要么 2）按 `Command - Spacebar` or `Control -Spacebar` 启动 Spotlight，输入 `Terminal`，然后双击搜索结果，在终端上执行以下步骤。
 
-#### 下载客户端
+#### 下载客户端 (里面已包含 ckb 主程序以及 ckb-cli 客户端）
 
 ```bash
 # 下载 CKB 客户端
