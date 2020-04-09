@@ -109,7 +109,7 @@ capacity 是 CKB 网络中的原生资产，拥有 capacity 等于拥有相应�
 如果你想在 CKB 中使用脚本，那么应该遵循代码定位的规则：
 
 * 把你的代码编译成 RISC-V 二进制文件。你可以在建构系统 Cell 代码的仓库中找到一些案例：
-    _https://github.com/nervosnetwork/ckb-systemscripts_
+    _https://github.com/nervosnetwork/ckb-system-scripts_
 * 通过一笔交易，创建一个将二进制文件作为数据的 cell，并将交易发到链上。
 * 建构一个脚本结构，其 hash_type 是「Data」，code_hash 只是
     构建二进制文件的哈希
