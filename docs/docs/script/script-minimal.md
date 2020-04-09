@@ -45,7 +45,7 @@ $ ls
 simple*  simple.c
 ```
 
-得到编译后的可执行文件 `simple.o`
+得到编译后的可执行文件 `simple`
 
 ```shell
 $ ll -h
