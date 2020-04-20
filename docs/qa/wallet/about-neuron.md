@@ -19,9 +19,10 @@ Neuron：https://github.com/nervosnetwork/neuron
 请下载最新版本的 Neuron 钱包，并根据您的电脑系统选择正确的安装包
 
 * 国内用户，建议使用国内镜像进行下载：
-    * Windows：https://releases.nervos.org/Neuron-latest.exe 
-    * macOS：https://releases.nervos.org/Neuron-latest.dmg 
-    * Linxu：https://releases.nervos.org/Neuron-latest.AppImage 
+
+    * Windows：https://mirror.ckb.dev/Neuron-latest.exe
+    * macOS：https://mirror.ckb.dev/Neuron-latest.dmg
+    * Linxu：https://mirror.ckb.dev/Neuron-latest.AppImage
 
 * Github 下载：https://github.com/nervosnetwork/neuron/releases/latest
 
@@ -73,7 +74,7 @@ Neuron：https://github.com/nervosnetwork/neuron
 
 #### 数据加载过慢
 
-我们为您准备好的一份 CKB 的链数据：https://releases.nervos.org/ckb-data.zip ，块高度是 #1,156,900 。（海外用户可以使用这个地址 https://www.dropbox.com/s/5jusv76olh7ozw1/data.zip?dl=0 ）
+我们为您准备好的一份 CKB 的链数据：https://mirror.ckb.dev/ckb-data.zip ，块高度是 #1,156,900 。（海外用户可以使用这个地址 https://www.dropbox.com/s/5jusv76olh7ozw1/data.zip?dl=0 ）
 
 只要解压出 data 目录，放置到指定位置，就能大幅加速初次下载区块数据的速度。
 
@@ -180,7 +181,7 @@ Neuorn 是个 HD 钱包（Hierarchical Deterministic Wallets），是在 BIP32 �
 
 ### 首次使用，同步太慢了怎么办？
 
-我们为您准备好的一份 CKB 的链数据：https://releases.nervos.org/ckb-data.zip ，块高度是 #1,156,900 。（海外用户可以使用这个地址 https://www.dropbox.com/s/5jusv76olh7ozw1/data.zip?dl=0 ）
+我们为您准备好的一份 CKB 的链数据：https://mirror.ckb.dev/ckb-data.zip ，块高度是 #1,156,900 。（海外用户可以使用这个地址 https://www.dropbox.com/s/5jusv76olh7ozw1/data.zip?dl=0 ）
 
 只要解压出 data 目录，放置到指定位置，就能大幅加速初次下载区块数据的速度。
 
