@@ -20,9 +20,9 @@ sidebar_label: 如何将 CKB 存入 Nervos DAO
 
     国内下载地址：
 
-    * macOS：https://releases.nervos.org/Neuron-latest.dmg 
-    * Windows：https://releases.nervos.org/Neuron-latest.exe 
-    * Linxu：https://releases.nervos.org/Neuron-latest.AppImage 
+    * Windows：https://mirror.ckb.dev/Neuron-latest.exe
+    * macOS：https://mirror.ckb.dev/Neuron-latest.dmg
+    * Linxu：https://mirror.ckb.dev/Neuron-latest.AppImage
 
     Github 下载：https://github.com/nervosnetwork/neuron/releases/latest
 
@@ -33,7 +33,7 @@ sidebar_label: 如何将 CKB 存入 Nervos DAO
 
 3. 数据同步：
 
-如果您是首次下载使用 Neuron，可能会面临数据同步较慢的问题。我们为您准备好的一份 CKB 的链数据：https://releases.nervos.org/ckb-data.zip ，块高度是 #1,156,900 。
+如果您是首次下载使用 Neuron，可能会面临数据同步较慢的问题。我们为您准备好的一份 CKB 的链数据：https://mirror.ckb.dev/ckb-data.zip ，块高度是 #1,156,900 。
 
 （海外用户可以使用地址：https://www.dropbox.com/s/5jusv76olh7ozw1/data.zip?dl=0 ）
 
