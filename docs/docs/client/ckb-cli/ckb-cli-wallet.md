@@ -8,10 +8,10 @@ sidebar_label: 资产管理
 
 |方法|描述|
 |---|---|
-|transfer          |Transfer capacity to an address (can have data)|
-|get-capacity      |Get capacity by lock script hash or address or lock arg or pubkey|
-|get-live-cells    |Get live cells by lock/type/code  hash|
-|db-metrics        |Show index database metrics|
-|top-capacity      |Show top n capacity owned by lock script hash|
+|transfer          |发送 capacity 到一个地址（可以包含 data）|
+|get-capacity      |通过 lock script hash 或 address 或 lock arg 或 pubkey 获取 capacity|
+|get-live-cells    |通过 lock/type/code hash 获取 live cells|
+|db-metrics        |显示索引数据库指标|
+|top-capacity      |通过 lock script hash 显示 Top N capacity 的账户|
 
 ---

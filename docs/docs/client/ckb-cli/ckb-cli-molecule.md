@@ -8,8 +8,8 @@ sidebar_label: molecule
 
 |方法|描述|
 |---|---|
-|decode     |Decode molecule type from binary|
-|encode     |Encode molecule type from json to binary|
-|default    |Print default json structure of certain molecule type|
+|decode     |从二进制解码到 molecule type|
+|encode     |将 molecule type 从 json 编码成二进制 |
+|default    |打印指定 molecule type 的 json 结构|
 
 ---
