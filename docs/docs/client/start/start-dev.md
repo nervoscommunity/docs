@@ -30,7 +30,7 @@ ckb init --chain dev -C dev
 
 ## 配置挖矿地址
 
-### 修改 `dev/ckb.toml`
+### 修改 `dev/ckb.toml`(意思是指 dev 文件夹下的 ckb.toml 档）
 
 因为运行本地开发链，您还需要进行本地挖矿，因此需要修改 `dev/ckb.toml` 将其中的挖矿地址设置为您钱包的地址。
 
