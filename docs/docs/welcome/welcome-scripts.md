@@ -18,7 +18,7 @@ Lock {
 
 //////////////////////////////////////////////////////////////////////////////////
 
-Deps{
+Deps {
     OutPoint.TxHash: 0x71a7ba8fc96349fea0ed3a5c47992e3b4084b031a42264a018e0072e8172e46c
     OutPoint.Index: 0
     DepType: dep_group
@@ -37,7 +37,7 @@ Type {
 
 //////////////////////////////////////////////////////////////////////////////////
 
-Deps{
+Deps {
     OutPoint.TxHash: 0xe2fb199810d49a4d8beec56718ba2593b665db9d52299a0f9e6e75416d73ff5c
     OutPoint.Index: 2
     DepType: code
@@ -60,7 +60,7 @@ Lock {
 
 //////////////////////////////////////////////////////////////////////////////////
 
-Deps{
+Deps {
     OutPoint.TxHash: 0x6495cede8d500e4309218ae50bbcadb8f722f24cc7572dd2274f5876cb603e4e
     OutPoint.Index: 0
     DepType: dep_group
@@ -79,7 +79,7 @@ Lock {
 
 //////////////////////////////////////////////////////////////////////////////////
 
-Deps{
+Deps {
     OutPoint.TxHash: 0x6495cede8d500e4309218ae50bbcadb8f722f24cc7572dd2274f5876cb603e4e
     OutPoint.Index: 1
     DepType: dep_group
@@ -98,7 +98,7 @@ Type {
 
 //////////////////////////////////////////////////////////////////////////////////
 
-Deps{
+Deps {
     OutPoint.TxHash: 0x96fea0dfaac1186fbb98fd452cb9b13976f9a00bcce130035fe2e30dac931d1d
     OutPoint.Index: 2
     DepType: code
@@ -117,7 +117,7 @@ Type {
 
 //////////////////////////////////////////////////////////////////////////////////
 
-Deps{
+Deps {
     OutPoint.TxHash: 0xa18868d6dc6bd7b1a40a515dd801709baec6f64fdf9455e3f9f4c6393b9e8477
     OutPoint.Index: 0
     DepType: code
@@ -155,7 +155,7 @@ Lock {
 
 //////////////////////////////////////////////////////////////////////////////////
 
-Deps{
+Deps {
     OutPoint.TxHash: 0x25635bf587adacf95c9ad302113648f89ecddc2acfe1ea358ea99f715219c4c5
     OutPoint.Index: 0
     DepType: code
