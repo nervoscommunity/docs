@@ -7,7 +7,7 @@ module.exports = {
   organizationName: 'nervoscommunity', // Usually your GitHub org/user name.
   projectName: 'website', // Usually your repo name.
   themeConfig: {
-    googleAnalytics: {
+    gaGtag: {
       trackingID: 'UA-134814659-2',
     },
     navbar: {
