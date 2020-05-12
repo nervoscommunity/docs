@@ -6,8 +6,10 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'nervoscommunity', // Usually your GitHub org/user name.
   projectName: 'website', // Usually your repo name.
-  gaTrackingId: 'UA-134814659-2',
   themeConfig: {
+    googleAnalytics: {
+      trackingID: 'UA-134814659-2',
+    },
     navbar: {
       title: 'CKB Docs',
       logo: {
