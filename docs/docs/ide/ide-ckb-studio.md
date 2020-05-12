@@ -15,19 +15,19 @@ Github 地址：https://github.com/ObsidianLabs/CKB-Studio-Releases
 
 ## 使用教程
 
-### 【CKB 编程体验课】第一讲：CKB Studio 基本功能介绍
+### 第一讲：CKB Studio 基本功能介绍
 
 <iframe src="//player.bilibili.com/player.html?aid=285452831&bvid=BV1Qf4y1S7gM&cid=183824207&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height="400px" width="600px"> </iframe>
 
-### 【CKB 编程体验课】第二讲：用户自定义代币
+### 第二讲：用户自定义代币
 
 <iframe src="//player.bilibili.com/player.html?aid=925437364&bvid=BV1oT4y1g72e&cid=183831000&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height="400px" width="600px"> </iframe>
 
-### 【CKB 编程体验课】第三讲：Anyone-can-pay 合约
+### 第三讲：Anyone-can-pay 合约
 
 <iframe src="//player.bilibili.com/player.html?aid=710571129&bvid=BV1YQ4y1N7A1&cid=187917851&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height="400px" width="600px"> </iframe>
 
-### 【CKB 编程体验课】第四讲：使用 JavaScript 开发 CKB 智能合约
+### 第四讲：使用 JavaScript 开发 CKB 智能合约
 
 <iframe src="//player.bilibili.com/player.html?aid=540535437&bvid=BV15i4y1b7WZ&cid=188769965&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height="400px" width="600px"> </iframe>
 
