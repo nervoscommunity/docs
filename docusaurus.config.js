@@ -7,6 +7,9 @@ module.exports = {
   organizationName: 'nervoscommunity', // Usually your GitHub org/user name.
   projectName: 'website', // Usually your repo name.
   themeConfig: {
+    gaGtag: {
+      trackingID: 'UA-134814659-2',
+    },
     navbar: {
       title: 'CKB Docs',
       logo: {
