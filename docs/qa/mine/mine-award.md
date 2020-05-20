@@ -17,10 +17,10 @@ sidebar_label: CKB 挖矿奖励一览
 
 另一个关于区块奖励共分成四个部分，这是由 Nervos CKB 的经济模型和 NC Max 共识机制共同决定的，我们会在下方向大家详细地进行解释。
 
-![#88888](/img/docs/mine/mine-1.png)
+![#88888](/img/docs/mine/mine-88888.png)
 *区块高度 [#88888](https://explorer.nervos.org/block/0xa20ab19345a93d66da18b43505857b457af165832c5321ba9a096760305c21b6)*
 
-![#88877](/img/docs/mine/mine-2.png)
+![#88877](/img/docs/mine/mine-88877.png)
 *区块高度 [#88877](https://explorer.nervos.org/block/0xd8760a6419d113f595fd6073f06340e6c6c5a4047230c63dc8825e19883258b1)*
 
 ## CKB 区块奖励
