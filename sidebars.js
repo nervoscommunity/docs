@@ -189,6 +189,7 @@ module.exports = {
       'qa/mine/about-mine-ckb',
       'qa/mine/pool-machine',
       'qa/mine/about-pow',
+      'qa/mine/mine-award',
     ],
     区块浏览器: [
       'qa/explorer/about-explorer',
