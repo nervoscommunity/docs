@@ -1,7 +1,7 @@
 ---
 id: 0013-get-block-template
 title: get_block_template
-sidebar_label: 13：get_block_template
+sidebar_label: 13：get block template
 ---
 
 |  Number   |  Category |   Status  |   Author  |Organization| Created  |

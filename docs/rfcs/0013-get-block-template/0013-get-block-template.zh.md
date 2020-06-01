@@ -1,27 +1,26 @@
 ---
 id: 0013-get-block-template.zh
 title: get_block_template
-sidebar_label: 13：get_block_template
+sidebar_label: 13：区块模板
 ---
 
 |  Number   |  Category |   Status  |   Author  |Organization| Created  |
 | --------- | --------- | --------- | --------- | --------- | --------- |
 | 0013 | Standards Track | Proposal | Dingwei Zhang  |Nervos Foundation|2019-01-02|
 
-# get_block_template
+# 获取区块模板
 
-## Abstract
+## 摘要
 
-This RFC describes the decentralized CKB mining protocol.
+本 RFC 主要是用来描述去中心化的 CKB 挖矿协议。
 
-
-## Motivation
+## 动机
 
 The original `get_work` [[btc][1] [eth][2]] mining protocol simply issues block headers for a miner to solve, the miner is kept in the dark, and has no influence over block creation. `get_block_template` moves block creation to the miner, the entire block structure is sent, and left to the miner to (optionally) customize and assemble, miner are enabled to audit and possibly modify the block before hashing it, this improves the security of the CKB network by making blocks decentralized.
 
-## Specification
+## 技术说明
 
-### Block Template Request
+### 区块模板请求
 
 A JSON-RPC method is defined, called `get_block_template`. It accepts exactly three argument:
 
@@ -39,39 +38,39 @@ Servers SHOULD respect these desired maximums (if those maximums exceed consensu
 | Key                   | Required | Type             | Description                                                                  |
 | --------------------- | -------- | ---------------- | ---------------------------------------------------------------------------- |
 | version               | Yes      | Number           | block version                                                                |
-| difficulty            | Yes      | String           | difficulty in hex-encoded string                                             |
+| difficulty            | Yes      | String           | difficulty in hex-encoded string    |
 | current_time          | Yes      | Number           | the current time as seen by the server (recommended for block time)          |
-| number                | Yes      | Number           | the number of the block we are looking for                                   |
-| parent_hash           | Yes      | String           | the hash of the parent block, in hex-encoded string                          |
+| number                | Yes      | Number           | the number of the block we are looking for     |
+| parent_hash           | Yes      | String           | the hash of the parent block, in hex-encoded string   |
 | cycles_limit          | No       | Number           | maximum number of cycles allowed in blocks                                   |
 | bytes_limit           | No       | Number           | maximum number of bytes allowed in blocks                                    |
 | commit_transactions   | Should   | Array of Objects | objects containing information for CKB transactions (excluding cellbase)     |
 | proposal_transactions | Should   | Array of String  | array of hex-encoded transaction proposal_short_id                           |
-| cellbase              | Yes      | Object           | information for cellbase transaction                                         |
+| cellbase              | Yes      | Object           | information for cellbase transaction       |
 | work_id               | No       | String           | if provided, this value must be returned with results (see Block Submission) |
 
-#### Transaction Object
+#### 交易对象
 
 The Objects listed in the response's "commit_transactions" key contains these keys:
 
-| Key      | Required | Type             | Description                                                                                                                                                                                                                       |
-| -------- | -------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| hash     | Yes      | String           | the hash of the transaction                                                                                                                                                                                                       |
-| required | No       | Boolean          | if provided and true, this transaction must be in the final block                                                                                                                                                                 |
-| cycles   | No       | Number           | total number of cycles, if key is not present, cycles is unknown and clients MUST NOT assume there aren't any                                                                                                                     |
+| Key      | Required | Type        |Description          |
+| -------- | -------- | ---------------- | ------- |
+| hash     | Yes      | String           | the hash of the transaction            |
+| required | No       | Boolean          | if provided and true, this transaction must be in the final block       |
+| cycles   | No       | Number           | total number of cycles, if key is not present, cycles is unknown and clients MUST NOT assume there aren't any                     |
 | depends  | No       | Array of Numbers | other transactions before this one (by 1-based index in "transactions" list) that must be present in the final block if this one is; if key is not present, dependencies are unknown and clients MUST NOT assume there aren't any |
-| data     | Yes      | String           | transaction [Molecule][3] bytes in  hex-encoded string                                                                                                                                                                            |
+| data     | Yes      | String           | transaction [Molecule][3] bytes in  hex-encoded string   |
 
-### Block Submission
+### 区块提交
 
 A JSON-RPC method is defined, called `submit_block`. to submit potential blocks (or shares). It accepts two arguments: the first is always a String of the hex-encoded block [Molecule][3] bytes to submit; the second is String of work_id.
 
-| Key     | Required | Type   | Description                                                           |
-| ------- | -------- | ------ | --------------------------------------------------------------------- |
-| data    | Yes      | String | block [Molecule][3] bytes in  hex-encoded string                      |
+| Key     | Required | Type   | Description            |
+| ------- | -------- | ------ | -------------- |
+| data    | Yes      | String | block [Molecule][3] bytes in  hex-encoded string    |
 | work_id | No       | String | if the server provided a workid, it MUST be included with submissions |
 
-### References
+### 参考文献
 
 * bitcoin Getwork, https://en.bitcoin.it/wiki/Getwork
 * ethereum Getwork, https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_getwork
