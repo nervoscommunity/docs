@@ -15,7 +15,7 @@ tags: [Keyper, Matt, DApp]
 
 <!--truncate-->
 
-![](/img/blog/kyper-intro-1.png)
+![](/img/blog/keyper-intro-1.png)
 
 出于安全问题，这些 lock script 的使用和管理都将掌握在用户手中。与使用单一地址相比，增加了更多的实现细节，同时也丰富了用户体验，因为单一地址的功能总是相同的。
 
@@ -23,7 +23,7 @@ Keyper 的设计就是为了解决用户和程序开发人员面临的这一挑�
 
 Keyper 简化了应用程序开发，提高了 Nervos 应用程序的用户友好性。Keyper 实现（又叫做 Keyper Agencies）包含了一个 lock script 的容器，它可以根据用户的私钥和应用程序的实现来生成合适的 lock script 值和签名。
 
-![](/img/blog/kyper-intro-2.png)
+![](/img/blog/keyper-intro-2.png)
 
 ### Keyper Agency
 
