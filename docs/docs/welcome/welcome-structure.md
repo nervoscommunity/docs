@@ -269,7 +269,7 @@ CKB的高明之处在于，把这个“保险箱”私有化，就可以收取�
 
 在打包一笔交易到区块中时，矿工需要考虑两个限制：计算 cycles 和交易大小。
 
-在 CKB 中，交易验证（特别是脚本执行）所消耗的计算资源是通过 cycles 来衡量的。CKB VM 中每一条指令都有不同的 cycles 成本。验证区块中所有交易执行的所有脚本所消耗的总 cycles 受到 CKB 协议中定义的 `MAX_BLOCK_CYCLES` 值的限制。（了解更多关于 cycles 计算的信息，请参考 [RFC-0014-VM Cycle 限制](../../rfcs/0020-ckb-consensus-protocol/0020-ckb-consensus-protocol.zh)）
+在 CKB 中，交易验证（特别是脚本执行）所消耗的计算资源是通过 cycles 来衡量的。CKB VM 中每一条指令都有不同的 cycles 成本。验证区块中所有交易执行的所有脚本所消耗的总 cycles 受到 CKB 协议中定义的 `MAX_BLOCK_CYCLES` 值的限制。（了解更多关于 cycles 计算的信息，请参考 [RFC-0014-VM Cycle 限制](../../rfcs/0014-vm-cycle-limits/0014-vm-cycle-limits.zh)）
 
 交易的大小通过字节作为单位去衡量。区块中所有交易的大小总和应该要小于 CKB 协议定义的 `MAX_BLOCK_BYTES` 值。
 
