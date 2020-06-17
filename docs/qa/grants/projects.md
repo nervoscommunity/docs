@@ -39,3 +39,4 @@ sidebar_label: Grants 项目汇总
 |Coglio etc.|安全审计|PoC Verification of CKB-VM|[RFC](https://talk.nervos.org/t/coglio-mccarthy-smith-poc-verification-of-ckb-vm/4580) ||2020/4/21|Step1|
 |DappBirds|生态产品|Dapp平台|[RFC](https://talk.nervos.org/t/chain-enable-traditional-app-project-parties-to-quickly-change-the-chain-to-the-ground-and-join-the-nervos-ecosystem/4631) |[网址](https://store.dappbirds.com/index)|2020/4/29|Step1|
 |LeapDAO|Layer2|Sidechain Framework|[RFC](https://talk.nervos.org/t/ckb-sidechain-framework/4722) ||2020/5/27|Step1|
+|Tide|生态产品|Stablecoin Protocol|[RFC](https://talk.nervos.org/t/tide-finance-borrowing-stablecoin-protocol/4765) ||2020/6/14|Step1|
