@@ -35,7 +35,7 @@ $ cd build/ && ll -h | grep simple_udt
 
 ### 部署合约
 
-这里我使用的是 Aragon 测试网部署合约，首先，您需要去[水龙头](https://faucet.nervos.org/)领 5000 CKB。
+这里我使用的是 Aggron 测试网部署合约，首先，您需要去[水龙头](https://faucet.nervos.org/)领 5000 CKB。
 
 > 如果您启用了本地 `DevChain` 的话，就可以跳过上述步骤。
 
