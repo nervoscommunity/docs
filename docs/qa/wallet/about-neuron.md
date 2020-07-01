@@ -74,7 +74,7 @@ Neuron：https://github.com/nervosnetwork/neuron
 
 #### 数据加载过慢
 
-我们为您准备好的一份 CKB 的链数据：https://mirror.ckb.dev/ckb-data.zip ，块高度是 #1,156,900 。（海外用户可以使用这个地址 https://www.dropbox.com/s/5jusv76olh7ozw1/data.zip?dl=0 ）
+我们为您准备好的一份 CKB 的链数据：https://mirror.ckb.dev/ckb-data.zip ，块高度是 #2,205,457 。（海外用户可以使用这个地址 https://www.dropbox.com/s/5jusv76olh7ozw1/data.zip?dl=0 ）
 
 只要解压出 data 目录，放置到指定位置，就能大幅加速初次下载区块数据的速度。
 
