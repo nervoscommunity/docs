@@ -10,6 +10,12 @@ module.exports = {
     gaGtag: {
       trackingID: 'UA-134814659-2',
     },
+    algolia: {
+      apiKey: '5592cc04fd6f50cb41c3f3ad4197944c',
+      indexName: 'docs',
+      appId: '1LNRS0BXX5', // Optional, if you run the DocSearch crawler on your own
+      algoliaOptions: {}, // Optional, if provided by Algolia
+    },
     navbar: {
       title: 'CKB Docs',
       logo: {
