@@ -20,10 +20,10 @@ sidebar_label: 运行 CKB 主网
 
 ```bash
 # 下载 CKB 客户端
-curl -O https://github.com/nervosnetwork/ckb/releases/download/v0.30.2/ckb_v0.30.2_x86_64-apple-darwin.zip
+curl -O https://github.com/nervosnetwork/ckb/releases/download/v0.33.0/ckb_v0.33.0_x86_64-apple-darwin.zip
 
 # 解压文件
-unzip ckb_v0.30.2_x86_64-apple-darwin.zip
+unzip ckb_v0.33.0_x86_64-apple-darwin.zip
 
 ```
 
@@ -31,11 +31,11 @@ unzip ckb_v0.30.2_x86_64-apple-darwin.zip
 
 请注意：
 * 注意您的文件路径，前往到文件所在目录后，进行相关操作。
-* 本文中使用的是 ckb v0.30.2，若您下载到更新版本的 ckb 客户端，请更换对应的文件名，不影响其他操作。
+* 本文中使用的是 ckb v0.33.0，若您下载到更新版本的 ckb 客户端，请更换对应的文件名，不影响其他操作。
 
 ```bash
 # 进入文件
-cd ckb_v0.30.2_x86_64-apple-darwin
+cd ckb_v0.33.0_x86_64-apple-darwin
 
 # 检查 ckb 版本
 ./ckb --version
@@ -48,13 +48,13 @@ cd ckb_v0.30.2_x86_64-apple-darwin
 <summary>点击查看详细输出</summary>
 
 ```bash
-cd ckb_v0.30.2_x86_64-apple-darwin
+cd ckb_v0.33.0_x86_64-apple-darwin
 
 $ ./ckb --version
-ckb 0.30.2 (4382236 2020-04-02)
+ckb 0.33.0 (0a813b2 2020-06-19)
 
 $ ./ckb-cli --version
-ckb-cli 0.30.0 (2a7ed95 2020-03-20)
+ckb-cli 0.33.1 (488a2eb 2020-06-19)
 ```
 </details>
 
@@ -74,7 +74,7 @@ ckb-cli 0.30.0 (2a7ed95 2020-03-20)
 $ ./ckb init --chain mainnet
 
 WARN: mining feature is disabled because of lacking the block assembler config options
-Initialized CKB directory in /Users/(NAME)/Documents/ckb_v0.30.2_x86_64-apple-darwin # 路径不同，此处略有差异
+Initialized CKB directory in /Users/(NAME)/Documents/ckb_v0.33.0_x86_64-apple-darwin # 路径不同，此处略有差异
 create ckb.toml
 create ckb-miner.toml
 ```
@@ -121,21 +121,27 @@ $ ./ckb run
 
 ```shell
 # 下载 CKB 客户端
-wget https://github.com/nervosnetwork/ckb/releases/download/v0.30.2/ckb_v0.30.2_x86_64-unknown-linux-gnu.tar.gz
+wget https://github.com/nervosnetwork/ckb/releases/download/v0.33.0/ckb_v0.33.0_x86_64-unknown-linux-gnu.tar.gz
 
 # 解压文件
-tar -zxvf ckb_v0.30.2_x86_64-unknown-linux-gnu.tar.gz
+tar -zxvf ckb_v0.33.0_x86_64-unknown-linux-gnu.tar.gz
 ```
 
 ### 检查版本
 
 请注意：
 * 注意您的文件路径，前往到文件所在目录后，进行相关操作。
-* 本文中使用的是 ckb v0.30.2，若您下载到更新版本的 ckb 客户端，请更换对应的文件名，不影响其他操作。
+* 本文中使用的是 ckb v0.33.0，若您下载到更新版本的 ckb 客户端，请更换对应的文件名，不影响其他操作。
 
 ```shell
 # 进入文件
-cd ckb_v0.30.2_x86_64-unknown-linux-gnu
+cd ckb_v0.33.0_x86_64-unknown-linux-gnu
+
+# 将 ckb 指令添加到全局
+sudo ln -snf "$(pwd)/ckb" /usr/local/bin/ckb
+
+# 将 ckb-cli 指令添加到全局
+sudo ln -snf "$(pwd)/ckb" /usr/local/bin/ckb-cli
 
 # 检查 ckb 版本
 ckb --version
@@ -148,13 +154,13 @@ ckb-cli --version
 <summary>点击查看详细输出</summary>
 
 ```shell
-cd ckb_v0.30.2_x86_64-unknown-linux-gnu
+cd ckb_v0.33.0_x86_64-unknown-linux-gnu
 
 ckb --version
-ckb 0.30.2 (4382236 2020-04-02)
+ckb 0.33.0 (0a813b2 2020-06-19)
 
 ckb-cli --version
-ckb-cli 0.30.0 (2a7ed95 2020-03-20)
+ckb-cli 0.33.1 (488a2eb 2020-06-19)
 ```
 
 </details>
@@ -226,11 +232,11 @@ ckb run
 
 请注意：
 * 注意您的文件路径，前往到文件所在目录后，进行相关操作。
-* 本文中使用的是 ckb v0.30.2，若您下载到更新版本的 ckb 客户端，请更换对应的文件名，不影响其他操作。
+* 本文中使用的是 ckb v0.33.0，若您下载到更新版本的 ckb 客户端，请更换对应的文件名，不影响其他操作。
 
 ```shell
 # 进入文件
-cd ckb_v0.30.2_x86_64-pc-windows-msvc
+cd ckb_v0.33.0_x86_64-pc-windows-msvc
 
 # 检查 ckb 版本
 ckb --version
@@ -243,13 +249,13 @@ ckb-cli --version
 <summary>点击查看详细输出</summary>
 
 ```shell
-cd ckb_v0.30.2_x86_64-pc-windows-msvc
+cd ckb_v0.33.0_x86_64-pc-windows-msvc
 
 ckb --version
-ckb 0.30.2 (4382236 2020-04-02)
+ckb 0.33.0 (0a813b2 2020-06-19)
 
 ckb-cli --version
-ckb-cli 0.30.0 (2a7ed95 2020-03-20)
+ckb-cli 0.33.1 (488a2eb 2020-06-19)
 ```
 
 </details>
@@ -270,7 +276,7 @@ ckb init --chain mainnet
 ckb init --chain mainnet
 
 WARN: mining feature is disabled because of lacking the block assembler config options
-Initialized CKB directory in D:\ckb\ckb_v0.30.2_x86_64-pc-windows-msvc # 路径不同，此处略有差异
+Initialized CKB directory in D:\ckb\ckb_v0.33.0_x86_64-pc-windows-msvc # 路径不同，此处略有差异
 create ckb.toml
 create ckb-miner.toml
 ```
