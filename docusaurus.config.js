@@ -1,7 +1,7 @@
 module.exports = {
   title: 'Welcome to CKB Docs',
   tagline: 'This docs is for Nervos Community members',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://docs.ckb.dev',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
   organizationName: 'nervoscommunity', // Usually your GitHub org/user name.
