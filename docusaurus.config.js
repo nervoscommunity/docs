@@ -13,7 +13,7 @@ module.exports = {
     algolia: {
       apiKey: '3c7fd59ae6979a7d317d3a94029c7a56',
       indexName: 'ckb',
-      appId: '', // Optional, if you run the DocSearch crawler on your own
+      appId: '1LNRS0BXX5', // Optional, if you run the DocSearch crawler on your own
       algoliaOptions: {}, // Optional, if provided by Algolia
     },
     navbar: {
