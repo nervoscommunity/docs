@@ -1,7 +1,7 @@
 module.exports = {
   title: 'Welcome to CKB Docs',
   tagline: 'This docs is for Nervos Community members',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://docs.ckb.dev',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
   organizationName: 'nervoscommunity', // Usually your GitHub org/user name.
@@ -11,9 +11,9 @@ module.exports = {
       trackingID: 'UA-134814659-2',
     },
     algolia: {
-      apiKey: '5592cc04fd6f50cb41c3f3ad4197944c',
-      indexName: 'docs',
-      appId: '1LNRS0BXX5', // Optional, if you run the DocSearch crawler on your own
+      apiKey: '3c7fd59ae6979a7d317d3a94029c7a56',
+      indexName: 'ckb',
+      placeholder: '搜索',
       algoliaOptions: {}, // Optional, if provided by Algolia
     },
     navbar: {
