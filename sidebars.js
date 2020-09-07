@@ -117,6 +117,8 @@ module.exports = {
       'rfcs/0017-tx-valid-since/0017-tx-valid-since',
       'rfcs/0021-ckb-address-format/0021-ckb-address-format',
       'rfcs/0023-dao-deposit-withdraw/0023-dao-deposit-withdraw',
+      'rfcs/0025-simple-udt/0025-simple-udt',
+      'rfcs/0026-anyone-can-pay/0026-anyone-can-pay',
     ],
     Information: [
       'rfcs/0001-positioning/0001-positioning',
@@ -127,6 +129,7 @@ module.exports = {
       'rfcs/0019-data-structures/0019-data-structures',
       'rfcs/0020-ckb-consensus-protocol/0020-ckb-consensus-protocol',
       'rfcs/0022-transaction-structure/0022-transaction-structure',
+      'rfcs/0024-ckb-system-script-list/0024-ckb-system-script-list',
     ],
     简介_Introduction: ['rfcs/introduction.zh'],
     标准_Standards_Track: [
@@ -143,6 +146,8 @@ module.exports = {
       'rfcs/0017-tx-valid-since/0017-tx-valid-since.zh',
       'rfcs/0021-ckb-address-format/0021-ckb-address-format.zh',
       'rfcs/0023-dao-deposit-withdraw/0023-dao-deposit-withdraw.zh',
+      'rfcs/0025-simple-udt/0025-simple-udt.zh',
+      'rfcs/0026-anyone-can-pay/0026-anyone-can-pay.zh',
     ],
     信息_Information: [
       'rfcs/0001-positioning/0001-positioning.zh',
@@ -153,6 +158,7 @@ module.exports = {
       'rfcs/0019-data-structures/0019-data-structures.zh',
       'rfcs/0020-ckb-consensus-protocol/0020-ckb-consensus-protocol.zh',
       'rfcs/0022-transaction-structure/0022-transaction-structure.zh',
+      'rfcs/0024-ckb-system-script-list/0024-ckb-system-script-list.zh',
     ],
   },
 
