@@ -13,7 +13,7 @@ RPC 接口在升级的版本之间是完全可兼容的，例如，对于 0.25.0
 
 通常情况下，开发者自己运行节点是极为不便的。因此，Nervos 提供了测试网 `Aggron` 节点以及主网 `Lina` 节点供开发者使用，它们均支持 `RPC` 调用。
 
-* 主网 `Lina` 节点
+### 主网 `Lina` 节点
 
 > 主网 - Node RPC
 * https://mainnet.ckb.dev/
@@ -23,7 +23,7 @@ RPC 接口在升级的版本之间是完全可兼容的，例如，对于 0.25.0
 * https://mainnet.ckb.dev/indexer_rpc
 
 
-* 测试网 `Aggron` 节点
+### 测试网 `Aggron` 节点
 
 > 测试网 - Node RPC
 * https://testnet.ckb.dev/
@@ -32,12 +32,14 @@ RPC 接口在升级的版本之间是完全可兼容的，例如，对于 0.25.0
 > 测试网 - Indexer RPC
 * https://testnet.ckb.dev/indexer_rpc
 
+### 注意事项
+
 其中 CKB 主网和测试网代码参见：[CKB](https://github.com/nervosnetwork/ckb)，Indexer PRC 参见：[ckb-indexer](https://github.com/nervosnetwork/ckb-indexer)
 
-请注意接口限制:
+请注意，接口限制:
 * rate: 20 req / s
 * burst: 20 req / s
-* 超出限制会收到 500 错。
+超出限制会收到提示为 `500` 的报错。
 
 如果你希望基于 `Aggron` 测试网进行开发，你可以在[水龙头](https://faucet.nervos.org/)申请测试所需的 `CKB`。
 
