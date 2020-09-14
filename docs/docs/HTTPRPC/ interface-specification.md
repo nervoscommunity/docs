@@ -11,16 +11,36 @@ RPC 接口在升级的版本之间是完全可兼容的，例如，对于 0.25.0
 
 ## 使用公开节点
 
-通常情况下，开发者自己运行节点是极为不便的。因此，Nervos 提供了 `Aggron` 测试网节点以及主网节点供开发者使用，它们均支持 `RPC` 调用，并使用默认的端口号。
+通常情况下，开发者自己运行节点是极为不便的。因此，Nervos 提供了测试网 `Aggron` 节点以及主网 `Lina` 节点供开发者使用，它们均支持 `RPC` 调用。
 
-> `Aggron` 测试网第一个节点和主网第一个节点的 10334 端口支持  `HTTPS` 。
+* 主网 `Lina` 节点
 
-* `Aggron` 测试网节点
+> 主网 - Node RPC
+* https://mainnet.ckb.dev/
+* https://mainnet.ckb.dev/rpc
 
-* 主网节点
+> 主网 - Indexer RPC
+* https://mainnet.ckb.dev/indexer_rpc
+
+
+* 测试网 `Aggron` 节点
+
+> 测试网 - Node RPC
+* https://testnet.ckb.dev/
+* https://testnet.ckb.dev/rpc
+
+> 测试网 - Indexer RPC
+* https://testnet.ckb.dev/indexer_rpc
+
+其中 CKB 主网和测试网代码参见：[CKB](https://github.com/nervosnetwork/ckb)，Indexer PRC 参见：[ckb-indexer](https://github.com/nervosnetwork/ckb-indexer)
+
+请注意接口限制:
+* rate: 20 req / s
+* burst: 20 req / s
+* 超出限制会收到 500 错。
 
 如果你希望基于 `Aggron` 测试网进行开发，你可以在[水龙头](https://faucet.nervos.org/)申请测试所需的 `CKB`。
 
 ## 部署个人节点
 
-根据开发者需要，我们也提供了搭建节点的方法。
+根据开发者需要，我们也提供了搭建节点的方法，请参见 [CKB 客户端](../client/client-overview)一节。

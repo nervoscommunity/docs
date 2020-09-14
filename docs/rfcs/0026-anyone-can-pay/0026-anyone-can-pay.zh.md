@@ -1,22 +1,22 @@
 ---
 id: 0026-anyone-can-pay.zh
-title: Anyone-Can-Pay Lock
-sidebar_label: 26：Anyone-Can-Pay Lock
+title: Anyone-Can-Pay 锁脚本
+sidebar_label: 26：Anyone-Can-Pay 锁脚本
 ---
 
 |  Number   |  Category |   Status  |   Author  |Organization| Created  |
 | --------- | --------- | --------- | --------- | --------- | --------- |
 | 0026 | Standards Track | Proposal | Xuejie Xiao |Nervos Foundation|2020-09-03|
 
-# Anyone-Can-Pay Lock
+# Anyone-Can-Pay 锁脚本
 
-This RFC describes a new lock script for CKB that can accept any amount of [Simple UDT](../0025-simple-udt/0025-simple-udt.md) or CKB payment. Previously, one can only transfer to another user at least 61 CKBytes when using the default lock, possibly more when using other lock scripts or type scripts. This is becoming a bigger problem when UDT support lands in CKB: a naive UDT transfer operation will not only require UDTs, but CKByte to keep the UDTs in a cell as well.
+本 RFC 描述了一种新的 CKB 锁脚本，它可以用来接收任意数量的[最简 UDT](../0025-simple-udt/0025-simple-udt.md) 或者 CKB。以前，当使用默认锁脚本时，一个用户至少向另一个用户转账 61 个 CKBytes，当使用其他锁脚本或类型脚本时可能会更多。当 UDT 方案在 CKB 中落地后，这将成为一个更大的问题：一个原生的 UDT 转账操作，不仅需要 UDTs，还需要一定数量的 CKBytes 来将 UDT 保存在一个 cell 中。
 
-Here we try to solve the problem by introducing a new anyone-can-pay lock script, which can be unlocked not only by the validation of a signature, but also by accepting any amount of payment. This way, a user should be able to send any amount of CKBytes or UDTs to a cell using anyone-can-pay lock instead of always creating a new cell. It thus provides a solution to both problems above.
+在这里，我们试图通过引入一个新的任何人都可以支付的锁脚本来解决这一问题，它不仅可以通过验证签名来解锁，还可以通过接收任意金额的转账来进行解锁。这样一来，用户就可以使用 anyone-can-pay 锁来向一个 cell 发送任意数量的 CKBytes 或 UDTs，而不是总是创建一个新的 cell。因此，anyone-can pay 锁脚本为上述两个问题提供了一个解决方案。
 
-## Script Structure
+## 脚本结构
 
-The anyone-can-pay lock is built upon the default secp256k1-blake2b-sighash-all lock with additions to the script args part. The new anyone-can-pay lock can accept any of the following script args format:
+Anyone-can-pay 锁脚本是在默认的 secp256k1-blake2b-sighash-all 锁脚本的基础上，在脚本 args 部分增加了一些内容。新的 Anyone-can-pay 锁脚本可以接受以下任意一种脚本 args 结构：
 
 ```
 <20 byte blake160 public key hash>
@@ -24,20 +24,26 @@ The anyone-can-pay lock is built upon the default secp256k1-blake2b-sighash-all 
 <20 byte blake160 public key hash> <1 byte CKByte minimum> <1 byte UDT minimum>
 ```
 
-The additions of CKByte & UDT minimums enforce the minimal amount that one can transfer to the anyone-can-pay lock. This provides a mitigation against DDoSing on the cell level: if a cell is setup using the anyone-can-pay lock, an attacker can keep creating transactions that transfer only 1 shannon or 1 UDT to the cell, making it difficult for the cell owner to claim the tokens stored in the cell. By providing a minimal transfer amount, a user can raise the attacking cost, hence protecting his/her own cells against DDoS attacks. This mechanism won't prevent all kinds of DDoS of course, but it serves as a quick solution to mitigate cheaper ones.
+新增的 CKByte 和 UDT 最小值强制规定了一个人可以转账到 anyone-can-pay 锁脚本的最小数量。这就提供了一个 cell 层面的对 DDoS 攻击的缓解措施：如果一个 cell 使用的是 anyone-can-pay 的锁脚本，那么攻击者就可以不断地创建只向这个 cell 传输 1 个 shannon 或者 1 个 UDT 的交易，从而使得 cell 的所有者很难使用存放在 cell 中的代币。通过设置最小的转账金额，用户可以提高攻击成本，从而保护自己的 cell 免受 DDoS 攻击。当然，这种机制并不能防止所有类型的 DDoS，但它可以作为一种快速的解决方案来缓解更廉价的 DDoS。
 
-The value stored in CKByte & UDT minimum are interpreted in the following way: if `x` is stored in the field, the minimal transfer amount will be `10^x`, for example:
+CKByte & UDT 的最小值中存储的值，解释如下：如果字段中存储了 `x`，则最小转账额为 `10^x`，例如：
 
-* If 3 is stored in CKByte minimum, it means the minimal amount that can be accepted by the cell is 1000 shannons
-* If 4 is stored in UDT base unit minimum, it means the minimal amount that can be accepted by the cell is 10000 UDT base units.
+* 如果在 CKByte 的最小值中存储的是 3，则意味着该 cell 可接受的最小量是 1000 shannon。
+* 如果在 UDT 的最小值中存储的是 4，则意味着该 cell 可接受的最小金额为 10000 UDT 基本单位。
 
-Note the minimum fields are completely optional. If a minimum is not provided, we will treat the minimum value as 0, meaning no minimum is enforced on the transfer operation. It is worth mentioning that different minimums also lead to different lock scripts used by the cell.
+请注意，最小值字段是完全可选的，如果没有提供最小值，我们将把最小值视为 0，这就意味着没有最小值。如果没有提供最小值，我们将把最小值视为 0，这意味着在转账操作中没有执行最小值。值得一提的是，不同的最小值也会导致单元格使用不同的锁脚本。
 
-## UDT Interpretation
+## UDT 释义
 
-The anyone-can-pay lock assumes that the locked cell follows the [Simple UDT specification](https://talk.nervos.org/t/rfc-simple-udt-draft-spec/4333), thus the cell 1) has a type script; 2) has at least 16 bytes in the cell data part. Its up to the user to ensure one only uses anyone-can-pay lock with a type script implementing Simple UDT specification.
+Anyone-can-pay 锁脚本假定被锁定的 cell 遵循[最简 UDT 规范](https://talk.nervos.org/t/rfc-simple-udt-draft-spec/4333)，因此该 cell 1）有一个类型脚本，2）cell 的 data 部分至少有 16 个字节。用户要确保只使用最简 UDT 规范的类型脚本的 anyone-can-pay 锁脚本。
 
-## Unlock Rules
+## 解锁逻辑
+
+Anyone-can-pay 锁脚本将遵循以下规则：
+
+1. 如果提供了签名，它的工作原理和默认的 secp256k1-blake2b-sighash-all 锁脚本完全一样，如果在 witness 中提供了签名，并且可以验证，则锁脚本将返回成功状态。
+
+    1.a. 如果提供的签名没有通过验证，锁脚本将返回错误状态
 
 The anyone-can-pay lock will work following the rules below:
 
@@ -68,11 +74,11 @@ The reason of limiting one input cell and one output cell for each lock/type scr
 
 Giving those considerations, anyone-can-pay lock script here forbids merging or splitting anyone-can-pay cells from non-owners, as allowing more than one input/output anyone-can-pay cell in each lock/type combination would only complicate lock validation rules without significant gains.
 
-## Examples
+## 例子
 
 Here we describe useful transaction examples involving anyone-can-pay lock.
 
-### Create an Anyone-can-pay Cell
+### 创建一个 Anyone-can-pay Cell
 
 ```
 Inputs:
@@ -98,7 +104,7 @@ Witnesses:
 
 Note here we assume 0.01 CKByte is paid as the transaction fee, in production one should calculate the fee based on factors including transaction size, running cycles as well as network status. 0.01 CKByte will be used in all examples as fees for simplicity. The new anyone-can-pay cell created by this transaction impose a minimum transfer value of 10^9 shannons (10 CKBytes) and 10^5 UDT base units respectively.
 
-### Unlock via Signature
+### 通过签名进行解锁
 
 ```
 Inputs:
@@ -119,7 +125,7 @@ Witnesses:
 
 When a signature is provided, the cell can be unlocked in anyway the owner wants, anyone-can-pay lock here just behaves as a normal cell. In this example an anyone-can-pay cell is converted back to a normal cell.
 
-### Unlock via CKB Payment on Cells with No Type Script
+### 没有类型脚本的 cells 通过 CKB 支付进行解锁
 
 ```
 Inputs:
@@ -150,7 +156,7 @@ Witnesses:
 
 Here the transaction doesnt contain signature for the anyone-can-pay cell, yet the anyone-can-pay lock succeeds the validation when it detects that someone deposits 20 CKBytes into itself. Note this use case does not involve in UDT at all, anyone-can-pay lock is used to overcome the 61 CKBytes requirement of plain transfer.
 
-### Unlock via UDT Payment
+### 通过 UDT 支付进行解锁
 
 ```
 Inputs:
@@ -201,7 +207,7 @@ Witnesses:
 
 Here we are depositing 1 UDT to the anyone-can-pay cell. Because theres no extra arguments in the anyone-can-pay lock script except a public key hash, the cell enforces no minimum on the CKByte or UDT one can transfer, a transfer of 1 UDT will be accepted here.
 
-### Unlock via CKByte Payment With Minimums
+### 有最小值的情况下，通过 CKB 支付进行解锁
 
 ```
 Inputs:
@@ -252,7 +258,7 @@ Witnesses:
 
 Here CKByte minimum is set to 9, which means in each transaction, one must at least transfers `10^9` shannons, or 10 CKBytes into the anyone-can-pay cell. Note that even though UDT minimum is set to 5, meaning one should at least transfer 100000 UDT base units to the anyone-can-pay cell, satisfying the CKByte minimal transfer minimum alone already satisfy the validation rules, allowing CKB to accept the transaction. Likewise, a different transaction might only send 100000 UDT base units to the anyone-can-pay cell without sending any CKBytes, this will also satisfy the validation rules of anyone-can-pay cell here.
 
-## Notes
+## 注意
 
 An implementation of the anyone-can-pay lock spec above has been deployed to Lina CKB mainnet at [here](https://explorer.nervos.org/transaction/0xd032647ee7b5e7e28e73688d80ffc5fba306ee216ca43be4a762ec7e989a3daa). A cell in the dep group format containing both the anyone-can-pay lock, and the required secp256k1 data cell, is also deployed at [here](https://explorer.nervos.org/transaction/0xa05f28c9b867f8c5682039c10d8e864cf661685252aa74a008d255c33813bb81).
 
