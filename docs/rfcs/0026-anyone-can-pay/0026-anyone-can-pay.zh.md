@@ -45,38 +45,33 @@ Anyone-can-pay 锁脚本将遵循以下规则：
 
     1.a. 如果提供的签名没有通过验证，锁脚本将返回错误状态
 
-The anyone-can-pay lock will work following the rules below:
+2. 如果没有提供签名，锁脚本将按照如下方式执行 anyone-can-pay 的逻辑：
 
-1. If a signature is provided, it works exactly as the default secp256k1-blake2b-sighash-all lock, if a signature is provide in witness and can be validated, the lock returns with a success state.
+    2.a. 循环浏览所有输入中使用 anyone-can-pay 锁脚本的 cells（注意，这里所说的锁脚本指的是公钥哈希，也就是说如果一笔交易中包含两个都使用 anyone-can-pay 锁代码，但是公钥哈希不同，它们将被视为不同的锁脚本，并且每个 cell 都将独立地检查其脚本解锁规则），如果两个输入的 cells 使用相同的类型脚本，或者都缺少类型脚本，锁脚本将会返回错误状态。
 
-    1.a. If the provided signature fails validation, the lock returns with an error state
+    2.b. 循环浏览所有输出中使用 anyone-can-pay 锁脚本的 cells，如果 2 个输出 cells 使用了相同的类型脚本，或者都缺少类型脚本，则锁脚本将会返回错误状态。
 
-2. If a signature is not provided, the lock continues with the added anyone-can-pay logic below:
+    2.c. 循环浏览所有输入和输出中使用 anyone-can-pay 锁脚本的 cells，如果有一个 cell 缺少类型脚本，但是它设置了 data，则返回错误状态。
 
-    2.a. It loops through all input cells using the current anyone-can-pay lock script(notice here the lock script we refer to include public key hash, meaning if a transaction contains 2 cells using the same anyone-can-pay lock code, but different public key hash, they will be treated as different lock script, and each will perform the script unlock rule checking independently), if 2 input cells are using the same type script, or are both missing type scripts, the lock returns with an error state
+    2.d. 循环浏览所有输入和输出中使用 anyone-can-pay 锁脚本的 cells，如果有一个 cell 有类型脚本，但是它的 data 部分少于 16 个字节，则返回错误状态。
 
-    2.b. It loops through all output cells using the current anyone-can-pay lock script, if 2 output cells are using the same type script, or are both missing type scripts, the lock returns with an error state
+    2.e. 然后对输入 cells 和输出 cells 进行类型脚本的匹配（没有类型脚本的输入 cell 将与没有类型脚本的输出 cell 进行匹配）。如果有一个输入 cell 没有匹配到输出 cell，或者有一个输出 cell 没有匹配到输入 cell，则将返回错误状态。
 
-    2.c. It loops through all input cells and output cells using the current anyone-can-pay lock script, if there is a cell that is missing type script, but has cell data set, it returns with an error state.
+    2.f. 循环浏览所有输入和输出 cells 对，如果有一对 cells 中输入 cell 的 CKBytes 比输出 cell 多；或者一对都有类型脚本和 data 部分的 cells，但是输入 cell 的 UDT 比输出 cell 的多，则将返回错误状态。
 
-    2.d. It loops through all input cells and output cells using the current anyone-can-pay lock script, if there is a cell that has type script, but a cell data part with less than 16 bytes of data, it returns with an error state.
+    2.g. 如果设置了 CKByte minimum 或 UDT minimum，则循环历遍所有的输入和输出 cells。如果不能找到一对输入和输出 cells，其中输出量大于或等于输入量加上设定的最小值，则将返回错误状态。注意，如果同时设置了 CKByte minimum 和 UDT minimum，则只需要匹配一个最小值。
 
-    2.e. It then pairs input cells and output cells with matching type scripts(input cell without type script will match with output cell without type script). If there is an input cell without matching output cell, or if there is an output cell without matching input cell, it returns with an error state.
+限制每个锁/类型脚本组合中一个输入 cell 和一个输出 cell 的原因是，锁脚本应该防止攻击者合并或者拆分 cells：
 
-    2.f. It loops through all pairs of input & output cells, if there is a pair in which the input cell has more CKBytes than the output cell; or if the pair of cells both have type script and cell data part, but the input cell has more UDT than the output cell, it returns with an error state.
+* 允许合并 anyone-can-pay cells 会导致可用 cells 减少，从而导致可用性问题。例如，一个交易所可能会创建数百个 anyone-can-pay cells 来进行并行处理，这样存款交易就不太可能会相互冲突。
 
-    2.g. If CKByte minimum or UDT minimum is set, it loops through all pairs of input & output cells. If it could not find a pair of input & output cells in which the output amount is equal to or more than the input amount plus the set minimum, it returns with an error state. Note only one minimum needs to be matched if both CKByte minimum and UDT minimum are set.
+* 允许拆分 anyone-can-pay cells 会带来 2 个问题：1）它增加了链上 CKByte 的使用量，给矿工带来了不必要的压力；2）当矿工以后想要在 anyone-can-pay 的 cells 中认领代币时，可能会导致费用的增加，因为比预期更多的输入 cells 会导致交易大小的增加和验证 cycle 的增加。
 
-The reason of limiting one input cell and one output cell for each lock/type script combination, is that the lock script should prevent attackers from merging or splitting cells:
-
-* Allowing merging anyone-can-pay cells can result in less cells being available, resulting in usability problems. For example, an exchange might create hundreds of anyone-can-pay cells to perform sharding so deposit transactions are less likely to conflict with each other.
-* Allowing splitting anyone-can-pay cells has 2 problems: 1) it increases CKByte usage on chain, putting unwanted pressure on miners; 2) it might result in fee increase when later the owner wants to claim tokens in anyone-can-pay cells, since more input cells than expect would result in both transaction size increase, and validation cycle increase
-
-Giving those considerations, anyone-can-pay lock script here forbids merging or splitting anyone-can-pay cells from non-owners, as allowing more than one input/output anyone-can-pay cell in each lock/type combination would only complicate lock validation rules without significant gains.
+考虑到这些因素，anyone-can-pay 锁脚本在这里禁止非所有者合并或拆分  anyone-can-pay cells，因为在每个锁/类型组合中允许有一个以上的输入/输出 anyone-can-pay cells，只会使得验证规则变得更麻烦，而不会有其他显著收益。
 
 ## 例子
 
-Here we describe useful transaction examples involving anyone-can-pay lock.
+这里我们描述一个常用的包含 anyone-can-pay 锁脚本的交易示例。
 
 ### 创建一个 Anyone-can-pay Cell
 
@@ -102,7 +97,7 @@ Witnesses:
     <valid signature for public key hash A>
 ```
 
-Note here we assume 0.01 CKByte is paid as the transaction fee, in production one should calculate the fee based on factors including transaction size, running cycles as well as network status. 0.01 CKByte will be used in all examples as fees for simplicity. The new anyone-can-pay cell created by this transaction impose a minimum transfer value of 10^9 shannons (10 CKBytes) and 10^5 UDT base units respectively.
+注意，这里我们假设 0.01 CKByte 作为交易手续费，在生产过程中应该根据交易大小、运行 cycles 以及网络状态等因素来计算费用。为了简单起见，在所有的例子中都将使用 0.01 CKByte 作为交易手续费。这笔交易中创建的 anyone-can-pay cell 分别设定 10^9 shannons（10 CKBytes）和 10^5 UDT 基本单位作为最小转账值。
 
 ### 通过签名进行解锁
 
@@ -123,7 +118,7 @@ Witnesses:
     <valid signature for public key hash A>
 ```
 
-When a signature is provided, the cell can be unlocked in anyway the owner wants, anyone-can-pay lock here just behaves as a normal cell. In this example an anyone-can-pay cell is converted back to a normal cell.
+当提供签名时，cell 可以按照所有者的意愿以任何方式解锁，这里的 anyone-can-pay lock 只是作为一个正常的 cell。在这个例子中，这个 anyone-can-pay cell 会被转换回普通 cell。
 
 ### 没有类型脚本的 cells 通过 CKB 支付进行解锁
 
@@ -154,7 +149,7 @@ Witnesses:
     <valid signature for public key hash B>
 ```
 
-Here the transaction doesnt contain signature for the anyone-can-pay cell, yet the anyone-can-pay lock succeeds the validation when it detects that someone deposits 20 CKBytes into itself. Note this use case does not involve in UDT at all, anyone-can-pay lock is used to overcome the 61 CKBytes requirement of plain transfer.
+这里的交易不包含 anyone-can-pay cell 的签名，但当 anyone-can-pay lock 检测到有人向自己存入 20 CKBytes 时，它就成功地通过了验证。请注意，这个用例根本不涉及到 UDT，这里的 anyone-can-pay lock 是用来克服普通转账需要至少 61 CKBytes 这一要求的。
 
 ### 通过 UDT 支付进行解锁
 
@@ -205,9 +200,9 @@ Witnesses:
     <valid signature for public key hash B>
 ```
 
-Here we are depositing 1 UDT to the anyone-can-pay cell. Because theres no extra arguments in the anyone-can-pay lock script except a public key hash, the cell enforces no minimum on the CKByte or UDT one can transfer, a transfer of 1 UDT will be accepted here.
+在这里，我们将存入 1 个 UDT 到 anyone-can-pay cell 中。因为除了公钥哈希之外，anyone-can-apy 的锁脚本中没有额外参数，所以该 cell 没有强制执行最小 CKByte 或 UDT 可转限额，这里将接受 1 UDT 的转账。
 
-### 有最小值的情况下，通过 CKB 支付进行解锁
+### 有最小可转限额的情况下，通过 CKB 支付进行解锁
 
 ```
 Inputs:
@@ -256,13 +251,13 @@ Witnesses:
     <valid signature for public key hash B>
 ```
 
-Here CKByte minimum is set to 9, which means in each transaction, one must at least transfers `10^9` shannons, or 10 CKBytes into the anyone-can-pay cell. Note that even though UDT minimum is set to 5, meaning one should at least transfer 100000 UDT base units to the anyone-can-pay cell, satisfying the CKByte minimal transfer minimum alone already satisfy the validation rules, allowing CKB to accept the transaction. Likewise, a different transaction might only send 100000 UDT base units to the anyone-can-pay cell without sending any CKBytes, this will also satisfy the validation rules of anyone-can-pay cell here.
+这里的 CKByte 最小可转数额设置为 9，也就是说在每次交易中，至少要向 anyone-can-pay cell 转账 `10^9` shannons，也就是 10 CKBytes。需要注意的是，即使 UDT 最小可转数额设置为 5，意味着至少要向 anyone-can-pay cell 转账 100000 个 UDT 基本单位，但仅满足 CKByte 最小转账金额就已经满足验证规则了，所以允许 CKB 接受交易。同样，不同的交易可能向 anyone-can-pay cell 发送100000 个 UDT 基本单位，而不发送任何 CKByte，这样也能满足这里的 anyone-can-pay cell 的验证规则。
 
 ## 注意
 
-An implementation of the anyone-can-pay lock spec above has been deployed to Lina CKB mainnet at [here](https://explorer.nervos.org/transaction/0xd032647ee7b5e7e28e73688d80ffc5fba306ee216ca43be4a762ec7e989a3daa). A cell in the dep group format containing both the anyone-can-pay lock, and the required secp256k1 data cell, is also deployed at [here](https://explorer.nervos.org/transaction/0xa05f28c9b867f8c5682039c10d8e864cf661685252aa74a008d255c33813bb81).
+上述的 anyone-can-pay lock 规范的实现已经部署到了 CKB 主网 Lina 上，在[这里](https://explorer.nervos.org/transaction/0xd032647ee7b5e7e28e73688d80ffc5fba306ee216ca43be4a762ec7e989a3daa)。在[这里](https://explorer.nervos.org/transaction/0xa05f28c9b867f8c5682039c10d8e864cf661685252aa74a008d255c33813bb81)，还部署了一个 dep 组格式的 cell，其中包含了 anyone-can-pay lock 和所需的 secp256k1 数据 cell。
 
-Reproducible build is supported to verify the deploy script. To bulid the deployed anyone-can-pay lock script above, one can use the following steps:
+支持可重复使用的构建方式来验证部署脚本。要编译上面部署的 anyone-can-pay 锁脚本，可以通过以下步骤：
 
 ```bash
 $ git clone https://github.com/nervosnetwork/ckb-anyone-can-pay
@@ -272,6 +267,6 @@ $ git submodule update --init
 $ make all-via-docker
 ```
 
-Now you can compare the simple udt script generated at `spec/cells/anyone_can_pay` with the one deployed to CKB, they should be identical.
+现在你可以比较一下在 `spec/cells/anyone_can_pay` 生成的 anyone-can-pay 脚本和部署在 CKB 上的脚本，它们应该是相同的。
 
-A draft of this specification has already been released, reviewed, and discussed in the community at [here](https://talk.nervos.org/t/rfc-anyone-can-pay-lock/4438) for quite some time.
+这个规范的草案已经在[这里](https://talk.nervos.org/t/rfc-anyone-can-pay-lock/4438) Nervos 社区中发布、审查和讨论了一段时间。
