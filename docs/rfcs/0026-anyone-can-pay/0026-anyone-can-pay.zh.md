@@ -59,7 +59,7 @@ Anyone-can-pay 锁脚本将遵循以下规则：
 
     2.f. 循环浏览所有输入和输出 cells 对，如果有一对 cells 中输入 cell 的 CKBytes 比输出 cell 多；或者一对都有类型脚本和 data 部分的 cells，但是输入 cell 的 UDT 比输出 cell 的多，则将返回错误状态。
 
-    2.g. 如果设置了 CKByte minimum 或 UDT minimum，则循环历遍所有的输入和输出 cells。如果不能找到一对输入和输出 cells，其中输出量大于或等于输入量加上设定的最小值，则将返回错误状态。注意，如果同时设置了 CKByte minimum 和 UDT minimum，则只需要匹配一个最小值。
+    2.g. 如果设置了 CKByte minimum 或 UDT minimum，则循环历遍所有的输入和输出 cells。如果能找到一对输入和输出 cells，其中输出量小于输入量加上设定的最小值，则将返回错误状态。注意，如果同时设置了 CKByte minimum 和 UDT minimum，则只需要匹配一个最小值。
 
 限制每个锁/类型脚本组合中一个输入 cell 和一个输出 cell 的原因是，锁脚本应该防止攻击者合并或者拆分 cells：
 
