@@ -36,11 +36,12 @@ sidebar_label: Nervos 代码库
 
 |名称|描述|
 |---|---|
+|[pw-core](https://github.com/lay2dev/pw-core)           |CKB dApps 开发前端框架|
 |[animagus](https://github.com/xxuejie/animagus)         |Animagus 为 UTXO 模型中遇到的大多数编程问题提供解决方案|
 |[godwoken](https://github.com/jjyr/godwoken)            |基于 Nervos CKB 的可编程的账户层|
 |[keyper](https://github.com/ququzone/keyper)            |一个管理 `lock script` 的协议|
 |[keyper-scatter](https://github.com/ququzone/keyper-scatter)|基于 Keyper 协议的最小化桌面钱包|
-|[ckb.pw](https://github.com/lay2dev/ckb.pw)             |CKB P-Wallet|
+|[Portal Wallet](https://github.com/lay2dev/PortalWallet)|基于 PW core 开发的，可以使用以太坊地址转账 CKB 的钱包|
 |[ckb-boxer](https://github.com/xxuejie/ckb-boxer)       |一个最小的 CKB，只包含链验证部分|
 |[ckb-std](https://github.com/jjyr/ckb-std)              |包含了几个帮助你使用 Rust 编写 CKB 合约的模块|
 |[polyjuice](https://github.com/nervosnetwork/polyjuice) |在 CKB 上实现以太坊的解决方案|
