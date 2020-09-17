@@ -25,11 +25,6 @@ module.exports = {
       links: [
         {to: 'docs/docs/welcome/welcome-introduction', label: '文档', position: 'left'},
         {to: 'blog', label: '博客', position: 'left'},
-        {
-          href: 'https://community.ckb.dev',
-          label: '论坛',
-          position: 'left',
-        },
         {to: 'docs/rfcs/introduction',label:'RFCs',position:'left'},
         {to: 'docs/qa/welcome',label:'百科',position:'left'},
         {
@@ -62,10 +57,6 @@ module.exports = {
         {
           title: '社区',
           items: [
-            {
-              label: '社区开发者论坛',
-              href: 'https://community.ckb.dev',
-            },
             {
               label: '官方论坛',
               href: 'https://talk.nervos.org',
