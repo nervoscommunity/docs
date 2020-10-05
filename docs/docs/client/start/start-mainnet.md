@@ -24,7 +24,6 @@ curl -O https://github.com/nervosnetwork/ckb/releases/download/v0.33.0/ckb_v0.33
 
 # 解压文件
 unzip ckb_v0.33.0_x86_64-apple-darwin.zip
-
 ```
 
 ### 检查版本

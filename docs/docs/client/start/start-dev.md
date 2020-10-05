@@ -131,7 +131,6 @@ Found! #1354 0x4ecd3e3e525681bb2b229220607397aa14960b6073b78d812ec9d80bf78f3ecf
 Found! #1355 0x529c1d488da135af9e0a81466e1b60251cae5d1e2857e80826e14f6b627b434e
 Dummy-Worker ⠁ [00:00:00]
 Total nonces found:  11
-
 ```
 
 
