@@ -20,7 +20,7 @@ RPC 接口在升级的版本之间是完全可兼容的，例如，对于 0.25.0
 * https://mainnet.ckb.dev/rpc
 
 > 主网 - Indexer RPC
-* https://mainnet.ckb.dev/indexer_rpc
+* https://mainnet.ckb.dev/indexer
 
 
 ### 测试网 `Aggron` 节点
@@ -30,15 +30,15 @@ RPC 接口在升级的版本之间是完全可兼容的，例如，对于 0.25.0
 * https://testnet.ckb.dev/rpc
 
 > 测试网 - Indexer RPC
-* https://testnet.ckb.dev/indexer_rpc
+* https://testnet.ckb.dev/indexer
 
 ### 注意事项
 
 其中 CKB 主网和测试网代码参见：[CKB](https://github.com/nervosnetwork/ckb)，Indexer PRC 参见：[ckb-indexer](https://github.com/nervosnetwork/ckb-indexer)
 
 请注意，接口限制:
-* rate: 20 req / s
-* burst: 20 req / s
+* rate: 2000 req / s
+* burst: 2000 req / s
 超出限制会收到提示为 `500` 的报错。
 
 如果你希望基于 `Aggron` 测试网进行开发，你可以在[水龙头](https://faucet.nervos.org/)申请测试所需的 `CKB`。
