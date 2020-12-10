@@ -8,7 +8,7 @@ sidebar_label: Introduction
 
 [![Telegram Group](https://cdn.rawgit.com/Patrolavia/telegram-badge/8fe3382b/chat.svg)](https://t.me/nervos_rfcs)
 
-This repository contains proposals, standards and documentations related to Nervos Network.
+This repository  [nervosnetwork/rfcs](https://github.com/nervosnetwork/rfcs) contains proposals, standards and documentations related to Nervos Network.
 
 The RFC (Request for Comments) process is intended to provide an open and community driven path for new protocols, improvements and best practices, so that all stakeholders can be confident about the direction of Nervos network is evolving in.
 
@@ -56,7 +56,7 @@ The RFC process attempts to be as simple as possible at beginning and evolves wi
 
 ### 1. Discuss Your Idea with Community
 
-Before submiting a RFC pull request, you should proposal the idea or document to [Nervos RFCs Chatroom](https://t.me/nervos_rfcs) or [Nervos RFCs Mailing List](https://groups.google.com/a/nervos.org/d/forum/rfcs).
+Before submiting a RFC pull request to  [nervosnetwork/rfcs](https://github.com/nervosnetwork/rfcs), you should proposal the idea or document to [Nervos RFCs Chatroom](https://t.me/nervos_rfcs) or [Nervos RFCs Mailing List](https://groups.google.com/a/nervos.org/d/forum/rfcs).
 
 ### 2. Propose Your RFC
 
@@ -70,7 +70,7 @@ Nervos RFCs should follow the keyword conventions defined in [RFC 2119](https://
 
 ### 3. Review / Accept
 
-The maintainers of RFCs and the community will review the PR, and you can update the RFC according to comments left in PR. When the RFC is ready and has enough supports, it will be accepted and merged into this repository.
+The maintainers of RFCs and the community will review the PR, and you can update the RFC according to comments left in PR. When the RFC is ready and has enough supports, it will be accepted and merged into this repository [nervosnetwork/rfcs](https://github.com/nervosnetwork/rfcs).
 
 An Informational RFC will be in Draft status once merged and published. It can be made Final by author at any time, or by RFC maintainers if there's no updates to the draft in 12 months.
 
@@ -88,4 +88,4 @@ The maintainers of RFCs will review the proposal, ask if there's any objections,
 
 ## License
 
-This repository is being licensed under terms of [MIT license](LICENSE).
+ [nervosnetwork/rfcs](https://github.com/nervosnetwork/rfcs) is being licensed under terms of [MIT license](LICENSE).

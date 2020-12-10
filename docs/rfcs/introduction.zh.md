@@ -8,18 +8,18 @@ sidebar_label: Nervos Network RFCs 简介
 
 [![Telegram Group](https://cdn.rawgit.com/Patrolavia/telegram-badge/8fe3382b/chat.svg)](https://t.me/nervos_rfcs)
 
-本资源库包含了与 Nervos Network 相关的提案、标准和文档。
+资源库 [nervosnetwork/rfcs](https://github.com/nervosnetwork/rfcs) 包含了与 Nervos Network 相关的提案、标准和文档。
 
-RFC（请求评论）的过程旨在为新协议、改进内容和最佳实践提供一个开放的、社区驱动的路径，以便所有相关人员都能对 Nervos network 的发展方向充满信心。
+RFC（请求评论）流程旨在为新协议、优化建议和最佳实践提供一个开放的、由社区驱动的渠道，以便所有相关人员都能对 Nervos network 的发展方向充满信心。
 
-发布在这里的 RFCs 暂时不会被成为正式的标准，直到它的状态切换成标准。
+发布在这里的 RFCs 只有其状态更新为标准（Standard）时，才意味着其成为正式的标准。
 
 ## 类别
 
 不是所有的 RFCs 都是标准，主要会分成两类：
 
-* Standards Track（标准协议） - 这部分 RFC 是 Nervos network 中协议、客户端和应用程序需要遵循的标准。
-* Informational（信息） - 任何和 Nervos network 相关的内容。
+* 标准类（Standards Track）：这部分 RFC 是 Nervos network 中的协议、客户端和应用程序需要遵循的标准。
+* 信息类（Informational）：任何和 Nervos network 相关的内容。
 
 ## RFCs
 
@@ -50,42 +50,45 @@ RFC（请求评论）的过程旨在为新协议、改进内容和最佳实践�
 | [25](rfcs/0025-simple-udt) | [Simple UDT](rfcs/0025-simple-udt/0025-simple-udt.md) | Xuejie Xiao | Standards Track | Proposal
 | [26](rfcs/0026-anyone-can-pay) | [Anyone-Can-Pay Lock](rfcs/0026-anyone-can-pay/0026-anyone-can-pay.md) | Xuejie Xiao | Standards Track | Proposal
 
-## 过程
+## 流程
 
-The RFC process attempts to be as simple as possible at beginning and evolves with the network.
+RFC 流程会尽可能保持开始步骤的简单，同时与网络进展同步更新。
 
 ### 1. 和社区讨论你的想法
 
-Before submiting a RFC pull request, you should proposal the idea or document to [Nervos RFCs Chatroom](https://t.me/nervos_rfcs) or [Nervos RFCs Mailing List](https://groups.google.com/a/nervos.org/d/forum/rfcs).
+在正式向 [nervosnetwork/rfcs](https://github.com/nervosnetwork/rfcs) 提交一个 RFC pull request 前，你应该在 [Nervos RFCs Chatroom](https://t.me/nervos_rfcs) or [Nervos RFCs Mailing List](https://groups.google.com/a/nervos.org/d/forum/rfcs) 提出你的想法，与社区展开讨论。
 
 ### 2. 提交你的 RFC
 
-After discussion, please create a pull request to propose your RFC:
+经过一番讨论后，请正式向 [nervosnetwork/rfcs](https://github.com/nervosnetwork/rfcs) 提交一个 RFC pull request:
 
-> Copy `0000-template` as `rfcs/0000-feature-name`, where `feature-name` is the descriptive name of the RFC. Don't assign an number yet.
+> 复制 `0000-template` 文件并移动至 `rfcs` 目录下，重命名文件为 `0000-feature-name`, 其中 `feature-name` 为 RFC 的简单功能描述。`0000` 暂时保持不变，不需要修改。
 
-Nervos RFCs should be written in English, but translated versions can be provided to help understanding. English version is the canonical version, check english version when there's ambiguity.
+Nervos RFCs 应该用英语编写，除了英文版外，也可以提供其他语言的版本以辅助各个社区理解。英文版为公认版，若版本间存在偏差，以英文版为准。
 
-Nervos RFCs should follow the keyword conventions defined in [RFC 2119](https://tools.ietf.org/html/rfc2119), [RFC 6919](https://tools.ietf.org/html/rfc6919).
+
+Nervos RFCs 遵循 [RFC 2119](https://tools.ietf.org/html/rfc2119), [RFC 6919](https://tools.ietf.org/html/rfc6919) 中的关键字约定。
 
 ### 3. 审查 / 接受
 
-The maintainers of RFCs and the community will review the PR, and you can update the RFC according to comments left in PR. When the RFC is ready and has enough supports, it will be accepted and merged into this repository.
+RFCs 的维护人员以及社区会对 PR 进行审查，你也可以根据 PR 上的 comments 对 RFC 进行更新。当 RFC 已经足够完善并且取得足够支持时，它将会采纳并且合并到 [nervosnetwork/rfcs](https://github.com/nervosnetwork/rfcs) 这个代码库中。
 
-An Informational RFC will be in Draft status once merged and published. It can be made Final by author at any time, or by RFC maintainers if there's no updates to the draft in 12 months.
+
+信息类（Informational）的 RFC 将合并发布后其状态会处于草稿（Draft）阶段，在任何时候，原作者可以将其状态更新为完结（Final）。若在一年内其没有任何更新的话，RFC 维护人员也可以将其更新为完结。
 
 ### 4. (Standards Track) 提交你的标准
 
-A Standards Track RFC can be in 1 of 3 statuses:
+一个标准类（Standards Track）的 RFC 总共有三种状态：
 
-1. Proposal (Default)
-2. Standard
-3. Obsolete
+1. 提案（默认）
+2. 标准
+3. 过时
 
-A Standards Track RFC will be in **Proposal** status intially, it can always be updated and improved by PRs. When you believe it's rigorous and mature enough after more discussions, you should create a PR to propose making it a **Standard**.
+标准类的 RFC 刚开始会处于 **提案** 状态，在这个阶段你都可以通过 PR 对该 RFC 进行更新优化。当在完成充分的讨论后，你觉得该 RFC 已经足够严谨成熟了，你可以提交一个 PR 将其状态修改为 **标准**。
 
-The maintainers of RFCs will review the proposal, ask if there's any objections, and discuss about the PR. The PR will be accepted or closed based on **rough consensus** in this early stage.
+
+RFCs 的维护人员会审查这份 RFC 提案，确认社区对该 RFC 没有任何异议以及进一步讨论优化的意愿后，PR 将会被采纳。
 
 ## 许可
 
-本资源库是符合 [MIT 许可条款](LICENSE)。
+ [nervosnetwork/rfcs](https://github.com/nervosnetwork/rfcs) 是符合 [MIT 许可条款](LICENSE)。
