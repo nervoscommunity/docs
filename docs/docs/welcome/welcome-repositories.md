@@ -11,8 +11,9 @@ sidebar_label: Nervos 代码库
 |[ckb](https://github.com/nervosnetwork/ckb)            |Nervos CKB 是一个无需许可的公链，也是 Nervos 网络的 layer1|
 |[rfcs](https://github.com/nervosnetwork/rfcs)          |包含与 Nervos 网络相关的建议、标准和文档|
 |[ckb-vm](https://github.com/nervosnetwork/ckb-vm)      |CKB 虚拟机，基于开源的 RISC-V 指令集|
+|[ckb-indexer](https://github.com/nervosnetwork/ckb-indexer)|实现 CKB live cell 集合的归集并提供 RPC 接口的单独服务|
 |[ckb-cli](https://github.com/nervosnetwork/ckb-cli)    |CKB 命令行接口|
-|[p2p](https://github.com/nervosnetwork/p2p)            |支持自定义协议的多路复用 p2p 网络框架|
+|[tentacle](https://github.com/nervosnetwork/tentacle)            |支持自定义协议的多路复用 p2p 网络框架|
 |[eaglesong](https://github.com/nervosnetwork/eaglesong)|CKB 的挖矿算法 Eaglesong|
 |[neuron](https://github.com/nervosnetwork/neuron)      |CKB 官方桌面版全节点钱包|
 |[ckb-explorer](https://github.com/nervosnetwork/ckb-explorer)|CKB 浏览器|

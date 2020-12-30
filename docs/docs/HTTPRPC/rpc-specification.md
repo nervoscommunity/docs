@@ -6,6 +6,8 @@ sidebar_label: RPC 接口
 
 ## 目录
 
+**请注意** ckb 内置的 indexer 模块即将被删除，请使用 [ckb-indexer](https://github.com/nervosnetwork/ckb-indexer) 代替
+
 > 本文档参数更新有延迟，如有出入请以最新代码为准[Github](https://github.com/nervosnetwork/ckb/releases)
 
 *   [`Chain`](#chain)
