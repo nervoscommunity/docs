@@ -1,118 +1,120 @@
 ---
 id: 0008-serialization.zh
-title: Serialization
-sidebar_label: 08：Serialization
+title: 序列化
+sidebar_label: 08：序列化
 ---
 
-|  Number   |  Category |   Status  |   Author  |Organization| Created  |
-| --------- | --------- | --------- | --------- | --------- | --------- |
-| 0008 | Standards Track | Proposal | Boyu Yang |Nervos Foundation|2018-12-17|
+| Number | Category        | Status   | Author    | Organization      | Created    |
+| ------ | --------------- | -------- | --------- | ----------------- | ---------- |
+| 0008   | Standards Track | Proposal | Boyu Yang | Nervos Foundation | 2018-12-17 |
 
-# Serialization
+# 序列化
 
-CKB uses two major serialization formats, [Molecule][molecule] and [JSON][json].
+CKB 主要使用两种序列化格式： [Molecule][molecule] 和 [JSON][json]。
 
-[Molecule][molecule] is a canonicalization and zero-copy serialization format.
-[Molecule][molecule] is in the experimental stage, and we may make a few minor changes.
+[Molecule][molecule] 是一种规范化的零拷贝序列化格式，其当前仍处于实验阶段，我们对其做了一些小修改。
 
-[JSON][json] is used in node RPC service via [JSON-RPC][jsonrpc].
+[JSON][json]  主要通过  [JSON-RPC][jsonrpc] 用于节点 RPC 服务中。
 
 ## Molecule
 
-### Summary
+### 概览
 
-#### Fixed Size or Dynamic Size
+#### 固定大小/动态大小
 
-| Type | byte  | array | struct | vector  |  table  | option  |  union  |
-|------|-------|-------|--------|---------|---------|---------|---------|
-| Size | Fixed | Fixed | Fixed  | Dynamic | Dynamic | Dynamic | Dynamic |
+| 类型 | byte | array | struct | vector | table | option | union |
+| ---- | ---- | ----- | ------ | ------ | ----- | ------ | ----- |
+| 大小 | 固定 | 固定  | 固定   | 动态   | 动态  | 动态   | 动态  |
 
-#### Memory Layout
+#### Memory Layout 内存布局
 
-```
-|  Type  |                      Header                      |               Body                |
-|--------+--------------------------------------------------+-----------------------------------|
-| array  |                                                  |  item-0 |  item-1 | ... |  item-N |
-| struct |                                                  | field-0 | field-1 | ... | field-N |
-| fixvec | items-count                                      |  item-0 |  item-1 | ... |  item-N |
-| dynvec | full-size | offset-0 | offset-1 | ... | offset-N |  item-0 |  item-1 | ... |  item-N |
-| table  | full-size | offset-0 | offset-1 | ... | offset-N | filed-0 | field-1 | ... | field-N |
-| option |                                                  | item or none (zero bytes)         |
-| union  | item-type-id                                     | item                              |
-```
+| Type   | Header                                               | Body                                 |
+| ------ | ---------------------------------------------------- | ------------------------------------ |
+| array  |                                                      | item-0 \|  item-1 \| ... \|  item-N  |
+| struct |                                                      | field-0 \| field-1 \| ... \| field-N |
+| fixvec | items-count                                          | item-0 \|  item-1 \| ... \|  item-N  |
+| dynvec | full-size \| offset-0 \| offset-1 \| ... \| offset-N | item-0 \|  item-1 \| ... \|  item-N  |
+| table  | full-size \| offset-0 \| offset-1 \| ... \| offset-N | field-0 \| field-1 \| ... \| field-N |
+| option |                                                      | item or none (zero bytes)            |
+| union  | item-type-id                                         | item                                 |
 
-- All items in Header are 32 bit unsigned integers in little-endian.
+- 头中的所有子项都会小端模式的32位无符号整数。
 
-### Primitive Type
+### 基本类型
 
-#### `byte`
+#### `byte` 字节
 
 The `byte` is a byte.
 
-##### Examples
+##### 例子
 
 `00` is a `byte`.
 
-### Composite Types
+### 复合类型
 
 #### `array`
 
-The `array` is a fixed-size type: it has a fixed-size inner type and a fixed length.
-The size of an `array` is the size of inner type times the length.
+ `array` 是一种固定大小的类型：固定大小的内部类型以及固定的长度。
 
-Serializing an `array` only need to serialize all items in it.
+ `array`  的大小为内部类型的大小乘以  `array` 的长度。
 
-There's no overhead to serialize an `array`, which stores all items consecutively, without extra space between two adjacent items.
+序列化 `array` 只需要序列化其内部所有子项。
 
-##### Examples
+序列化数组没有开销，因为 `array` 连续存储所有子项，在两个相邻的子项之间没有额外的空间。
 
-If we define `array Byte3 [byte; 3];`, and we want to store three bytes: first is `01`, the second is `02` and the last is `03`, then the serialized bytes will be `01 02 03`.
+##### 例子
 
-If we define `array Uint32 [byte; 4];` , and we want to store a 32 bit unsigned integer `0x01020304` into it in little-endian, then the serialized bytes will be `04 03 02 01`.
+如果我们定义数组 ` Byte3 [byte; 3];`，我们要存储三个字节：第一个是01，第二个是02，最后一个是03，然后序列化得到的字节为： `01 02 03`。
 
-If we define `array TwoUint32 [Uint32; 2];`, and we want to store two 32 bit unsigned integers in little-endian: first is `0x01020304` and second is `0xabcde`, then the serialized bytes will be `04 03 02 01 de bc 0a 00`.
+如果我们定义数组 ` Uint32 [byte; 4];` ，我们要用小端模式存储一个32位无符号整数  `0x01020304` ，那么序列化得到的字节为  `04 03 02 01`：
 
-#### `struct`
+如果我们定义数组  ` TwoUint32 [Uint32; 2]`;，我们要用小端模式存储两个32位无符号整数：第一个是 `0x01020304`，第二个是 `0xabcde`，那么序列化得到的字节为  `04 03 02 01 de bc 0a 00`。
 
-The `struct` is a fixed-size type: all fields in `struct` are fixed-size and it has a fixed quantity of fields.
-The size of a `struct` is the sum of all fields' size.
+#### `struct` 结构体
 
-Serializing a `struct` only need to serialize all fields in it.
-Fields in a `struct` are stored in the order they are declared.
+ `struct`  是一种固定大小的类型：结构体中的所有字段都是固定大小，并且字段数量也固定。结构体的大小为所有字段大小的总和。
 
-There's no overhead to serialize a `struct`, which stores all fields consecutively, without extra space between two adjacent items.
+序列化一个结构体只需要序列化其中的所有字段。结构体中的字段按照各自声明的顺序存储。
 
-##### Examples
+序列化结构体没有开销，结构体连续存储所有字段，在两个相邻的子项之间没有额外的空间。
 
-If we define `struct OnlyAByte { f1: byte }`, and we want to store a byte `ab`, then the serialized bytes will be `ab`.
+##### 例子
 
-If we define `struct ByteAndUint32 { f1: byte, f2: Uint32 }`, and we want to store a byte `ab` and a 32 bit unsigned integer `0x010203` in little-endian, then the serialized bytes will be `ab 03 02 01 00`.
+如果我们定义结构体  `OnlyAByte { f1: byte }`, 我们想要存储一个字节 `ab`，那么序列化得到的字节为 `ab`。
 
-#### vectors
+如果我们定义结构体 `ByteAndUint32 { f1: byte, f2: Uint32 }`, 我们想要存储一个字节 `ab` 以及小端模式的32位无符号整数 `0x010203` ，那么序列化得到的字节为 `ab 03 02 01 00`。
 
-There two kinds of vectors: fixed vector `fixvec` and dynamic vector `dynvec`.
+#### vectors 向量
 
-Whether a vector is fixed or dynamic depends on the type of its inner item: if the inner item is fixed-size, then it's a `fixvec`; otherwise, it's a `dynvec`.
+向量有分：固定向量 `fixvec` 和动态向量 `dynvec`。
 
-Both of `fixvec` and `dynvec` are dynamic-size types.
+向量是固定还是动态取决于其内部子项的类型：如果内部子项为固定大小，那么为固定向量；反之则为动态向量。
 
-##### `fixvec` - fixed vector
+ `fixvec` 和`dynvec` 都属于动态大小类型。
 
-There are two steps of serializing a `fixvec`:
-1. Serialize the length as a 32 bit unsigned integer in little-endian.
-2. Serialize all items in it.
+##### `fixvec` - fixed vector 固定向量
 
-###### Examples
+序列化固定向量分两步：
 
-If we define `vector Bytes <byte>;`:
-- the serialized bytes of an empty bytes is `00 00 00 00`(the length of any empty fixed vector is `0`).
-- the serialized bytes of `0x12` is `01 00 00 00, 12`.
-- the serialized bytes of `0x1234567890abcdef` is `08 00 00 00, 12 34 56 78 90 ab cd ef`.
+1. 以小端模式的32位无符号整数序列化其长度
+2. 序列化其所有子项
 
-If we define `vector Uint32Vec <Uint32>;`:
-- the serialized bytes of an empty `Uint32Vec` is `00 00 00 00`.
-- the serialized bytes of `0x123` is `01 00 00 00, 23 01 00 00`.
-- the serialized bytes of `[0x123, 0x456, 0x7890, 0xa, 0xbc, 0xdef]` is
+##### 例子
+
+如果我们定义向量  `Bytes <byte>;`:
+
+- 空字节序列化得到的字节为 `00 00 00 00` （任何空固定向量的长度都为 0 ）
+- `0x12`  序列化得到的字节为 `01 00 00 00, 12`。
+- `0x1234567890abcdef` 序列化得到的字节为 `08 00 00 00, 12 34 56 78 90 ab cd ef`。
+
+如果我们定义向量  `Uint32Vec <Uint32>;`:
+
+- 空 `Uint32Vec` 序列化得到的字节为 `00 00 00 00` 
+
+- `0x123`序列化得到的字节为 `01 00 00 00, 23 01 00 00`.
+
+- `[0x123, 0x456, 0x7890, 0xa, 0xbc, 0xdef]` 序列化得到的字节为：
+
   ```
   # there are 6 items
   06 00 00 00
@@ -120,18 +122,22 @@ If we define `vector Uint32Vec <Uint32>;`:
   23 01 00 00, 56 04 00 00, 90 78 00 00, 0a 00 00 00, bc 00 00 00, ef 0d 00 00
   ```
 
-##### `dynvec` - dynamic vector
+##### `dynvec` - dynamic vector 动态向量
 
-There are three steps of serializing a `dynvec`:
-1. Serialize the full size in bytes as a 32 bit unsigned integer in little-endian.
-2. Serialize all offset of items as 32 bit unsigned integer in little-endian.
-3. Serialize all items in it.
+序列化动态向量分三步：
 
-###### Examples
+1. 以小端模式的32位无符号整数序列化完整大小
+2. 以小端模式的32位无符号整数序列化所有子项的偏移
+3. 序列化向量的所有子项
 
-If we define `vector BytesVec <Bytes>;`:
-- the serialized bytes of an empty `BytesVec`  is `04 00 00 00`(the full size of an empty dynamic vector is 4 bytes).
-- the serialized bytes of `[0x1234]` is
+##### 例子
+
+如果我们定义向量  `BytesVec <Bytes>;`:
+
+- 空向量 `BytesVec`  序列化得到的字节为 `04 00 00 00`（空动态向量的完整大小为 4 字节）
+
+- `[0x1234]` 序列化得到的字节为：
+
   ```
   # the full size is 14 bytes
   0e 00 00 00
@@ -140,7 +146,9 @@ If we define `vector BytesVec <Bytes>;`:
   # one item
   02 00 00 00 12 34
   ```
-- the serialized bytes of `[0x1234, 0x, 0x567, 0x89, 0xabcdef]` is
+
+- `[0x1234, 0x, 0x567, 0x89, 0xabcdef]` 序列化得到的字节为：
+
   ```
   # the full size is 52 (0x34) bytes
   34 00 00 00
@@ -154,19 +162,22 @@ If we define `vector BytesVec <Bytes>;`:
   03 00 00 00, ab cd ef
   ```
 
-#### `table`
+#### `table` 表
 
-The `table` is a dynamic-size type. It can be considered as a `dynvec` but the length is fixed.
+ `table` 是一种动态大小的类型，可将它视为动态向量，只不过长度固定。
 
-The serializing steps are same as `dynvec`:
-1. Serialize the full size in bytes as a 32 bit unsigned integer in little-endian.
-2. Serialize all offset of fields as 32 bit unsigned integer in little-endian.
-3. Serialize all fields in it in the order they are declared.
+序列化步骤与动态向量一样：
 
-##### Examples
+1. 以小端模式的32位无符号整数序列化完整大小
+2. 以小端模式的32位无符号整数序列化所有子项的偏移
+3. 按照字段各自声明的顺序，序列化其所有字段
 
-If we define `table MixedType { f1: Bytes, f2: byte, f3: Uint32, f4: Byte3, f5: Bytes }`
-- the serialized bytes of a `MixedType { f1: 0x, f2: 0xab, f3: 0x123, f4: 0x456789, f5: 0xabcdef }`  is
+##### 例子
+
+如果我们定义表格 `MixedType { f1: Bytes, f2: byte, f3: Uint32, f4: Byte3, f5: Bytes }`
+
+- 序列化  `MixedType { f1: 0x, f2: 0xab, f3: 0x123, f4: 0x456789, f5: 0xabcdef }`  得到的字节为：
+
   ```
   # the full size is 43 (0x2b) bytes
   2b 00 00 00
@@ -180,20 +191,25 @@ If we define `table MixedType { f1: Bytes, f2: byte, f3: Uint32, f4: Byte3, f5: 
   03 00 00 00, ab cd ef
   ```
 
-#### `option`
+#### `option` 选项
 
-The `option` is a dynamic-size type.
+ `option` 是一种动态大小的类型
 
-Serializing an `option` depends on whether it is empty or not:
-- if it's empty, there is **zero** bytes (the size is `0`).
-- if it's not empty, just serialize the inner item (the size is same as the inner item's size).
+序列化  `option` 取决于其是否为空：
 
-##### Examples
+- 如果为空，则为 0 字节（大小为 0）
+- 如果不为空，只需要序列化其内部子项（大小等于其内部子项的大小）
 
-If we define `option BytesVecOpt (BytesVec);`
-- the serialized bytes of `None` is ` ` (empty).
-- the serialized bytes of `Some([])` is `04 00 00 00`.
-- the serialized bytes of `Some([0x])` is
+##### 例子
+
+如果我们定义选项 `BytesVecOpt (BytesVec);`
+
+- 序列化 `None` 得到的字节为空
+
+- 序列化 `Some([])` 得到的字节为 `04 00 00 00`.
+
+- 序列化 `Some([0x])` 得到的字节为
+
   ```
   # the full size of BytesVec is 12 bytes
   0c 00 00 00
@@ -203,25 +219,35 @@ If we define `option BytesVecOpt (BytesVec);`
   00 00 00 00
   ```
 
-#### `union`
+#### `union`共同体
 
-The `union` is a dynamic-size type.
+ `union` 是一种动态大小的类型。
 
-Serializing a `union` has two steps:
-- Serialize a item type id in bytes as a 32 bit unsigned integer in little-endian.
-  The item type id is the index of the inner items, and it's starting at 0.
-- Serialize the inner item.
+序列化 `union` 分两步：
 
-#### Examples
+- 以小端模式的32位无符号整数序列化 item-type-id，item-type-id 为内部子项的索引，从 0 开始。
+- 序列化内部子项
 
-If we define `union HybridBytes { Byte3, Bytes, BytesVec, BytesVecOpt }`
-- the serialized bytes of `Byte3 (0x123456)` is `00 00 00 00, 12 34 56`
-- the serialized bytes of `Bytes (0x)` is `01 00 00 00, 00 00 00 00`
-- the serialized bytes of `Bytes (0x123)` is `01 00 00 00, 02 00 00 00, 01 23`
-- the serialized bytes of `BytesVec ([])` is `02 00 00 00, 04 00 00 00`
-- the serialized bytes of `BytesVec ([0x])` is `02 00 00 00, 0c 00 00 00, 08 00 00 00, 00 00 00 00`
-- the serialized bytes of `BytesVec ([0x123])` is `02 00 00 00, 0e 00 00 00, 08 00 00 00, 02 00 00 00, 01 23`
-- the serialized bytes of `BytesVec ([0x123, 0x456])` is
+##### 例子
+
+如果我们定义共同体 `HybridBytes { Byte3, Bytes, BytesVec, BytesVecOpt }`
+
+
+
+- 序列化 `Byte3 (0x123456)` 得到的字节为 `00 00 00 00, 12 34 56`
+
+- 序列化 `Bytes (0x)` 得到的字节为 `01 00 00 00, 00 00 00 00`
+
+- 序列化 `Bytes (0x123)` 得到的字节为 `01 00 00 00, 02 00 00 00, 01 23`
+
+- 序列化 `BytesVec ([])` 得到的字节为`02 00 00 00, 04 00 00 00`
+
+- 序列化 `BytesVec ([0x])` 得到的字节为 `02 00 00 00, 0c 00 00 00, 08 00 00 00, 00 00 00 00`
+
+- 序列化 `BytesVec ([0x123])` 得到的字节为  `02 00 00 00, 0e 00 00 00, 08 00 00 00, 02 00 00 00, 01 23`
+
+- 序列化 `BytesVec ([0x123, 0x456])` 得到的字节为 
+
   ```
   # Item Type Id
   02 00 00 00
@@ -233,11 +259,17 @@ If we define `union HybridBytes { Byte3, Bytes, BytesVec, BytesVecOpt }`
   02 00 00 00, 01 23
   02 00 00 00, 04 56
   ```
-- the serialized bytes of `BytesVecOpt (None)` is `03 00 00 00`
-- the serialized bytes of `BytesVecOpt (Some(([])))` is `03 00 00 00, 04 00 00 00`
-- the serialized bytes of `BytesVecOpt (Some(([0x])))` is `03 00 00 00, 0c 00 00 00, 08 00 00 00, 00 00 00 00`
-- the serialized bytes of `BytesVecOpt (Some(([0x123])))` is `03 00 00 00, 0e 00 00 00, 08 00 00 00, 02 00 00 00, 01 23`
-- the serialized bytes of `BytesVecOpt (Some(([0x123, 0x456])))` is
+
+- 序列化 `BytesVecOpt (None)`  得到的字节为  `03 00 00 00`
+
+- 序列化  `BytesVecOpt (Some(([])))` 得到的字节为 `03 00 00 00, 04 00 00 00`
+
+- 序列化 `BytesVecOpt (Some(([0x])))`  得到的字节为 `03 00 00 00, 0c 00 00 00, 08 00 00 00, 00 00 00 00`
+
+- 序列化 `BytesVecOpt (Some(([0x123])))`  得到的字节为 `03 00 00 00, 0e 00 00 00, 08 00 00 00, 02 00 00 00, 01 23`
+
+- 序列化 `BytesVecOpt (Some(([0x123, 0x456])))`  得到的字节为 
+
   ```
   # Item Type Id
   03 00 00 00
@@ -249,6 +281,8 @@ If we define `union HybridBytes { Byte3, Bytes, BytesVec, BytesVecOpt }`
   02 00 00 00, 01 23
   02 00 00 00, 04 56
   ```
+
+
 
 [molecule]: #molecule
 [json]: https://www.json.org
