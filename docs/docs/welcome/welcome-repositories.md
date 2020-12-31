@@ -47,7 +47,7 @@ sidebar_label: Nervos 代码库
 |[ckb-std](https://github.com/jjyr/ckb-std)              |包含了几个帮助你使用 Rust 编写 CKB 合约的模块|
 |[polyjuice](https://github.com/nervosnetwork/polyjuice) |在 CKB 上实现以太坊的解决方案|
 |[lumos](https://github.com/nervosnetwork/lumos)         |一个基于 JavaScript/TypeScript 的完整的 DApp 框架|
-|[ckb-js-toolkit](https://github.com/xxuejie/ckb-js-toolkit)|JavaScript 工具包，包含一系列独立的工具，帮助发展 CKB DApps|
+|[ckb-js-toolkit](https://github.com/xxuejie/ckb-js-toolkit)|JavaScript 工具包，包含一系列独立的工具，帮助开发 CKB DApps|
 |[ckb-duktape](https://github.com/xxuejie/ckb-duktape)   |通过 duktape 在 CKB 上搭建使用 JavaScript 编写智能合约的环境|
 |[ckb-duktape-template](https://github.com/xxuejie/ckb-duktape-template)|一个在 CKB 上编写 JavaScript 的模板|
 |[diviner](https://github.com/xxuejie/dividukener)       |一个 FoundationDB 类型的 Rust 模拟测试框架|
