@@ -140,7 +140,7 @@ cd ckb_v0.33.0_x86_64-unknown-linux-gnu
 sudo ln -snf "$(pwd)/ckb" /usr/local/bin/ckb
 
 # 将 ckb-cli 指令添加到全局
-sudo ln -snf "$(pwd)/ckb" /usr/local/bin/ckb-cli
+sudo ln -snf "$(pwd)/ckb-cli" /usr/local/bin/ckb-cli
 
 # 检查 ckb 版本
 ckb --version
