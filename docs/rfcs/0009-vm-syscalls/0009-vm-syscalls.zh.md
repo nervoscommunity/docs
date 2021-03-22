@@ -1,6 +1,6 @@
 ---
 id: 0009-vm-syscalls.zh
-title: VM Syscalls
+title: VM 系统调用
 sidebar_label: 09：VM Syscalls
 ---
 
@@ -8,40 +8,40 @@ sidebar_label: 09：VM Syscalls
 | --------- | --------- | --------- | --------- | --------- | --------- |
 | 0009 | Standards Track | Proposal | Xuejie Xiao  |Nervos Foundation|2018-12-14|
 
-# VM Syscalls
+# VM 系统调用
 
-## Abstract
+## 摘要
 
-This document describes all the RISC-V VM syscalls implemented in CKB so far.
+本 RFC 介绍当前 CKB 已实现的所有 RISC-V VM  系统调用。
 
-## Introduction
+## 介绍
 
-CKB VM syscalls are used to implement communications between the RISC-V based CKB VM, and the main CKB process, allowing scripts running in the VM to read current transaction information as well as general blockchain information from CKB. Leveraging syscalls instead of custom instructions allow us to maintain a standard compliant RISC-V implementation which can embrace the broadest industrial support.
+CKB VM 系统调用用于实现基于 RISC-V 的 CKB VM 与 CKB 主进程之间的通信，能够让在 VM 中运行的脚本从 CKB 中读取当前的交易信息以及通用的区块链信息。利用系统调用而非自定义指令，能够让我们保持一个兼容 RISC-V 实现的标准以及更广阔的支持面。 
 
-## Partial Loading
+## 局部加载
 
-With the exception of `Exit`, all syscalls included here use a partial loading design. The following 3 arguments are used in each syscall:
+除了 `Exit` 异常外，本文档包含的所有系统调用都使用了局部加载设计。在每个系统调用中都会用到以下三个参数：
 
-* `addr`: a pointer to a buffer in VM memory space denoting where we would load the syscall data.
-* `len`: a pointer to a 64-bit unsigned integer in VM memory space, when calling the syscall, this memory location should store the length of the buffer specified by `addr`, when returning from the syscall, CKB VM would fill in `len` with the actual length of the buffer. We would explain the exact logic below.
-* `offset`: an offset specifying from which offset we should start loading the syscall data.
+* `addr`：一个指向 VM 内存空间中缓冲区的指针，表示我们要加载系统调用数据的位置。
+* `len`：一个指向 VM 内存空间中一个64位无符号整数的指针，当调用系统调用时，这个内存位置应该存储 `addr` 指定的缓冲区的长度，当从系统调用返回时，CKB VM 会用缓冲区的实际长度填入 `len` 。我们下面会解释具体的逻辑。
+* `offset`：一个偏移量，指定我们应该从哪个偏移量开始加载系统调用数据。
 
-Each syscall might have different ways of preparing syscall return data, when the data is successfully prepared, it is fed into VM via the steps below. For ease of reference, we refer to the prepared syscall return data as `data`, and the length of `data` as `data_length`.
+每个系统调用准备返回数据的方式可能不同，当数据准备完毕后，会通过以下步骤将其输入到 VM 中。为了方便参考，我们把准备好的返回数据称为 `data`，其数据长度称为  `data_length`。
 
-1. A memory read operation is executed to read the value in `len` pointer from VM memory space, we call the read result `size` here.
-2. `full_size` is calculated as `data_length - offset`.
-3. `real_size` is calculated as the minimal value of `size` and `full_size`
-4. The serialized value starting from `&data[offset]` till `&data[offset + real_size]` is written into VM memory space location starting from `addr`.
-5. `full_size` is written into `len` pointer
-6. `0` is returned from the syscall denoting execution success.
+1. 执行内存读取操作，从虚拟机内存空间读取 `len` 指针中的值，这里我们称 `len` 为 `size` （大小）。
+2. `full_size` 的计算方法为是 `data_length - offset`。
+3. `real_size` 为 `size` 和 `full_size` 两者的最小值。
+4. 从 `&data[offset]` 开始到 `&data[offset + real_size]` 的序列化值被写入从 `addr` 开始的 VM 内存空间位置。
+5. `full_size` 写入到 `len` 指针中。
+6. 系统调用返回 `0` 表示执行成功。
 
-The whole point of this process, is providing VM side a way to do partial reading when the available memory is not enough to support reading the whole data altogether.
+整个过程的重点，是为 VM 端提供了一种在可用内存不足的情况下进行局部读取的方法，进而支持读取完整的数据。
 
-One trick here, is that by providing `NULL` as `addr`, and a `uint64_t` pointer with 0 value as `len`, this syscall can be used to fetch the length of the serialized data part without reading any actual data.
+这里有一个技巧，就是通过提供 `NULL` 作为 `addr` ，一个0值的 `uint64_t` 指针作为`len`，这个系统调用可以用来获取序列化数据部分的长度，而不需要读取任何实际数据。
 
-## Syscall Specifications
+## 系统调用规范
 
-In CKB we use RISC-V's standard syscall solution: each syscall accepts 6 arguments stored in register `A0` through `A5`. Each argument here is of register word size so it can store either regular integers or pointers. The syscall number is stored in `A7`. After all the arguments and syscall number are set, `ecall` instruction is used to trigger syscall execution, CKB VM then transfers controls from the VM to the actual syscall implementation beneath. For example, the following RISC-V assembly would trigger *Exit* syscall with a return code of 10:
+在 CKB 中，我们使用 RISC-V 的标准系统调用解决方案：每个系统调用接受 6 个参数，分别存储在寄存器 `A0` ~ `A5` 中。这里的每个参数都是寄存器字长，所以它可以存储常规的整数或指针。系统调用号存储在 `A7` 中。当所有的参数和系统调用号都设置好后，用 `ecall` 指令触发系统调用执行，CKB VM 再将控制权从 VM 转移到实际的系统调用实现下。例如，以下 RISC-V 程序集将触发 *Exit* 系统调用，返回代码为10。
 
 ```
 li a0, 10
@@ -49,14 +49,14 @@ li a7, 93
 ecall
 ```
 
-As shown in the example, not all syscalls use all the 6 arguments. In this case the caller side can only fill in the needed arguments.
+如例所示，并不是所有的系统调用都会用到 6 个参数。在这种情况下，调用方只能填写需要的参数。
 
-Syscalls can respond to the VM in 2 ways:
+系统调用可以通过 2 种方式响应 VM：
 
-* A return value is put in `A0` if exists.
-* Syscalls can also write data in memory location pointed by certain syscall arguments, so upon syscall completion, normal VM instructions can read the data prepared by the syscall.
+* 如果返回值存在，则将值放在 `A0` 中。
+* 系统调用也可以将数据写入某些系统调用参数所指向的内存位置，所以在系统调用完成后，正常的 VM 指令可以读取系统调用所准备的数据。
 
-For convenience, we could wrap the logic of calling a syscall in a C function:
+为了方便起见，我们可以将调用系统调用的逻辑封装在一个 C 函数中：
 
 ```c
 static inline long
@@ -81,15 +81,15 @@ __internal_syscall(long n, long _a0, long _a1, long _a2, long _a3, long _a4, lon
         __internal_syscall(n, (long)(a), (long)(b), (long)(c), (long)(d), (long)(e), (long)(f))
 ```
 
-(NOTE: this is adapted from [riscv-newlib](https://github.com/riscv/riscv-newlib/blob/77e11e1800f57cac7f5468b2bd064100a44755d4/libgloss/riscv/internal_syscall.h#L25))
+（注：本函数改编自 [riscv-newlib](https://github.com/riscv/riscv-newlib/blob/77e11e1800f57cac7f5468b2bd064100a44755d4/libgloss/riscv/internal_syscall.h#L25)）
 
-Now we can trigger the same *Exit* syscall more easily in C code:
+现在，我们能够在 C 代码中更容易地触发同样的 *Exit* 系统调用：
 
 ```c
 syscall(93, 10, 0, 0, 0, 0, 0);
 ```
 
-Note that even though *Exit* syscall only needs one argument, our C wrapper requires us to fill in all 6 arguments. We can initialize other unused arguments as all 0. Below we would illustrate each syscall with a C function signature to demonstrate each syscall's accepted arguments. Also for clarifying reason, all the code shown in this RFC is assumed to be written in pure C.
+请注意，尽管 *Exit* 系统调用只需要一个参数，但我们的C语言封装函数要求我们填入全部参数，我们可以将其他未使用的参数初始化为 0。下面我们将用一个 C 函数签名来说明每个系统调用的接受参数。同时为了说明原因，本 RFC 中显示的所有代码都假定是用纯 C 语言编写的。
 
 - [Exit]
 - [Load Transaction Hash]
@@ -531,4 +531,4 @@ This syscall accepts a null terminated string and prints it out as debug log in 
 
 * [1]: [Molecule Encoding][1]
 
-[1]: ../0008-serialization/0008-serialization.md
+[1]: ../0008-serialization/0008-serialization.md	"    "

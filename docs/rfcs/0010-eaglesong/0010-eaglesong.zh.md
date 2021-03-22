@@ -8,12 +8,12 @@ sidebar_label: 10：Eaglesong
 | --------- | --------- | --------- | --------- | --------- | --------- |
 | 0010 | Standards Track | Proposal | Alan Szepieniec |Nervos Foundation|2019-07-18|
 
-# Eaglesong (Nervos CKB 的哈希算法)
+# Eaglesong (Nervos CKB 的哈希算法)  
 
 本 RFC 将详细介绍 Nervos CKB 的哈希算法 Eaglesong。
 
- * [Notation](#Notation)
- * [Design Strategies](#Desgin-Strategies)
+ * [符号](#符号)
+ * [设计策略](#设计策略)
    * [Sponge Construction](#Sponge-Construction)
    * [ARX](#ARX)
  * [Round Function](#Round-Function)
@@ -25,27 +25,29 @@ sidebar_label: 10：Eaglesong
  * [Eaglesong Hash](#Eaglesong-Hash)
  * [Reference Implementations](#Reference-Implementations)
 
-## Notation
+## 符号
 
 在下文的伪代码段中，使用了以下符号：
 
  - `//` ：注释。
- - `||` -- denotes concatenation (of bit strings)
- - `length` -- returns the length (in bits) of the argument
- - `%` -- modulo operator, computes the remainder of left-hand-side argument after division by the right-hand-side
- - `zeros` -- produces a string of zero-bits of the specified length
- - `xor` -- denotes the exclusive-or operation of equal-length bit strings
- - `[]` -- python-style array indexing, with indexation starting (as it should) from zero; and when an upper-bound is included the range until but not including that upper bound is denoted; when not juxtaposed to an array, the expression `[a:b]` denotes the list of integers `{a, a+1, ..., b-1}`.
+ - `||` ：位串操作符 "连接"。
+ - `length` ：返回参数的长度（位）。
+ - `%` ：取模运算符，即左边参数除以右边参数后的余数。
+ - `zeros` ：产生一个指定长度的零位字符串。
+ - `xor` ：对等长位串的异或操作符。
+ - `[]` ：python风格的数组索引，索引从零开始；当一个上界被包含时，表示直到但不包括该上界的范围；当不是与数组并列时，表达式 `[a:b]` 表示整数列表 `{a, a+1，…, b - 1}`。
 
-# Design Strategies
+# 设计策略
 
 ## Sponge Construction
 
 Eaglesong is a [sponge construction](https://en.wikipedia.org/wiki/Sponge_function). This means that what is specified is a permutation `F` along with three variables:
 
- - `r`, the rate : a positive integer;
- - `c`, the capacity : another positive integer;
- - `d`, the delimiter : a byte fixed to a nonzero value.
+Eaglesong 是一种[海绵函数](https://zh.wikipedia.org/wiki/%E6%B5%B7%E7%B6%BF%E5%87%BD%E6%95%B8)，即一个置换函数 `F` 以及三个变量。
+
+ - `r`，转换率：为正整数；
+ - `c`，容量：为正整数；
+ - `d`，定界符：一个非零的固定字节。
 
 The permutation maps `r+c` bits to `r+c` bits. After appending the delimiter byte to variable-length input to the hash function, this input is chunked into pieces `chunk[i]`, each of `r` bits along with the last one padded with zeros as necessary. The sponge construction defines a state, which consists of `r+c` bits initialized to zeros. The absorbing phase iterates over all chunks and xors the current chunk into the top `r` bits of the state before applying the permutation. In the squeezing phase, the output buffer is initialized to the empty string. Until this buffer is of the right size, the permutation is applied to the state and the top `r` bits are read out and appended to the output buffer. If the output buffer is too long, it is truncated. The next pseudocode illustrates this operation.
 
