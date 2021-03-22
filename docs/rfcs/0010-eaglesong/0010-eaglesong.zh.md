@@ -1,6 +1,6 @@
 ---
 id: 0010-eaglesong.zh
-title: Eaglesong (Proof-of-Work Function for Nervos CKB)
+title: Eaglesong (Nervos CKB 的哈希算法)
 sidebar_label: 10：Eaglesong
 ---
 
@@ -8,9 +8,9 @@ sidebar_label: 10：Eaglesong
 | --------- | --------- | --------- | --------- | --------- | --------- |
 | 0010 | Standards Track | Proposal | Alan Szepieniec |Nervos Foundation|2019-07-18|
 
-# Eaglesong (Proof-of-Work Function for Nervos CKB)
+# Eaglesong (Nervos CKB 的哈希算法)
 
-This document specifies the Eaglesong hash function as it is to be used in the context of Nervos CKB proof-of-work.
+本 RFC 将详细介绍 Nervos CKB 的哈希算法 Eaglesong。
 
  * [Notation](#Notation)
  * [Design Strategies](#Desgin-Strategies)
@@ -27,9 +27,9 @@ This document specifies the Eaglesong hash function as it is to be used in the c
 
 ## Notation
 
-In the pseudocode snippets below the following notation is used:
+在下文的伪代码段中，使用了以下符号：
 
- - `//` -- denotes a comment
+ - `//` ：注释。
  - `||` -- denotes concatenation (of bit strings)
  - `length` -- returns the length (in bits) of the argument
  - `%` -- modulo operator, computes the remainder of left-hand-side argument after division by the right-hand-side
