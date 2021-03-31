@@ -8,7 +8,7 @@ sidebar_label: Nervos Network RFCs 简介
 
 [![Telegram Group](https://cdn.rawgit.com/Patrolavia/telegram-badge/8fe3382b/chat.svg)](https://t.me/nervos_rfcs)
 
-资源库 [nervosnetwork/rfcs](https://github.com/nervosnetwork/rfcs) 包含了与 Nervos Network 相关的提案、标准和文档。
+代码库 [nervosnetwork/rfcs](https://github.com/nervosnetwork/rfcs) 包含了与 Nervos Network 相关的提案、标准和文档。
 
 RFC（请求评论）流程旨在为新协议、优化建议和最佳实践提供一个开放的、由社区驱动的渠道，以便所有相关人员都能对 Nervos network 的发展方向充满信心。
 
@@ -76,7 +76,7 @@ RFCs 的维护人员以及社区会对 PR 进行审查，你也可以根据 PR �
 
 信息类（Informational）的 RFC 将合并发布后其状态会处于草稿（Draft）阶段，在任何时候，原作者可以将其状态更新为完结（Final）。若在一年内其没有任何更新的话，RFC 维护人员也可以将其更新为完结。
 
-### 4. (Standards Track) 提交你的标准
+### 4. 提交你的标准(Standards Track) 
 
 一个标准类（Standards Track）的 RFC 总共有三种状态：
 
