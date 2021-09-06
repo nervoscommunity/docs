@@ -1,34 +1,34 @@
 ---
 id: 0011-transaction-filter-protocol.zh
-title: Transaction Filter Protocol
-sidebar_label: 11：Transaction Filter Protocol
+title: 交易过滤协议
+sidebar_label: 11：交易过滤协议
 ---
 
 |  Number   |  Category |   Status  |   Author  |Organization| Created  |
 | --------- | --------- | --------- | --------- | --------- | --------- |
 | 0011 | Standards Track | Proposal | Quake Wang |Nervos Foundation|2018-12-11|
 
-# Transaction Filter Protocol
+# 交易过滤协议
 
-## Abstract
+## 摘要
 
-Transaction filter protocol allows peers to reduce the amount of transaction data they send. Peer which wants to retrieve transactions of interest, has the option of setting filters on each connection. A filter is defined as a [Bloom filter](http://en.wikipedia.org/wiki/Bloom_filter) on data derived from transactions.
+交易过滤协议能够减少节点所需要发送的交易数据量。节点想要接收特定类型的交易，可以在连接中设置过滤选项。过滤选项将作为布隆过滤器作用于交易数据上。
 
-## Motivation
+## 目的
 
-The purpose of transaction filter protocol is to allow low-capacity peers (smartphones, browser extensions, embedded devices, etc) to maintain a high-security assurance about the up to date state of some particular transactions of the chain or verify the execution of transactions.
+交易过滤协议的目的是让低性能的节点（智能手机、浏览器插件、内嵌设备等）能够实现同步链上某些特定交易的最新状态或者验证交易的执行情况。
 
-These peers do not attempt to fully verify the block chain, instead just checking that [block headers connect](../0004-ckb-block-sync/0004-ckb-block-sync.md#connecting-header) together correctly and trusting that the transactions in the block of highest difficulty are in fact valid.
+这些节点无需验证完整的区块链数据，只需检查区块头连接是否正确，并相信难度最高的区块中的交易是有效的。
 
-Without this protocol, peers have to download the entire blocks and accept all broadcast transactions, then throw away majority of the transactions. This slows down the synchronization process, wastes users bandwidth and increases memory usage.
+如果没有这个协议，节点必须下载完整区块并且接收所有交易广播，然后扔掉大部分交易。这反而减慢了同步进度，浪费了用户带宽，增加了内存使用量。
 
-## Messages
+## 消息
 
-*Message serialization format is [Molecule](../0008-serialization/0008-serialization.md)*
+*消息的系列化格式为[Molecule ](../0008-serialization/0008-serialization.zh)*
 
 ### SetFilter
 
-Upon receiving a `SetFilter` message, the remote peer will immediately restrict the transactions that it broadcasts to the ones matching the filter, where the [matching algorithm](#filter-matching-algorithm) is specified as below.
+在接收到 `SetFilter` 消息后，远程节点会立即限制其广播的交易，只广播与过滤器匹配的交易，匹配算法如下：
 
 ```
 table SetFilter {
@@ -38,15 +38,15 @@ table SetFilter {
 }
 ```
 
-`filter`: A bit field of arbitrary byte-aligned size. The maximum size is 36,000 bytes.
+`filter`：一个任意大小的字节对齐的位字段，最大为 36,000 字节。 
 
-`num_hashes`: The number of hash functions to use in this filter. The maximum value allowed in this field is 20. This maximum value and `filter` maximum size allow to store ~10,000 items and the false positive rate is 0.0001%.
+`num_hashes`：该过滤器中使用的哈希函数的数量。这个字段允许的最大值是20。这个最大值和 `filter` 最大值同时使用的情况下，能够存储约10,000个子项，误判率为0.0001%。 
 
-`hash_seed`: We use [Kirsch-Mitzenmacher-Optimization](https://www.eecs.harvard.edu/~michaelm/postscripts/tr-02-05.pdf) hash function in this protocol, `hash_seed` is a random offset, `h1` is low uint32 of hash value, `h2` is high uint32 of hash value, and the nth hash value is `(hash_seed + h1 + n * h2) mod filter_size`.
+`hash_seed`：我们在本协议中使用 [Kirsch-Mitzenmacher-Optimization](https://www.eecs.harvard.edu/~michaelm/postscripts/tr-02-05.pdf) 哈希函数，`hash_seed ` 为随机偏移量，`h1  ` 为低位 uint32 的哈希值，`h2  ` 为高位 uint32 的哈希值，第 n 个哈希值为 `（hash_seed+h1+n*h2）mod filter_size`。 
 
 ### AddFilter
 
-Upon receiving a `AddFilter` message, the given bit data will be added to the exsiting filter via bitwise OR operator. A filter must have been previously provided using `SetFilter`. This messsage is useful if a new filter is added to a peer whilst it has connections to the network open, alsp avoids the need to re-calculate and send an entirely new filter to every peer.
+当收到 `AddFilter` 消息时，给定的位数据将通过 “按位或” 运算符添加到当前的过滤器中。该过滤器必须是之前已经用 `SetFilter` 提供过的。如果新过滤器被添加到节点时，节点的网络连接是开放的，则消息是有效的，也避免了重新计算和发送全新过滤器给所有节点的必要。
 
 ```
 table AddFilter {
@@ -54,23 +54,23 @@ table AddFilter {
 }
 ```
 
-`filter`: A bit field of arbitrary byte-aligned size. The data size must be litter than or equal to previously provided filter size.
+`filter`：一个任意大小的字节对齐的位字段，数据大小必须大于或等于之前提供的过滤器大小。 
 
 ### ClearFilter
 
-The `ClearFilter` message tells the receiving peer to remove a previously-set bloom filter.
+`ClearFilter` 消息告诉接收节点移除此前设置的布隆过滤器。
 
 ```
 table ClearFilter {
 }
 ```
 
-The `ClearFilter` message has no arguments at all.
+`ClearFilter` 消息无需参数。
 
 
 ### FilteredBlock
 
-After a filter has been set, peers don't merely stop announcing non-matching transactions, they can also serve filtered blocks. This message is a replacement for `Block` message of sync protocol and `CompactBlock` message of relay protocol.
+设置好过滤器后，节点不只是停止广播匹配不上的交易，它们也可以提供过滤后的区块消息。这种消息是同步协议中的 `Block` 消息和中继协议中的  `CompactBlock` 的替代品。
 
 ```
 table FilteredBlock {
@@ -85,17 +85,17 @@ table IndexTransaction {
 }
 ```
 
-`header`: Standard block header struct.
+`header`：标准区块头结构。
 
-`transactions`: Standard transaction struct plus transaction index.
+`transactions`：标准交易结构以及交易索引。
 
-`hashes`: Partial [Merkle](../0006-merkle-tree/0006-merkle-tree.md#merkle-proof) branch proof.
+`hashes`：部分默克尔树分支证明。
 
-## Filter matching algorithm
+## 过滤匹配算法
 
-The filter can be tested against all broadcast transactions, to determine if a transaction matches the filter, the following algorithm is used. Once a match is found the algorithm aborts.
+过滤器测试适用于所有的广播交易，我们使用以下算法来确定一个交易是否匹配过滤器。一旦匹配，算法就会中止。
 
-1. Test the hash of the transaction itself.
-2. For each CellInput, test the hash of `previous_output`.
-3. For each CellOutput, test the `lock hash` and `type hash` of script.
-4. Otherwise there is no match.
+1. 测试交易本身哈希值。
+2. 对于每个 CellInput，测试 `previous_output` 的哈希值。
+3. 对于每个 CellOutput, 测试脚本的 `lock hash` 和 `type hash` 。
+4. 以上都不满足，就是不匹配。
