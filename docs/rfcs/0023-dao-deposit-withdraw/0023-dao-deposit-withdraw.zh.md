@@ -4,9 +4,9 @@ title: Nervos DAO 的存入和取出
 sidebar_label: 23：Nervos DAO 的存入和取出
 ---
 
-|  Number   |  Category |   Status  |   Author  |Organization| Created  |
-| --------- | --------- | --------- | --------- | --------- | --------- |
-| 0023 | Standards Track | Proposal | Jan Xie, Xuejie Xiao, Ian Yang  |Nervos Foundation|2019-10-30|
+| Number | Category        | Status   | Author                         | Organization      | Created    |
+| ------ | --------------- | -------- | ------------------------------ | ----------------- | ---------- |
+| 0023   | Standards Track | Proposal | Jan Xie, Xuejie Xiao, Ian Yang | Nervos Foundation | 2019-10-30 |
 
 # Nervos DAO 的存入和取出
 
@@ -26,10 +26,9 @@ Nervos DAO 是一个智能合约，就像 CKB 上其他的智能合约一样，�
 
 CKB 的发行曲线由两部分组成：
 
-* 基础发行：奖励给矿工的有硬顶的代币发行，使用与比特币相同的发行曲线，约每 4 年减半。
+- 基础发行：奖励给矿工的有硬顶的代币发行，使用与比特币相同的发行曲线，约每 4 年减半。
 
-* 二级发行：常量发行，每个难度调节周期（Epoch）都会发行相同数量的 CKByte，这意味着随着时间的推移，二级发行比率将逐渐趋近于零。因为每个 Epoch 内的区块数量是[动态调整](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0020-ckb-consensus-protocol/0020-ckb-consensus-protocol.md)的，所以每个区块的二级发行会是一个变量。
-
+- 二级发行：常量发行，每个难度调节周期（Epoch）都会发行相同数量的 CKByte，这意味着随着时间的推移，二级发行比率将逐渐趋近于零。因为每个 Epoch 内的区块数量是[动态调整](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0020-ckb-consensus-protocol/0020-ckb-consensus-protocol.md)的，所以每个区块的二级发行会是一个变量。
 
 如果在 CKB 中只有基础发行而没有二级发行，那么 CKByte 的总供应量将会存在一个硬顶，其发行曲线将会和比特币完全一样。为了保障 CKB 的长期持有者不被二级发行稀释，在 Nervos DAO 中锁定的 CKByte 将获得部分比例的二级发行，该比例等于锁定在 Nervos DAO 中的 CKByte 占整个 CKByte 流通量的百分比。
 
@@ -37,21 +36,21 @@ CKB 的发行曲线由两部分组成：
 
 ## 存款
 
-用户可以随时发送交易将 CKBytes 存入 Nervos DAO。CKB 在创世块中包含一种特殊的 Nervos DAO 类型脚本。想要存储到Nervos DAO 中，只需随时创建一个包含新 Output Cell 的交易，并满足以下要求：
+用户可以随时发送交易将 CKBytes 存入 Nervos DAO。CKB 在创世块中包含一种特殊的 Nervos DAO 类型脚本。想要存储到 Nervos DAO 中，只需随时创建一个包含新 Output Cell 的交易，并满足以下要求：
 
-* 创建的 Output Cell 类型脚本必须设置为 Nervos DAO 脚本。
+- 创建的 Output Cell 类型脚本必须设置为 Nervos DAO 脚本。
 
-* 该 Output Cell 的 Cell Data 必须有 8 个字节长度，并用 0 将其填充完整。
+- 该 Output Cell 的 Cell Data 必须有 8 个字节长度，并用 0 将其填充完整。
 
 为方便起见，一个满足上述条件的 Cell 被称为 `Nervos DAO 存款单`。为了遵循 CKB 的脚本验证逻辑，存款交易还需要将 Nervos DAO 类型脚本的引用包含在封闭交易的 `cell_deps` 部分中。注意，在一个交易中，我们不对完整的存款数量进行限制，一个有效的交易中可以创建多个「Nervos DAO 存款单」。
 
 ## 取款
 
-用户可以随时发送交易从 Nervos DAO 中取出已存储的 CKByte（但这里会涉及到一个锁定期来确定什么时候可以取出代币）。一个 Nervos DAO Cell 获得的利息只会在取出阶段发放，这意味着对于一个包含 Nervos DAO 提取交易来说，所有 Onput Cell 的Capacity 总和可能超过所有 Input Cell 的 Capacity 总和。与存款过程不同，从 Nervos DAO 取出需要两个步骤：
+用户可以随时发送交易从 Nervos DAO 中取出已存储的 CKByte（但这里会涉及到一个锁定期来确定什么时候可以取出代币）。一个 Nervos DAO Cell 获得的利息只会在取出阶段发放，这意味着对于一个包含 Nervos DAO 提取交易来说，所有 Onput Cell 的 Capacity 总和可能超过所有 Input Cell 的 Capacity 总和。与存款过程不同，从 Nervos DAO 取出需要两个步骤：
 
-* 在第一阶段，第一个交易是将 `Nervos DAO 存款单`转换为 `Nervos DAO 取款单`。
+- 在第一阶段，第一个交易是将 `Nervos DAO 存款单`转换为 `Nervos DAO 取款单`。
 
-* 在第二阶段，第二个交易是从 `Nervos DAO 取款单`中提取代币。
+- 在第二阶段，第二个交易是从 `Nervos DAO 取款单`中提取代币。
 
 ### 取款阶段 1
 
@@ -59,21 +58,21 @@ CKB 的发行曲线由两部分组成：
 
 第一阶段的交易应符合下列条件：
 
-* 交易中应包含一个或多个 Nervos DAO 存款单作为输入。
+- 交易中应包含一个或多个 Nervos DAO 存款单作为输入。
 
-* 对于每个 Nervos DAO 存款单来说，交易需要在 `header_deps` 中包含对其相关（存款）区块的引用，Nervos DAO 类型脚本将以此作为存款的起点。
+- 对于每个 Nervos DAO 存款单来说，交易需要在 `header_deps` 中包含对其相关（存款）区块的引用，Nervos DAO 类型脚本将以此作为存款的起点。
 
-* 在 Input 索引 `i` 中的 Nervos DAO 存款单，应该在 Onput 索引 `i` 中创建 Nervos DAO 取款单，并满足以下要求：
+- 在 Input 索引 `i` 中的 Nervos DAO 存款单，应该在 Onput 索引 `i` 中创建 Nervos DAO 取款单，并满足以下要求：
 
-    * 取款单应该与存款单具有相同的锁定脚本
+  - 取款单应该与存款单具有相同的锁定脚本
 
-    * 取款单应该与存款单具有相同的 Nervos DAO 类型脚本
+  - 取款单应该与存款单具有相同的 Nervos DAO 类型脚本
 
-    * 取款单应该与存款单具有相同的 Capacity
+  - 取款单应该与存款单具有相同的 Capacity
 
-    * 取款单也应该有 8 个字节长度的 Cell Data，但不是 8 个零，Cell Data 部分应该存储存款单所在区块的区块数。该数字应该以 64 位未签名小端序整数格式打包。
+  - 取款单也应该有 8 个字节长度的 Cell Data，但不是 8 个零，Cell Data 部分应该存储存款单所在区块的区块数。该数字应该以 64 位未签名小端序整数格式打包。
 
-* Nervos DAO 类型脚本应该包含在取出交易的 `cell_deps` 中。
+- Nervos DAO 类型脚本应该包含在取出交易的 `cell_deps` 中。
 
 一旦该交易完成上链，用户就可以开始准备阶段二的交易了。
 
@@ -83,23 +82,23 @@ CKB 的发行曲线由两部分组成：
 
 第二阶段的交易应符合以下条件：
 
-* 一个交易应该包含一个或多个 Nervos DAO 取款单作为 Input。
+- 一个交易应该包含一个或多个 Nervos DAO 取款单作为 Input。
 
-* 对于每个 Nervos DAO 取款单来说，交易需要在 `header_deps` 中包含对其相关（取款）区块的引用，Nervos DAO 类型脚本将以此作为存款的终点。
+- 对于每个 Nervos DAO 取款单来说，交易需要在 `header_deps` 中包含对其相关（取款）区块的引用，Nervos DAO 类型脚本将以此作为存款的终点。
 
-* 对于在 Input 索引 `i` 中的 Nervos DAO 取款单来说，用户应该定位到包含原始 Nervos DAO 存款单的区块头。有了这个存入区块头之后，我们还需要做 2 个操作：
+- 对于在 Input 索引 `i` 中的 Nervos DAO 取款单来说，用户应该定位到包含原始 Nervos DAO 存款单的区块头。有了这个存入区块头之后，我们还需要做 2 个操作：
 
-    * 当前交易的 `header_deps` 中应该包含存入区块头的哈希
+  - 当前交易的 `header_deps` 中应该包含存入区块头的哈希
 
-    * `header_deps` 中存入区块头哈希的索引应该使用 64 位未签名小端序整数格式，并保存在属于相应 Witness 输入 Cell 类型脚本部分的索引 `i` 中。Witness 当前的论证组织将会在另外一个单独的 RFC 中阐述。下面我们还将通过一个详细的例子来介绍这个过程。
+  - `header_deps` 中存入区块头哈希的索引应该使用 64 位未签名小端序整数格式，并保存在属于相应 Witness 输入 Cell 类型脚本部分的索引 `i` 中。Witness 当前的论证组织将会在另外一个单独的 RFC 中阐述。下面我们还将通过一个详细的例子来介绍这个过程。
 
-* 对于一个 Nervos DAO 取款单来说，Cell 交易输入中的 `since` 字段应该反映 Nervos DAO Cell 的锁定周期要求，即 180 个Epoch。例如，如果一个人在第五个 Epoch 存入 Nervos DAO，则他/她只能在第 185、365 或 545 等 Epoch 从 Nervos DAO 中取出。注意，锁定期的计算与利息的计算无关。在第五个 Epoch 存入，在第一百个 Epoch 使用 `withdraw block`，在第 185 个 Epoch 使用 `since` 字段是完全有效的。请参考 [since RFC](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0017-tx-valid-since/0017-tx-valid-since.md) 来了解如何表示有效的 Epoch 数，Nervos DAO 类型脚本目前只接受绝对的 Epoch 数作为 since 值。
+- 对于一个 Nervos DAO 取款单来说，Cell 交易输入中的 `since` 字段应该反映 Nervos DAO Cell 的锁定周期要求，即 180 个 Epoch。例如，如果一个人在第五个 Epoch 存入 Nervos DAO，则他/她只能在第 185、365 或 545 等 Epoch 从 Nervos DAO 中取出。注意，锁定期的计算与利息的计算无关。在第五个 Epoch 存入，在第一百个 Epoch 使用 `withdraw block`，在第 185 个 Epoch 使用 `since` 字段是完全有效的。请参考 [since RFC](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0017-tx-valid-since/0017-tx-valid-since.md) 来了解如何表示有效的 Epoch 数，Nervos DAO 类型脚本目前只接受绝对的 Epoch 数作为 since 值。
 
-* 利息计算逻辑完全独立于锁定期限的计算逻辑，我们将在下一节中解释利息计算逻辑。
+- 利息计算逻辑完全独立于锁定期限的计算逻辑，我们将在下一节中解释利息计算逻辑。
 
-* Nervos DAO 类型脚本中，所有 Input Cell 的 Capacity 加上利息的总和应该大于或等于所有 Onput Cell 的 Capacity 的总和。
+- Nervos DAO 类型脚本中，所有 Input Cell 的 Capacity 加上利息的总和应该大于或等于所有 Onput Cell 的 Capacity 的总和。
 
-* Nervos DAO 类型脚本应该被包含在 `cell_deps` 中。
+- Nervos DAO 类型脚本应该被包含在 `cell_deps` 中。
 
 正如上面的步骤所示的那样，在一个交易中执行多个取款是完全有可能的。更重要的是，Nervos DAO 并没有限制提取代币的目的，在同一交易中，将刚提取的代币重新存入 Nervos DAO 中也是有效的。实际上，一个交易可以用来自由地混合以下所有操作：
 
@@ -115,44 +114,44 @@ CKB 的发行曲线由两部分组成：
 
 CKB 的区块头有一个名为 `dao` 的特殊字段，其中包含了使用 Nervos DAO 的辅助信息。具体来说，以下数据需按如下顺序封装在一个 32 字节的 `dao` 字段中：
 
-* `C_i`：截至区块 `i`（包含区块 `i`）系统中累积的 CKByte 发行量
-* `AR_i`：当前区块 `i` 的累积利率。`AR_j` / `AR_i` 表示一单位的 CKByte 在区块 `i` 中存入 Nervos DAO，并在区块 `j` 中取出的本息之和。
-* `S_i`：截至区块 `i`（包含区块 `i`）系统中累积的二级发行总和
-* `U_i`：截至区块 `i`（包含区块 `i`）系统中占用的空间之和。已占用的空间是用于存储所有 Cell 空间的总和。
+- `C_i`：截至区块 `i`（包含区块 `i`）系统中累积的 CKByte 发行量
+- `AR_i`：当前区块 `i` 的累积利率。`AR_j` / `AR_i` 表示一单位的 CKByte 在区块 `i` 中存入 Nervos DAO，并在区块 `j` 中取出的本息之和。
+- `S_i`：截至区块 `i`（包含区块 `i`）系统中累积的二级发行总和
+- `U_i`：截至区块 `i`（包含区块 `i`）系统中占用的空间之和。已占用的空间是用于存储所有 Cell 空间的总和。
 
-以上的这 4 个值都是以 64 位未签名小端序数存储在 `dao` 字段中。为了保证足够的精度，`AR_i` 以原始值乘以 `10 ** 16` 的方式储存。
+以上的这 4 个值都是以 64 位无符号小端序数存储在 `dao` 字段中。为了保证足够的精度，`AR_i` 以原始值乘以 `10 ** 16` 的方式储存。
 
 对于单个区块 `i` 来说，我们可以定义如下变量：
 
-* `p_i`：区块 `i` 应得的基础发行
-* `s_i`：区块 `i` 应得的二级发行
-* `U_{in,i}`：区块 `i` 中所有 Input Cell 占用的空间之和
-* `U_{out,i}`：区块 `i` 中所有 Onput Cell 占用的空间之和
-* `C_{in,i}`：区块 `i` 中所有 Input Cell 的 Capacity 之和
-* `C_{out,i}`：区块 `i` 中所有 Onput Cell 的 Capacity 之和
-* `I_i`：所有 Nervos DAO 的利息之和
+- `p_i`：区块 `i` 应得的基础发行
+- `s_i`：区块 `i` 应得的二级发行
+- `U_{in,i}`：区块 `i` 中所有 Input Cell 占用的空间之和
+- `U_{out,i}`：区块 `i` 中所有 Onput Cell 占用的空间之和
+- `C_{in,i}`：区块 `i` 中所有 Input Cell 的 Capacity 之和
+- `C_{out,i}`：区块 `i` 中所有 Onput Cell 的 Capacity 之和
+- `I_i`：所有 Nervos DAO 的利息之和
 
 创世块中初始值的定义如下：
 
-* `C_0`: `C_{out,0}` - `C_{in,0}` + `p_0` + `s_0`
-* `U_0`: `U_{out,0}` - `U_{in,0}`
-* `S_0`: `s_0`
-* `AR_0`: `10 ^ 16`
+- `C_0`: `C_{out,0}` - `C_{in,0}` + `p_0` + `s_0`
+- `U_0`: `U_{out,0}` - `U_{in,0}`
+- `S_0`: `s_0`
+- `AR_0`: `10 ^ 16`
 
 我们可以因此得出每个后续区块的累加公式：
 
 - `C_i` : `C_{i-1}` + `p_i` + `s_i`
 - `U_i` : `U_{i-1}` + `U_{out,i}` - `U_{in,i}`
-- `S_i` : `S_{i-1}` - `I_i` + `s_i` - floor( `s_i` * `U_{i-1}` / `C_{i-1}` )
-- `AR_i` : `AR_{i-1}` + floor( `AR_{i-1}` * `s_i` / `C_{i-1}` )
+- `S_i` : `S_{i-1}` - `I_i` + `s_i` - floor( `s_i` \* `U_{i-1}` / `C_{i-1}` )
+- `AR_i` : `AR_{i-1}` + floor( `AR_{i-1}` \* `s_i` / `C_{i-1}` )
 
 有了这些值，现在就可以计算出一个 Cell 中的 Nervos DAO 利息了。假设 Nervos DAO 的 Cell 在区块 `m` 中存入（即 Nervos DAO 存款单被包含在区块 `m` 中），用户在区块 `n` 中开始取款（即 Nervos DAO 取款单被包含在区块 `n` 中），Nervos DAO Cell 的 Capacity 总和为 `c_t`，Nervos DAO Cell 所占用的空间为 `c_o`。 Nervos DAO 利息的计算公式如下：
 
-( `c_t` - `c_o` ) * `AR_n` / `AR_m` - ( `c_t` - `c_o` )
+( `c_t` - `c_o` ) \* `AR_n` / `AR_m` - ( `c_t` - `c_o` )
 
 即该 Nervos DAO Input Cell 的最大总取款 Capacity 为：
 
-( `c_t` - `c_o` ) * `AR_n` / `AR_m` + `c_o`
+( `c_t` - `c_o` ) \* `AR_n` / `AR_m` + `c_o`
 
 ## 案例
 
@@ -339,9 +338,9 @@ CKB 的区块头有一个名为 `dao` 的特殊字段，其中包含了使用 Ne
 
 在这个交易中有几个重要的地方值得注意：
 
-* Input Nervos DAO 存款单被包含在 `0x37ef8cf2407044d74a71f927a7e3dcd3be7fc5e7af0925c0b685ae3bedeec3bc` 区块中，因此它被包含在 `header_deps` 中。
-* 包含的区块号是 `4191`，它是以 64 位未签名小端序整数格式，同时也是十六进制的格式打包，即 `0x5f10000000000000`。
-* 将以上两个交易放在一起来看，该交易中的 Output Cell 与之前的 Nervos DAO 存款单具有相同的 Lock、Type 和 Capacity，但会使用不同的 Cell 数据。
+- Input Nervos DAO 存款单被包含在 `0x37ef8cf2407044d74a71f927a7e3dcd3be7fc5e7af0925c0b685ae3bedeec3bc` 区块中，因此它被包含在 `header_deps` 中。
+- 包含的区块号是 `4191`，它是以 64 位未签名小端序整数格式，同时也是十六进制的格式打包，即 `0x5f10000000000000`。
+- 将以上两个交易放在一起来看，该交易中的 Output Cell 与之前的 Nervos DAO 存款单具有相同的 Lock、Type 和 Capacity，但会使用不同的 Cell 数据。
 
 假设该交易被包含在下面的区块中：
 
@@ -417,13 +416,13 @@ CKB 的区块头有一个名为 `dao` 的特殊字段，其中包含了使用 Ne
 
 在这个交易中有几个重要的地方值得注意：
 
-* 该交易的 `header_deps` 包含两个 header：`0x37ef8cf2407044d74a71f927a7e3dcd3be7fc5e7af0925c0b685ae3bedeec3bc` 包含了原始 Nervos DAO 存款单所在的区块头哈希，而 `0xba6eaa7e0acd0dc78072c5597ed464812391161f0560c35992ae0c96cd1d6073` 是 Nervos DAO 取款单所在的区块。
-* 因为 `0x37ef8cf2407044d74a71f927a7e3dcd3be7fc5e7af0925c0b685ae3bedeec3bc` 位于 `header_deps` 中的索引 `0` 处，数字 `0` 将会以 64 位未签名小端序整数的格式打包，即 `0000000000000000`，并被附加到与 Nervos DAO Input Cell 对应的 Witness 末尾。
-* Nervos DAO Input Cell 中有一个 `0x20068d02880000b6` 的 `since` 字段，它的计算如下：
-    * 存款区块的区块头 Epoch 值为 `0x68d0288000002`，即 `2 + 648 / 1677` 个 Epoch
-    * 取款单所在的区块头 Epoch 值为 `0x645017e00002f`，即 `47 + 382 / 1605` 个 Epoch
-    * 离取款单最接近的 Epoch 是 `47 + 382 / 1605`，但满足锁周期的 Epoch 是 `182 + 648 / 1677`，正确的格式是 `0x68d02880000b6`。
-    * 因为在 Since 字段中使用的是绝对 Epoch 数，所以需要使用必要的标志使值为 `0x20068d02880000b6`。有关格式的详细信息，请参阅 since RFC。
+- 该交易的 `header_deps` 包含两个 header：`0x37ef8cf2407044d74a71f927a7e3dcd3be7fc5e7af0925c0b685ae3bedeec3bc` 包含了原始 Nervos DAO 存款单所在的区块头哈希，而 `0xba6eaa7e0acd0dc78072c5597ed464812391161f0560c35992ae0c96cd1d6073` 是 Nervos DAO 取款单所在的区块。
+- 因为 `0x37ef8cf2407044d74a71f927a7e3dcd3be7fc5e7af0925c0b685ae3bedeec3bc` 位于 `header_deps` 中的索引 `0` 处，数字 `0` 将会以 64 位未签名小端序整数的格式打包，即 `0000000000000000`，并被附加到与 Nervos DAO Input Cell 对应的 Witness 末尾。
+- Nervos DAO Input Cell 中有一个 `0x20068d02880000b6` 的 `since` 字段，它的计算如下：
+  - 存款区块的区块头 Epoch 值为 `0x68d0288000002`，即 `2 + 648 / 1677` 个 Epoch
+  - 取款单所在的区块头 Epoch 值为 `0x645017e00002f`，即 `47 + 382 / 1605` 个 Epoch
+  - 离取款单最接近的 Epoch 是 `47 + 382 / 1605`，但满足锁周期的 Epoch 是 `182 + 648 / 1677`，正确的格式是 `0x68d02880000b6`。
+  - 因为在 Since 字段中使用的是绝对 Epoch 数，所以需要使用必要的标志使值为 `0x20068d02880000b6`。有关格式的详细信息，请参阅 since RFC。
 
 使用与上面相同的计算方式，取款区块 `0xba6eaa7e0acd0dc78072c5597ed464812391161f0560c35992ae0c96cd1d6073` 的 `AR` 为 `1.0008616347796555`。
 
@@ -435,6 +434,6 @@ CKB 的区块头有一个名为 `dao` 的特殊字段，其中包含了使用 Ne
 
 `counted_capacity` = 200000000000 - 10200000000 = 189800000000
 
-`maximum_withdraw_capacity` = 189800000000 * 10008616347796555 / 10000435847357921 + 10200000000 = 200155259131
+`maximum_withdraw_capacity` = 189800000000 \* 10008616347796555 / 10000435847357921 + 10200000000 = 200155259131
 
 因此，200155259131 是最大的可以取出的 capacity。该交易有一个包含 0x2e9a2ed603 = 200155256323 的输出，他还支付了 2808 shannons 的交易手续费。现在简单测试一下：200155259131 = 200155256323 + 2808，很显然是符合的。
